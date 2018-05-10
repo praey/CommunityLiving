@@ -17,7 +17,7 @@ class Photo: TaskTemplate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        image.image = super.getPhoto(self.photoLocation)
+       //  image.image = super.getPhoto(photo: self.photoLocation)
     }
     
     func setPhotoData(photoLocation: String) {

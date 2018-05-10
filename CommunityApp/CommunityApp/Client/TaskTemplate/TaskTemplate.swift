@@ -10,7 +10,10 @@ import Foundation
 import UIKit
 
 class TaskTemplate: UIViewController {
+   
+    
     var analyticData: AnalyticData?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +29,13 @@ class TaskTemplate: UIViewController {
         saveAnalytics()
     }
     
+    
+
+    
     private func saveAnalytics() {
         if let analytics = self.analyticData {
             // Save analytics to Core Data
+            
         } else {
             print("There is no analytics to save")
         }
@@ -41,6 +48,8 @@ class TaskTemplate: UIViewController {
     
     func getText(textLocation: String) {
         // This is where is gets it from the Database/FileSystem
+       // self.fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+       // self.fileManager.changeCurrentDirectoryPath(<#T##path: String##String#>)
     }
     
     func showAudio(audioLocation: String) {

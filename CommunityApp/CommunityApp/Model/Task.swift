@@ -16,20 +16,19 @@ class Task: Codable {
     var isDisabled: Bool = false
     
     // This should point to the location of the File
-    var photo: String? = nil
+    var photo: Data? = nil
     var text: String? = nil
     var audio: String? = nil
     var video: String? = nil
     
-    init(title: String, photo: String?) {
+    init(title: String, photo: Data?) {
         self.title = title
         self.photo = photo
     }
     
-    init(title: String, text: String?) {
+    init(title: String, text: String) {
         self.title = title
         self.text = text
-        
     }
     
     init(title: String, audio: String?) {
@@ -42,20 +41,29 @@ class Task: Codable {
         self.video = video
     }
     
-    
-    init(title: String, photo: String?, text: String?, audio: String?, video: String?) {
-        self.title = title
-        
-        self.photo = photo
-        self.text = text
-        self.audio = audio
-        self.video = video
-    }
+
     
     func setDisabled() {
         isDisabled = !isDisabled
     }
+    
+    
+    func getText() {
+        
+        
+    }
  
+    
+    func assign(task: Task) {
+        self.title = task.title
+        self.isDisabled = task.isDisabled
+        
+        self.photo = task.photo
+        self.text = task.text
+        self.audio = task.audio
+        self.video = task.video
+        
+    }
 
     
 }

@@ -11,18 +11,16 @@ import UIKit
 
 class Text: TaskTemplate {
     
-
     @IBOutlet weak var text: UILabel!
     var textLocation: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        text.text = super.getText(self.textLocation)
+        // text.text = super.getText(textLocation: self.textLocation!)
     }
     
     func setTextData(textLocation: String) {
         self.textLocation = textLocation
     }
-    
     
 }

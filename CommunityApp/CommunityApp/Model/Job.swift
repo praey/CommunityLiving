@@ -17,6 +17,20 @@ class Job {
         self.title = title
     }
     
+    func createTask(title: String, text: String) {
+        let task = Task.init(title: title, text: text)
+        tasks.append(task)
+    }
+    
+    static func tempJobs() -> [Job] {
+        var jobs: [Job] = []
+        for index in 0..<5 {
+            var job: Job = Job(title: index.description)
+            job.createTask(title: job.title, text: index.description)
+            jobs.append(job)
+        }
+        return jobs
+    }
     
     
     // This eventually needs to conform to accepting multiple Calendar dates.

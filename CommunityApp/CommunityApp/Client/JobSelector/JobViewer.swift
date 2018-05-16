@@ -52,6 +52,7 @@ class JobViewer: UIPageViewController
     }
     
     func setJob(job: Job) {
+        print("JobViewer: Job was set")
         self.job = job
     }
 }

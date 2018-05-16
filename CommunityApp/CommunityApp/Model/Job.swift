@@ -12,6 +12,7 @@ class Job: Codable {
 
     private let ID: Int!
     let title: String!
+    
     var tasks: [Task] = []
     // var dates: []// Calendar Objecr of recourring dates
     var isDisabled: Bool!

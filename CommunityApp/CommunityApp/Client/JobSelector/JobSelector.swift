@@ -19,8 +19,8 @@ class JobSelector: UITableViewController {
         jobs = CoreData.tempJob
             //CoreData.getJobs()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,15 +30,21 @@ class JobSelector: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == TaskManager.segueID {
+        if segue.identifier == JobViewer.segueID {
             let vc = segue.destination as! JobViewer
             // If there is a default job to set then it will set it
             vc.setJob(job: tappedTableRow)
         }
     }
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("Jobs Count")
+        print(jobs.count)
         return jobs.count
     }
     

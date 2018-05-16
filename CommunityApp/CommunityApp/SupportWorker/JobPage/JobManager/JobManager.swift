@@ -11,8 +11,6 @@ import UIKit
 
 class JobManager: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     static let segueID = "toJobManager"
-    
-    
 
     @IBOutlet weak var addJob: UIButton!
 

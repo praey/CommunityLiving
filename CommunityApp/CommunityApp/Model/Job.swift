@@ -8,32 +8,50 @@
 
 import Foundation
 import UIKit
-class Job {
-    
-    let title: String
+class Job: Codable {
+
+    private let ID: Int!
+    let title: String!
     var tasks: [Task] = []
+    // var dates: []// Calendar Objecr of recourring dates
+    var isDisabled: Bool!
     
+    
+    init() {
+        self.ID = CoreData.getJobID()
+        self.title = ""
+    }
+
     init(title: String) {
+        self.ID = CoreData.getJobID()
         self.title = title
     }
-    
+
     func createTask(title: String, text: String) {
-        let task = Task.init(title: title, text: text)
+        let task = Task.init(job: self, title: title, text: text)
         tasks.append(task)
     }
     
+    func getID() -> Int {
+        return self.ID
+    }
+    
+    func addTask(newTask: Task) {
+        self.tasks.append(newTask)
+    }
+
+    // This eventually needs to conform to accepting multiple Calendar dates.
+}
+
+extension Job {
+
     static func tempJobs() -> [Job] {
         var jobs: [Job] = []
         for index in 0..<5 {
-            var job: Job = Job(title: index.description)
+            let job: Job = Job(title: index.description)
             job.createTask(title: job.title, text: index.description)
             jobs.append(job)
         }
         return jobs
     }
-    
-    
-    // This eventually needs to conform to accepting multiple Calendar dates.
-    
-    
 }

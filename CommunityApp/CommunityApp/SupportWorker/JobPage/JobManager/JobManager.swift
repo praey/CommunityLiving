@@ -14,6 +14,7 @@ class JobManager: UIViewController, UICollectionViewDelegate, UICollectionViewDa
 
     @IBOutlet weak var addJob: UIButton!
 
+   
     var jobs: [Job]!
     var tappedCollectionCell: Job?
 
@@ -24,8 +25,33 @@ class JobManager: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         super.viewDidLoad()
         print("Entered JobManager")
     
-        jobs = CoreData.tempJob// .getJobs()
+        jobs = CoreData.tempJob
         addJob.addTarget(self, action: #selector(JobManager.createJob), for: .touchUpInside)
+        
+        
+        if let backBar = self.navigationItem.backBarButtonItem {
+            
+            print("was set")
+            backBar.target = self
+            backBar.action = #selector(JobManager.toRootView)
+            
+        }else {
+            print("wasn't set")
+        }
+        
+        self.navigationItem.backBarButtonItem?.title = "hello"
+        
+        if let backBar = self.navigationItem.leftBarButtonItem {
+          
+            print("was set")
+            backBar.target = self
+            backBar.action = #selector(JobManager.toRootView)
+            
+            
+        } else {
+            print("Back bar wasn't set")
+        }
+        
         
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
         
@@ -37,6 +63,11 @@ class JobManager: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         super.didReceiveMemoryWarning()
     }
     
+    @objc func toRootView() {
+        if let nav = self.navigationController {
+            nav.popToRootViewController(animated: true)
+        }
+    }
     
     @objc func createJob(sender: UIButton) {
         tappedCollectionCell = nil

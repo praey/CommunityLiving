@@ -20,7 +20,7 @@ class JobViewer: UIPageViewController
         
         for task in job.tasks {
             // If the task is disabled then skip it
-            guard task.isDisabled.contains(.Task)  else {continue}
+            // guard task.isDisabled.contains(.Task)  else {continue}
            
             if task.taskType.contains(.Text) {
                 let vc = self.getViewController(withIdentifier: "Text") as! Text
@@ -30,7 +30,6 @@ class JobViewer: UIPageViewController
                 continue
             }
         }
-
         return controllers
     }()
     

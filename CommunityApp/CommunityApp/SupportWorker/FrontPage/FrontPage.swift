@@ -21,5 +21,4 @@ class FrontPage: UIViewController {
     }
     
     
-    
 }

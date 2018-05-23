@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CDA0702A20B5BCDE005F678C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA0702920B5BCDE005F678C /* AudioToolbox.framework */; };
+		CDA1B10620B44CBF009E27C1 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1B10520B44CBF009E27C1 /* AudioRecorder.swift */; };
+		CDA1B10820B44CD0009E27C1 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1B10720B44CCF009E27C1 /* AudioPlayer.swift */; };
 		CDF4AD5F20AC640900CB77C6 /* JobSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF4AD5E20AC640900CB77C6 /* JobSelector.swift */; };
+		CDF4AD6120AC9A2900CB77C6 /* PersonDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF4AD6020AC9A2800CB77C6 /* PersonDemo.swift */; };
 		CDF94CBD20ABCD45007E3EE2 /* JobViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF94CBC20ABCD45007E3EE2 /* JobViewer.swift */; };
 		CDF9632820A23DA50038100C /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF9632720A23DA50038100C /* TaskManager.swift */; };
 		CDF9632B20A23F070038100C /* JobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF9632A20A23F070038100C /* JobManager.swift */; };
@@ -54,7 +58,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CDA0702720B5BCDE005F678C /* CommunityApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommunityApp.entitlements; sourceTree = "<group>"; };
+		CDA0702920B5BCDE005F678C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CDA1B10520B44CBF009E27C1 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+		CDA1B10720B44CCF009E27C1 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		CDF4AD5E20AC640900CB77C6 /* JobSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSelector.swift; sourceTree = "<group>"; };
+		CDF4AD6020AC9A2800CB77C6 /* PersonDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDemo.swift; sourceTree = "<group>"; };
 		CDF94CBC20ABCD45007E3EE2 /* JobViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobViewer.swift; sourceTree = "<group>"; };
 		CDF9632720A23DA50038100C /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		CDF9632A20A23F070038100C /* JobManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobManager.swift; sourceTree = "<group>"; };
@@ -94,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDA0702A20B5BCDE005F678C /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +124,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CDA0702820B5BCDE005F678C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CDA0702920B5BCDE005F678C /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CDA1B10020B44C5B009E27C1 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				CDA1B10520B44CBF009E27C1 /* AudioRecorder.swift */,
+				CDA1B10720B44CCF009E27C1 /* AudioPlayer.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		CDA1B10120B44C65009E27C1 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				CDF9633A20A47C550038100C /* CoreData.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		CDA1B10220B44C6B009E27C1 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 		CDF9631E20A23AD60038100C /* JobSelector */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +244,7 @@
 				CDFC135B209363C1004A997E /* CommunityAppTests */,
 				CDFC1366209363C1004A997E /* CommunityAppUITests */,
 				CDFC1342209363C1004A997E /* Products */,
+				CDA0702820B5BCDE005F678C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -218,6 +261,7 @@
 		CDFC1343209363C1004A997E /* CommunityApp */ = {
 			isa = PBXGroup;
 			children = (
+				CDA0702720B5BCDE005F678C /* CommunityApp.entitlements */,
 				CDF9632220A23C7C0038100C /* Client */,
 				CDF9632120A23C6C0038100C /* SupportWorker */,
 				CDFC137B2093652F004A997E /* Model */,
@@ -253,10 +297,13 @@
 		CDFC137B2093652F004A997E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CDA1B10220B44C6B009E27C1 /* Objects */,
+				CDA1B10120B44C65009E27C1 /* Database */,
+				CDA1B10020B44C5B009E27C1 /* Audio */,
 				CDFC1379209364C1004A997E /* Task.swift */,
 				CDFC1377209364B0004A997E /* Job.swift */,
+				CDF4AD6020AC9A2800CB77C6 /* PersonDemo.swift */,
 				CDFC137520936446004A997E /* AnalyticData.swift */,
-				CDF9633A20A47C550038100C /* CoreData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -350,6 +397,11 @@
 					CDFC1340209363C1004A997E = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
+						};
 					};
 					CDFC1357209363C1004A997E = {
 						CreatedOnToolsVersion = 9.2;
@@ -421,10 +473,13 @@
 				CDF94CBD20ABCD45007E3EE2 /* JobViewer.swift in Sources */,
 				CDF9632F20A334DB0038100C /* JobEditor.swift in Sources */,
 				CDFCCB0C20A72C2F00AF6828 /* FrontPage.swift in Sources */,
+				CDA1B10620B44CBF009E27C1 /* AudioRecorder.swift in Sources */,
 				CDF9633B20A47C550038100C /* CoreData.swift in Sources */,
+				CDF4AD6120AC9A2900CB77C6 /* PersonDemo.swift in Sources */,
 				CDFC1395209369F8004A997E /* TaskTemplate.swift in Sources */,
 				CDF9632820A23DA50038100C /* TaskManager.swift in Sources */,
 				CDFC1347209363C1004A997E /* ViewController.swift in Sources */,
+				CDA1B10820B44CD0009E27C1 /* AudioPlayer.swift in Sources */,
 				CDFC13872093695A004A997E /* Audio.swift in Sources */,
 				CDFC134D209363C1004A997E /* CommunityApp.xcdatamodeld in Sources */,
 				CDFC1345209363C1004A997E /* AppDelegate.swift in Sources */,
@@ -602,11 +657,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CommunityApp/CommunityApp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VU9ABXP993;
 				INFOPLIST_FILE = CommunityApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HelloWorld.CommunityApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -616,11 +676,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CommunityApp/CommunityApp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VU9ABXP993;
 				INFOPLIST_FILE = CommunityApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HelloWorld.CommunityApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

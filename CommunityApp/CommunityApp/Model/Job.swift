@@ -8,14 +8,16 @@
 
 import Foundation
 import UIKit
+import EventKit
+
 class Job: Codable {
 
-    private let ID: Int!
-    let title: String!
+    let ID: Int!
+    private(set) var title: String!
+    private(set) var isDisabled: Bool!
     
     var tasks: [Task] = []
-    // var dates: []// Calendar Objecr of recourring dates
-    var isDisabled: Bool!
+    var dates: [Calendar] = []// Calendar Objecr of recourring dates
     
     
     init() {
@@ -45,6 +47,12 @@ class Job: Codable {
 }
 
 extension Job {
+    
+    func getJob(jobID: Int) -> Job {
+        let job = CoreData.getJob(jobID: jobID)
+        return job
+    }
+    
 
     static func tempJobs() -> [Job] {
         var jobs: [Job] = []

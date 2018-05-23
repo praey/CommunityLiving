@@ -37,7 +37,13 @@ final class CoreData {
     // static func getTask(jobID: Int, taskID: Int) -> Task { }
     static func getJobID() -> Int { return 0 }
     static func getTaskID() -> Int {return 1}
+    static func getPersonID() -> Int {return 2}
     
+    
+    
+    static func getJob(jobID: Int) -> Job {
+        return CoreData.tempJob[0]
+    }
     
     static func setJob(job: Job) {
     
@@ -48,8 +54,8 @@ final class CoreData {
     // CRUD
     // create retrive Update Delete
     
-    static func setTaskText(jobID: Int, taskID: Int, text: String) -> Bool{
-        return true
+    static func setTaskText(jobID: Int, taskID: Int, text: String){
+        
     }
     
     
@@ -78,10 +84,11 @@ final class CoreData {
         return json
     }
     
-    
-    static func saveAnalytics(job: Job, task: Task) {
+     */
+    static func saveAnalytics(job: Job, task: Task, date: Date, duration: TimeInterval) {
+        // This helps explain when something happened - who did it and how long it was for
         // Save Analytic Data to a specific job and a specific task
     }
-    */
+ 
 
 }

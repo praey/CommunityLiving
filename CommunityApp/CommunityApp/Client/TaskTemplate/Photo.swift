@@ -14,8 +14,6 @@ class Photo: TaskTemplate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let task = super.task {
-            image.image = task.getPhoto()
-        }
+        image.image = super.task.getPhoto()
     }
 }

@@ -10,13 +10,6 @@ import Foundation
 import UIKit
 
 
-
-
-
-
-
-
-
 class Task: Codable {
     
     
@@ -31,53 +24,55 @@ class Task: Codable {
         static var Photo: Disable  { return self.init(rawValue: 1 << 1)}
         static var Audio: Disable      { return self.init(rawValue: 1 << 2)}
         static var Video: Disable    { return self.init(rawValue: 1 << 3)}
-        static var Finger: Disable       { return self.init(rawValue: 1 << 4)}
-        static var Stylus: Disable       { return self.init(rawValue: 1 << 5)}
     }
     
     struct TaskType: OptionSet, Codable {
         // Mark: Properties
         let rawValue: Int
         
-        static var Emtpy: TaskType = []
+        static var Empty: TaskType = []
         static var Text: TaskType { return self.init(rawValue: 0 )}
         static var Photo: TaskType  { return self.init(rawValue: 1 << 0)}
         static var Audio: TaskType      { return self.init(rawValue: 1 << 1)}
         static var Video: TaskType    { return self.init(rawValue: 1 << 2)}
     }
 
-    
-
-    private let ID: Int!
+    // MARK: Job Properties
     let job: Job!
-    var title: String!
-    var taskType: TaskType = TaskType.Emtpy
+    let ID: Int!
+    private(set) var title: String!
+    
+    var taskType: TaskType = TaskType.Empty
     var isDisabled: Disable = Disable.Empty
     
-    var startTime: Date!
-    var duration: TimeInterval!
+    private(set) var text: String?
+    private(set) var audio: URL?
+    private(set) var video: URL?
+    private(set) var photo: URL?
     
+    // Analytic Data
+    // private var analyticData: Dictionary = [Date():TimeInterval]
     
-    // This should point to the location of the File
-    var text: String? = nil
-    //var audio: Data? = nil
-    //var video: Data? = nil
-    var photo: URL? = nil
-    
-    // I need to be able to set flags for 4 things - 5
+    private var startTime: Date!
+    private var duration: TimeInterval!
     
     init(job: Job) {
         self.ID = CoreData.getTaskID()
         self.job = job
+        self.job.addTask(newTask: self)
     }
 
     init(job: Job, title: String, text: String) {
         self.ID = CoreData.getTaskID()
         self.job = job
+        self.job.addTask(newTask: self)
         self.title = title
         self.text = text
         self.taskType.formUnion(.Text)
     }
+    
+    
+    // MARK: Get Functions
     
     func getTaskType() -> [String] {
         var content: [String] = []
@@ -99,6 +94,9 @@ class Task: Codable {
     }
    
     func getPhoto() -> UIImage {
+        //let image = UIImage.init(
+        //self.photo ?? UIImage.init(named: "errorImage")!
+        //let image = UIImage.init(data: Data.init(contentsOf: self.photo!))
         /*do {
             let data: Data = try Data.init(contentsOf: self.photo!)
             let image = UIImage.init(data: data)!
@@ -106,24 +104,15 @@ class Task: Codable {
         } catch let error as? Error {
             return UIImage.init(named: "errorImage")!
         }*/
-        return UIImage.init(named: "errorImage")!
-    }
-    
-    func setDisabled() {
-        
+        let image = UIImage.init(named: "errorImage")!
+        return image
     }
     
     func getText() -> String {
-        return text!
+        let word = self.text ?? "default text"
+        return word
     }
-
-    func assign(task: Task) {
-        self.title = task.title
-        self.isDisabled = task.isDisabled
-        
-        self.text = task.text
-        
-    }
+ 
     func getJobID() -> Int {
         return self.job.getID()
     }
@@ -132,27 +121,50 @@ class Task: Codable {
         return self.ID
     }
     
+    // MARK: Set Functions
+    
+    func setDisabled(taskType: TaskType) {
+        self.taskType.formUnion(taskType)
+        // Will need to inform database that this is not disabled
+    }
+
+  
+    
+    func setText(text: String) {
+        CoreData.setTaskText(jobID: job.getID(), taskID: self.ID, text: text)
+        self.text = text
+    }
+    
+    // MARK: Analytics
     func startAnalytics() {
         startTime = Date()
     }
     
-    // Analytic Data 
     func saveAnalytics() {
-        duration = Date().timeIntervalSince(startTime)
+        let date = Date()
+        duration = date.timeIntervalSince(startTime)
         
-        if format() {
-            // CoreData.saveAnalytics(job: job.ID, task: self.ID)
+        
+        if format(timeInterval: duration) {
+            //CoreData.saveAnalytics(job: job, task: self.ID, date: date, duration: duration)
         } else {
-            //print("Job: \(jobID) Task: \(self.title) didn't follow proper format to be submitted to Database")
+            print("Job: \(job.getID()) Task: \(self.title) didn't follow proper format to be submitted to Database")
         }
     }
 
-    private func format() -> Bool {
-        // This is where we take out things that do not conform to the set rules that we have.
-        return true
+    private func format(timeInterval: TimeInterval) -> Bool {
+        if timeInterval < 300 {
+            print("Success: Format Time interval was under 300")
+            return true
+        } else {
+            print("Failure: Format Time interval was over 300")
+            return false
+        }
     }
     
 }
+
+
 
 
 

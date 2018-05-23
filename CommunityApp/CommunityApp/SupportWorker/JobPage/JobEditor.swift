@@ -18,13 +18,15 @@ class JobEditor: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleValue: UILabel!
     var tappedTableRow: Task!
+    var data: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Entered JobEditor")
         tableView.delegate = self
         tableView.dataSource = self
-    
+        data = "nope"
+    print(data)
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
 
@@ -39,12 +41,26 @@ class JobEditor: UIViewController, UITableViewDelegate, UITableViewDataSource  {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let validJob = self.job {
+            self.job = validJob.getJob(jobID: validJob.ID)
+        } else {
+            print("doesn't have valid jbo")
+        }
+    }
+    
+    
+    //override func viewWillAppear(_ animated: Bool) {
+    //    self.viewDidLoad()
+    //}
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     func setJob(job: Job?) {
-        self.job = job
+        print("setJob called")
+        self.job = job ?? Job.init()
     }
     
     @objc func createTask() {

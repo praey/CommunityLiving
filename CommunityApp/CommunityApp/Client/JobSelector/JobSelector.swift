@@ -17,7 +17,6 @@ class JobSelector: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         jobs = CoreData.tempJob
-            //CoreData.getJobs()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
@@ -43,8 +42,7 @@ class JobSelector: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Jobs Count")
-        print(jobs.count)
+        print("Jobs Count: " + jobs.count.description)
         return jobs.count
     }
     

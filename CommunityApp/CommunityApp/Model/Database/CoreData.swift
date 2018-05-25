@@ -35,9 +35,9 @@ final class CoreData {
     // static func getJob(jobID: Int) -> Job { }
     // static func getTasks(jobID: Int) -> Task { }
     // static func getTask(jobID: Int, taskID: Int) -> Task { }
-    static func getJobID() -> Int { return 0 }
-    static func getTaskID() -> Int {return 1}
-    static func getPersonID() -> Int {return 2}
+    static func getJobID() -> String { return "0" }
+    static func getTaskID() -> String {return "1"}
+    static func getPersonID() -> String {return "2"}
     
     
     

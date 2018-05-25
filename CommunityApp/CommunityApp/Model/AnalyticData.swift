@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-class AnalyticData: Codable {
+class AnalyticData: NSObject{
     
     // What is Analytic Data
     // - Analytic Data is defined by the time that it started and the time that it ended
-    let startTime: Date!
+    let startTime: Date?
     
-    init() {
+    override init() {
         startTime = Date()
     }
     

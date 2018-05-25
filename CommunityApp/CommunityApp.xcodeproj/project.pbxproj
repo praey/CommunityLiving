@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 		CDA0702A20B5BCDE005F678C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA0702920B5BCDE005F678C /* AudioToolbox.framework */; };
 		CDA1B10620B44CBF009E27C1 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1B10520B44CBF009E27C1 /* AudioRecorder.swift */; };
 		CDA1B10820B44CD0009E27C1 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1B10720B44CCF009E27C1 /* AudioPlayer.swift */; };
@@ -21,14 +22,24 @@
 		CDF9633620A34B990038100C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF9633520A34B990038100C /* Config.swift */; };
 		CDF9633920A46F6D0038100C /* JobCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF9633820A46F6D0038100C /* JobCollectionCell.swift */; };
 		CDF9633B20A47C550038100C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF9633A20A47C550038100C /* CoreData.swift */; };
+=======
+		4A0552A820B5E75600193E5C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552A720B5E75500193E5C /* CoreDataManager.swift */; };
+		4A0552B220B5E80D00193E5C /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552B120B5E80D00193E5C /* FileSystemManager.swift */; };
+		4A0552C720B5EA1800193E5C /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552C320B5EA1800193E5C /* Task+CoreDataClass.swift */; };
+		4A0552C820B5EA1800193E5C /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552C420B5EA1800193E5C /* Task+CoreDataProperties.swift */; };
+		4A0552C920B5EA1800193E5C /* Job+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552C520B5EA1800193E5C /* Job+CoreDataClass.swift */; };
+		4A0552CA20B5EA1800193E5C /* Job+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552C620B5EA1800193E5C /* Job+CoreDataProperties.swift */; };
+		4A0552CC20B5EACC00193E5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A0552CB20B5EACC00193E5C /* Main.storyboard */; };
+		4A0552CE20B5EB7400193E5C /* Page2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552CD20B5EB7400193E5C /* Page2.swift */; };
+>>>>>>> CoreDataBackend
 		CDFC1345209363C1004A997E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1344209363C1004A997E /* AppDelegate.swift */; };
-		CDFC1347209363C1004A997E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1346209363C1004A997E /* ViewController.swift */; };
-		CDFC134A209363C1004A997E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDFC1348209363C1004A997E /* Main.storyboard */; };
+		CDFC1347209363C1004A997E /* Page1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1346209363C1004A997E /* Page1.swift */; };
 		CDFC134D209363C1004A997E /* CommunityApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDFC134B209363C1004A997E /* CommunityApp.xcdatamodeld */; };
 		CDFC134F209363C1004A997E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDFC134E209363C1004A997E /* Assets.xcassets */; };
 		CDFC1352209363C1004A997E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDFC1350209363C1004A997E /* LaunchScreen.storyboard */; };
 		CDFC135D209363C1004A997E /* CommunityAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC135C209363C1004A997E /* CommunityAppTests.swift */; };
 		CDFC1368209363C1004A997E /* CommunityAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1367209363C1004A997E /* CommunityAppUITests.swift */; };
+<<<<<<< HEAD
 		CDFC137620936446004A997E /* AnalyticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC137520936446004A997E /* AnalyticData.swift */; };
 		CDFC1378209364B0004A997E /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1377209364B0004A997E /* Job.swift */; };
 		CDFC137A209364C1004A997E /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1379209364C1004A997E /* Task.swift */; };
@@ -38,6 +49,8 @@
 		CDFC1393209369C3004A997E /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1392209369C3004A997E /* Photo.swift */; };
 		CDFC1395209369F8004A997E /* TaskTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1394209369F8004A997E /* TaskTemplate.swift */; };
 		CDFCCB0C20A72C2F00AF6828 /* FrontPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFCCB0B20A72C2F00AF6828 /* FrontPage.swift */; };
+=======
+>>>>>>> CoreDataBackend
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 		CDA0702720B5BCDE005F678C /* CommunityApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommunityApp.entitlements; sourceTree = "<group>"; };
 		CDA0702920B5BCDE005F678C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		CDA1B10520B44CBF009E27C1 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
@@ -73,10 +87,19 @@
 		CDF9633520A34B990038100C /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		CDF9633820A46F6D0038100C /* JobCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCollectionCell.swift; sourceTree = "<group>"; };
 		CDF9633A20A47C550038100C /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+=======
+		4A0552A720B5E75500193E5C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		4A0552B120B5E80D00193E5C /* FileSystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
+		4A0552C320B5EA1800193E5C /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4A0552C420B5EA1800193E5C /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4A0552C520B5EA1800193E5C /* Job+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4A0552C620B5EA1800193E5C /* Job+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4A0552CB20B5EACC00193E5C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4A0552CD20B5EB7400193E5C /* Page2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page2.swift; sourceTree = "<group>"; };
+>>>>>>> CoreDataBackend
 		CDFC1341209363C1004A997E /* CommunityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommunityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDFC1344209363C1004A997E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CDFC1346209363C1004A997E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CDFC1349209363C1004A997E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CDFC1346209363C1004A997E /* Page1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1.swift; sourceTree = "<group>"; };
 		CDFC134C209363C1004A997E /* CommunityApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CommunityApp.xcdatamodel; sourceTree = "<group>"; };
 		CDFC134E209363C1004A997E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDFC1351209363C1004A997E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,6 +110,7 @@
 		CDFC1363209363C1004A997E /* CommunityAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommunityAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDFC1367209363C1004A997E /* CommunityAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityAppUITests.swift; sourceTree = "<group>"; };
 		CDFC1369209363C1004A997E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		CDFC137520936446004A997E /* AnalyticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticData.swift; sourceTree = "<group>"; };
 		CDFC1377209364B0004A997E /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		CDFC1379209364C1004A997E /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -96,6 +120,8 @@
 		CDFC1392209369C3004A997E /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		CDFC1394209369F8004A997E /* TaskTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTemplate.swift; sourceTree = "<group>"; };
 		CDFCCB0B20A72C2F00AF6828 /* FrontPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPage.swift; sourceTree = "<group>"; };
+=======
+>>>>>>> CoreDataBackend
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +150,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+<<<<<<< HEAD
 		CDA0702820B5BCDE005F678C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,9 +264,15 @@
 			path = JobManager;
 			sourceTree = "<group>";
 		};
+=======
+>>>>>>> CoreDataBackend
 		CDFC1338209363C0004A997E = {
 			isa = PBXGroup;
 			children = (
+				4A0552C320B5EA1800193E5C /* Task+CoreDataClass.swift */,
+				4A0552C420B5EA1800193E5C /* Task+CoreDataProperties.swift */,
+				4A0552C520B5EA1800193E5C /* Job+CoreDataClass.swift */,
+				4A0552C620B5EA1800193E5C /* Job+CoreDataProperties.swift */,
 				CDFC1343209363C1004A997E /* CommunityApp */,
 				CDFC135B209363C1004A997E /* CommunityAppTests */,
 				CDFC1366209363C1004A997E /* CommunityAppUITests */,
@@ -261,17 +294,23 @@
 		CDFC1343209363C1004A997E /* CommunityApp */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				CDA0702720B5BCDE005F678C /* CommunityApp.entitlements */,
 				CDF9632220A23C7C0038100C /* Client */,
 				CDF9632120A23C6C0038100C /* SupportWorker */,
 				CDFC137B2093652F004A997E /* Model */,
+=======
+				4A0552CB20B5EACC00193E5C /* Main.storyboard */,
+>>>>>>> CoreDataBackend
 				CDFC1344209363C1004A997E /* AppDelegate.swift */,
-				CDFC1346209363C1004A997E /* ViewController.swift */,
-				CDFC1348209363C1004A997E /* Main.storyboard */,
+				CDFC1346209363C1004A997E /* Page1.swift */,
+				4A0552CD20B5EB7400193E5C /* Page2.swift */,
 				CDFC134E209363C1004A997E /* Assets.xcassets */,
 				CDFC1350209363C1004A997E /* LaunchScreen.storyboard */,
 				CDFC1353209363C1004A997E /* Info.plist */,
 				CDFC134B209363C1004A997E /* CommunityApp.xcdatamodeld */,
+				4A0552A720B5E75500193E5C /* CoreDataManager.swift */,
+				4A0552B120B5E80D00193E5C /* FileSystemManager.swift */,
 			);
 			path = CommunityApp;
 			sourceTree = "<group>";
@@ -294,6 +333,7 @@
 			path = CommunityAppUITests;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		CDFC137B2093652F004A997E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +368,8 @@
 			path = FrontPage;
 			sourceTree = "<group>";
 		};
+=======
+>>>>>>> CoreDataBackend
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -391,7 +433,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Javon Luke";
 				TargetAttributes = {
 					CDFC1340209363C1004A997E = {
@@ -440,9 +482,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A0552CC20B5EACC00193E5C /* Main.storyboard in Resources */,
 				CDFC1352209363C1004A997E /* LaunchScreen.storyboard in Resources */,
 				CDFC134F209363C1004A997E /* Assets.xcassets in Resources */,
-				CDFC134A209363C1004A997E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				CDF9633920A46F6D0038100C /* JobCollectionCell.swift in Sources */,
 				CDFC137620936446004A997E /* AnalyticData.swift in Sources */,
 				CDFC1385209365F4004A997E /* Video.swift in Sources */,
@@ -492,6 +535,18 @@
 				CDFC138F2093699A004A997E /* Text.swift in Sources */,
 				CDFC1378209364B0004A997E /* Job.swift in Sources */,
 				CDF9633120A344BA0038100C /* SignIn.swift in Sources */,
+=======
+				CDFC1347209363C1004A997E /* Page1.swift in Sources */,
+				4A0552C920B5EA1800193E5C /* Job+CoreDataClass.swift in Sources */,
+				4A0552B220B5E80D00193E5C /* FileSystemManager.swift in Sources */,
+				CDFC134D209363C1004A997E /* CommunityApp.xcdatamodeld in Sources */,
+				CDFC1345209363C1004A997E /* AppDelegate.swift in Sources */,
+				4A0552CA20B5EA1800193E5C /* Job+CoreDataProperties.swift in Sources */,
+				4A0552C820B5EA1800193E5C /* Task+CoreDataProperties.swift in Sources */,
+				4A0552C720B5EA1800193E5C /* Task+CoreDataClass.swift in Sources */,
+				4A0552A820B5E75600193E5C /* CoreDataManager.swift in Sources */,
+				4A0552CE20B5EB7400193E5C /* Page2.swift in Sources */,
+>>>>>>> CoreDataBackend
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,14 +582,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CDFC1348209363C1004A997E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CDFC1349209363C1004A997E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CDFC1350209363C1004A997E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -560,6 +607,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -567,6 +615,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -617,6 +666,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -624,6 +674,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

@@ -11,12 +11,18 @@ import UIKit
 
 class SignIn: UIViewController {
     
+    @IBOutlet weak var signInButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("Entered Sign IN")
+        signInButton.addTarget(self, action: #selector(SignIn.signIn), for: .touchUpInside)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @objc func signIn() {
+        performSegue(withIdentifier: JobManager.segueID, sender: self)
     }
     
 }

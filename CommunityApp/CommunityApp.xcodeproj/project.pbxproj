@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		CDA0702A20B5BCDE005F678C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA0702920B5BCDE005F678C /* AudioToolbox.framework */; };
 		CDA1B10620B44CBF009E27C1 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1B10520B44CBF009E27C1 /* AudioRecorder.swift */; };
 		CDA1B10820B44CD0009E27C1 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1B10720B44CCF009E27C1 /* AudioPlayer.swift */; };
@@ -23,6 +24,8 @@
 		CDF9633920A46F6D0038100C /* JobCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF9633820A46F6D0038100C /* JobCollectionCell.swift */; };
 		CDF9633B20A47C550038100C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF9633A20A47C550038100C /* CoreData.swift */; };
 =======
+=======
+>>>>>>> mergedBranch
 		4A0552A820B5E75600193E5C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552A720B5E75500193E5C /* CoreDataManager.swift */; };
 		4A0552B220B5E80D00193E5C /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552B120B5E80D00193E5C /* FileSystemManager.swift */; };
 		4A0552C720B5EA1800193E5C /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552C320B5EA1800193E5C /* Task+CoreDataClass.swift */; };
@@ -31,7 +34,10 @@
 		4A0552CA20B5EA1800193E5C /* Job+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552C620B5EA1800193E5C /* Job+CoreDataProperties.swift */; };
 		4A0552CC20B5EACC00193E5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A0552CB20B5EACC00193E5C /* Main.storyboard */; };
 		4A0552CE20B5EB7400193E5C /* Page2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552CD20B5EB7400193E5C /* Page2.swift */; };
+<<<<<<< HEAD
 >>>>>>> CoreDataBackend
+=======
+>>>>>>> mergedBranch
 		CDFC1345209363C1004A997E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1344209363C1004A997E /* AppDelegate.swift */; };
 		CDFC1347209363C1004A997E /* Page1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1346209363C1004A997E /* Page1.swift */; };
 		CDFC134D209363C1004A997E /* CommunityApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDFC134B209363C1004A997E /* CommunityApp.xcdatamodeld */; };
@@ -39,6 +45,7 @@
 		CDFC1352209363C1004A997E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDFC1350209363C1004A997E /* LaunchScreen.storyboard */; };
 		CDFC135D209363C1004A997E /* CommunityAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC135C209363C1004A997E /* CommunityAppTests.swift */; };
 		CDFC1368209363C1004A997E /* CommunityAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1367209363C1004A997E /* CommunityAppUITests.swift */; };
+<<<<<<< HEAD
 <<<<<<< HEAD
 		CDFC137620936446004A997E /* AnalyticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC137520936446004A997E /* AnalyticData.swift */; };
 		CDFC1378209364B0004A997E /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1377209364B0004A997E /* Job.swift */; };
@@ -51,6 +58,8 @@
 		CDFCCB0C20A72C2F00AF6828 /* FrontPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFCCB0B20A72C2F00AF6828 /* FrontPage.swift */; };
 =======
 >>>>>>> CoreDataBackend
+=======
+>>>>>>> mergedBranch
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 <<<<<<< HEAD
+<<<<<<< HEAD
 		CDA0702720B5BCDE005F678C /* CommunityApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommunityApp.entitlements; sourceTree = "<group>"; };
 		CDA0702920B5BCDE005F678C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		CDA1B10520B44CBF009E27C1 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
@@ -88,6 +98,8 @@
 		CDF9633820A46F6D0038100C /* JobCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCollectionCell.swift; sourceTree = "<group>"; };
 		CDF9633A20A47C550038100C /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 =======
+=======
+>>>>>>> mergedBranch
 		4A0552A720B5E75500193E5C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		4A0552B120B5E80D00193E5C /* FileSystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
 		4A0552C320B5EA1800193E5C /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -96,7 +108,10 @@
 		4A0552C620B5EA1800193E5C /* Job+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4A0552CB20B5EACC00193E5C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4A0552CD20B5EB7400193E5C /* Page2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page2.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 >>>>>>> CoreDataBackend
+=======
+>>>>>>> mergedBranch
 		CDFC1341209363C1004A997E /* CommunityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommunityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDFC1344209363C1004A997E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDFC1346209363C1004A997E /* Page1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1.swift; sourceTree = "<group>"; };
@@ -111,6 +126,7 @@
 		CDFC1367209363C1004A997E /* CommunityAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityAppUITests.swift; sourceTree = "<group>"; };
 		CDFC1369209363C1004A997E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 <<<<<<< HEAD
+<<<<<<< HEAD
 		CDFC137520936446004A997E /* AnalyticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticData.swift; sourceTree = "<group>"; };
 		CDFC1377209364B0004A997E /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		CDFC1379209364C1004A997E /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -122,6 +138,8 @@
 		CDFCCB0B20A72C2F00AF6828 /* FrontPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrontPage.swift; sourceTree = "<group>"; };
 =======
 >>>>>>> CoreDataBackend
+=======
+>>>>>>> mergedBranch
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +168,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+<<<<<<< HEAD
 <<<<<<< HEAD
 		CDA0702820B5BCDE005F678C /* Frameworks */ = {
 			isa = PBXGroup;
@@ -266,6 +285,8 @@
 		};
 =======
 >>>>>>> CoreDataBackend
+=======
+>>>>>>> mergedBranch
 		CDFC1338209363C0004A997E = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 <<<<<<< HEAD
+<<<<<<< HEAD
 				CDA0702720B5BCDE005F678C /* CommunityApp.entitlements */,
 				CDF9632220A23C7C0038100C /* Client */,
 				CDF9632120A23C6C0038100C /* SupportWorker */,
@@ -302,6 +324,9 @@
 =======
 				4A0552CB20B5EACC00193E5C /* Main.storyboard */,
 >>>>>>> CoreDataBackend
+=======
+				4A0552CB20B5EACC00193E5C /* Main.storyboard */,
+>>>>>>> mergedBranch
 				CDFC1344209363C1004A997E /* AppDelegate.swift */,
 				CDFC1346209363C1004A997E /* Page1.swift */,
 				4A0552CD20B5EB7400193E5C /* Page2.swift */,
@@ -333,6 +358,7 @@
 			path = CommunityAppUITests;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 <<<<<<< HEAD
 		CDFC137B2093652F004A997E /* Model */ = {
 			isa = PBXGroup;
@@ -370,6 +396,8 @@
 		};
 =======
 >>>>>>> CoreDataBackend
+=======
+>>>>>>> mergedBranch
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -510,6 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 <<<<<<< HEAD
+<<<<<<< HEAD
 				CDF9633920A46F6D0038100C /* JobCollectionCell.swift in Sources */,
 				CDFC137620936446004A997E /* AnalyticData.swift in Sources */,
 				CDFC1385209365F4004A997E /* Video.swift in Sources */,
@@ -536,6 +565,8 @@
 				CDFC1378209364B0004A997E /* Job.swift in Sources */,
 				CDF9633120A344BA0038100C /* SignIn.swift in Sources */,
 =======
+=======
+>>>>>>> mergedBranch
 				CDFC1347209363C1004A997E /* Page1.swift in Sources */,
 				4A0552C920B5EA1800193E5C /* Job+CoreDataClass.swift in Sources */,
 				4A0552B220B5E80D00193E5C /* FileSystemManager.swift in Sources */,
@@ -546,7 +577,10 @@
 				4A0552C720B5EA1800193E5C /* Task+CoreDataClass.swift in Sources */,
 				4A0552A820B5E75600193E5C /* CoreDataManager.swift in Sources */,
 				4A0552CE20B5EB7400193E5C /* Page2.swift in Sources */,
+<<<<<<< HEAD
 >>>>>>> CoreDataBackend
+=======
+>>>>>>> mergedBranch
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

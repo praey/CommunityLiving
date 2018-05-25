@@ -11,13 +11,12 @@ import UIKit
 
 class TaskTemplate: UIViewController {
    
-    
-    var analyticData: AnalyticData?
+    var task: Task!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.analyticData = AnalyticData()
+        self.task.startAnalytics()
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,39 +25,13 @@ class TaskTemplate: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        saveAnalytics()
+        self.task.saveAnalytics()
     }
     
-    
+    func setTask(task: Task) {
+        self.task = task
+    }
 
-    
-    private func saveAnalytics() {
-        if let analytics = self.analyticData {
-            // Save analytics to Core Data
-            
-        } else {
-            print("There is no analytics to save")
-        }
-        
-    }
-    
-    func getPhoto(photoLocation: String) {
-        // This is where is gets it from the Database/FileSystem
-    }
-    
-    func getText(textLocation: String) {
-        // This is where is gets it from the Database/FileSystem
-       // self.fileManager.urls(for: .documentDirectory, in: .userDomainMask)
-       // self.fileManager.changeCurrentDirectoryPath(<#T##path: String##String#>)
-    }
-    
-    func showAudio(audioLocation: String) {
-        // This is where it get the audio
-    }
-    
-    func showVideo(videoLocation: String) {
-        // This is where it gets the video
-    }
 
 }
 

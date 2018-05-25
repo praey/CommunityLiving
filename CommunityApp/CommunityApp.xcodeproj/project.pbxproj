@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD10C1D220B7EE4D00D71EC7 /* Page2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C1D120B7EE4D00D71EC7 /* Page2.swift */; };
+		CD10C1D420B7EE6500D71EC7 /* Page1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C1D320B7EE6400D71EC7 /* Page1.swift */; };
+		CD10C1D620B7EE6F00D71EC7 /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C1D520B7EE6F00D71EC7 /* FileSystemManager.swift */; };
+		CD10C1D820B7EE7B00D71EC7 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C1D720B7EE7A00D71EC7 /* CoreDataManager.swift */; };
 		CDA0702A20B5BCDE005F678C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA0702920B5BCDE005F678C /* AudioToolbox.framework */; };
 		CDA1B10620B44CBF009E27C1 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1B10520B44CBF009E27C1 /* AudioRecorder.swift */; };
 		CDA1B10820B44CD0009E27C1 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1B10720B44CCF009E27C1 /* AudioPlayer.swift */; };
@@ -58,6 +62,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD10C1D120B7EE4D00D71EC7 /* Page2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page2.swift; sourceTree = "<group>"; };
+		CD10C1D320B7EE6400D71EC7 /* Page1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page1.swift; sourceTree = "<group>"; };
+		CD10C1D520B7EE6F00D71EC7 /* FileSystemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
+		CD10C1D720B7EE7A00D71EC7 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		CDA0702720B5BCDE005F678C /* CommunityApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommunityApp.entitlements; sourceTree = "<group>"; };
 		CDA0702920B5BCDE005F678C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		CDA1B10520B44CBF009E27C1 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
@@ -124,6 +132,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD10C1D920B7EE9000D71EC7 /* FrontEnd */ = {
+			isa = PBXGroup;
+			children = (
+				CDF9632220A23C7C0038100C /* Client */,
+			);
+			path = FrontEnd;
+			sourceTree = "<group>";
+		};
+		CD10C1DA20B7EE9900D71EC7 /* BackEnd */ = {
+			isa = PBXGroup;
+			children = (
+				CD10C1D720B7EE7A00D71EC7 /* CoreDataManager.swift */,
+				CD10C1D520B7EE6F00D71EC7 /* FileSystemManager.swift */,
+				CD10C1D320B7EE6400D71EC7 /* Page1.swift */,
+				CD10C1D120B7EE4D00D71EC7 /* Page2.swift */,
+			);
+			path = BackEnd;
+			sourceTree = "<group>";
+		};
 		CDA0702820B5BCDE005F678C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +208,7 @@
 		CDF9632220A23C7C0038100C /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				CDF9632120A23C6C0038100C /* SupportWorker */,
 				CDF9631E20A23AD60038100C /* JobSelector */,
 				CDFC137D20936547004A997E /* TaskTemplate */,
 			);
@@ -261,9 +289,9 @@
 		CDFC1343209363C1004A997E /* CommunityApp */ = {
 			isa = PBXGroup;
 			children = (
+				CD10C1D920B7EE9000D71EC7 /* FrontEnd */,
+				CD10C1DA20B7EE9900D71EC7 /* BackEnd */,
 				CDA0702720B5BCDE005F678C /* CommunityApp.entitlements */,
-				CDF9632220A23C7C0038100C /* Client */,
-				CDF9632120A23C6C0038100C /* SupportWorker */,
 				CDFC137B2093652F004A997E /* Model */,
 				CDFC1344209363C1004A997E /* AppDelegate.swift */,
 				CDFC1346209363C1004A997E /* ViewController.swift */,
@@ -474,21 +502,25 @@
 				CDF9632F20A334DB0038100C /* JobEditor.swift in Sources */,
 				CDFCCB0C20A72C2F00AF6828 /* FrontPage.swift in Sources */,
 				CDA1B10620B44CBF009E27C1 /* AudioRecorder.swift in Sources */,
+				CD10C1D220B7EE4D00D71EC7 /* Page2.swift in Sources */,
 				CDF9633B20A47C550038100C /* CoreData.swift in Sources */,
 				CDF4AD6120AC9A2900CB77C6 /* PersonDemo.swift in Sources */,
 				CDFC1395209369F8004A997E /* TaskTemplate.swift in Sources */,
+				CD10C1D420B7EE6500D71EC7 /* Page1.swift in Sources */,
 				CDF9632820A23DA50038100C /* TaskManager.swift in Sources */,
 				CDFC1347209363C1004A997E /* ViewController.swift in Sources */,
 				CDA1B10820B44CD0009E27C1 /* AudioPlayer.swift in Sources */,
 				CDFC13872093695A004A997E /* Audio.swift in Sources */,
 				CDFC134D209363C1004A997E /* CommunityApp.xcdatamodeld in Sources */,
 				CDFC1345209363C1004A997E /* AppDelegate.swift in Sources */,
+				CD10C1D620B7EE6F00D71EC7 /* FileSystemManager.swift in Sources */,
 				CDFC1393209369C3004A997E /* Photo.swift in Sources */,
 				CDF9633620A34B990038100C /* Config.swift in Sources */,
 				CDFC137A209364C1004A997E /* Task.swift in Sources */,
 				CDF4AD5F20AC640900CB77C6 /* JobSelector.swift in Sources */,
 				CDF9633420A34B2B0038100C /* Email.swift in Sources */,
 				CDF9632B20A23F070038100C /* JobManager.swift in Sources */,
+				CD10C1D820B7EE7B00D71EC7 /* CoreDataManager.swift in Sources */,
 				CDFC138F2093699A004A997E /* Text.swift in Sources */,
 				CDFC1378209364B0004A997E /* Job.swift in Sources */,
 				CDF9633120A344BA0038100C /* SignIn.swift in Sources */,

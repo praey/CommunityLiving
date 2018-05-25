@@ -11,7 +11,7 @@ import AVFoundation
 import UIKit
 
 
-
+/*
 class AudioRecorder: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
     //declare instance variable
@@ -43,7 +43,7 @@ class AudioRecorder: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDel
     }
     
     
-  /*  var audioRecorder: AVAudioRecorder!
+   var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
     var recordingSession: AVAudioSession!
     
@@ -125,7 +125,7 @@ class AudioRecorder: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDel
         let soundURL = documentDirectory.appendingPathComponent(fileName)
         return soundURL
     }
- */
+
     
     
  
@@ -133,3 +133,4 @@ class AudioRecorder: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDel
     
     
 }
+  */

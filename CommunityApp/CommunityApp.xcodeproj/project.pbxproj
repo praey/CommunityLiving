@@ -7,17 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CD10C1D220B7EE4D00D71EC7 /* Page2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C1D120B7EE4D00D71EC7 /* Page2.swift */; };
-		CD10C1D420B7EE6500D71EC7 /* Page1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C1D320B7EE6400D71EC7 /* Page1.swift */; };
-		CD10C1D620B7EE6F00D71EC7 /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C1D520B7EE6F00D71EC7 /* FileSystemManager.swift */; };
-		CD10C1D820B7EE7B00D71EC7 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C1D720B7EE7A00D71EC7 /* CoreDataManager.swift */; };
-		CD10C1DF20B7EFC900D71EC7 /* Job+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C1DB20B7EFC700D71EC7 /* Job+CoreDataClass.swift */; };
-		CD10C1E020B7EFC900D71EC7 /* Job+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C1DC20B7EFC800D71EC7 /* Job+CoreDataProperties.swift */; };
-		CD10C1E120B7EFC900D71EC7 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C1DD20B7EFC800D71EC7 /* Task+CoreDataProperties.swift */; };
 		CD10C1E220B7EFC900D71EC7 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C1DE20B7EFC800D71EC7 /* Task+CoreDataClass.swift */; };
 		CD4C915820B9ABC600BD0057 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C915720B9ABC600BD0057 /* Analytics.swift */; };
-		CD4C915B20B9AFBC00BD0057 /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C915920B9AFBC00BD0057 /* Person+CoreDataClass.swift */; };
-		CD4C915C20B9AFBC00BD0057 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C915A20B9AFBC00BD0057 /* Person+CoreDataProperties.swift */; };
 		CD4C915E20B9C3C000BD0057 /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C915D20B9C3C000BD0057 /* CoreDataProtocol.swift */; };
 		CD89A0E620C08C1700E054C0 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD89A0E520C08C1600E054C0 /* VideoPlayer.swift */; };
 		CDA0702A20B5BCDE005F678C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA0702920B5BCDE005F678C /* AudioToolbox.framework */; };
@@ -36,14 +27,11 @@
 		CDFC1345209363C1004A997E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1344209363C1004A997E /* AppDelegate.swift */; };
 		CDFC1347209363C1004A997E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1346209363C1004A997E /* ViewController.swift */; };
 		CDFC134A209363C1004A997E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDFC1348209363C1004A997E /* Main.storyboard */; };
-		CDFC134D209363C1004A997E /* CommunityApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDFC134B209363C1004A997E /* CommunityApp.xcdatamodeld */; };
 		CDFC134F209363C1004A997E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDFC134E209363C1004A997E /* Assets.xcassets */; };
 		CDFC1352209363C1004A997E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDFC1350209363C1004A997E /* LaunchScreen.storyboard */; };
 		CDFC135D209363C1004A997E /* CommunityAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC135C209363C1004A997E /* CommunityAppTests.swift */; };
 		CDFC1368209363C1004A997E /* CommunityAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1367209363C1004A997E /* CommunityAppUITests.swift */; };
 		CDFC137620936446004A997E /* AnalyticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC137520936446004A997E /* AnalyticData.swift */; };
-		CDFC1378209364B0004A997E /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1377209364B0004A997E /* Job.swift */; };
-		CDFC137A209364C1004A997E /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1379209364C1004A997E /* Task.swift */; };
 		CDFC1385209365F4004A997E /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1384209365F4004A997E /* Video.swift */; };
 		CDFC13872093695A004A997E /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC13862093695A004A997E /* Audio.swift */; };
 		CDFC138F2093699A004A997E /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC138E2093699A004A997E /* Text.swift */; };
@@ -70,17 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CD10C1D120B7EE4D00D71EC7 /* Page2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page2.swift; sourceTree = "<group>"; };
-		CD10C1D320B7EE6400D71EC7 /* Page1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page1.swift; sourceTree = "<group>"; };
-		CD10C1D520B7EE6F00D71EC7 /* FileSystemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
-		CD10C1D720B7EE7A00D71EC7 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		CD10C1DB20B7EFC700D71EC7 /* Job+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataClass.swift"; sourceTree = "<group>"; };
-		CD10C1DC20B7EFC800D71EC7 /* Job+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		CD10C1DD20B7EFC800D71EC7 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CD10C1DE20B7EFC800D71EC7 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CD4C915720B9ABC600BD0057 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
-		CD4C915920B9AFBC00BD0057 /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
-		CD4C915A20B9AFBC00BD0057 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CD4C915D20B9C3C000BD0057 /* CoreDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProtocol.swift; sourceTree = "<group>"; };
 		CD89A0E520C08C1600E054C0 /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		CDA0702720B5BCDE005F678C /* CommunityApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommunityApp.entitlements; sourceTree = "<group>"; };
@@ -101,7 +80,6 @@
 		CDFC1344209363C1004A997E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDFC1346209363C1004A997E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CDFC1349209363C1004A997E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CDFC134C209363C1004A997E /* CommunityApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CommunityApp.xcdatamodel; sourceTree = "<group>"; };
 		CDFC134E209363C1004A997E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDFC1351209363C1004A997E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDFC1353209363C1004A997E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,8 +90,6 @@
 		CDFC1367209363C1004A997E /* CommunityAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityAppUITests.swift; sourceTree = "<group>"; };
 		CDFC1369209363C1004A997E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDFC137520936446004A997E /* AnalyticData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticData.swift; sourceTree = "<group>"; };
-		CDFC1377209364B0004A997E /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
-		CDFC1379209364C1004A997E /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		CDFC1384209365F4004A997E /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		CDFC13862093695A004A997E /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		CDFC138E2093699A004A997E /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
@@ -160,10 +136,6 @@
 		CD10C1DA20B7EE9900D71EC7 /* BackEnd */ = {
 			isa = PBXGroup;
 			children = (
-				CD10C1D720B7EE7A00D71EC7 /* CoreDataManager.swift */,
-				CD10C1D520B7EE6F00D71EC7 /* FileSystemManager.swift */,
-				CD10C1D320B7EE6400D71EC7 /* Page1.swift */,
-				CD10C1D120B7EE4D00D71EC7 /* Page2.swift */,
 				CD4C915D20B9C3C000BD0057 /* CoreDataProtocol.swift */,
 			);
 			path = BackEnd;
@@ -189,14 +161,7 @@
 		CDA1B10220B44C6B009E27C1 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				CDFC1377209364B0004A997E /* Job.swift */,
-				CDFC1379209364C1004A997E /* Task.swift */,
-				CD4C915920B9AFBC00BD0057 /* Person+CoreDataClass.swift */,
-				CD4C915A20B9AFBC00BD0057 /* Person+CoreDataProperties.swift */,
-				CD10C1DB20B7EFC700D71EC7 /* Job+CoreDataClass.swift */,
-				CD10C1DC20B7EFC800D71EC7 /* Job+CoreDataProperties.swift */,
 				CD10C1DE20B7EFC800D71EC7 /* Task+CoreDataClass.swift */,
-				CD10C1DD20B7EFC800D71EC7 /* Task+CoreDataProperties.swift */,
 				CD4C915720B9ABC600BD0057 /* Analytics.swift */,
 			);
 			path = Objects;
@@ -317,7 +282,6 @@
 				CDFC134E209363C1004A997E /* Assets.xcassets */,
 				CDFC1350209363C1004A997E /* LaunchScreen.storyboard */,
 				CDFC1353209363C1004A997E /* Info.plist */,
-				CDFC134B209363C1004A997E /* CommunityApp.xcdatamodeld */,
 			);
 			path = CommunityApp;
 			sourceTree = "<group>";
@@ -514,39 +478,27 @@
 				CD89A0E620C08C1700E054C0 /* VideoPlayer.swift in Sources */,
 				CDF9633920A46F6D0038100C /* JobCollectionCell.swift in Sources */,
 				CDFC137620936446004A997E /* AnalyticData.swift in Sources */,
-				CD10C1E020B7EFC900D71EC7 /* Job+CoreDataProperties.swift in Sources */,
 				CDFC1385209365F4004A997E /* Video.swift in Sources */,
 				CDF94CBD20ABCD45007E3EE2 /* JobViewer.swift in Sources */,
 				CDF9632F20A334DB0038100C /* JobEditor.swift in Sources */,
-				CD10C1E120B7EFC900D71EC7 /* Task+CoreDataProperties.swift in Sources */,
 				CDFCCB0C20A72C2F00AF6828 /* FrontPage.swift in Sources */,
 				CD4C915820B9ABC600BD0057 /* Analytics.swift in Sources */,
 				CDA1B10620B44CBF009E27C1 /* AudioRecorder.swift in Sources */,
-				CD10C1D220B7EE4D00D71EC7 /* Page2.swift in Sources */,
 				CDF4AD6120AC9A2900CB77C6 /* PersonDemo.swift in Sources */,
 				CDFC1395209369F8004A997E /* TaskTemplate.swift in Sources */,
-				CD10C1D420B7EE6500D71EC7 /* Page1.swift in Sources */,
 				CDF9632820A23DA50038100C /* TaskManager.swift in Sources */,
 				CDFC1347209363C1004A997E /* ViewController.swift in Sources */,
-				CD4C915C20B9AFBC00BD0057 /* Person+CoreDataProperties.swift in Sources */,
 				CDA1B10820B44CD0009E27C1 /* AudioPlayer.swift in Sources */,
 				CDFC13872093695A004A997E /* Audio.swift in Sources */,
-				CDFC134D209363C1004A997E /* CommunityApp.xcdatamodeld in Sources */,
 				CD10C1E220B7EFC900D71EC7 /* Task+CoreDataClass.swift in Sources */,
 				CD4C915E20B9C3C000BD0057 /* CoreDataProtocol.swift in Sources */,
 				CDFC1345209363C1004A997E /* AppDelegate.swift in Sources */,
-				CD10C1D620B7EE6F00D71EC7 /* FileSystemManager.swift in Sources */,
 				CDFC1393209369C3004A997E /* Photo.swift in Sources */,
 				CDF9633620A34B990038100C /* Config.swift in Sources */,
-				CD10C1DF20B7EFC900D71EC7 /* Job+CoreDataClass.swift in Sources */,
-				CDFC137A209364C1004A997E /* Task.swift in Sources */,
 				CDF4AD5F20AC640900CB77C6 /* JobSelector.swift in Sources */,
 				CDF9633420A34B2B0038100C /* Email.swift in Sources */,
 				CDF9632B20A23F070038100C /* JobManager.swift in Sources */,
-				CD10C1D820B7EE7B00D71EC7 /* CoreDataManager.swift in Sources */,
-				CD4C915B20B9AFBC00BD0057 /* Person+CoreDataClass.swift in Sources */,
 				CDFC138F2093699A004A997E /* Text.swift in Sources */,
-				CDFC1378209364B0004A997E /* Job.swift in Sources */,
 				CDF9633120A344BA0038100C /* SignIn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -849,19 +801,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		CDFC134B209363C1004A997E /* CommunityApp.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				CDFC134C209363C1004A997E /* CommunityApp.xcdatamodel */,
-			);
-			currentVersion = CDFC134C209363C1004A997E /* CommunityApp.xcdatamodel */;
-			path = CommunityApp.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = CDFC1339209363C1004A997E /* Project object */;
 }

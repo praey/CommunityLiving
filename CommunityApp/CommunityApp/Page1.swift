@@ -25,7 +25,7 @@ class Page1: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? Page2 {
-            vc.passedInfo = coreDataManager.retrieveJob(id: idText.text!)
+            vc.passedInfo = coreDataManager.getJob(id: idText.text!)
         }
     }
     
@@ -41,7 +41,7 @@ class Page1: UIViewController {
     @IBOutlet weak var idText: UITextField!
     
     @IBAction func selectButton(_ sender: Any) {
-        if idText.text != "" && coreDataManager.retrieveJob(id: idText.text!) != nil {
+        if idText.text != "" && coreDataManager.getJob(id: idText.text!) != nil {
             performSegue(withIdentifier: "selectSegue", sender: self)
         }
         else if idText.text == "" {
@@ -58,7 +58,7 @@ class Page1: UIViewController {
             nameText.text = "Enter ID"
         }
         else{
-            coreDataManager.saveJob(id: idText.text!, name: nameText.text!)
+            coreDataManager.setJob(id: idText.text!, name: nameText.text!)
         }
     }
     
@@ -67,7 +67,7 @@ class Page1: UIViewController {
     }
     
     @IBAction func getJob(_ sender: Any){
-        let job = coreDataManager.retrieveJob(id: idText.text!)
+        let job = coreDataManager.getJob(id: idText.text!)
         if job == nil {
             idText.text = "not exist!"
         }

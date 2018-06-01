@@ -11,10 +11,15 @@
 		4A0552B220B5E80D00193E5C /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552B120B5E80D00193E5C /* FileSystemManager.swift */; };
 		4A0552C720B5EA1800193E5C /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552C320B5EA1800193E5C /* Task+CoreDataClass.swift */; };
 		4A0552C820B5EA1800193E5C /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552C420B5EA1800193E5C /* Task+CoreDataProperties.swift */; };
-		4A0552C920B5EA1800193E5C /* Job+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552C520B5EA1800193E5C /* Job+CoreDataClass.swift */; };
-		4A0552CA20B5EA1800193E5C /* Job+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552C620B5EA1800193E5C /* Job+CoreDataProperties.swift */; };
 		4A0552CC20B5EACC00193E5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A0552CB20B5EACC00193E5C /* Main.storyboard */; };
 		4A0552CE20B5EB7400193E5C /* Page2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552CD20B5EB7400193E5C /* Page2.swift */; };
+		4A0552DB20BE102A00193E5C /* Page3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552DA20BE102A00193E5C /* Page3.swift */; };
+		4A0552E020BE7AED00193E5C /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552DE20BE7AED00193E5C /* Person+CoreDataClass.swift */; };
+		4A0552E120BE7AED00193E5C /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552DF20BE7AED00193E5C /* Person+CoreDataProperties.swift */; };
+		4A0552E420BE94C400193E5C /* Job+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552E220BE94C400193E5C /* Job+CoreDataClass.swift */; };
+		4A0552E520BE94C400193E5C /* Job+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552E320BE94C400193E5C /* Job+CoreDataProperties.swift */; };
+		4A0552E720BE9FAD00193E5C /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552E620BE9FAD00193E5C /* Analytics.swift */; };
+		4A5789FB20BF215F00677851 /* Page4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5789FA20BF215F00677851 /* Page4.swift */; };
 		CDFC1345209363C1004A997E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1344209363C1004A997E /* AppDelegate.swift */; };
 		CDFC1347209363C1004A997E /* Page1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1346209363C1004A997E /* Page1.swift */; };
 		CDFC134D209363C1004A997E /* CommunityApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDFC134B209363C1004A997E /* CommunityApp.xcdatamodeld */; };
@@ -46,10 +51,15 @@
 		4A0552B120B5E80D00193E5C /* FileSystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
 		4A0552C320B5EA1800193E5C /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4A0552C420B5EA1800193E5C /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		4A0552C520B5EA1800193E5C /* Job+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4A0552C620B5EA1800193E5C /* Job+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4A0552CB20B5EACC00193E5C /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4A0552CD20B5EB7400193E5C /* Page2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page2.swift; sourceTree = "<group>"; };
+		4A0552DA20BE102A00193E5C /* Page3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page3.swift; sourceTree = "<group>"; };
+		4A0552DE20BE7AED00193E5C /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4A0552DF20BE7AED00193E5C /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4A0552E220BE94C400193E5C /* Job+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4A0552E320BE94C400193E5C /* Job+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4A0552E620BE9FAD00193E5C /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		4A5789FA20BF215F00677851 /* Page4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page4.swift; sourceTree = "<group>"; };
 		CDFC1341209363C1004A997E /* CommunityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommunityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDFC1344209363C1004A997E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDFC1346209363C1004A997E /* Page1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1.swift; sourceTree = "<group>"; };
@@ -93,10 +103,12 @@
 		CDFC1338209363C0004A997E = {
 			isa = PBXGroup;
 			children = (
+				4A0552DE20BE7AED00193E5C /* Person+CoreDataClass.swift */,
+				4A0552DF20BE7AED00193E5C /* Person+CoreDataProperties.swift */,
+				4A0552E220BE94C400193E5C /* Job+CoreDataClass.swift */,
+				4A0552E320BE94C400193E5C /* Job+CoreDataProperties.swift */,
 				4A0552C320B5EA1800193E5C /* Task+CoreDataClass.swift */,
 				4A0552C420B5EA1800193E5C /* Task+CoreDataProperties.swift */,
-				4A0552C520B5EA1800193E5C /* Job+CoreDataClass.swift */,
-				4A0552C620B5EA1800193E5C /* Job+CoreDataProperties.swift */,
 				CDFC1343209363C1004A997E /* CommunityApp */,
 				CDFC135B209363C1004A997E /* CommunityAppTests */,
 				CDFC1366209363C1004A997E /* CommunityAppUITests */,
@@ -121,6 +133,9 @@
 				CDFC1344209363C1004A997E /* AppDelegate.swift */,
 				CDFC1346209363C1004A997E /* Page1.swift */,
 				4A0552CD20B5EB7400193E5C /* Page2.swift */,
+				4A0552DA20BE102A00193E5C /* Page3.swift */,
+				4A5789FA20BF215F00677851 /* Page4.swift */,
+				4A0552E620BE9FAD00193E5C /* Analytics.swift */,
 				CDFC134E209363C1004A997E /* Assets.xcassets */,
 				CDFC1350209363C1004A997E /* LaunchScreen.storyboard */,
 				CDFC1353209363C1004A997E /* Info.plist */,
@@ -217,6 +232,7 @@
 				TargetAttributes = {
 					CDFC1340209363C1004A997E = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 					};
 					CDFC1357209363C1004A997E = {
@@ -284,13 +300,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDFC1347209363C1004A997E /* Page1.swift in Sources */,
-				4A0552C920B5EA1800193E5C /* Job+CoreDataClass.swift in Sources */,
+				4A0552DB20BE102A00193E5C /* Page3.swift in Sources */,
 				4A0552B220B5E80D00193E5C /* FileSystemManager.swift in Sources */,
 				CDFC134D209363C1004A997E /* CommunityApp.xcdatamodeld in Sources */,
 				CDFC1345209363C1004A997E /* AppDelegate.swift in Sources */,
-				4A0552CA20B5EA1800193E5C /* Job+CoreDataProperties.swift in Sources */,
 				4A0552C820B5EA1800193E5C /* Task+CoreDataProperties.swift in Sources */,
+				4A0552E020BE7AED00193E5C /* Person+CoreDataClass.swift in Sources */,
 				4A0552C720B5EA1800193E5C /* Task+CoreDataClass.swift in Sources */,
+				4A0552E720BE9FAD00193E5C /* Analytics.swift in Sources */,
+				4A0552E120BE7AED00193E5C /* Person+CoreDataProperties.swift in Sources */,
+				4A0552E520BE94C400193E5C /* Job+CoreDataProperties.swift in Sources */,
+				4A5789FB20BF215F00677851 /* Page4.swift in Sources */,
+				4A0552E420BE94C400193E5C /* Job+CoreDataClass.swift in Sources */,
 				4A0552A820B5E75600193E5C /* CoreDataManager.swift in Sources */,
 				4A0552CE20B5EB7400193E5C /* Page2.swift in Sources */,
 			);
@@ -389,7 +410,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -442,7 +463,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -454,11 +475,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VU9ABXP993;
 				INFOPLIST_FILE = CommunityApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HelloWorld.CommunityApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -468,7 +492,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VU9ABXP993;
 				INFOPLIST_FILE = CommunityApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HelloWorld.CommunityApp;

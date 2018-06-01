@@ -51,16 +51,15 @@ class FileSystemManager{
         if let imageRep = UIImageJPEGRepresentation(image, quality) as NSData?{
             let imageURLString = filePath + "Images/\(nameWithExtension)"
             imageRep.write(toFile: imageURLString, atomically: true)
-            task.photo = "Images/\(nameWithExtension)"
             print("Image is saved!")
             print(imageURLString)
         }
     }
     
     func getImage(task: Task) -> (UIImage){
-        print("Image url: ")
+        print("Image name: ")
         print(task.photo!)
-        let image = UIImage(contentsOfFile: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String + "/" + task.photo!)
+        let image = UIImage(contentsOfFile: NSHomeDirectory() + "/Documents/Images/" + task.photo!)
         return image!
     }
     
@@ -84,8 +83,8 @@ class FileSystemManager{
         }
     }
     
-    func getVideo(task: Task) -> (URL){
-        return URL(string: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String + "/Videos/\(task.video!)")!
+    func getVideo(task: Task) -> (String){
+        return NSHomeDirectory() + "/Documents/Videos/\(task.video!)"
     }
     
     func deletVideo(URLString: String){
@@ -108,8 +107,8 @@ class FileSystemManager{
         }
     }
     
-    func getAudio(task: Task) -> (URL){
-        return URL(string: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String + "/Audios/\(task.audio!)")!
+    func getAudio(task: Task) -> (String){
+        return NSHomeDirectory() + "/Documents/Audios/\(task.audio!)"
     }
     
     func deletAudio(URLString: String){

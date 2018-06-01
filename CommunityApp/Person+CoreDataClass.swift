@@ -1,5 +1,5 @@
 //
-//  Job+CoreDataClass.swift
+//  Person+CoreDataClass.swift
 //  CommunityApp
 //
 //  Created by Tianyuan Zhang on 2018/5/30.
@@ -11,6 +11,6 @@ import Foundation
 import CoreData
 
 
-public class Job: NSManagedObject {
+public class Person: NSManagedObject {
 
 }

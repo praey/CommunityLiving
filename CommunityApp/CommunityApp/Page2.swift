@@ -8,9 +8,10 @@
 
 import UIKit
 
-class Page2: UIViewController {
+class Page2: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let coreDataManager: CoreDataManager = CoreDataManager.coreDataManager
+    var imagePickerController: UIImagePickerController!
     var passedInfo: Job!
     
     override func viewDidLoad() {
@@ -30,26 +31,52 @@ class Page2: UIViewController {
     @IBOutlet weak var idText: UITextField!
     
     @IBAction func saveButton(_ sender: Any) {
-        coreDataManager.saveData(job: passedInfo, name: nameText.text!, id: idText.text!, jobid: passedInfo.id!)
+        coreDataManager.setTask(job: passedInfo, name: nameText.text!, id: idText.text!, jobid: passedInfo.id!)
         nameText.text = ""
         idText.text = ""
     }
     
     @IBAction func readButton(_ sender: Any) {
-        let task = coreDataManager.retrieveTask(job: passedInfo, id: idText.text!)
+        let task = coreDataManager.getTask(job: passedInfo, id: idText.text!)
         if task == nil {
             idText.text = "not exist"
             imageView.image = nil
         }
         else {
             nameText.text = task?.title!
-            imageView.image = coreDataManager.fileSystemManager.getImage(task: task!)
+            if task?.disablePhoto == false{
+                imageView.image = coreDataManager.fileSystemManager.getImage(task: task!)
+            }
         }
     }
     
     @IBAction func deletAllButton(_ sender: Any) {
         imageView.image = nil
         coreDataManager.deleteAllTasks(job: passedInfo)
+    }
+    
+    @IBAction func getIDButton(_ sender: Any) {
+        print(coreDataManager.getTaskID(job: passedInfo))
+    }
+    
+    @IBAction func chooseImageButton(_ sender: Any) {
+        let task = coreDataManager.getTask(job: passedInfo, id: idText.text!)
+        if task != nil{
+            imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = .photoLibrary
+            present(imagePickerController, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        imagePickerController.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        imagePickerController.dismiss(animated: true, completion: nil)
+        imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        coreDataManager.setTaskImage(jobID: passedInfo.id!, taskID: idText.text!, image: imageView.image!)
     }
     
     @IBOutlet weak var imageView: UIImageView!

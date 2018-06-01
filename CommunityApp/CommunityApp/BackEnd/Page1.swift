@@ -10,7 +10,7 @@ import UIKit
 
 class Page1: UIViewController {
     
-    let coreDataManager = CoreDataManager.coreDataManager
+    let coreDataManager = CoreDataManager.database
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class Page1: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? Page2 {
-            vc.passedInfo = coreDataManager.retrieveJob(id: idText.text!)
+            //vc.passedInfo = CoreDataManager.database.retrieveJob(id: idText.text!)
         }
     }
     
@@ -41,10 +41,10 @@ class Page1: UIViewController {
     @IBOutlet weak var idText: UITextField!
     
     @IBAction func selectButton(_ sender: Any) {
-        if idText.text != "" && coreDataManager.retrieveJob(id: idText.text!) != nil {
-            performSegue(withIdentifier: "selectSegue", sender: self)
-        }
-        else if idText.text == "" {
+        //if idText.text != "" && coreDataManager.retrieveJob(id: idText.text!) != nil {
+     //       performSegue(withIdentifier: "selectSegue", sender: self)
+     //   }
+       if idText.text == "" {
             idText.text = "Id is empty!"
         }
         else {
@@ -53,13 +53,13 @@ class Page1: UIViewController {
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        if idText.text! == "" || nameText.text! == "" {
-            idText.text = "Enter Name"
-            nameText.text = "Enter ID"
-        }
-        else{
-            coreDataManager.saveJob(id: idText.text!, name: nameText.text!)
-        }
+//        if idText.text! == "" || nameText.text! == "" {
+//            idText.text = "Enter Name"
+//            nameText.text = "Enter ID"
+//        }
+//        else{
+//            coreDataManager.saveJob(id: idText.text!, name: nameText.text!)
+//        }
     }
     
     @IBAction func deletAllButton(_ sender: Any) {
@@ -67,13 +67,13 @@ class Page1: UIViewController {
     }
     
     @IBAction func getJob(_ sender: Any){
-        let job = coreDataManager.retrieveJob(id: idText.text!)
-        if job == nil {
-            idText.text = "not exist!"
-        }
-        else {
-            nameText.text = job?.title
-        }
+//        let job = coreDataManager.retrieveJob(id: idText.text!)
+//        if job == nil {
+//            idText.text = "not exist!"
+//        }
+//        else {
+//            nameText.text = job?.title
+//        }
     }
     
     /*

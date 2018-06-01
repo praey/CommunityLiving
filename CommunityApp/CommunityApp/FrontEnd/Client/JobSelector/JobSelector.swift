@@ -16,7 +16,8 @@ class JobSelector: UITableViewController {
     var tappedTableRow: Job!
     override func viewDidLoad() {
         super.viewDidLoad()
-        jobs = CoreData.tempJob
+        jobs = CoreDataManager.database.createTestData()
+        // CoreDataManager.database.getJobs()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
@@ -24,6 +25,7 @@ class JobSelector: UITableViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
     }
     
     

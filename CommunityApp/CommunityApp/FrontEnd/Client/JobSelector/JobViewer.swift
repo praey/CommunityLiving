@@ -18,17 +18,17 @@ class JobViewer: UIPageViewController
     fileprivate lazy var pages: [UIViewController] = {
         var controllers: [UIViewController] = []
         
-        for task in job.tasks {
+        for task in job.getTasks()
+        {
             // If the task is disabled then skip it
             // guard task.isDisabled.contains(.Task)  else {continue}
            
-            if task.taskType.contains(.Text) {
-                let vc = self.getViewController(withIdentifier: "Text") as! Text
+               let vc = self.getViewController(withIdentifier: "Text") as! Text
                 vc.setTask(task: task)
                 controllers.append(vc)
                 print("Selected Text Controller and setTask")
                 continue
-            }
+            
         }
         return controllers
     }()

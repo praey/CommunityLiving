@@ -15,6 +15,11 @@
 		CD10C1E020B7EFC900D71EC7 /* Job+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C1DC20B7EFC800D71EC7 /* Job+CoreDataProperties.swift */; };
 		CD10C1E120B7EFC900D71EC7 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C1DD20B7EFC800D71EC7 /* Task+CoreDataProperties.swift */; };
 		CD10C1E220B7EFC900D71EC7 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C1DE20B7EFC800D71EC7 /* Task+CoreDataClass.swift */; };
+		CD4C915820B9ABC600BD0057 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C915720B9ABC600BD0057 /* Analytics.swift */; };
+		CD4C915B20B9AFBC00BD0057 /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C915920B9AFBC00BD0057 /* Person+CoreDataClass.swift */; };
+		CD4C915C20B9AFBC00BD0057 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C915A20B9AFBC00BD0057 /* Person+CoreDataProperties.swift */; };
+		CD4C915E20B9C3C000BD0057 /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C915D20B9C3C000BD0057 /* CoreDataProtocol.swift */; };
+		CD89A0E620C08C1700E054C0 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD89A0E520C08C1600E054C0 /* VideoPlayer.swift */; };
 		CDA0702A20B5BCDE005F678C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA0702920B5BCDE005F678C /* AudioToolbox.framework */; };
 		CDA1B10620B44CBF009E27C1 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1B10520B44CBF009E27C1 /* AudioRecorder.swift */; };
 		CDA1B10820B44CD0009E27C1 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1B10720B44CCF009E27C1 /* AudioPlayer.swift */; };
@@ -28,7 +33,6 @@
 		CDF9633420A34B2B0038100C /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF9633320A34B2B0038100C /* Email.swift */; };
 		CDF9633620A34B990038100C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF9633520A34B990038100C /* Config.swift */; };
 		CDF9633920A46F6D0038100C /* JobCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF9633820A46F6D0038100C /* JobCollectionCell.swift */; };
-		CDF9633B20A47C550038100C /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF9633A20A47C550038100C /* CoreData.swift */; };
 		CDFC1345209363C1004A997E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1344209363C1004A997E /* AppDelegate.swift */; };
 		CDFC1347209363C1004A997E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1346209363C1004A997E /* ViewController.swift */; };
 		CDFC134A209363C1004A997E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDFC1348209363C1004A997E /* Main.storyboard */; };
@@ -74,6 +78,11 @@
 		CD10C1DC20B7EFC800D71EC7 /* Job+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CD10C1DD20B7EFC800D71EC7 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CD10C1DE20B7EFC800D71EC7 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CD4C915720B9ABC600BD0057 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		CD4C915920B9AFBC00BD0057 /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CD4C915A20B9AFBC00BD0057 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CD4C915D20B9C3C000BD0057 /* CoreDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProtocol.swift; sourceTree = "<group>"; };
+		CD89A0E520C08C1600E054C0 /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		CDA0702720B5BCDE005F678C /* CommunityApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommunityApp.entitlements; sourceTree = "<group>"; };
 		CDA0702920B5BCDE005F678C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		CDA1B10520B44CBF009E27C1 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
@@ -88,7 +97,6 @@
 		CDF9633320A34B2B0038100C /* Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
 		CDF9633520A34B990038100C /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		CDF9633820A46F6D0038100C /* JobCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobCollectionCell.swift; sourceTree = "<group>"; };
-		CDF9633A20A47C550038100C /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		CDFC1341209363C1004A997E /* CommunityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommunityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDFC1344209363C1004A997E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDFC1346209363C1004A997E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				CDF9632220A23C7C0038100C /* Client */,
+				CDF9632120A23C6C0038100C /* SupportWorker */,
 			);
 			path = FrontEnd;
 			sourceTree = "<group>";
@@ -155,6 +164,7 @@
 				CD10C1D520B7EE6F00D71EC7 /* FileSystemManager.swift */,
 				CD10C1D320B7EE6400D71EC7 /* Page1.swift */,
 				CD10C1D120B7EE4D00D71EC7 /* Page2.swift */,
+				CD4C915D20B9C3C000BD0057 /* CoreDataProtocol.swift */,
 			);
 			path = BackEnd;
 			sourceTree = "<group>";
@@ -176,23 +186,18 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
-		CDA1B10120B44C65009E27C1 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				CDF9633A20A47C550038100C /* CoreData.swift */,
-			);
-			path = Database;
-			sourceTree = "<group>";
-		};
 		CDA1B10220B44C6B009E27C1 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
 				CDFC1377209364B0004A997E /* Job.swift */,
 				CDFC1379209364C1004A997E /* Task.swift */,
+				CD4C915920B9AFBC00BD0057 /* Person+CoreDataClass.swift */,
+				CD4C915A20B9AFBC00BD0057 /* Person+CoreDataProperties.swift */,
 				CD10C1DB20B7EFC700D71EC7 /* Job+CoreDataClass.swift */,
 				CD10C1DC20B7EFC800D71EC7 /* Job+CoreDataProperties.swift */,
 				CD10C1DE20B7EFC800D71EC7 /* Task+CoreDataClass.swift */,
 				CD10C1DD20B7EFC800D71EC7 /* Task+CoreDataProperties.swift */,
+				CD4C915720B9ABC600BD0057 /* Analytics.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -222,7 +227,6 @@
 		CDF9632220A23C7C0038100C /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				CDF9632120A23C6C0038100C /* SupportWorker */,
 				CDF9631E20A23AD60038100C /* JobSelector */,
 				CDFC137D20936547004A997E /* TaskTemplate */,
 			);
@@ -340,7 +344,6 @@
 			isa = PBXGroup;
 			children = (
 				CDA1B10220B44C6B009E27C1 /* Objects */,
-				CDA1B10120B44C65009E27C1 /* Database */,
 				CDA1B10020B44C5B009E27C1 /* Audio */,
 				CDF4AD6020AC9A2800CB77C6 /* PersonDemo.swift */,
 				CDFC137520936446004A997E /* AnalyticData.swift */,
@@ -356,6 +359,7 @@
 				CDFC138E2093699A004A997E /* Text.swift */,
 				CDFC1392209369C3004A997E /* Photo.swift */,
 				CDFC1394209369F8004A997E /* TaskTemplate.swift */,
+				CD89A0E520C08C1600E054C0 /* VideoPlayer.swift */,
 			);
 			path = TaskTemplate;
 			sourceTree = "<group>";
@@ -507,6 +511,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD89A0E620C08C1700E054C0 /* VideoPlayer.swift in Sources */,
 				CDF9633920A46F6D0038100C /* JobCollectionCell.swift in Sources */,
 				CDFC137620936446004A997E /* AnalyticData.swift in Sources */,
 				CD10C1E020B7EFC900D71EC7 /* Job+CoreDataProperties.swift in Sources */,
@@ -515,18 +520,20 @@
 				CDF9632F20A334DB0038100C /* JobEditor.swift in Sources */,
 				CD10C1E120B7EFC900D71EC7 /* Task+CoreDataProperties.swift in Sources */,
 				CDFCCB0C20A72C2F00AF6828 /* FrontPage.swift in Sources */,
+				CD4C915820B9ABC600BD0057 /* Analytics.swift in Sources */,
 				CDA1B10620B44CBF009E27C1 /* AudioRecorder.swift in Sources */,
 				CD10C1D220B7EE4D00D71EC7 /* Page2.swift in Sources */,
-				CDF9633B20A47C550038100C /* CoreData.swift in Sources */,
 				CDF4AD6120AC9A2900CB77C6 /* PersonDemo.swift in Sources */,
 				CDFC1395209369F8004A997E /* TaskTemplate.swift in Sources */,
 				CD10C1D420B7EE6500D71EC7 /* Page1.swift in Sources */,
 				CDF9632820A23DA50038100C /* TaskManager.swift in Sources */,
 				CDFC1347209363C1004A997E /* ViewController.swift in Sources */,
+				CD4C915C20B9AFBC00BD0057 /* Person+CoreDataProperties.swift in Sources */,
 				CDA1B10820B44CD0009E27C1 /* AudioPlayer.swift in Sources */,
 				CDFC13872093695A004A997E /* Audio.swift in Sources */,
 				CDFC134D209363C1004A997E /* CommunityApp.xcdatamodeld in Sources */,
 				CD10C1E220B7EFC900D71EC7 /* Task+CoreDataClass.swift in Sources */,
+				CD4C915E20B9C3C000BD0057 /* CoreDataProtocol.swift in Sources */,
 				CDFC1345209363C1004A997E /* AppDelegate.swift in Sources */,
 				CD10C1D620B7EE6F00D71EC7 /* FileSystemManager.swift in Sources */,
 				CDFC1393209369C3004A997E /* Photo.swift in Sources */,
@@ -537,6 +544,7 @@
 				CDF9633420A34B2B0038100C /* Email.swift in Sources */,
 				CDF9632B20A23F070038100C /* JobManager.swift in Sources */,
 				CD10C1D820B7EE7B00D71EC7 /* CoreDataManager.swift in Sources */,
+				CD4C915B20B9AFBC00BD0057 /* Person+CoreDataClass.swift in Sources */,
 				CDFC138F2093699A004A997E /* Text.swift in Sources */,
 				CDFC1378209364B0004A997E /* Job.swift in Sources */,
 				CDF9633120A344BA0038100C /* SignIn.swift in Sources */,

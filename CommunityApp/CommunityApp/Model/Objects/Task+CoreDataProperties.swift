@@ -30,5 +30,6 @@ extension Task {
     @NSManaged public var video: String?
     @NSManaged public var title: String?
     @NSManaged public var belongs: Job?
+    // @NSManaged public var analytics: Analytics
 
 }

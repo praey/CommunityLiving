@@ -13,40 +13,17 @@ import CoreData
 
 public class Job: NSManagedObject {
     
-    init() {
-        self.id = CoreData.getJobID()
-        self.title = ""
+ 
+    func getTask(row: Int) -> Task {
+        return self.has!.allObjects[row] as! Task
     }
     
-    init(title: String) {
-        self.id = CoreData.getJobID()
-        self.title = title
+    func getTasks() -> [Task] {
+        return self.has!.allObjects as! [Task]
     }
+   
     
-    func createTask(title: String, text: String) {
-        let task = Task.init(job: self, title: title, text: text)
-        tasks.append(task)
-    }
-    
-    func getID() -> Int {
-        return self.id
-    }
-    
-    func addTask(newTask: Task) {
-        self.tasks.append(newTask)
-    }
-    
-    // This eventually needs to conform to accepting multiple Calendar dates.
-}
-
-extension Job {
-    
-    func getJob(jobID: Int) -> Job {
-        let job = CoreData.getJob(jobID: jobID)
-        return job
-    }
-    
-    
+   /*
     static func tempJobs() -> [Job] {
         var jobs: [Job] = []
         for index in 0..<5 {
@@ -55,8 +32,8 @@ extension Job {
             jobs.append(job)
         }
         return jobs
-    }
-}
+    }*/
+    
 }
  
  

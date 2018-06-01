@@ -10,7 +10,7 @@ import UIKit
 
 class Page2: UIViewController {
     
-    let coreDataManager: CoreDataManager = CoreDataManager.coreDataManager
+    let coreDataManager: CoreDataManager = CoreDataManager.database
     var passedInfo: Job!
     
     override func viewDidLoad() {
@@ -36,15 +36,15 @@ class Page2: UIViewController {
     }
     
     @IBAction func readButton(_ sender: Any) {
-        let task = coreDataManager.retrieveTask(job: passedInfo, id: idText.text!)
-        if task == nil {
-            idText.text = "not exist"
-            imageView.image = nil
-        }
-        else {
-            nameText.text = task?.title!
-            imageView.image = coreDataManager.fileSystemManager.getImage(task: task!)
-        }
+//        let task = coreDataManager.retrieveTask(job: passedInfo, id: idText.text!)
+//        if task == nil {
+//            idText.text = "not exist"
+//            imageView.image = nil
+//        }
+//        else {
+//            nameText.text = task?.title!
+//            imageView.image = coreDataManager.fileSystemManager.getImage(task: task!)
+//        }
     }
     
     @IBAction func deletAllButton(_ sender: Any) {

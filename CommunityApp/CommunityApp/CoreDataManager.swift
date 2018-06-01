@@ -9,9 +9,88 @@
 import UIKit
 import CoreData
 
-class CoreDataManager: NSObject{
+class CoreDataManager: NSObject, CoreDataProtocol {
+    func getTask(jobID: String, taskID: String) -> Task {
+        <#code#>
+    }
     
-    static let coreDataManager = CoreDataManager()
+    func getTasks(jobID: String) -> [Task] {
+        <#code#>
+    }
+    
+    func getJob(jobID: String) -> Job {
+        <#code#>
+    }
+    
+    func getJobs() -> [Job] {
+        <#code#>
+    }
+    
+    func setTaskText(taskID: String, text: String) {
+        <#code#>
+    }
+    
+    func setTaskVideo(taskID: String, video: String) {
+        <#code#>
+    }
+    
+    func setTaskAudio(taskID: String, audio: String) {
+        <#code#>
+    }
+    
+    func setTaskPhoto(taskID: String, photo: UIImage) {
+        <#code#>
+    }
+    
+    func jobDisable(disable: Bool) {
+        <#code#>
+    }
+    
+    func taskDisable(disable: Bool) {
+        <#code#>
+    }
+    
+    func taskTextDisable(disable: Bool) {
+        <#code#>
+    }
+    
+    func taskAudioDisable(disable: Bool) {
+        <#code#>
+    }
+    
+    func taskVideoDisable(disable: Bool) {
+        <#code#>
+    }
+    
+    func taskPhotoDisable(disable: Bool) {
+        <#code#>
+    }
+    
+    func createJob(title: String) -> Job {
+        <#code#>
+    }
+    
+    func createTask(job: Job, title: String) -> Task {
+        <#code#>
+    }
+    
+    func deleteJob(jobID: String) {
+        <#code#>
+    }
+    
+    func deleteTask(jobID: String, taskID: String) {
+        <#code#>
+    }
+    
+    func createTestData() -> [Job] {
+        <#code#>
+    }
+    
+    
+    
+    
+    
+    static let database = CoreDataManager()
     lazy var context: NSManagedObjectContext = {
         let delegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.persistentContainer.viewContext

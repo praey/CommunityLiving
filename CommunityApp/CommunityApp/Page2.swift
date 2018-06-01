@@ -10,7 +10,7 @@ import UIKit
 
 class Page2: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    let coreDataManager: CoreDataManager = CoreDataManager.coreDataManager
+    let coreDataManager: CoreDataManager = CoreDataManager.database
     var imagePickerController: UIImagePickerController!
     var passedInfo: Job!
     

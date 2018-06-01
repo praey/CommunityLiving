@@ -10,7 +10,7 @@ import UIKit
 
 class Page1: UIViewController {
     
-    let coreDataManager = CoreDataManager.coreDataManager
+    let coreDataManager = CoreDataManager.database
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -43,7 +43,6 @@
 		4A16057820C1C5A5000BFC95 /* AudioPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16056220C1C5A5000BFC95 /* AudioPhoto.swift */; };
 		4A16057B20C1C5AC000BFC95 /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16057A20C1C5AC000BFC95 /* CoreDataProtocol.swift */; };
 		4A16058720C1C5B1000BFC95 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16057E20C1C5B1000BFC95 /* CoreData.swift */; };
-		4A16058820C1C5B1000BFC95 /* AnalyticData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16057F20C1C5B1000BFC95 /* AnalyticData.swift */; };
 		4A16058B20C1C5B1000BFC95 /* PersonDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16058320C1C5B1000BFC95 /* PersonDemo.swift */; };
 		4A16058C20C1C5B1000BFC95 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16058520C1C5B1000BFC95 /* AudioPlayer.swift */; };
 		4A16058D20C1C5B1000BFC95 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16058620C1C5B1000BFC95 /* AudioRecorder.swift */; };
@@ -111,7 +110,6 @@
 		4A16056220C1C5A5000BFC95 /* AudioPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPhoto.swift; sourceTree = "<group>"; };
 		4A16057A20C1C5AC000BFC95 /* CoreDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataProtocol.swift; sourceTree = "<group>"; };
 		4A16057E20C1C5B1000BFC95 /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
-		4A16057F20C1C5B1000BFC95 /* AnalyticData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticData.swift; sourceTree = "<group>"; };
 		4A16058320C1C5B1000BFC95 /* PersonDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDemo.swift; sourceTree = "<group>"; };
 		4A16058520C1C5B1000BFC95 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		4A16058620C1C5B1000BFC95 /* AudioRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 			isa = PBXGroup;
 			children = (
 				4A16057D20C1C5B1000BFC95 /* Database */,
-				4A16057F20C1C5B1000BFC95 /* AnalyticData.swift */,
 				4A16058020C1C5B1000BFC95 /* Objects */,
 				4A16058320C1C5B1000BFC95 /* PersonDemo.swift */,
 				4A16058420C1C5B1000BFC95 /* Audio */,
@@ -534,7 +531,6 @@
 				4A16056420C1C5A5000BFC95 /* TaskManager.swift in Sources */,
 				4A16057020C1C5A5000BFC95 /* VideoPlayer.swift in Sources */,
 				4A0552C820B5EA1800193E5C /* Task+CoreDataProperties.swift in Sources */,
-				4A16058820C1C5B1000BFC95 /* AnalyticData.swift in Sources */,
 				4A0552E020BE7AED00193E5C /* Person+CoreDataClass.swift in Sources */,
 				4A0552C720B5EA1800193E5C /* Task+CoreDataClass.swift in Sources */,
 				4A0552E720BE9FAD00193E5C /* Analytics.swift in Sources */,

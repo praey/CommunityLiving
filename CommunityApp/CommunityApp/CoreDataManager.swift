@@ -10,85 +10,6 @@ import UIKit
 import CoreData
 
 class CoreDataManager: NSObject, CoreDataProtocol {
-    func getTask(jobID: String, taskID: String) -> Task {
-        <#code#>
-    }
-    
-    func getTasks(jobID: String) -> [Task] {
-        <#code#>
-    }
-    
-    func getJob(jobID: String) -> Job {
-        <#code#>
-    }
-    
-    func getJobs() -> [Job] {
-        <#code#>
-    }
-    
-    func setTaskText(taskID: String, text: String) {
-        <#code#>
-    }
-    
-    func setTaskVideo(taskID: String, video: String) {
-        <#code#>
-    }
-    
-    func setTaskAudio(taskID: String, audio: String) {
-        <#code#>
-    }
-    
-    func setTaskPhoto(taskID: String, photo: UIImage) {
-        <#code#>
-    }
-    
-    func jobDisable(disable: Bool) {
-        <#code#>
-    }
-    
-    func taskDisable(disable: Bool) {
-        <#code#>
-    }
-    
-    func taskTextDisable(disable: Bool) {
-        <#code#>
-    }
-    
-    func taskAudioDisable(disable: Bool) {
-        <#code#>
-    }
-    
-    func taskVideoDisable(disable: Bool) {
-        <#code#>
-    }
-    
-    func taskPhotoDisable(disable: Bool) {
-        <#code#>
-    }
-    
-    func createJob(title: String) -> Job {
-        <#code#>
-    }
-    
-    func createTask(job: Job, title: String) -> Task {
-        <#code#>
-    }
-    
-    func deleteJob(jobID: String) {
-        <#code#>
-    }
-    
-    func deleteTask(jobID: String, taskID: String) {
-        <#code#>
-    }
-    
-    func createTestData() -> [Job] {
-        <#code#>
-    }
-    
-    
-    
-    
     
     static let database = CoreDataManager()
     lazy var context: NSManagedObjectContext = {
@@ -96,16 +17,78 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         let context = delegate.persistentContainer.viewContext
         return context
     }()
-    
     let fileSystemManager: FileSystemManager = FileSystemManager.fileSystemManager
     
-    func setJob(id: String, name: String){
+    func getTask(jobID: String, taskID: String) -> Task {
+        let job = getJob(id: jobID)!
+        return getTask(job: job, id: taskID)!
+    }
+    
+    func getTasks(jobID: String) -> [Task] {
+        let job = getJob(id: jobID)!
+        return getAllTask(job: job)
+    }
+    
+    func getJob(jobID: String) -> Job {
+        return getJob(id: jobID)!
+    }
+    
+    func getJobs() -> [Job] {
+        return getAllJobs()
+    }
+    
+    func createJob(title: String) -> Job {
+        let id = getJobID()
         let job = Job(context: context)
         job.id = id
-        job.title = name
+        job.title = title
         saveData()
         print("Job is Saved!")
+        return job
     }
+    
+    func createTask(job: Job, title: String) -> Task {
+        let id = getTaskID(job: job)
+        let task = Task(context: context)
+        task.title = title
+        task.id = id
+        task.jobid = job.id
+        task.photo = "\(task.jobid! + task.id!).jpg"
+        task.video = "\(task.jobid! + task.id!).mp4"
+        task.audio = "\(task.jobid! + task.id!).m4a"
+        task.disableTask = false
+        task.disableText = true
+        task.disableAudio = true
+        task.disablePhoto = true
+        task.disableVideo = true
+        job.addToHas(task)
+        saveData()
+        print("Task Saved!")
+        return task
+    }
+    
+    func deleteJob(jobID: String) {
+        let job = getJob(id: jobID)!
+        deleteAllTasks(job: job)
+        context.delete(job)
+        saveData()
+    }
+    
+    func deleteTask(jobID: String, taskID: String) {
+        let job = getJob(id: jobID)!
+        let task = getTask(job: job, id: taskID)!
+        context.delete(task)
+        saveData()
+    }
+    
+    func createTestData() -> [Job] {
+        var jobs = [Job]()
+        jobs.append(createJob(title: "test job 1"))
+        jobs.append(createJob(title: "test job 2"))
+        return jobs
+    }
+    
+    
     
     func getJob(id: String) -> (Job?){
         let fetchRequest: NSFetchRequest = Job.fetchRequest()
@@ -143,41 +126,8 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         print("All jobs were deleted")
     }
     
-    func setTask(job: Job, name: String, id: String, jobid: String){
-        let task = Task(context: context)
-        task.title = name
-        task.id = id
-        task.jobid = jobid
-        task.photo = "\(task.jobid! + task.id!).jpg"
-        task.video = "\(task.jobid! + task.id!).mp4"
-        task.audio = "\(task.jobid! + task.id!).m4a"
-        task.disableTask = false
-        task.disableText = true
-        task.disableAudio = true
-        task.disablePhoto = true
-        task.disableVideo = true
-//        fileSystemManager.saveImage(task: task, image: UIImage(contentsOfFile: "/Users/TianyuanZhang/Desktop/imageDemo.jpg")!, quality: 1.0, nameWithExtension: "\(task.jobid! + task.id!).jpg")
-//        fileSystemManager.saveVideo(task: task, videoFromURLString: "/Users/TianyuanZhang/Downloads/Wildlife.mp4", nameWithExtension: "\(task.jobid! + task.id!).mp4")
-        job.addToHas(task)
-        saveData()
-        print("Task Saved!")
-    }
     
     func getTask(job: Job, id: String)->(Task?){
-        //        let fetchRequest: NSFetchRequest = Task.fetchRequest()
-        //        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
-        //        do{
-        //            let results: [Task] = try context.fetch(fetchRequest)
-        //            if results.count == 0 {
-        //                return nil
-        //            }
-        //            else {
-        //                return results[0]
-        //            }
-        //        }
-        //        catch{
-        //            fatalError("Retrieve failed")
-        //        }
         for task in job.has?.array as! [Task]{
             if task.id! == id{
                 return task
@@ -187,13 +137,6 @@ class CoreDataManager: NSObject, CoreDataProtocol {
     }
     
     func getAllTask(job: Job) -> [Task] {
-        //        let fetchRequest: NSFetchRequest = Task.fetchRequest()
-        //        do {
-        //            let result = try context.fetch(fetchRequest)
-        //            return result
-        //        } catch {
-        //            fatalError();
-        //        }
         return job.has?.array as! [Task]
     }
     
@@ -221,16 +164,16 @@ class CoreDataManager: NSObject, CoreDataProtocol {
     }
     
     // functions for coredata interface
-    func getJobID() -> Int {
+    func getJobID() -> String {
         let jobs: [Job] = getAllJobs()
         let lastID = Int((jobs.last?.id)!)
-        return lastID! + 1
+        return String(lastID! + 1)
     }
     
-    func getTaskID(job: Job) -> Int {
+    func getTaskID(job: Job) -> String {
         let tasks: [Task] = getAllTask(job: job)
         let lastID = Int((tasks.last?.id)!)
-        return lastID! + 1
+        return String(lastID! + 1)
     }
     
     func setTaskText(jobID: String, taskID: String, text: String) {
@@ -241,17 +184,41 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         print("Task text was set")
     }
     
-    func setTaskImage(jobID: String, taskID: String, image: UIImage) {
+    func setTaskText(task: Task, text: String){
+        task.text = text
+        task.disableText = false
+        saveData()
+        print("Task text was set")
+    }
+    
+    func setTaskPhoto(jobID: String, taskID: String, photo: UIImage) {
         let task = getTask(job: getJob(id: jobID)!, id: taskID)!
         fileSystemManager.deletImage(URLString: NSHomeDirectory() + "/Documents/Images/" + task.photo!)
-        fileSystemManager.saveImage(task: task, image: image, quality: 1.0, nameWithExtension: task.photo!)
+        fileSystemManager.saveImage(task: task, image: photo, quality: 1.0, nameWithExtension: task.photo!)
         task.disablePhoto = false
         saveData()
         print("Task image was set")
     }
     
+    func setTaskPhoto(task: Task, photo: UIImage){
+        fileSystemManager.deletImage(URLString: NSHomeDirectory() + "/Documents/Images/" + task.photo!)
+        fileSystemManager.saveImage(task: task, image: photo, quality: 1.0, nameWithExtension: task.photo!)
+        task.disablePhoto = false
+        saveData()
+        print("Task image was set")
+    }
+    
+    
     func setTaskVideo(jobID: String, taskID: String, videoURLString: String) {
         let task = getTask(job: getJob(id: jobID)!, id: taskID)!
+        fileSystemManager.deletVideo(URLString: NSHomeDirectory() + "/Documents/Videos/" + task.video!)
+        fileSystemManager.saveVideo(task: task, videoFromURLString: videoURLString, nameWithExtension: task.video!)
+        task.disableVideo = false
+        saveData()
+        print("Task video was set")
+    }
+    
+    func setTaskVideo(task: Task, videoURLString: String){
         fileSystemManager.deletVideo(URLString: NSHomeDirectory() + "/Documents/Videos/" + task.video!)
         fileSystemManager.saveVideo(task: task, videoFromURLString: videoURLString, nameWithExtension: task.video!)
         task.disableVideo = false
@@ -268,7 +235,15 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         print("Task audio was set")
     }
     
-    func saveAnalytics(job: Job, task: Task, date: Date, duration: TimeInterval){
+    func setTaskAudio(task: Task, audioURLString: String){
+        fileSystemManager.deletAudio(URLString: NSHomeDirectory() + "/Documents/Audios/" + task.audio!)
+        fileSystemManager.saveAudio(task: task, audioFromURLString: audioURLString, nameWithExtension: task.audio!)
+        task.disableAudio = false
+        saveData()
+        print("Task audio was set")
+    }
+    
+    func saveAnalytics(task: Task, date: Date, duration: TimeInterval){
         task.analytics = Analytics(dat: date, dur: duration)
         saveData()
         print("Task analytics were saved")

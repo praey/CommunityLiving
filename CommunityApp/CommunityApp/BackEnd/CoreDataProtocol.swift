@@ -17,18 +17,11 @@ protocol CoreDataProtocol {
     func getJobs() -> [Job]
    
     // MARK: Set function
-    func setTaskText(taskID: String, text: String)
-    func setTaskVideo(taskID: String, video: String)
-    func setTaskAudio(taskID: String, audio: String)
-    func setTaskPhoto(taskID: String, photo: UIImage)
+    func setTaskText(jobID: String, taskID: String, text: String)
+    func setTaskVideo(jobID: String, taskID: String, videoURLString: String)
+    func setTaskAudio(jobID: String, taskID: String, audioURLString: String)
+    func setTaskPhoto(jobID: String, taskID: String, photo: UIImage)
     
-    // MARK: Disable function
-    func jobDisable(disable: Bool)
-    func taskDisable(disable: Bool)
-    func taskTextDisable(disable: Bool)
-    func taskAudioDisable(disable: Bool)
-    func taskVideoDisable(disable: Bool)
-    func taskPhotoDisable(disable: Bool)
     
     // MARK: Create function
     func createJob(title: String) -> Job

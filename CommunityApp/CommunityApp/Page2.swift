@@ -76,7 +76,7 @@ class Page2: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         imagePickerController.dismiss(animated: true, completion: nil)
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        coreDataManager.setTaskImage(jobID: passedInfo.id!, taskID: idText.text!, image: imageView.image!)
+        coreDataManager.setTaskPhoto(jobID: passedInfo.id!, taskID: idText.text!, photo: imageView.image!)
     }
     
     @IBOutlet weak var imageView: UIImageView!

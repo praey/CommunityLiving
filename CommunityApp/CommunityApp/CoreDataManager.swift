@@ -83,8 +83,17 @@ class CoreDataManager: NSObject, CoreDataProtocol {
     
     func createTestData() -> [Job] {
         var jobs = [Job]()
-        jobs.append(createJob(title: "test job 1"))
-        jobs.append(createJob(title: "test job 2"))
+        let job = createJob(title: "test job 1")
+        let task = createTask(job: job, title: "test task 1")
+        
+        
+        var path = "/Users/newuser/Desktop/testVideo.mp4"
+        // let url = URL.init(fileURLWithPath: path!)
+        setTaskVideo(task: task, videoURLString: path)
+        // path = "/Users/newuser/Desktop/testPhoto.jpg"
+        // setTaskPhoto(task: task, photo: UIImage.init(named: "testPhoto")!)
+        jobs.append(job)
+        
         return jobs
     }
     
@@ -166,14 +175,27 @@ class CoreDataManager: NSObject, CoreDataProtocol {
     // functions for coredata interface
     func getJobID() -> String {
         let jobs: [Job] = getAllJobs()
-        let lastID = Int((jobs.last?.id)!)
-        return String(lastID! + 1)
+        if let job = jobs.last {
+            return String(Int(job.id!)! + 1)
+        } else {
+            return "1"
+        }
+//        }
+//        let lastID = Int(jobs.last?.id) ?? 0
+//        // Int((jobs.last?.id)!)
+//        let id = (lastID + 1)
+//        return String(id)
     }
     
     func getTaskID(job: Job) -> String {
         let tasks: [Task] = getAllTask(job: job)
-        let lastID = Int((tasks.last?.id)!)
-        return String(lastID! + 1)
+        if let task = tasks.last {
+            return String(Int(task.id!)! + 1)
+        } else {
+            return "1"
+        }
+        // let lastID = Int((tasks.last?.id)!)
+        // return String(lastID! + 1)
     }
     
     func setTaskText(jobID: String, taskID: String, text: String) {

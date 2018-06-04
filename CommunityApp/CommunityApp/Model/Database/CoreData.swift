@@ -26,11 +26,7 @@ final class CoreData {
     //   return Job.tempJobs()
     //}
     
-    static var tempJob: [Job] = Job.tempJobs()
-    
-    
-    
-    
+   
     
     // static func getJob(jobID: Int) -> Job { }
     // static func getTasks(jobID: Int) -> Task { }
@@ -41,10 +37,7 @@ final class CoreData {
     
     
     
-    static func getJob(jobID: Int) -> Job {
-        return CoreData.tempJob[0]
-    }
-    
+
     static func setJob(job: Job) {
     
     }

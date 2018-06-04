@@ -58,7 +58,7 @@ class Page1: UIViewController {
             nameText.text = "Enter ID"
         }
         else{
-            coreDataManager.setJob(id: idText.text!, name: nameText.text!)
+            // coreDataManager.setJob(id: idText.text!, name: nameText.text!)
         }
     }
     

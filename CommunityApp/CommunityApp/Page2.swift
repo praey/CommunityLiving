@@ -31,9 +31,9 @@ class Page2: UIViewController, UIImagePickerControllerDelegate, UINavigationCont
     @IBOutlet weak var idText: UITextField!
     
     @IBAction func saveButton(_ sender: Any) {
-        coreDataManager.setTask(job: passedInfo, name: nameText.text!, id: idText.text!, jobid: passedInfo.id!)
-        nameText.text = ""
-        idText.text = ""
+//        coreDataManager.setTask(job: passedInfo, name: nameText.text!, id: idText.text!, jobid: passedInfo.id!)
+//        nameText.text = ""
+//        idText.text = ""
     }
     
     @IBAction func readButton(_ sender: Any) {

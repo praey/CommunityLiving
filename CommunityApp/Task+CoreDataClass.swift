@@ -15,17 +15,31 @@ import AVFoundation
 
 public class Task: NSManagedObject {
 
-    func getTaskType() -> [Bool] {
-        let taskType: [Bool] = [false,false,false,false]
+    enum TaskType {
+        case text
+        case video
+        case audio
+        case photo
         
-        if self.disableTask {
+    }
+    
+    
+    func getTaskType() -> Set<TaskType> {
+        
+        var taskType = Set<TaskType>()
+        
+        guard self.disableTask == false else {
             return taskType
         }
         
-        if !self.disableText {
-            
+        
+        if !self.disableVideo {
+            taskType.insert(.video)
         }
         
+        if !self.disablePhoto {
+            taskType.insert(.photo)
+        }
         return taskType
         
         
@@ -41,10 +55,20 @@ public class Task: NSManagedObject {
     }
     
     func getVideo() -> AVPlayer {
-        let url = URL.init(string: NSHomeDirectory() + "/Documents/Videos/" + self.video!)
-        let player = AVPlayer(url: url!)
+        let URLString = NSHomeDirectory() + "/Documents/Videos/" + self.video!
+        print(URLString)
+        let url = URL(fileURLWithPath: URLString)
+        let playerItem = AVPlayerItem(url: url)
+        let player = AVPlayer(playerItem: playerItem)
+        // let player = AVPlayer(url: url)
+        
+//        let url = URL.init(string: NSHomeDirectory() + "/Documents/Videos/" + self.video!)
+//        print(url!)
+//        let player = AVPlayer(url: url!)
         return player
     }
+    
+    
     
     func startAnalytics() {}
     func saveAnalytics() {}

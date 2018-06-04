@@ -11,10 +11,10 @@ import UIKit
 
 class VidAudTex: UIViewController {
     
-    var analyticData: AnalyticData?
+   // var analyticData: AnalyticData?
     
     override func viewDidLoad() {
-        self.analyticData = AnalyticData()
+    //    self.analyticData = AnalyticData()
     }
 
 override func didReceiveMemoryWarning() {
@@ -27,12 +27,12 @@ override func viewWillDisappear(_ animated: Bool) {
 }
 
 private func saveAnalytics() {
-    if let analytics = self.analyticData {
-        // Save analytics to Core Data
-    } else {
-        print("There is no analytics to save")
-    }
-    
+//    if let analytics = self.analyticData {
+//        // Save analytics to Core Data
+//    } else {
+//        print("There is no analytics to save")
+//    }
+//    
 }
 
 }

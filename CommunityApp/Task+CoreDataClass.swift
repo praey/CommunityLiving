@@ -15,17 +15,27 @@ import AVFoundation
 
 public class Task: NSManagedObject {
 
-    func getTaskType() -> [Bool] {
-        let taskType: [Bool] = [false,false,false,false]
+    enum TaskType {
+        case text
+        case video
+        case audio
+        case photo
         
-        if self.disableTask {
+    }
+    
+    
+    func getTaskType() -> Set<TaskType> {
+        
+        var taskType = Set<TaskType>()
+        
+        guard self.disableTask == false else {
             return taskType
         }
         
-        if !self.disableText {
-            
-        }
         
+        if !self.disableVideo {
+            taskType.insert(.video)
+        }
         return taskType
         
         

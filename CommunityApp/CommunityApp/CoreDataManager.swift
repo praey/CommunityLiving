@@ -83,8 +83,13 @@ class CoreDataManager: NSObject, CoreDataProtocol {
     
     func createTestData() -> [Job] {
         var jobs = [Job]()
-        jobs.append(createJob(title: "test job 1"))
-        jobs.append(createJob(title: "test job 2"))
+        let job = createJob(title: "test job 1")
+        let task = createTask(job: job, title: "test task 1")
+        let path = Bundle.main.path(forResource: "video", ofType: "mp4")
+        // let url = URL.init(fileURLWithPath: path!)
+        setTaskVideo(task: task, videoURLString: path!)
+        jobs.append(job)
+        
         return jobs
     }
     

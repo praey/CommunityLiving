@@ -158,8 +158,8 @@
 		4A16054120C1C5A5000BFC95 /* FrontEnd */ = {
 			isa = PBXGroup;
 			children = (
-				4A16054220C1C5A5000BFC95 /* SupportWorker */,
 				4A16055220C1C5A5000BFC95 /* Client */,
+				4A16054220C1C5A5000BFC95 /* SupportWorker */,
 			);
 			path = FrontEnd;
 			sourceTree = "<group>";
@@ -344,9 +344,9 @@
 		CDFC1343209363C1004A997E /* CommunityApp */ = {
 			isa = PBXGroup;
 			children = (
-				4A16057C20C1C5B1000BFC95 /* Model */,
-				4A16057920C1C5AC000BFC95 /* BackEnd */,
 				4A16054120C1C5A5000BFC95 /* FrontEnd */,
+				4A16057920C1C5AC000BFC95 /* BackEnd */,
+				4A16057C20C1C5B1000BFC95 /* Model */,
 				4A0552CB20B5EACC00193E5C /* Main.storyboard */,
 				4A16058E20C1C5D2000BFC95 /* CommunityApp.entitlements */,
 				CDFC1344209363C1004A997E /* AppDelegate.swift */,

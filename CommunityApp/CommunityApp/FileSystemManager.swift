@@ -78,7 +78,6 @@ class FileSystemManager{
         if let urlData = NSData(contentsOfFile: videoFromURLString){
             let videoURLString = filePath + "Videos/\(nameWithExtension)"
             urlData.write(toFile: videoURLString, atomically: true)
-            task.video = "Videos/\(nameWithExtension)"
             print("Video is saved!")
         }
     }
@@ -102,7 +101,6 @@ class FileSystemManager{
         if let urlData = NSData(contentsOfFile: audioFromURLString){
             let audioURLString = filePath + "Audios/\(nameWithExtension)"
             urlData.write(toFile: audioURLString, atomically: true)
-            task.audio = "Audios/\(nameWithExtension)"
             print("Audio is saved!")
         }
     }

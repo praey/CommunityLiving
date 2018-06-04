@@ -14,6 +14,9 @@ class FrontPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        CoreDataManager.database.fileSystemManager.createImageFolder()
+        CoreDataManager.database.fileSystemManager.createVideoFolder()
+        CoreDataManager.database.fileSystemManager.createAudioFolder()
     }
     
     override func didReceiveMemoryWarning() {

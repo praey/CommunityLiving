@@ -36,6 +36,10 @@ public class Task: NSManagedObject {
         if !self.disableVideo {
             taskType.insert(.video)
         }
+        
+        if !self.disablePhoto {
+            taskType.insert(.photo)
+        }
         return taskType
         
         
@@ -51,10 +55,20 @@ public class Task: NSManagedObject {
     }
     
     func getVideo() -> AVPlayer {
-        let url = URL.init(string: NSHomeDirectory() + "/Documents/Videos/" + self.video!)
-        let player = AVPlayer(url: url!)
+        let URLString = NSHomeDirectory() + "/Documents/Videos/" + self.video!
+        print(URLString)
+        let url = URL(fileURLWithPath: URLString)
+        let playerItem = AVPlayerItem(url: url)
+        let player = AVPlayer(playerItem: playerItem)
+        // let player = AVPlayer(url: url)
+        
+//        let url = URL.init(string: NSHomeDirectory() + "/Documents/Videos/" + self.video!)
+//        print(url!)
+//        let player = AVPlayer(url: url!)
         return player
     }
+    
+    
     
     func startAnalytics() {}
     func saveAnalytics() {}

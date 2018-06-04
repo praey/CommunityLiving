@@ -16,7 +16,7 @@ class JobManager: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     var jobs: [Job]!
     var tappedCollectionCell: Job?
 
-    let cellReuseIdentifier = "cell"
+    let cellReuseIdentifier = "cellReuseIdentifier"
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {

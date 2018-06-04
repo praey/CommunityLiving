@@ -29,7 +29,12 @@ class JobViewer: UIPageViewController
                     vc.setTask(task: task)
                     controllers.append(vc)
                     print("Selected Video")
-               
+            case [.photo]:
+                let vc = self.getViewController(withIdentifier: "Photo") as! Photo
+                vc.setTask(task: task)
+                controllers.append(vc)
+                print("Selected Photo")
+                
                 default :
                     print("TaskType failed")
                 

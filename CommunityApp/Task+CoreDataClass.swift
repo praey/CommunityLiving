@@ -26,12 +26,7 @@ public class Task: NSManagedObject {
         case photo
     }
     
-    enum FileType {
-        case Photo
-        case Video
-        case Audio
-        case Text
-    }
+ 
     
     func getTaskType() -> Set<TaskType> {
         
@@ -42,29 +37,46 @@ public class Task: NSManagedObject {
         }
         
         
-        if !self.disableVideo && ifFileExists(fileType: .Video) {
+        if !self.disableVideo && ifFileExists(filePath: .video) {
             taskType.insert(.video)
         }
         
-        if !self.disablePhoto && ifFileExists(fileType: .Photo) {
+        if !self.disablePhoto && ifFileExists(filePath: .photo) {
             taskType.insert(.photo)
         }
         
-        if !self.disableAudio && ifFileExists(fileType: .Audio) {
+        if !self.disableAudio && ifFileExists(filePath: .audio) {
             taskType.insert(.audio)
         }
         
-        
-        
+        if !self.disableText, self.text != nil {
+           taskType.insert(.text)
+        }
         return taskType
-        
-        
     }
     
  
     
-    func ifFileExists(fileType: FileType) -> Bool {
-        return CoreDataManager.database.ifFileExists(task: self, fileType: fileType)
+    func ifFileExists(filePath: TaskType) -> Bool {
+        return true
+//        return true
+//        var path: String!
+//
+//        switch filePath {
+//        case [.video]:
+//            path = videoFilePath + self.video!
+//
+//        case [.audio]:
+//            path = audioFilePath + self.audio!
+//        case [.photo]:
+//               path = photoFilePath + self.photo!
+//        default:
+//            print("file wasn't located - something went wrong")
+//            return false
+//        }
+//                    return CoreDataManager.database.ifFileExists(filePath: path)
+//
+//
     }
     
     

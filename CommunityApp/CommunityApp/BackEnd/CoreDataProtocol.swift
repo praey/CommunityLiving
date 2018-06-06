@@ -24,7 +24,7 @@ protocol CoreDataProtocol {
     
     
     // MARK: File exists functions
-    func ifFileExists(task: Task, fileType: Task.FileType) -> Bool
+    // func ifFileExists(filePath: String) -> Bool
     // func audioFileExists(task: Task) -> Bool
     // func videoFileExists(task: Task) -> Bool
     // func imageFileExists(task: Task) -> Bool

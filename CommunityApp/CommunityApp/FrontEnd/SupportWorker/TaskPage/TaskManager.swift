@@ -15,9 +15,10 @@ class TaskManager: UIViewController {
     var task: Task!
     var job: Job!
     
+    @IBOutlet weak var titleValue: UITextField!
     @IBOutlet weak var taskSaveButton: UIButton!
     
-    
+
     @IBOutlet weak var textValue: UITextField!
     let cellReuseIdentifier = "cell"
     
@@ -31,7 +32,7 @@ class TaskManager: UIViewController {
         
         textValue.text = self.task.text ?? "default text"
     }
-    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -41,18 +42,42 @@ class TaskManager: UIViewController {
     }
     
     @objc func saveTask() {
-
-//        if CoreDataManager.database.saveTask(task: self) {
-//            print("saved task")
-//        } else {
-//            print("didn't save task")
-//        }
-//        
+        CoreDataManager.database.saveData()
+        //        if CoreDataManager.database.saveTask(task: self) {
+        //            print("saved task")
+        //        } else {
+        //            print("didn't save task")
+        //        }
+        //
         // After it save you go back to the previous screen
         self.navigationController?.popViewController(animated: true)
         
         
     }
+    
+    
+    
+    
+    @IBAction func galleryPhoto(_ sender: Any) {
+    }
+    @IBAction func takePhoto(_ sender: Any) {
+    }
+    
+    
+    @IBAction func galleryAudio(_ sender: Any) {
+    }
+    
+    @IBAction func takeAudio(_ sender: Any) {
+    }
+    @IBAction func takeVideo(_ sender: Any) {
+    }
+    
+    @IBAction func galleryVideo(_ sender: Any) {
+    }
+    
+    
+    
+
 }
 
 

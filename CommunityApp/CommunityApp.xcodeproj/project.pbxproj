@@ -47,6 +47,7 @@
 		4A16058D20C1C5B1000BFC95 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16058620C1C5B1000BFC95 /* AudioRecorder.swift */; };
 		4A5789FB20BF215F00677851 /* Page4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5789FA20BF215F00677851 /* Page4.swift */; };
 		CDC9505420C5AF0E001585FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDC9505320C5AF0E001585FE /* Main.storyboard */; };
+		CDC9777520C82BCC0064859D /* PhotoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC9777420C82BCC0064859D /* PhotoText.swift */; };
 		CDFC1345209363C1004A997E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1344209363C1004A997E /* AppDelegate.swift */; };
 		CDFC1347209363C1004A997E /* Page1.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1346209363C1004A997E /* Page1.swift */; };
 		CDFC134D209363C1004A997E /* CommunityApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDFC134B209363C1004A997E /* CommunityApp.xcdatamodeld */; };
@@ -115,6 +116,7 @@
 		4A16058E20C1C5D2000BFC95 /* CommunityApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommunityApp.entitlements; sourceTree = "<group>"; };
 		4A5789FA20BF215F00677851 /* Page4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page4.swift; sourceTree = "<group>"; };
 		CDC9505320C5AF0E001585FE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CDC9777420C82BCC0064859D /* PhotoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoText.swift; sourceTree = "<group>"; };
 		CDFC1341209363C1004A997E /* CommunityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommunityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDFC1344209363C1004A997E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDFC1346209363C1004A997E /* Page1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page1.swift; sourceTree = "<group>"; };
@@ -321,12 +323,13 @@
 		CDC9777320C81D8F0064859D /* OtherViews */ = {
 			isa = PBXGroup;
 			children = (
-				4A16055720C1C5A5000BFC95 /* AudioText.swift */,
-				4A16055D20C1C5A5000BFC95 /* VideoAudio.swift */,
-				4A16055E20C1C5A5000BFC95 /* VideoText.swift */,
-				4A16056220C1C5A5000BFC95 /* AudioPhoto.swift */,
 				4A16055B20C1C5A5000BFC95 /* VideoAudioText.swift */,
 				4A16055820C1C5A5000BFC95 /* AudioTextPhoto.swift */,
+				4A16055720C1C5A5000BFC95 /* AudioText.swift */,
+				4A16055E20C1C5A5000BFC95 /* VideoText.swift */,
+				4A16055D20C1C5A5000BFC95 /* VideoAudio.swift */,
+				4A16056220C1C5A5000BFC95 /* AudioPhoto.swift */,
+				CDC9777420C82BCC0064859D /* PhotoText.swift */,
 			);
 			path = OtherViews;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDC9777520C82BCC0064859D /* PhotoText.swift in Sources */,
 				CDFC1347209363C1004A997E /* Page1.swift in Sources */,
 				4A16058720C1C5B1000BFC95 /* CoreData.swift in Sources */,
 				4A0552DB20BE102A00193E5C /* Page3.swift in Sources */,

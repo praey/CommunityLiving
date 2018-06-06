@@ -8,9 +8,12 @@
 
 import Foundation
 import UIKit
+import MobileCoreServices
 
-class TaskManager: UIViewController {
+class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     static let segueID = "toTaskManager"
+    
+     private var imagePickerController : UIImagePickerController!
     
     var task: Task!
     var job: Job!
@@ -38,7 +41,7 @@ class TaskManager: UIViewController {
     }
     func setTask(job: Job, task: Task?) {
         self.job = job
-        self.task = task! // ?? CoreDataManager.database.createTask(job: self.job)
+        self.task = task ?? CoreDataManager.database.createTask(job: self.job, title: "default task")
     }
     
     @objc func saveTask() {
@@ -59,8 +62,24 @@ class TaskManager: UIViewController {
     
     
     @IBAction func galleryPhoto(_ sender: Any) {
+        imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true, completion: nil)
     }
+    
     @IBAction func takePhoto(_ sender: Any) {
+        imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePickerController.sourceType = .camera
+            present(imagePickerController, animated: true, completion: nil)
+        }
+        else {
+            let alert = UIAlertController(title: "Camera does not exist!", message: "Please check your camera.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     
@@ -70,12 +89,44 @@ class TaskManager: UIViewController {
     @IBAction func takeAudio(_ sender: Any) {
     }
     @IBAction func takeVideo(_ sender: Any) {
+        imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePickerController.sourceType = .camera
+            imagePickerController.videoQuality = .typeLow
+            imagePickerController.videoMaximumDuration = 15
+            imagePickerController.mediaTypes = [kUTTypeMovie as String]
+            present(imagePickerController, animated: true, completion: nil)
+        }
+        else {
+            let alert = UIAlertController(title: "Camera does not exist!", message: "Please check your camera.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func galleryVideo(_ sender: Any) {
+        imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.mediaTypes = [kUTTypeMovie as String]
+        present(imagePickerController, animated: true, completion: nil)
     }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        imagePickerController.dismiss(animated: true, completion: nil)
+    }
     
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let mediaType = info[UIImagePickerControllerMediaType] as! String
+        if mediaType == "public.image" {
+            CoreDataManager.database.setTaskPhoto(task: task, photo: info[UIImagePickerControllerOriginalImage] as! UIImage)
+        }
+        if mediaType == "public.movie" {
+            CoreDataManager.database.setTaskVideo(task: task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
+        }
+        imagePickerController.dismiss(animated: true, completion: nil)
+    }
     
 
 }

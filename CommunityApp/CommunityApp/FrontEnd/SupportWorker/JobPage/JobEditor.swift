@@ -46,7 +46,7 @@ class JobEditor: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     }
     
     func setJob(job: Job?) {
-        self.job = job! // ?? CoreDataManager.database.createJob()
+        self.job = job ?? CoreDataManager.database.createJob(title: "default created")
     }
     
     @objc func createTask() {

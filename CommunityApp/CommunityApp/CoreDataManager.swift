@@ -81,7 +81,7 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         saveData()
     }
     
-    func ifFileExists(task: Task, fileType: Task.FileType) -> Bool {
+    func ifFileExists(fileURLString: String) -> Bool {
         // check if the file exists
         return true
     }

@@ -51,7 +51,7 @@ class JobManager: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         if segue.identifier == "toJobEditor" {
             let vc = segue.destination as! JobEditor
             // If there is a default job to set then it will set it
-            vc.setJob(job: tappedCollectionCell!)
+            vc.setJob(job: tappedCollectionCell)
         }
     }
 

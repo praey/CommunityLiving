@@ -81,15 +81,40 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         saveData()
     }
     
+    func ifFileExists(task: Task, fileType: Task.FileType) -> Bool {
+        // check if the file exists
+        return true
+    }
+    
+    
     func createTestData() -> [Job] {
         var jobs = [Job]()
         let job = createJob(title: "test job 1")
+      
+        
+        
+        let newTask = createTask(job: job, title: "test task 2")
+        // var path = Bundle.main.path(forResource: "audio.mp3", ofType: nil)!
+        
+        // setTaskAudio(task: newTask, audioURLString: path)
+        
+        
+        var path = "/Users/newuser/Desktop/audio.mp3"
+        setTaskAudio(task: newTask, audioURLString: path)
+        
+        
+        
+        
         let task = createTask(job: job, title: "test task 1")
         
-        
-        var path = "/Users/newuser/Desktop/testVideo.mp4"
+         path = "/Users/newuser/Desktop/testVideo.mp4"
         // let url = URL.init(fileURLWithPath: path!)
         setTaskVideo(task: task, videoURLString: path)
+        
+        
+        
+        
+        
         // path = "/Users/newuser/Desktop/testPhoto.jpg"
         // setTaskPhoto(task: task, photo: UIImage.init(named: "testPhoto")!)
         jobs.append(job)

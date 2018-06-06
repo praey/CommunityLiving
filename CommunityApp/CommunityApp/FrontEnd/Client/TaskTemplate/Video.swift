@@ -16,29 +16,20 @@ class Video: TaskTemplate {
         
         playerView.player = super.task.getVideo()
         playerView.player?.play()
-        
-        
-        
-//        let player = super.task.getVideo()
-//        let avLayer = AVPlayerLayer.init(player: player)
-//        avLayer.frame = playerView.frame
-//        playerView.layer.addSublayer(avLayer)
-//        // player.play()
-//        (playerView.layer as! AVPlayerLayer).player?.play()
-//        
-//        let avPlayerLayer = AVPlayerLayer.init(player: player)
-//        avPlayerLayer.frame = self.view.frame
-//        self.view.layer.addSublayer(avPlayerLayer)
-//        player.play()
-//
-        // playerView.frame = self.view.frame
-        // self.view.addSubview(playerView!)
-        
     }
     
-    @IBAction func playVideo(_ sender: Any) {
-        // playerView.player?.play()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let player = playerView.player {
+            player.play()
+        }
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        playerView.player?.pause()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

@@ -21,24 +21,30 @@ class JobViewer: UIPageViewController
         for task in job.getTasks()
         {
             let taskType = task.getTaskType()
-            
+            var viewController: TaskTemplate?
             switch taskType {
                 case [.video]:
-                
-                    let vc = self.getViewController(withIdentifier: "Video") as! Video
-                    vc.setTask(task: task)
-                    controllers.append(vc)
-                    print("Selected Video")
+                    viewController = self.getViewController(withIdentifier: "Video") as! Video
+                    print("selected video")
             case [.photo]:
-                let vc = self.getViewController(withIdentifier: "Photo") as! Photo
-                vc.setTask(task: task)
-                controllers.append(vc)
-                print("Selected Photo")
-                
+                   viewController = self.getViewController(withIdentifier: "Photo") as! Photo
+                   print("Selected Photo")
+            case [.audio]:
+                viewController = self.getViewController(withIdentifier: "Audio") as! Audio
+                print("selected Audio")
+            case [.text]:
+                viewController = self.getViewController(withIdentifier: "Text") as! Text
+                print("selected Text")
                 default :
                     print("TaskType failed")
                 
             }
+            if let vc = viewController {
+                vc.setTask(task: task)
+                controllers.append(vc)
+                print("Added task")
+            }
+           
             // If the task is disabled then skip it
             // guard task.isDisabled.contains(.Task)  else {continue}
            

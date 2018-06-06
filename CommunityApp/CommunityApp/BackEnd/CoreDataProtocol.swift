@@ -23,6 +23,13 @@ protocol CoreDataProtocol {
     func setTaskPhoto(jobID: String, taskID: String, photo: UIImage)
     
     
+    // MARK: File exists functions
+    func ifFileExists(task: Task, fileType: Task.FileType) -> Bool
+    // func audioFileExists(task: Task) -> Bool
+    // func videoFileExists(task: Task) -> Bool
+    // func imageFileExists(task: Task) -> Bool
+    
+    
     // MARK: Create function
     func createJob(title: String) -> Job
     func createTask(job: Job, title: String) -> Task

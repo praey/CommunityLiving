@@ -102,20 +102,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seE-tu-2Cf">
-                                <rect key="frame" x="489" y="519" width="46" height="89"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seE-tu-2Cf">
+                                <rect key="frame" x="20" y="519" width="984" height="89"/>
                                 <state key="normal" title="Button"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPx-SW-eHT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPx-SW-eHT">
                                 <rect key="frame" x="20" y="365" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ftc-L3-KaM">
-                                <rect key="frame" x="907" y="230" width="97" height="30"/>
+                                <rect key="frame" x="778" y="230" width="226" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -126,8 +124,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6pk-3L-4Z6">
-                                <rect key="frame" x="979" y="356" width="25" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6pk-3L-4Z6">
+                                <rect key="frame" x="778" y="356" width="226" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -135,12 +133,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zPx-SW-eHT" firstAttribute="top" secondItem="Oak-em-k9P" secondAttribute="bottom" constant="114" id="3nU-E7-1yK"/>
                             <constraint firstItem="Ftc-L3-KaM" firstAttribute="top" secondItem="5cP-nj-BFR" secondAttribute="top" constant="166" id="8g8-xi-LN6"/>
+                            <constraint firstItem="seE-tu-2Cf" firstAttribute="centerX" secondItem="5cP-nj-BFR" secondAttribute="centerX" id="EEg-kt-e4H"/>
                             <constraint firstItem="6pk-3L-4Z6" firstAttribute="top" secondItem="Ftc-L3-KaM" secondAttribute="bottom" constant="96" id="Fll-WV-MrJ"/>
+                            <constraint firstItem="zPx-SW-eHT" firstAttribute="leading" secondItem="5cP-nj-BFR" secondAttribute="leading" constant="20" id="KsH-wf-sld"/>
                             <constraint firstItem="5cP-nj-BFR" firstAttribute="trailing" secondItem="6pk-3L-4Z6" secondAttribute="trailing" constant="20" id="QNq-8A-rcK"/>
+                            <constraint firstItem="5cP-nj-BFR" firstAttribute="trailing" secondItem="seE-tu-2Cf" secondAttribute="trailing" constant="20" id="RTp-rL-kuF"/>
                             <constraint firstItem="5cP-nj-BFR" firstAttribute="trailing" secondItem="Ftc-L3-KaM" secondAttribute="trailing" constant="20" id="TRg-s9-5AL"/>
+                            <constraint firstItem="seE-tu-2Cf" firstAttribute="top" secondItem="zPx-SW-eHT" secondAttribute="bottom" constant="133" id="Wcx-vx-fLv"/>
                             <constraint firstItem="Oak-em-k9P" firstAttribute="leading" secondItem="5cP-nj-BFR" secondAttribute="leading" constant="20" id="ZXX-Bm-6eA"/>
                             <constraint firstItem="Oak-em-k9P" firstAttribute="top" secondItem="5cP-nj-BFR" secondAttribute="top" constant="166" id="ewm-Mp-mzt"/>
+                            <constraint firstItem="5cP-nj-BFR" firstAttribute="bottom" secondItem="seE-tu-2Cf" secondAttribute="bottom" constant="160" id="gsJ-SG-3if"/>
+                            <constraint firstItem="seE-tu-2Cf" firstAttribute="top" secondItem="6pk-3L-4Z6" secondAttribute="bottom" constant="133" id="nFt-V9-YB7"/>
+                            <constraint firstItem="seE-tu-2Cf" firstAttribute="leading" secondItem="5cP-nj-BFR" secondAttribute="leading" constant="20" id="zgR-xj-6Sr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5cP-nj-BFR"/>
                     </view>
@@ -490,6 +496,7 @@
         <!--Audio Recorder-->
         <scene sceneID="h08-yP-tDr">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KL8-gX-8RT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="DuS-5C-DHk" customClass="AudioRecorder" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kvJ-nE-qjh">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
@@ -516,9 +523,23 @@
                         <viewLayoutGuide key="safeArea" id="nBy-5Z-hXZ"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KL8-gX-8RT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-5008" y="2034"/>
+        </scene>
+        <!--Audio-->
+        <scene sceneID="re1-Wr-lNj">
+            <objects>
+                <viewController storyboardIdentifier="Audio" id="A7x-Rj-UCd" customClass="Audio" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="44K-U3-y6X">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="qQc-UL-jmM"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VQo-bu-JQd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5136" y="2719"/>
         </scene>
         <!--Job Viewer-->
         <scene sceneID="gzf-ww-gtd">

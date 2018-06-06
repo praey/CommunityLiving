@@ -256,18 +256,13 @@
 		4A16055620C1C5A5000BFC95 /* TaskTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				4A16055720C1C5A5000BFC95 /* AudioText.swift */,
-				4A16055820C1C5A5000BFC95 /* AudioTextPhoto.swift */,
 				4A16055920C1C5A5000BFC95 /* TaskTemplate.swift */,
-				4A16055A20C1C5A5000BFC95 /* VideoPlayer.swift */,
-				4A16055B20C1C5A5000BFC95 /* VideoAudioText.swift */,
 				4A16055C20C1C5A5000BFC95 /* Photo.swift */,
-				4A16055D20C1C5A5000BFC95 /* VideoAudio.swift */,
-				4A16055E20C1C5A5000BFC95 /* VideoText.swift */,
 				4A16055F20C1C5A5000BFC95 /* Audio.swift */,
 				4A16056020C1C5A5000BFC95 /* Video.swift */,
 				4A16056120C1C5A5000BFC95 /* Text.swift */,
-				4A16056220C1C5A5000BFC95 /* AudioPhoto.swift */,
+				CDC9777320C81D8F0064859D /* OtherViews */,
+				CDC9777120C81C840064859D /* Auxiliary */,
 			);
 			path = TaskTemplate;
 			sourceTree = "<group>";
@@ -313,6 +308,27 @@
 				4A16058620C1C5B1000BFC95 /* AudioRecorder.swift */,
 			);
 			path = Audio;
+			sourceTree = "<group>";
+		};
+		CDC9777120C81C840064859D /* Auxiliary */ = {
+			isa = PBXGroup;
+			children = (
+				4A16055A20C1C5A5000BFC95 /* VideoPlayer.swift */,
+			);
+			path = Auxiliary;
+			sourceTree = "<group>";
+		};
+		CDC9777320C81D8F0064859D /* OtherViews */ = {
+			isa = PBXGroup;
+			children = (
+				4A16055720C1C5A5000BFC95 /* AudioText.swift */,
+				4A16055D20C1C5A5000BFC95 /* VideoAudio.swift */,
+				4A16055E20C1C5A5000BFC95 /* VideoText.swift */,
+				4A16056220C1C5A5000BFC95 /* AudioPhoto.swift */,
+				4A16055B20C1C5A5000BFC95 /* VideoAudioText.swift */,
+				4A16055820C1C5A5000BFC95 /* AudioTextPhoto.swift */,
+			);
+			path = OtherViews;
 			sourceTree = "<group>";
 		};
 		CDFC1338209363C0004A997E = {

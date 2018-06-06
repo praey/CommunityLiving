@@ -81,10 +81,10 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         saveData()
     }
     
-    func ifFileExists(task: Task, fileType: Task.FileType) -> Bool {
+   // func ifFileExists(task: Task, fileType: Task.FileType) -> Bool {
         // check if the file exists
-        return true
-    }
+       // return true
+    //}
     
     
     func createTestData() -> [Job] {

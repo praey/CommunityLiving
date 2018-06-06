@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class FrontPage: UIViewController {
+class FrontPage: UITableViewController {
     static let segueID = "toFrontPage"
     
     override func viewDidLoad() {

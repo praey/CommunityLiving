@@ -16,11 +16,8 @@ class JobSelector: UITableViewController {
     var tappedTableRow: Job!
     override func viewDidLoad() {
         super.viewDidLoad()
-        CoreDataManager.database.fileSystemManager.createImageFolder()
-        CoreDataManager.database.fileSystemManager.createVideoFolder()
-        CoreDataManager.database.fileSystemManager.createAudioFolder()
-        CoreDataManager.database.deletAllJobs()
-        jobs = CoreDataManager.database.createTestData()
+      
+        jobs = CoreDataManager.database.getJobs() // CoreDataManager.database.createTestData()
         // CoreDataManager.database.getJobs()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         tableView.delegate = self

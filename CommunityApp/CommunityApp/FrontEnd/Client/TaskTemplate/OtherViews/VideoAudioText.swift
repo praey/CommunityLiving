@@ -8,31 +8,56 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
-class VidAudTex: UIViewController {
+class VideoAudioText: TaskTemplate {
     
-   // var analyticData: AnalyticData?
+    @IBOutlet weak var text: UILabel!
+      var audioPlayer: AVAudioPlayer?
+     @IBOutlet weak var playerView: PlayerView!
     
     override func viewDidLoad() {
-    //    self.analyticData = AnalyticData()
+        super.viewDidLoad()
+        text.text = super.task.getText()
+        
+        do {
+            let url = super.task.getAudio()
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            if let audioPlayer = audioPlayer {
+                audioPlayer.play()
+            }
+        } catch {
+            print("There is no audioplayer to play")
+        }
+        
+        playerView.player = super.task.getVideo()
+        playerView.player?.play()
     }
-
-override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-}
-
-override func viewWillDisappear(_ animated: Bool) {
-    saveAnalytics()
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let audioPlayer = audioPlayer {
+            audioPlayer.play()
+        }
+        if let player = playerView.player {
+            player.play()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if let audioPlayer = audioPlayer {
+            audioPlayer.pause()
+        }
+        playerView.player?.pause()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+   
+
 }
 
-private func saveAnalytics() {
-//    if let analytics = self.analyticData {
-//        // Save analytics to Core Data
-//    } else {
-//        print("There is no analytics to save")
-//    }
-//    
-}
 
-}

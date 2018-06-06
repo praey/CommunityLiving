@@ -102,6 +102,7 @@ public class Task: NSManagedObject {
         let url = URL(fileURLWithPath: URLString)
         let playerItem = AVPlayerItem(url: url)
         let player = AVPlayer(playerItem: playerItem)
+        player.isMuted = true
         // let player = AVPlayer(url: url)
         
 //        let url = URL.init(string: NSHomeDirectory() + "/Documents/Videos/" + self.video!)

@@ -81,10 +81,9 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         saveData()
     }
     
-    func ifFileExists(fileURLString: String) -> Bool {
-        // check if the file exists
-       // return true
-    //}
+    func ifExists(filePath: String) -> Bool {
+        return true
+    }
     
     
     func createTestData() -> [Job] {
@@ -295,4 +294,5 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         saveData()
         print("Task analytics were saved")
     }
+
 }

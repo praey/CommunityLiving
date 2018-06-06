@@ -45,14 +45,7 @@ class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePick
     }
     
     @objc func saveTask() {
-        CoreDataManager.database.saveData()
-        //        if CoreDataManager.database.saveTask(task: self) {
-        //            print("saved task")
-        //        } else {
-        //            print("didn't save task")
-        //        }
-        //
-        // After it save you go back to the previous screen
+
         self.navigationController?.popViewController(animated: true)
         
         
@@ -60,7 +53,34 @@ class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePick
     
     
     
+    @IBAction func textDisabled(_ sender: Any) {
+        if let sender = sender as? UISwitch {
+            task.disableText = sender.isOn
+            print("text switched")
+        }
+        print("actived button")
+        
+    }
     
+    @IBAction func photoDisabled(_ sender: Any) {
+        if let sender = sender as? UISwitch {
+            task.disablePhoto = sender.isOn
+        }
+    }
+    
+    @IBAction func videoDisabled(_ sender: Any) {
+        if let sender = sender as? UISwitch {
+            task.disableVideo = sender.isOn
+        }
+    }
+    
+    @IBAction func audioDisabled(_ sender: Any) {
+        if let sender = sender as? UISwitch {
+            task.disableAudio = sender.isOn
+        }
+    }
+    
+  
     @IBAction func galleryPhoto(_ sender: Any) {
         imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self

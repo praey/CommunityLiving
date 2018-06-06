@@ -12,6 +12,7 @@ import UIKit
 class JobEditor: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     static let segueID = "toJobEditor"
     
+    @IBOutlet weak var taskTitle: UITextField!
     @IBOutlet weak var saveJob: UIButton!
     @IBOutlet weak var addTask: UIButton!
     private var job: Job!
@@ -42,6 +43,7 @@ class JobEditor: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
     override func viewWillAppear(_ animated: Bool) {
         self.job = CoreDataManager.database.getJob(jobID: job.id!)
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,9 +61,19 @@ class JobEditor: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     
     @objc func recordJob() {
         job.title = titleValue.text ?? "No title"
+        
         CoreDataManager.database.saveData()
     }
   
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == TaskManager.segueID {
+            if (taskTitle.text?.isEmpty)! {
+                return false
+            }
+        }
+        return true
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == TaskManager.segueID {

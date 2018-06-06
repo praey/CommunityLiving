@@ -12,6 +12,7 @@ import UIKit
 class JobManager: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     static let segueID = "toJobManager"
 
+    @IBOutlet weak var jobTitle: UITextField!
     @IBOutlet weak var addJob: UIButton!
     var jobs: [Job]!
     var tappedCollectionCell: Job?
@@ -50,8 +51,17 @@ class JobManager: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         performSegue(withIdentifier: JobEditor.segueID, sender: self)
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == JobEditor.segueID {
+            if (jobTitle.text?.isEmpty)! {
+                return false
+            }
+        }
+        return true
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toJobEditor" {
+        if segue.identifier == JobEditor.segueID {
             let vc = segue.destination as! JobEditor
             // If there is a default job to set then it will set it
             vc.setJob(job: tappedCollectionCell)

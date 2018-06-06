@@ -12,6 +12,7 @@ import UIKit
 class JobEditor: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     static let segueID = "toJobEditor"
     
+    @IBOutlet weak var saveJob: UIButton!
     @IBOutlet weak var addTask: UIButton!
     private var job: Job!
     let cellReuseIdentifier = "JobEditorCell"
@@ -29,6 +30,8 @@ class JobEditor: UIViewController, UITableViewDelegate, UITableViewDataSource  {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
 
         addTask.addTarget(self, action: #selector(JobEditor.createTask), for: .touchUpInside)
+        
+        saveJob.addTarget(self, action: #selector(JobEditor.recordJob), for: .touchUpInside)
        
         
         if let title = job.title {
@@ -54,6 +57,10 @@ class JobEditor: UIViewController, UITableViewDelegate, UITableViewDataSource  {
          performSegue(withIdentifier: TaskManager.segueID, sender: self)
     }
     
+    @objc func recordJob() {
+        job.title = titleValue.text ?? "No title"
+        CoreDataManager.database.saveData()
+    }
   
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

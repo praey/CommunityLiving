@@ -37,7 +37,7 @@
         <!--FrontPage-->
         <scene sceneID="6cW-sC-ohq">
             <objects>
-                <tableViewController id="Imn-AE-0PR" sceneMemberID="viewController">
+                <tableViewController id="Imn-AE-0PR" customClass="FrontPage" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="A6q-y1-kBJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -247,10 +247,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f29-dx-b0K">
-                                <rect key="frame" x="20" y="247.66666666666666" width="335" height="510.33333333333337"/>
+                                <rect key="frame" x="20" y="248" width="335" height="470"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellReuseIdentifier" rowHeight="11" id="5Ge-hH-glr">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellReuseIdentifier" rowHeight="11" id="5Ge-hH-glr">
                                         <rect key="frame" x="0.0" y="28" width="335" height="11"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5Ge-hH-glr" id="Ohv-bZ-zHS">
@@ -264,8 +264,8 @@
                                 <rect key="frame" x="292" y="106" width="63" height="30"/>
                                 <state key="normal" title="Add Task"/>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="equalSpacing" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="5Cd-yX-17v">
-                                <rect key="frame" x="181" y="132" width="182" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="5Cd-yX-17v">
+                                <rect key="frame" x="0.0" y="144" width="375" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZp-gW-Pip">
                                         <rect key="frame" x="0.0" y="0.0" width="66" height="30"/>
@@ -274,7 +274,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BFA-mr-EAV">
-                                        <rect key="frame" x="116" y="0.0" width="66" height="30"/>
+                                        <rect key="frame" x="309" y="0.0" width="66" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -282,26 +282,36 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="BFA-mr-EAV" firstAttribute="width" secondItem="fZp-gW-Pip" secondAttribute="width" id="R2R-eD-VW3"/>
+                                    <constraint firstAttribute="width" secondItem="fZp-gW-Pip" secondAttribute="width" id="hSE-yc-1G3"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWd-VR-wkA">
+                                <rect key="frame" x="20" y="718" width="335" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="f29-dx-b0K" firstAttribute="leading" secondItem="8qh-ph-KhW" secondAttribute="leading" constant="20" id="0Qk-GP-0BP"/>
                             <constraint firstItem="f29-dx-b0K" firstAttribute="centerX" secondItem="8qh-ph-KhW" secondAttribute="centerX" id="67j-3g-x5v"/>
-                            <constraint firstItem="5Cd-yX-17v" firstAttribute="centerX" secondItem="8qh-ph-KhW" secondAttribute="centerX" id="BZy-Ok-glc"/>
+                            <constraint firstItem="f29-dx-b0K" firstAttribute="top" secondItem="5Cd-yX-17v" secondAttribute="bottom" constant="74" id="7fZ-46-mCh"/>
                             <constraint firstItem="bbO-Ig-7fW" firstAttribute="top" secondItem="8qh-ph-KhW" secondAttribute="top" constant="18" id="Dpf-pq-TuP"/>
                             <constraint firstItem="8qh-ph-KhW" firstAttribute="trailing" secondItem="f29-dx-b0K" secondAttribute="trailing" constant="20" id="FkY-zr-fI3"/>
-                            <constraint firstItem="8qh-ph-KhW" firstAttribute="bottom" secondItem="f29-dx-b0K" secondAttribute="bottom" constant="20" id="XUM-8G-AYa"/>
-                            <constraint firstItem="5Cd-yX-17v" firstAttribute="leading" secondItem="8qh-ph-KhW" secondAttribute="leading" constant="181" id="bkl-uq-G0O"/>
-                            <constraint firstItem="f29-dx-b0K" firstAttribute="top" secondItem="5Cd-yX-17v" secondAttribute="bottom" constant="58.5" id="bun-jv-2aD"/>
-                            <constraint firstItem="5Cd-yX-17v" firstAttribute="top" secondItem="bbO-Ig-7fW" secondAttribute="bottom" constant="23" id="qnz-nT-naB"/>
+                            <constraint firstItem="8qh-ph-KhW" firstAttribute="bottom" secondItem="cWd-VR-wkA" secondAttribute="bottom" constant="30" id="HTp-zs-NhR"/>
+                            <constraint firstItem="5Cd-yX-17v" firstAttribute="top" secondItem="bbO-Ig-7fW" secondAttribute="bottom" constant="8" id="XA3-aP-bmn"/>
+                            <constraint firstItem="cWd-VR-wkA" firstAttribute="top" secondItem="f29-dx-b0K" secondAttribute="bottom" id="cmB-So-O7P"/>
+                            <constraint firstItem="8qh-ph-KhW" firstAttribute="trailing" secondItem="cWd-VR-wkA" secondAttribute="trailing" constant="20" id="dOt-nU-hVx"/>
+                            <constraint firstItem="5Cd-yX-17v" firstAttribute="width" secondItem="8qh-ph-KhW" secondAttribute="width" id="fYi-oR-toL"/>
+                            <constraint firstItem="cWd-VR-wkA" firstAttribute="leading" secondItem="8qh-ph-KhW" secondAttribute="leading" constant="20" id="g8U-62-vTa"/>
+                            <constraint firstItem="cWd-VR-wkA" firstAttribute="centerX" secondItem="8qh-ph-KhW" secondAttribute="centerX" id="j7S-fm-UFR"/>
+                            <constraint firstItem="5Cd-yX-17v" firstAttribute="centerX" secondItem="8qh-ph-KhW" secondAttribute="centerX" id="y5r-6S-J7i"/>
                             <constraint firstItem="8qh-ph-KhW" firstAttribute="trailing" secondItem="bbO-Ig-7fW" secondAttribute="trailing" constant="20" id="zHD-mH-0dH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8qh-ph-KhW"/>
                     </view>
                     <connections>
                         <outlet property="addTask" destination="bbO-Ig-7fW" id="tOo-A5-wH4"/>
+                        <outlet property="saveJob" destination="cWd-VR-wkA" id="4em-Dd-sem"/>
                         <outlet property="tableView" destination="f29-dx-b0K" id="TvK-sf-NbD"/>
                         <outlet property="titleValue" destination="BFA-mr-EAV" id="H1J-0D-smy"/>
                         <segue destination="WOI-mu-egl" kind="show" identifier="toTaskManager" id="4nA-lc-zTb"/>
@@ -309,7 +319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xME-PY-vD7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1342" y="686"/>
+            <point key="canvasLocation" x="1341.5999999999999" y="685.71428571428578"/>
         </scene>
         <!--Task Manager-->
         <scene sceneID="EJM-HJ-WjQ">

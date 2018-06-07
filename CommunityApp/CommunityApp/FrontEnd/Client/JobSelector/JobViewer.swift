@@ -35,7 +35,21 @@ class JobViewer: UIPageViewController
             case [.text]:
                 viewController = self.getViewController(withIdentifier: "Text") as! Text
                 print("selected Text")
-                default :
+            case [.text,.audio]:
+                viewController = self.getViewController(withIdentifier: "AudioText") as! AudioText
+            case [.video,.audio,.text]:
+                viewController = self.getViewController(withIdentifier: "VideoAudioText") as! VideoAudioText
+            case [.audio,.text,.photo]:
+                viewController = self.getViewController(withIdentifier: "AudioTextPhoto") as! AudioTextPhoto
+            case [.video,.text]:
+                viewController = self.getViewController(withIdentifier: "VideoText") as! VideoText
+            case [.video,.audio]:
+                viewController = self.getViewController(withIdentifier: "VideoAudio") as! VideoAudio
+            case [.audio,.photo]:
+                viewController = self.getViewController(withIdentifier: "AudioPhoto") as! AudioPhoto
+            case [.photo,.text]:
+                viewController = self.getViewController(withIdentifier: "PhotoText") as! PhotoText
+            default :
                     print("TaskType failed")
                 
             }

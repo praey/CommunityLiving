@@ -581,7 +581,7 @@
         <!--Video Audio Text-->
         <scene sceneID="gy3-1H-qJl">
             <objects>
-                <viewController id="kEh-KQ-AHp" customClass="VideoAudioText" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoAudioText" id="kEh-KQ-AHp" customClass="VideoAudioText" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K4p-FL-fJn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -610,7 +610,7 @@
         <!--Audio Text Photo-->
         <scene sceneID="VnJ-tW-ByV">
             <objects>
-                <viewController id="FMI-l7-CUi" customClass="AudioTextPhoto" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AudioTextPhoto" id="FMI-l7-CUi" customClass="AudioTextPhoto" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TuE-Ou-qUV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -638,7 +638,7 @@
         <!--Video Audio-->
         <scene sceneID="yr0-Gp-qDx">
             <objects>
-                <viewController id="lr0-dP-S1J" customClass="VideoAudio" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoAudio" id="lr0-dP-S1J" customClass="VideoAudio" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LW2-23-lze">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -660,7 +660,7 @@
         <!--Audio Text-->
         <scene sceneID="25w-GT-VER">
             <objects>
-                <viewController id="hOi-zv-f8t" customClass="AudioText" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AudioText" id="hOi-zv-f8t" customClass="AudioText" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G9N-hI-eyC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -684,7 +684,7 @@
         <!--Photo Text-->
         <scene sceneID="01z-22-1A0">
             <objects>
-                <viewController id="g6U-x9-Tb5" customClass="PhotoText" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoText" id="g6U-x9-Tb5" customClass="PhotoText" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7RC-x3-gJG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -704,10 +704,38 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="zJT-6s-m66"/>
                     </view>
+                    <connections>
+                        <outlet property="image" destination="EKA-Vy-1X4" id="LRH-uP-AhP"/>
+                        <outlet property="text" destination="jcG-eH-m98" id="0J2-CR-vYs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jiv-Fh-itg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3909" y="2364"/>
+        </scene>
+        <!--Audio Photo-->
+        <scene sceneID="vDH-As-kew">
+            <objects>
+                <viewController storyboardIdentifier="AudioPhoto" id="ZID-m8-Ttq" customClass="AudioPhoto" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XWI-hD-63b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HY8-Kg-0aT">
+                                <rect key="frame" x="67" y="286" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="37b-WW-7pE"/>
+                    </view>
+                    <connections>
+                        <outlet property="image" destination="HY8-Kg-0aT" id="0kr-mA-EtQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Szw-1p-q1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3674" y="2879"/>
         </scene>
         <!--Video-->
         <scene sceneID="OO4-JV-9kg">
@@ -898,7 +926,7 @@
         <!--Video Text-->
         <scene sceneID="iAR-Rk-Kdi">
             <objects>
-                <viewController id="EJJ-Nk-G4a" customClass="VideoText" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VideoText" id="EJJ-Nk-G4a" customClass="VideoText" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hJQ-eg-9SG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -926,7 +954,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4nA-lc-zTb"/>
         <segue reference="XB4-6s-V0m"/>
     </inferredMetricsTieBreakers>
 </document>

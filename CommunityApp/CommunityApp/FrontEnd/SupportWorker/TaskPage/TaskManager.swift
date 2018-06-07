@@ -45,11 +45,18 @@ class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePick
     }
     
     @objc func saveTask() {
-
+       task.title = titleValue.text!
         self.navigationController?.popViewController(animated: true)
-        
+       
         
     }
+    
+    
+    func setText() {
+         task.text = textValue.text!
+    }
+    
+    
     
     
     

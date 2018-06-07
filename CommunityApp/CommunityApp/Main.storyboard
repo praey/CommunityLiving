@@ -384,7 +384,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="mLE-tr-atj" userLabel="Text">
                                 <rect key="frame" x="0.66666666666665719" y="181" width="375" height="31"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Task Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqr-gZ-nk8">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Task Text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqr-gZ-nk8">
                                         <rect key="frame" x="0.0" y="0.0" width="163.33333333333334" height="31"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -419,7 +419,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6m-te-VU3" userLabel="GalleryPhoto">
-                                        <rect key="frame" x="84.666666666666686" y="0.0" width="169.33333333333331" height="31"/>
+                                        <rect key="frame" x="84.666666666666671" y="0.0" width="169.33333333333331" height="31"/>
                                         <state key="normal" title="GalleryPhoto"/>
                                         <connections>
                                             <action selector="galleryPhoto:" destination="WOI-mu-egl" eventType="touchUpInside" id="6X1-Y1-sbK"/>
@@ -501,7 +501,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7d4-vp-c62" userLabel="GalleryAudio">
-                                        <rect key="frame" x="83.333333333333343" y="0.0" width="171.66666666666669" height="31"/>
+                                        <rect key="frame" x="83.333333333333329" y="0.0" width="171.66666666666669" height="31"/>
                                         <state key="normal" title="GalleryAudio"/>
                                         <connections>
                                             <action selector="galleryAudio:" destination="WOI-mu-egl" eventType="touchUpInside" id="pCG-Le-f9J"/>

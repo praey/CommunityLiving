@@ -15,7 +15,7 @@ class JobEditor: UIViewController, UITableViewDelegate, UITableViewDataSource  {
     @IBOutlet weak var taskTitle: UITextField!
     @IBOutlet weak var saveJob: UIButton!
     @IBOutlet weak var addTask: UIButton!
-    private var job: Job!
+    var job: Job!
     let cellReuseIdentifier = "JobEditorCell"
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleValue: UITextField!
@@ -50,13 +50,21 @@ class JobEditor: UIViewController, UITableViewDelegate, UITableViewDataSource  {
         super.didReceiveMemoryWarning()
     }
     
-    func setJob(job: Job?) {
-        self.job = job ?? CoreDataManager.database.createJob(title: "default created")
-    }
+//    func setJob(job: Job?) {
+//        self.job = job ?? CoreDataManager.database.createJob(title: "default created")
+//    }
     
     @objc func createTask() {
-        tappedTableRow = nil
-         performSegue(withIdentifier: TaskManager.segueID, sender: self)
+        if (taskTitle.text?.isEmpty)! {
+            print("Task title is empty!")
+        }
+        else {
+            tappedTableRow = CoreDataManager.database.createTask(job: job, title: taskTitle.text!)
+            performSegue(withIdentifier: TaskManager.segueID, sender: self)
+        }
+        
+//        tappedTableRow = nil
+//         performSegue(withIdentifier: TaskManager.segueID, sender: self)
     }
     
     @objc func recordJob() {
@@ -64,22 +72,12 @@ class JobEditor: UIViewController, UITableViewDelegate, UITableViewDataSource  {
         
         CoreDataManager.database.saveData()
     }
-  
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == TaskManager.segueID {
-            if (taskTitle.text?.isEmpty)! {
-                return false
-            }
-        }
-        return true
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == TaskManager.segueID {
             let vc = segue.destination as! TaskManager
             // If there is a default job to set then it will set it
-            vc.setTask(job: self.job, task: tappedTableRow)
+            vc.task = tappedTableRow
         }
     }
     

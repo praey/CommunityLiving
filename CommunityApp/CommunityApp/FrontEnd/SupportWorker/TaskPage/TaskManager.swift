@@ -16,7 +16,7 @@ class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePick
      private var imagePickerController : UIImagePickerController!
     
     var task: Task!
-    var job: Job!
+    //var job: Job!
     
     @IBOutlet weak var titleValue: UITextField!
     @IBOutlet weak var taskSaveButton: UIButton!
@@ -32,17 +32,18 @@ class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePick
         super.viewDidLoad()
         print("Entered TaskManager")
         taskSaveButton.addTarget(self, action: #selector(TaskManager.saveTask), for: .touchUpInside)
-        
+        titleValue.text = task.title
         textValue.text = self.task.text ?? "default text"
     }
    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    func setTask(job: Job, task: Task?) {
-        self.job = job
-        self.task = task ?? CoreDataManager.database.createTask(job: self.job, title: "default task")
-    }
+    
+//    func setTask(job: Job, task: Task?) {
+//        self.job = job
+//        self.task = task ?? CoreDataManager.database.createTask(job: self.job, title: "default task")
+//    }
     
     @objc func saveTask() {
        task.title = titleValue.text!

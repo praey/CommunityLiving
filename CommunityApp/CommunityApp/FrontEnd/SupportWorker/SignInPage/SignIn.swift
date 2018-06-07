@@ -42,4 +42,8 @@ class SignIn: UIViewController {
         performSegue(withIdentifier: JobManager.segueID, sender: self)
     }
     
+    @IBAction func deleteAllButton(_ sender: Any) {
+        CoreDataManager.database.deletAllJobs()
+    }
+    
 }

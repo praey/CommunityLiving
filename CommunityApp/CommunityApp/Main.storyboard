@@ -586,7 +586,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2fQ-JO-BaT">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2fQ-JO-BaT" customClass="PlayerView" customModule="CommunityApp" customModuleProvider="target">
                                 <rect key="frame" x="50" y="166" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -602,6 +602,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Al6-pU-p7r"/>
                     </view>
+                    <connections>
+                        <outlet property="playerView" destination="2fQ-JO-BaT" id="EwS-Yd-0c7"/>
+                        <outlet property="text" destination="8c2-GA-iqb" id="jWZ-ni-ivj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Af9-s7-0wz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -630,10 +634,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="MZA-A1-N07"/>
                     </view>
+                    <connections>
+                        <outlet property="image" destination="5co-48-Z3T" id="Qw9-A0-jGv"/>
+                        <outlet property="text" destination="Udt-gl-6vi" id="CwN-HX-aPQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqc-U3-2ns" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1828" y="2424"/>
+            <point key="canvasLocation" x="1778" y="2517"/>
         </scene>
         <!--Video Audio-->
         <scene sceneID="yr0-Gp-qDx">
@@ -652,6 +660,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="473-eF-IwV"/>
                     </view>
+                    <connections>
+                        <outlet property="playerView" destination="gbA-Vl-AYo" id="R1y-sh-7sD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qnz-pG-7LN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -676,6 +687,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="HJb-01-aMe"/>
                     </view>
+                    <connections>
+                        <outlet property="text" destination="zFf-hU-nDM" id="yr9-Rz-7k7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ydk-X8-2Eh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -705,8 +719,8 @@
                         <viewLayoutGuide key="safeArea" id="zJT-6s-m66"/>
                     </view>
                     <connections>
-                        <outlet property="image" destination="EKA-Vy-1X4" id="LRH-uP-AhP"/>
-                        <outlet property="text" destination="jcG-eH-m98" id="0J2-CR-vYs"/>
+                        <outlet property="image" destination="EKA-Vy-1X4" id="ETA-At-5XS"/>
+                        <outlet property="text" destination="jcG-eH-m98" id="ZmJ-Gm-BuD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jiv-Fh-itg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -947,6 +961,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="kHr-du-Y9c"/>
                     </view>
+                    <connections>
+                        <outlet property="playerView" destination="lke-hf-c2o" id="1HB-Ql-sBf"/>
+                        <outlet property="text" destination="P5g-CB-gPD" id="VFJ-jM-VIM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e8k-lE-2iM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

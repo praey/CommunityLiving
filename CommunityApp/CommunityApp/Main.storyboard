@@ -137,6 +137,14 @@
                                 </constraints>
                                 <state key="normal" title="SignIn"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yfj-lr-xxg">
+                                <rect key="frame" x="57" y="648" width="261" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete All Jobs"/>
+                                <connections>
+                                    <action selector="deleteAllButton:" destination="fWa-uE-uMD" eventType="touchUpInside" id="x6u-qN-9Iv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -169,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llR-VO-blg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-762.5" y="812"/>
+            <point key="canvasLocation" x="-764" y="811.33004926108379"/>
         </scene>
         <!--JobManager-->
         <scene sceneID="Ba4-P4-2fl">
@@ -419,7 +427,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6m-te-VU3" userLabel="GalleryPhoto">
-                                        <rect key="frame" x="84.666666666666686" y="0.0" width="169.33333333333331" height="31"/>
+                                        <rect key="frame" x="84.666666666666671" y="0.0" width="169.33333333333331" height="31"/>
                                         <state key="normal" title="GalleryPhoto"/>
                                         <connections>
                                             <action selector="galleryPhoto:" destination="WOI-mu-egl" eventType="touchUpInside" id="6X1-Y1-sbK"/>
@@ -501,7 +509,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7d4-vp-c62" userLabel="GalleryAudio">
-                                        <rect key="frame" x="83.333333333333343" y="0.0" width="171.66666666666669" height="31"/>
+                                        <rect key="frame" x="83.333333333333329" y="0.0" width="171.66666666666669" height="31"/>
                                         <state key="normal" title="GalleryAudio"/>
                                         <connections>
                                             <action selector="galleryAudio:" destination="WOI-mu-egl" eventType="touchUpInside" id="pCG-Le-f9J"/>
@@ -918,6 +926,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="4nA-lc-zTb"/>
         <segue reference="XB4-6s-V0m"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -47,24 +47,34 @@ class JobManager: UIViewController, UICollectionViewDelegate, UICollectionViewDa
 
     
     @objc func createJob(sender: UIButton) {
-        tappedCollectionCell = nil
-        performSegue(withIdentifier: JobEditor.segueID, sender: self)
+        if (jobTitle.text?.isEmpty)! {
+            print("Job title is empty!")
+        }
+        else {
+            tappedCollectionCell = CoreDataManager.database.createJob(title: jobTitle.text!)
+            performSegue(withIdentifier: JobEditor.segueID, sender: self)
+        }
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == JobEditor.segueID {
-            if (jobTitle.text?.isEmpty)! {
-                return false
-            }
+        if identifier == "selectSegue" {
+            return false
         }
-        return true
+        else {return true}
+        
+//        if identifier == JobEditor.segueID {
+//            if (jobTitle.text?.isEmpty)! {
+//                return false
+//            }
+//        }
+//        return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == JobEditor.segueID {
             let vc = segue.destination as! JobEditor
             // If there is a default job to set then it will set it
-            vc.setJob(job: tappedCollectionCell)
+            vc.job = tappedCollectionCell
         }
     }
 

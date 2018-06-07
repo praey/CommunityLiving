@@ -56,20 +56,6 @@ class JobManager: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         }
     }
     
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == "selectSegue" {
-            return false
-        }
-        else {return true}
-        
-//        if identifier == JobEditor.segueID {
-//            if (jobTitle.text?.isEmpty)! {
-//                return false
-//            }
-//        }
-//        return true
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == JobEditor.segueID {
             let vc = segue.destination as! JobEditor

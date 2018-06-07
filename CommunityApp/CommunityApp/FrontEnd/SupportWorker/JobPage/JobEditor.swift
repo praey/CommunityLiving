@@ -72,21 +72,6 @@ class JobEditor: UIViewController, UITableViewDelegate, UITableViewDataSource  {
         
         CoreDataManager.database.saveData()
     }
-  
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == TaskManager.segueID {
-            return false
-        }
-        else {return true}
-        
-//        if identifier == TaskManager.segueID {
-//            if (taskTitle.text?.isEmpty)! {
-//                return false
-//            }
-//        }
-//        return true
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == TaskManager.segueID {

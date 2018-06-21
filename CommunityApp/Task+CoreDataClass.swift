@@ -80,7 +80,7 @@ public class Task: NSManagedObject {
     
  
     
-    func resourceExists(filePath: TaskType) -> Bool {
+    func ifFileExists(filePath: TaskType) -> Bool {
         
         
           var path: String!
@@ -93,11 +93,14 @@ public class Task: NSManagedObject {
             path = audioFilePath + self.audio!
             case .photo:
                path = photoFilePath + self.photo!
+        case .text:
+            print("there is no file path for text - the text is just saved in a string")
+            return false
             default:
             print("file wasn't located - something went wrong")
             return false
         }
-        return CoreDataManager.database.ifExists(filePath: path)
+        return CoreDataManager.database.resourceExists(URLString: path)
 
 
     }

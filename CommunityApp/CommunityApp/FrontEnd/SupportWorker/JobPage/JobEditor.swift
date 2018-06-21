@@ -164,13 +164,13 @@ extension JobEditor {
     
     
     private func scheduleLocalNotification() {
-        let notificationContent = createNotificationContent(title: notificationTitle.text, subTitle: notificationSubTitle.text, body: notificationBody.text)
+      /*  let notificationContent = createNotificationContent(title: notificationTitle.text, subTitle: notificationSubTitle.text, body: notificationBody.text)
         let notificationRequest = createJobNotificationRequest(notificationContent: notificationContent, date: notificationDate, repeats: notificationDateRepeats)
         UNUserNotificationCenter.current().add(notificationRequest) { (error) in
             if error != nil {
                 print("Cannot add this request")
             }
-        }
+        }*/
         
     }
     

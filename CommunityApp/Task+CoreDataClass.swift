@@ -26,6 +26,29 @@ public class Task: NSManagedObject {
         case photo
     }
     
+    var thumbnail: UIImage? {
+        get {
+            if ifFileExists(filePath: .photo) {
+                return getPhoto()
+            } else if ifFileExists(filePath: .video) {
+                do {
+                    let url = URL(fileURLWithPath: self.videoFilePath + self.video!)
+                    let asset = AVAsset.init(url: url)
+                    let imgGenerator = AVAssetImageGenerator(asset: asset)
+                
+                    let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
+                    let uiImage = UIImage(cgImage: cgImage)
+                    return uiImage
+                } catch {
+                    print("Error with imageGenerator for thumbanil")
+                }
+               
+            }
+            print("had to print a black page")
+            return nil
+        }
+    }
+    
  
     
     func getTaskType() -> Set<TaskType> {
@@ -57,7 +80,7 @@ public class Task: NSManagedObject {
     
  
     
-    func ifFileExists(filePath: TaskType) -> Bool {
+    func resourceExists(filePath: TaskType) -> Bool {
         
         
           var path: String!

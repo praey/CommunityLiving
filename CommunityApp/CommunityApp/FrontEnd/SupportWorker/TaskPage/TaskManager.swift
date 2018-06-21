@@ -32,29 +32,40 @@ class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePick
         super.viewDidLoad()
         print("Entered TaskManager")
         taskSaveButton.addTarget(self, action: #selector(TaskManager.saveTask), for: .touchUpInside)
-        titleValue.text = task.title
-        textValue.text = self.task.text ?? "default text"
+        
+        if let title = task.title {
+            titleValue.text = title
+            print("Task manager title wasn't set and it is mandatory that it has a value")
+        }
+        if let text = task.text {
+            textValue.text = text
+        }
+        if task.ifFileExists(filePath: .audio) {
+            
+        }
+        
+        if task.ifFileExists(filePath: .photo) {
+            
+        }
+        if task.ifFileExists(filePath: .video) {
+            
+        }
     }
    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-//    func setTask(job: Job, task: Task?) {
-//        self.job = job
-//        self.task = task ?? CoreDataManager.database.createTask(job: self.job, title: "default task")
-//    }
-    
     @objc func saveTask() {
-       task.title = titleValue.text!
+        setText()
         self.navigationController?.popViewController(animated: true)
-       
-        
     }
+  
     
     
     func setText() {
          task.text = textValue.text!
+       
     }
     
     
@@ -112,9 +123,13 @@ class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePick
     
     
     @IBAction func galleryAudio(_ sender: Any) {
+    
+    
     }
     
     @IBAction func takeAudio(_ sender: Any) {
+        
+        
     }
     @IBAction func takeVideo(_ sender: Any) {
         imagePickerController = UIImagePickerController()
@@ -122,7 +137,8 @@ class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePick
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePickerController.sourceType = .camera
             imagePickerController.videoQuality = .typeLow
-            imagePickerController.videoMaximumDuration = 15
+            // I don't think we should force them to have 15 seconds anymore
+            // imagePickerController.videoMaximumDuration = 15
             imagePickerController.mediaTypes = [kUTTypeMovie as String]
             present(imagePickerController, animated: true, completion: nil)
         }
@@ -159,6 +175,19 @@ class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePick
 
 }
 
+extension TaskManager: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("called the text field delegate")
+        if let text = textField.text {
+            if text.isEmpty {
+               task.text = nil
+            } else {
+                task.text = text
+            }
+        }
+        
+    }
+}
 
 
 

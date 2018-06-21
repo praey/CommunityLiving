@@ -46,6 +46,9 @@
 		4A16058C20C1C5B1000BFC95 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16058520C1C5B1000BFC95 /* AudioPlayer.swift */; };
 		4A16058D20C1C5B1000BFC95 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16058620C1C5B1000BFC95 /* AudioRecorder.swift */; };
 		4A5789FB20BF215F00677851 /* Page4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5789FA20BF215F00677851 /* Page4.swift */; };
+		CD1D1BB220D2AE3000095C7B /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1D1BB120D2AE3000095C7B /* CalendarEvent.swift */; };
+		CD1D1BB520D2B01200095C7B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1D1BB420D2B01200095C7B /* AudioToolbox.framework */; };
+		CDC2DBBE20D578B300E54F06 /* testCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC2DBBD20D578B300E54F06 /* testCalendar.swift */; };
 		CDC9505420C5AF0E001585FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDC9505320C5AF0E001585FE /* Main.storyboard */; };
 		CDC9777520C82BCC0064859D /* PhotoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC9777420C82BCC0064859D /* PhotoText.swift */; };
 		CDFC1345209363C1004A997E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFC1344209363C1004A997E /* AppDelegate.swift */; };
@@ -115,6 +118,9 @@
 		4A16058620C1C5B1000BFC95 /* AudioRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
 		4A16058E20C1C5D2000BFC95 /* CommunityApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommunityApp.entitlements; sourceTree = "<group>"; };
 		4A5789FA20BF215F00677851 /* Page4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page4.swift; sourceTree = "<group>"; };
+		CD1D1BB120D2AE3000095C7B /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
+		CD1D1BB420D2B01200095C7B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CDC2DBBD20D578B300E54F06 /* testCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testCalendar.swift; sourceTree = "<group>"; };
 		CDC9505320C5AF0E001585FE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CDC9777420C82BCC0064859D /* PhotoText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoText.swift; sourceTree = "<group>"; };
 		CDFC1341209363C1004A997E /* CommunityApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommunityApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD1D1BB520D2B01200095C7B /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +176,7 @@
 		4A16054220C1C5A5000BFC95 /* SupportWorker */ = {
 			isa = PBXGroup;
 			children = (
+				CD1D1BB020D2AE0D00095C7B /* Calendar */,
 				4A16054320C1C5A5000BFC95 /* Configuration */,
 				4A16054520C1C5A5000BFC95 /* TaskPage */,
 				4A16054720C1C5A5000BFC95 /* EmailPage */,
@@ -312,6 +320,23 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
+		CD1D1BB020D2AE0D00095C7B /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				CD1D1BB120D2AE3000095C7B /* CalendarEvent.swift */,
+				CDC2DBBD20D578B300E54F06 /* testCalendar.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		CD1D1BB320D2B01200095C7B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD1D1BB420D2B01200095C7B /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CDC9777120C81C840064859D /* Auxiliary */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +372,7 @@
 				CDFC135B209363C1004A997E /* CommunityAppTests */,
 				CDFC1366209363C1004A997E /* CommunityAppUITests */,
 				CDFC1342209363C1004A997E /* Products */,
+				CD1D1BB320D2B01200095C7B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -472,6 +498,17 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					CDFC1357209363C1004A997E = {
 						CreatedOnToolsVersion = 9.2;
@@ -555,7 +592,9 @@
 				4A0552C720B5EA1800193E5C /* Task+CoreDataClass.swift in Sources */,
 				4A0552E720BE9FAD00193E5C /* Analytics.swift in Sources */,
 				4A16057B20C1C5AC000BFC95 /* CoreDataProtocol.swift in Sources */,
+				CD1D1BB220D2AE3000095C7B /* CalendarEvent.swift in Sources */,
 				4A16056620C1C5A5000BFC95 /* SignIn.swift in Sources */,
+				CDC2DBBE20D578B300E54F06 /* testCalendar.swift in Sources */,
 				4A0552E120BE7AED00193E5C /* Person+CoreDataProperties.swift in Sources */,
 				4A16056920C1C5A5000BFC95 /* JobEditor.swift in Sources */,
 				4A0552E520BE94C400193E5C /* Job+CoreDataProperties.swift in Sources */,
@@ -742,6 +781,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = CommunityApp/CommunityApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VU9ABXP993;
 				INFOPLIST_FILE = CommunityApp/Info.plist;
@@ -759,6 +799,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = CommunityApp/CommunityApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VU9ABXP993;
 				INFOPLIST_FILE = CommunityApp/Info.plist;

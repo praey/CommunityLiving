@@ -37,20 +37,33 @@ class JobViewer: UIPageViewController
                 print("selected Text")
             case [.text,.audio]:
                 viewController = self.getViewController(withIdentifier: "AudioText") as! AudioText
+                print("Selected AudioText")
             case [.video,.audio,.text]:
                 viewController = self.getViewController(withIdentifier: "VideoAudioText") as! VideoAudioText
+                print("Selected Audio Video Text")
             case [.audio,.text,.photo]:
                 viewController = self.getViewController(withIdentifier: "AudioTextPhoto") as! AudioTextPhoto
+                print("Selected Audio Text Photo")
             case [.video,.text]:
                 viewController = self.getViewController(withIdentifier: "VideoText") as! VideoText
+                print("Selected Video Text")
             case [.video,.audio]:
                 viewController = self.getViewController(withIdentifier: "VideoAudio") as! VideoAudio
+                print("Selected Video Audio")
             case [.audio,.photo]:
                 viewController = self.getViewController(withIdentifier: "AudioPhoto") as! AudioPhoto
+                print("Selected  Audio Photo")
             case [.photo,.text]:
                 viewController = self.getViewController(withIdentifier: "PhotoText") as! PhotoText
+                print("Selected photo text")
+            case[.photo,.video]:
+                print("Selected Photo and Video - not accessible")
+            case [.photo,.audio,.video]:
+                print("Selected photo audio video - not accessible")
+            case [.photo,.text,.video]:
+                print("Selecte photo text video - not accessible")
             default :
-                    print("TaskType failed")
+                print("failed to select type")
                 
             }
             if let vc = viewController {

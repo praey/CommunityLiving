@@ -89,5 +89,3 @@ class JobManager: UIViewController, UICollectionViewDelegate, UICollectionViewDa
 
 
 
-
-

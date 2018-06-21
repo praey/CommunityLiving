@@ -55,8 +55,8 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         task.jobid = job.id
         task.photo = "\(task.jobid! + task.id!).jpg"
         task.video = "\(task.jobid! + task.id!).mp4"
-        task.audio = "\(task.jobid! + task.id!).m4a"
-        task.disableTask = false
+        task.audio = "\(task.jobid! + task.id!).aac"
+        task.disableTask = true
         task.disableText = true
         task.disableAudio = true
         task.disablePhoto = true
@@ -225,14 +225,12 @@ class CoreDataManager: NSObject, CoreDataProtocol {
     func setTaskText(jobID: String, taskID: String, text: String) {
         let task = getTask(job: getJob(id: jobID)!, id: taskID)
         task?.text = text
-        task?.disableText = false
         saveData()
         print("Task text was set")
     }
     
     func setTaskText(task: Task, text: String){
         task.text = text
-        task.disableText = false
         saveData()
         print("Task text was set")
     }
@@ -241,7 +239,6 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         let task = getTask(job: getJob(id: jobID)!, id: taskID)!
         fileSystemManager.deletImage(URLString: NSHomeDirectory() + "/Documents/Images/" + task.photo!)
         fileSystemManager.saveImage(task: task, image: photo, quality: 1.0, nameWithExtension: task.photo!)
-        task.disablePhoto = false
         saveData()
         print("Task image was set")
     }
@@ -249,7 +246,6 @@ class CoreDataManager: NSObject, CoreDataProtocol {
     func setTaskPhoto(task: Task, photo: UIImage){
         fileSystemManager.deletImage(URLString: NSHomeDirectory() + "/Documents/Images/" + task.photo!)
         fileSystemManager.saveImage(task: task, image: photo, quality: 1.0, nameWithExtension: task.photo!)
-        task.disablePhoto = false
         saveData()
         print("Task image was set")
     }
@@ -259,7 +255,6 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         let task = getTask(job: getJob(id: jobID)!, id: taskID)!
         fileSystemManager.deletVideo(URLString: NSHomeDirectory() + "/Documents/Videos/" + task.video!)
         fileSystemManager.saveVideo(task: task, videoFromURLString: videoURLString, nameWithExtension: task.video!)
-        task.disableVideo = false
         saveData()
         print("Task video was set")
     }
@@ -267,7 +262,6 @@ class CoreDataManager: NSObject, CoreDataProtocol {
     func setTaskVideo(task: Task, videoURLString: String){
         fileSystemManager.deletVideo(URLString: NSHomeDirectory() + "/Documents/Videos/" + task.video!)
         fileSystemManager.saveVideo(task: task, videoFromURLString: videoURLString, nameWithExtension: task.video!)
-        task.disableVideo = false
         saveData()
         print("Task video was set")
     }
@@ -276,7 +270,6 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         let task = getTask(job: getJob(id: jobID)!, id: taskID)!
         fileSystemManager.deletAudio(URLString: NSHomeDirectory() + "/Documents/Audios/" + task.audio!)
         fileSystemManager.saveAudio(task: task, audioFromURLString: audioURLString, nameWithExtension: task.audio!)
-        task.disableAudio = false
         saveData()
         print("Task audio was set")
     }
@@ -284,7 +277,6 @@ class CoreDataManager: NSObject, CoreDataProtocol {
     func setTaskAudio(task: Task, audioURLString: String){
         fileSystemManager.deletAudio(URLString: NSHomeDirectory() + "/Documents/Audios/" + task.audio!)
         fileSystemManager.saveAudio(task: task, audioFromURLString: audioURLString, nameWithExtension: task.audio!)
-        task.disableAudio = false
         saveData()
         print("Task audio was set")
     }
@@ -294,5 +286,14 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         saveData()
         print("Task analytics were saved")
     }
-
+    
+    func resourceExists(URLString: String) -> Bool {
+        if fileSystemManager.fileManager.fileExists(atPath: URLString) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
 }

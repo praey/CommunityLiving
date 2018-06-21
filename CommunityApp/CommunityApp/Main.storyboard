@@ -48,13 +48,13 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FRONT PAGE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fI2-I4-1b1">
-                                    <rect key="frame" x="8" y="8.0000000000000018" width="359" height="20.666666666666671"/>
+                                    <rect key="frame" x="8" y="8" width="584" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Mu-oH-C2x">
-                                    <rect key="frame" x="8" y="296" width="359" height="13"/>
+                                    <rect key="frame" x="8" y="296" width="584" height="13"/>
                                     <state key="normal" title="Client"/>
                                     <connections>
                                         <segue destination="eBY-CR-erI" kind="show" id="kza-93-sag"/>
@@ -374,6 +374,64 @@
             </objects>
             <point key="canvasLocation" x="1340" y="684.23645320197045"/>
         </scene>
+        <!--Audio Recorder Manager-->
+        <scene sceneID="Y5B-g9-jeF">
+            <objects>
+                <viewController id="3CS-nM-Cb1" customClass="AudioRecorderManager" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vp9-V5-Gwu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hv6-cv-Zp8">
+                                <rect key="frame" x="79" y="433" width="71" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="record"/>
+                                <connections>
+                                    <action selector="recordButtonTouchDown:" destination="3CS-nM-Cb1" eventType="touchDown" id="hwO-UO-W31"/>
+                                    <action selector="recordButtonTouchUp:" destination="3CS-nM-Cb1" eventType="touchUpInside" id="lLN-wM-hJA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoK-aG-agr">
+                                <rect key="frame" x="241" y="433" width="67" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="start"/>
+                                <connections>
+                                    <action selector="playbutton:" destination="3CS-nM-Cb1" eventType="touchUpInside" id="cQ7-up-3N1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="volume: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6Y-bd-S4M">
+                                <rect key="frame" x="79" y="162" width="83" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPr-uy-i7o">
+                                <rect key="frame" x="236" y="162" width="0.0" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gv1-eQ-Wgu">
+                                <rect key="frame" x="260" y="162" width="115" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="kYm-Xb-sod"/>
+                    </view>
+                    <connections>
+                        <outlet property="volume" destination="Gv1-eQ-Wgu" id="wYC-zu-03A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5fE-PU-9Jr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3597.5999999999999" y="696.79802955665025"/>
+        </scene>
         <!--Task Manager-->
         <scene sceneID="EJM-HJ-WjQ">
             <objects>
@@ -403,16 +461,16 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="mLE-tr-atj" userLabel="Text">
-                                <rect key="frame" x="0.66666666666665719" y="181" width="375" height="31"/>
+                                <rect key="frame" x="0.66666666666662877" y="181" width="375" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Task Text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqr-gZ-nk8">
-                                        <rect key="frame" x="0.0" y="0.0" width="163.33333333333334" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="163" height="31"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vUu-SS-Z8w">
-                                        <rect key="frame" x="163.33333333333337" y="0.0" width="162.66666666666663" height="31"/>
+                                        <rect key="frame" x="163" y="0.0" width="163" height="31"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -431,7 +489,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="BLV-ti-Vdp" userLabel="Photo">
-                                <rect key="frame" x="0.66666666666665719" y="303" width="375" height="31"/>
+                                <rect key="frame" x="0.66666666666662877" y="303" width="375" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Task Photo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpm-F6-giY">
                                         <rect key="frame" x="0.0" y="0.0" width="84.666666666666671" height="31"/>
@@ -535,7 +593,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="71" height="31"/>
                                                 <state key="normal" title="TakeAudio"/>
                                                 <connections>
-                                                    <action selector="takeAudio:" destination="WOI-mu-egl" eventType="touchUpInside" id="8b8-If-kRT"/>
+                                                    <segue destination="3CS-nM-Cb1" kind="show" identifier="toAudioTaker" id="5qg-eK-rWl"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -809,7 +867,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WaO-X1-c47" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3515" y="724"/>
+            <point key="canvasLocation" x="3422" y="-137"/>
         </scene>
         <!--Email-->
         <scene sceneID="wXR-cI-Fzq">
@@ -1036,6 +1094,10 @@
             <point key="canvasLocation" x="371" y="2448"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="record" width="512" height="512"/>
+        <image name="start" width="512" height="512"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="4nA-lc-zTb"/>
         <segue reference="XB4-6s-V0m"/>

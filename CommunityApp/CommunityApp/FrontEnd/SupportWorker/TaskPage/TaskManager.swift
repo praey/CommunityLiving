@@ -9,11 +9,13 @@
 import Foundation
 import UIKit
 import MobileCoreServices
+import MediaPlayer
 
-class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, MPMediaPickerControllerDelegate{
     static let segueID = "toTaskManager"
     
-     private var imagePickerController : UIImagePickerController!
+    private var imagePickerController: UIImagePickerController!
+    private var mediaPickerController: MPMediaPickerController!
     
     var task: Task!
     //var job: Job!
@@ -55,6 +57,19 @@ class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePick
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toAudioTaker" {
+            let vc = segue.destination as! AudioRecorderManager
+            // If there is a default job to set then it will set it
+            vc.task = task
+        }
+    }
+    
+//    func setTask(job: Job, task: Task?) {
+//        self.job = job
+//        self.task = task ?? CoreDataManager.database.createTask(job: self.job, title: "default task")
+//    }
     
     @objc func saveTask() {
         setText()
@@ -121,25 +136,21 @@ class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePick
         }
     }
     
-    
     @IBAction func galleryAudio(_ sender: Any) {
-    
-    
+        let mediaPickerController = MPMediaPickerController(mediaTypes: .any)
+        mediaPickerController.delegate = self
+        mediaPickerController.allowsPickingMultipleItems = false
+        present(mediaPickerController, animated: true, completion: nil)
     }
-    
-    @IBAction func takeAudio(_ sender: Any) {
-        
-        
-    }
+
     @IBAction func takeVideo(_ sender: Any) {
         imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePickerController.sourceType = .camera
-            imagePickerController.videoQuality = .typeLow
-            // I don't think we should force them to have 15 seconds anymore
-            // imagePickerController.videoMaximumDuration = 15
             imagePickerController.mediaTypes = [kUTTypeMovie as String]
+            imagePickerController.videoQuality = .typeMedium
+            imagePickerController.videoMaximumDuration = 15
             present(imagePickerController, animated: true, completion: nil)
         }
         else {
@@ -161,6 +172,11 @@ class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePick
         imagePickerController.dismiss(animated: true, completion: nil)
     }
     
+    func mediaPickerDidCancel(_ mediaPickerController: MPMediaPickerController) {
+        mediaPickerController.dismiss(animated: true, completion: nil)
+    }
+
+    
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let mediaType = info[UIImagePickerControllerMediaType] as! String
         if mediaType == "public.image" {
@@ -170,6 +186,14 @@ class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePick
             CoreDataManager.database.setTaskVideo(task: task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
         }
         imagePickerController.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
+            for item in mediaItemCollection.items{
+                let mediaURL = item.assetURL!
+                print("\(mediaURL)")
+                CoreDataManager.database.setTaskAudio(task: task, audioURLString: "\(mediaURL)")
+        }
     }
     
 

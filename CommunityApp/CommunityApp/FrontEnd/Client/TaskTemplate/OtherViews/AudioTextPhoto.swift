@@ -11,14 +11,14 @@ import AVFoundation
 import UIKit
 class AudioTextPhoto: TaskTemplate {
     
-    @IBOutlet weak var text: UILabel!
+    @IBOutlet weak var text: UITextView!
      @IBOutlet weak var image: UIImageView!
      var audioPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         text.text = super.task.getText()
-         image.image = super.task.getPhoto()
+        image.image = super.task.getPhoto()
         
         
         do {
@@ -46,9 +46,5 @@ class AudioTextPhoto: TaskTemplate {
         if let audioPlayer = audioPlayer {
             audioPlayer.pause()
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 }

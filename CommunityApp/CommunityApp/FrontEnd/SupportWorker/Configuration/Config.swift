@@ -11,12 +11,31 @@ import UIKit
 
 class Config: UIViewController {
     
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
+    let defaults = UserDefaults.standard
+    
+    enum keyValue {
+        static let username = "username"
+        static let password = "password"
+        static let email = "email"
+        
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        username.text = defaults.string(forKey: keyValue.username)
+        password.text = defaults.string(forKey: keyValue.password)
+        email.text = defaults.string(forKey: keyValue.email)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    @IBAction func deleteAllJobs(_ sender: Any) {
+          CoreDataManager.database.deletAllJobs()
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        defaults.set(username.text, forKey: keyValue.username)
+        defaults.set(password.text, forKey: keyValue.password)
+        defaults.set(email.text, forKey: keyValue.email)
+    }
 }

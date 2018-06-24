@@ -32,7 +32,8 @@ protocol CoreDataProtocol {
     
     // MARK: Create function
     func createJob(title: String) -> Job
-    func createTask(job: Job, title: String) -> Task
+    func createTask(job: Job) -> Task
+    // func createTask(job: Job, title: String) -> Task
     
     // MARK: Delete function
     func deleteJob(jobID: String)

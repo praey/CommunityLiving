@@ -42,8 +42,4 @@ class AudioPhoto: TaskTemplate {
             audioPlayer.pause()
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 }

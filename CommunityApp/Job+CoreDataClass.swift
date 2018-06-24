@@ -9,6 +9,8 @@
 
 import Foundation
 import CoreData
+import UIKit
+import UserNotifications
 
 
 public class Job: NSManagedObject {
@@ -22,4 +24,18 @@ public class Job: NSManagedObject {
         let tasks = self.has?.array as! [Task]
         return tasks
     }
+    
+    var thumbnail: UIImage? {
+        get {
+            for task in getTasks() {
+                if let smallPhoto =  task.thumbnail {
+                    return smallPhoto
+                }
+            }
+            return nil
+        }
+    }
+    
+    var notificationRequests: [UNNotificationRequest]?
+    
 }

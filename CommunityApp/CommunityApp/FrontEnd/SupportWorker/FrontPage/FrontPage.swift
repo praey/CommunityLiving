@@ -10,17 +10,30 @@ import Foundation
 import UIKit
 
 class FrontPage: UITableViewController {
-    static let segueID = "toFrontPage"
     
+    
+    @IBOutlet weak var supportWorker: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         CoreDataManager.database.fileSystemManager.createImageFolder()
         CoreDataManager.database.fileSystemManager.createVideoFolder()
         CoreDataManager.database.fileSystemManager.createAudioFolder()
+        
+        supportWorker.addTarget(self, action: #selector(FrontPage.toSignIn(_:event:)), for: UIControlEvents.touchDownRepeat)
+        
+       // supportWorker.addTarget(self, action: #selector(multipleTap(_:event:)), for: UIControlEvents.touchDownRepeat)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    @objc func toSignIn(_ sender: UIButton, event: UIEvent) {
+        let touch: UITouch = event.allTouches!.first!
+        if (touch.tapCount == 2) {
+            performSegue(withIdentifier: Constant.segueID.SignIn, sender: self)
+        } else {
+            print("the taps were not two")
+        }
+        
+        
+        
     }
     
     

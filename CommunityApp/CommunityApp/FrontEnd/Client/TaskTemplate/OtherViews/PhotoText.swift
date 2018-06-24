@@ -13,15 +13,12 @@ import UIKit
 class PhotoText: TaskTemplate {
     @IBOutlet weak var image: UIImageView!
     
-    @IBOutlet weak var text: UILabel!
+    @IBOutlet weak var text: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         image.image = super.task.getPhoto()
          text.text = super.task.getText()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+
 }

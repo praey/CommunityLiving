@@ -29,8 +29,5 @@ class Video: TaskTemplate {
         super.viewWillDisappear(animated)
         playerView.player?.pause()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+
 }

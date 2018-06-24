@@ -11,110 +11,105 @@ import UIKit
 import MobileCoreServices
 import MediaPlayer
 
-class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, MPMediaPickerControllerDelegate{
-    static let segueID = "toTaskManager"
+class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPickerControllerDelegate, UINavigationControllerDelegate {
+    
     
     private var imagePickerController: UIImagePickerController!
     private var mediaPickerController: MPMediaPickerController!
-    
     var task: Task!
-    //var job: Job!
-    
-    @IBOutlet weak var titleValue: UITextField!
-    @IBOutlet weak var taskSaveButton: UIButton!
-    
 
+
+    @IBOutlet weak var validVideo: UIImageView!
+    
+    @IBOutlet weak var validAudio: UIImageView!
+    
+    @IBOutlet weak var validPhoto: UIImageView!
+    @IBOutlet weak var validText: UIImageView!
     @IBOutlet weak var textValue: UITextField!
-    let cellReuseIdentifier = "cell"
     
-    var data: [String] = []
+    @IBOutlet weak var disablePhoto: UISwitch!
+    @IBOutlet weak var disableText: UISwitch!
+    @IBOutlet weak var disableTask: UISwitch!
+    
+    @IBOutlet weak var disableVideo: UISwitch!
+    @IBOutlet weak var disableAudio: UISwitch!
     
     
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Entered TaskManager")
-        taskSaveButton.addTarget(self, action: #selector(TaskManager.saveTask), for: .touchUpInside)
+
+        disableTask.isOn = task.disableTask
+        disableText.isOn = task.disableText
+        disableAudio.isOn = task.disableAudio
+        disablePhoto.isOn = task.disablePhoto
+        disableVideo.isOn = task.disableVideo
         
-        if let title = task.title {
-            titleValue.text = title
-            print("Task manager title wasn't set and it is mandatory that it has a value")
-        }
+        textValue.delegate = self
+        
+        
         if let text = task.text {
             textValue.text = text
+            validText.backgroundColor = UIColor.green
+        } else {
+            validText.backgroundColor = UIColor.red
         }
+
         if task.ifFileExists(filePath: .audio) {
-            
+            validAudio.backgroundColor = UIColor.green
+        } else {
+            validAudio.backgroundColor = UIColor.red
         }
         
         if task.ifFileExists(filePath: .photo) {
-            
+            validPhoto.backgroundColor = UIColor.green
+        } else {
+            validPhoto.backgroundColor = UIColor.red
         }
+        
         if task.ifFileExists(filePath: .video) {
-            
+            validVideo.backgroundColor = UIColor.green
+        } else {
+            validVideo.backgroundColor = UIColor.red
         }
-    }
-   
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toAudioTaker" {
+        if segue.identifier == Constant.segueID.AudioRecorder {
             let vc = segue.destination as! AudioRecorderManager
             // If there is a default job to set then it will set it
             vc.task = task
         }
     }
+
     
-//    func setTask(job: Job, task: Task?) {
-//        self.job = job
-//        self.task = task ?? CoreDataManager.database.createTask(job: self.job, title: "default task")
-//    }
-    
-    @objc func saveTask() {
-        setText()
-        self.navigationController?.popViewController(animated: true)
-    }
-  
-    
-    
-    func setText() {
-         task.text = textValue.text!
-       
-    }
-    
-    
-    
-    
-    
+    // MARK: Text functions
     @IBAction func textDisabled(_ sender: Any) {
         if let sender = sender as? UISwitch {
-            task.disableText = sender.isOn
-            print("text switched")
+            if sender.isOn {
+                // If there is valid text
+                if !(textValue.text?.isEmpty)! {
+                    validVideo.backgroundColor = UIColor.green
+                }
+            } else {
+                validVideo.backgroundColor = UIColor.red
+            }
         }
-        print("actived button")
-        
     }
+    // MARK: Photo functions
     
     @IBAction func photoDisabled(_ sender: Any) {
         if let sender = sender as? UISwitch {
-            task.disablePhoto = sender.isOn
+            if sender.isOn {
+                if task.ifFileExists(filePath: .photo) {
+                    validPhoto.backgroundColor = UIColor.green
+                }
+            } else {
+                validPhoto.backgroundColor = UIColor.red
+            }
         }
     }
-    
-    @IBAction func videoDisabled(_ sender: Any) {
-        if let sender = sender as? UISwitch {
-            task.disableVideo = sender.isOn
-        }
-    }
-    
-    @IBAction func audioDisabled(_ sender: Any) {
-        if let sender = sender as? UISwitch {
-            task.disableAudio = sender.isOn
-        }
-    }
-    
-  
     @IBAction func galleryPhoto(_ sender: Any) {
         imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -136,12 +131,53 @@ class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePick
         }
     }
     
+    
+    // MARK: Audio functions
+    
+    @IBAction func audioDisabled(_ sender: Any) {
+        if let sender = sender as? UISwitch {
+            if sender.isOn {
+                if task.ifFileExists(filePath: .audio) {
+                    validAudio.backgroundColor = UIColor.green
+                }
+            } else {
+                validAudio.backgroundColor = UIColor.red
+            }
+        }
+    }
+    
+  
     @IBAction func galleryAudio(_ sender: Any) {
         let mediaPickerController = MPMediaPickerController(mediaTypes: .any)
         mediaPickerController.delegate = self
         mediaPickerController.allowsPickingMultipleItems = false
         present(mediaPickerController, animated: true, completion: nil)
     }
+    
+    @objc func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
+        for item in mediaItemCollection.items{
+            let mediaURL = item.assetURL!
+            print("\(mediaURL)")
+            validAudio.backgroundColor = UIColor.green
+            CoreDataManager.database.setTaskAudio(task: task, audioURLString: "\(mediaURL)")
+        }
+    }
+    // MARK: Video functions
+    
+    @IBAction func videoDisabled(_ sender: Any) {
+        if let sender = sender as? UISwitch {
+            task.disableVideo = sender.isOn
+            
+            if sender.isOn {
+                if task.ifFileExists(filePath: .video) {
+                    validVideo.backgroundColor = UIColor.green
+                }
+            } else {
+                validVideo.backgroundColor = UIColor.red
+            }
+        }
+    }
+    
 
     @IBAction func takeVideo(_ sender: Any) {
         imagePickerController = UIImagePickerController()
@@ -180,38 +216,52 @@ class TaskManager: UIViewController, UINavigationControllerDelegate, UIImagePick
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let mediaType = info[UIImagePickerControllerMediaType] as! String
         if mediaType == "public.image" {
+            validPhoto.backgroundColor = UIColor.green
             CoreDataManager.database.setTaskPhoto(task: task, photo: info[UIImagePickerControllerOriginalImage] as! UIImage)
         }
         if mediaType == "public.movie" {
+            validVideo.backgroundColor = UIColor.green
             CoreDataManager.database.setTaskVideo(task: task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
         }
         imagePickerController.dismiss(animated: true, completion: nil)
     }
     
-    @objc func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
-            for item in mediaItemCollection.items{
-                let mediaURL = item.assetURL!
-                print("\(mediaURL)")
-                CoreDataManager.database.setTaskAudio(task: task, audioURLString: "\(mediaURL)")
-        }
-    }
-    
 
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        
+        task.disableTask = disableTask.isOn
+         task.disableText = disableText.isOn
+       task.disableAudio = disableAudio.isOn
+        task.disablePhoto = disablePhoto.isOn
+        task.disableVideo = disableVideo.isOn
+        
+        
+        
+        CoreDataManager.database.saveData()
+    }
 }
 
 extension TaskManager: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        print("called the text field delegate")
-        if let text = textField.text {
-            if text.isEmpty {
-               task.text = nil
-            } else {
-                task.text = text
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        if reason == .committed {
+            if (textField.text?.isEmpty)! {
+               validText.backgroundColor = UIColor.red
+             } else {
+            validText.backgroundColor = UIColor.green
             }
+            
         }
         
     }
+
 }
+
+
+
+
 
 
 

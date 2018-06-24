@@ -12,8 +12,7 @@ import UIKit
 
 class JobViewer: UIPageViewController
 {
-    static let segueID: String = "toJobViewer"
-    
+
     fileprivate var job: Job!
     fileprivate lazy var pages: [UIViewController] = {
         var controllers: [UIViewController] = []
@@ -56,7 +55,7 @@ class JobViewer: UIPageViewController
             case [.photo,.text]:
                 viewController = self.getViewController(withIdentifier: "PhotoText") as! PhotoText
                 print("Selected photo text")
-            case[.photo,.video]:
+           case[.photo,.video]:
                 print("Selected Photo and Video - not accessible")
             case [.photo,.audio,.video]:
                 print("Selected photo audio video - not accessible")
@@ -66,16 +65,15 @@ class JobViewer: UIPageViewController
                 print("failed to select type")
                 
             }
-            if let vc = viewController {
-                vc.setTask(task: task)
-                controllers.append(vc)
-                print("Added task")
-            }
-           
-            // If the task is disabled then skip it
-            // guard task.isDisabled.contains(.Task)  else {continue}
-           
             
+            guard let vc = viewController else {
+                continue
+            }
+            
+            vc.setTask(task: task)
+            controllers.append(vc)
+            print("Added task")
+
         }
         return controllers
     }()
@@ -134,29 +132,4 @@ extension JobViewer: UIPageViewControllerDataSource
 
 extension JobViewer: UIPageViewControllerDelegate { }
 
-/*
-class JobTemplate: UIPageViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        dataSource = self
-    }
-}
-
-// MARK: UIPageViewControllerDataSource
-
-extension JobTemplate: UIPageViewControllerDataSource {
-    
-    func pageViewController(pageViewController: UIPageViewController,
-                            viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        return nil
-    }
-    
-    func pageViewController(pageViewController: UIPageViewController,
-                            viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        return nil
-    }
-}
- */
 

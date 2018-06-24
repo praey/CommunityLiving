@@ -12,7 +12,7 @@ import UIKit
 
 class JobSelector: UITableViewController {
     var jobs: [Job] = []
-    let cellReuseIdentifier: String = "cell"
+    let cellReuseIdentifier: String = Constant.cellReuseIdentifier
     var tappedTableRow: Job!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +23,8 @@ class JobSelector: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
-    
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == JobViewer.segueID {
+        if segue.identifier == Constant.segueID.JobViewer {
             let vc = segue.destination as! JobViewer
             // If there is a default job to set then it will set it
             vc.setJob(job: tappedTableRow)
@@ -63,7 +55,7 @@ class JobSelector: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected \(indexPath.row)")
         tappedTableRow = jobs[indexPath.row]
-        performSegue(withIdentifier: JobViewer.segueID, sender: self)
+        performSegue(withIdentifier: Constant.segueID.JobViewer, sender: self)
     }
     
     

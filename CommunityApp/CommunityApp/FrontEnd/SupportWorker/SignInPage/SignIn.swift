@@ -17,6 +17,8 @@ class SignIn: UIViewController {
     @IBOutlet weak var emailValue: UITextField!
     
     @IBOutlet weak var signInButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Entered Sign IN")
@@ -27,7 +29,7 @@ class SignIn: UIViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == JobManager.segueID {
+        if identifier == Constant.segueID.JobManager {
             // if nameValue.text == Person.name && emailValue.text == Person.eamil {}
             print("equals job manager")
             return true
@@ -39,11 +41,9 @@ class SignIn: UIViewController {
     
     
     @objc func signIn() {
-        performSegue(withIdentifier: JobManager.segueID, sender: self)
+        performSegue(withIdentifier: Constant.segueID.JobManager, sender: self)
     }
     
-    @IBAction func deleteAllButton(_ sender: Any) {
-        CoreDataManager.database.deletAllJobs()
-    }
+
     
 }

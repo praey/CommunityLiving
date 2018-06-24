@@ -11,7 +11,7 @@ import UIKit
 import AVFoundation
 class AudioText: TaskTemplate {
     
-    @IBOutlet weak var text: UILabel!
+    @IBOutlet weak var text: UITextView!
     var audioPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {
@@ -44,8 +44,5 @@ class AudioText: TaskTemplate {
             audioPlayer.pause()
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+
 }

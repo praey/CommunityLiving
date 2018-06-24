@@ -11,7 +11,7 @@ import UIKit
 import AVFoundation
 class VideoText: TaskTemplate {
     
-    @IBOutlet weak var text: UILabel!
+    @IBOutlet weak var text: UITextView!
     
     @IBOutlet weak var playerView: PlayerView!
     

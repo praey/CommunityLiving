@@ -15,6 +15,8 @@ class AudioRecorderManager: UIViewController {
     var player: AVAudioPlayer?
     var recorderOptionsDic: [String : Any]?
     var volumeTimer: Timer!
+    @IBOutlet weak var volume: UILabel!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +45,9 @@ class AudioRecorderManager: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBOutlet weak var volume: UILabel!
-    
+  
     @IBAction func recordButtonTouchDown(_ sender: Any) {
-        recorder = try! AVAudioRecorder(url: URL(string: NSHomeDirectory() + "/Documents/Audios/" + task.audio!)!, settings: recorderOptionsDic!)
+        recorder = try! AVAudioRecorder(url: URL(string: task.getPath(.audio)!)!, settings: recorderOptionsDic!)
         if recorder != nil {
             recorder?.isMeteringEnabled = true
             recorder?.prepareToRecord()
@@ -69,7 +70,7 @@ class AudioRecorderManager: UIViewController {
     }
     
     @IBAction func playbutton(_ sender: Any) {
-        let pathString: String = NSHomeDirectory() + "/Documents/Audios/" + task.audio!
+        let pathString: String = task.getPath(.audio)!
         print(pathString)
         if CoreDataManager.database.resourceExists(URLString: pathString) {
             player = try! AVAudioPlayer(contentsOf: URL(string: pathString)!)

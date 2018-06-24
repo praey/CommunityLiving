@@ -12,7 +12,7 @@ import AVFoundation
 
 class VideoAudioText: TaskTemplate {
     
-    @IBOutlet weak var text: UILabel!
+    @IBOutlet weak var text: UITextView!
       var audioPlayer: AVAudioPlayer?
      @IBOutlet weak var playerView: PlayerView!
     
@@ -51,12 +51,6 @@ class VideoAudioText: TaskTemplate {
         }
         playerView.player?.pause()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-   
 
 }
 

@@ -14,10 +14,7 @@ import AVFoundation
 
 public class Task: NSManagedObject {
 
-    private let audioFilePath = NSHomeDirectory() + "/Documents/Audios/"
-    private let videoFilePath = NSHomeDirectory() + "/Documents/Videos/"
-    private let photoFilePath = NSHomeDirectory() + "/Documents/Images/"
-    
+   
     
     enum TaskType {
         case text
@@ -32,7 +29,7 @@ public class Task: NSManagedObject {
                 return getPhoto()
             } else if ifFileExists(filePath: .video) {
                 do {
-                    let url = URL(fileURLWithPath: self.videoFilePath + self.video!)
+                    let url = URL(fileURLWithPath: getPath(.video)!)
                     let asset = AVAsset.init(url: url)
                     let imgGenerator = AVAssetImageGenerator(asset: asset)
                 
@@ -51,6 +48,22 @@ public class Task: NSManagedObject {
     
  
     
+    func getPath(_ taskType: TaskType) -> String? {
+        
+        switch taskType {
+        case .video:
+            return NSHomeDirectory() + "/Documents/Videos/" + self.video!
+        case .photo:
+            return NSHomeDirectory() + "/Documents/Images/" + self.photo!
+        case .audio:
+            return NSHomeDirectory() + "/Documents/Audios/" + self.audio!
+        case .text:
+            print("there is no text path")
+            return nil
+        }
+        
+    }
+    
     func getTaskType() -> Set<TaskType> {
         
         var taskType = Set<TaskType>()
@@ -58,8 +71,7 @@ public class Task: NSManagedObject {
         guard self.disableTask == false else {
             return taskType
         }
-        
-        
+
         if !self.disableVideo && ifFileExists(filePath: .video) {
             taskType.insert(.video)
         }
@@ -87,58 +99,75 @@ public class Task: NSManagedObject {
 
         switch filePath {
             case .video:
-            path = videoFilePath + self.video!
+            path = getPath(.video)!
 
             case .audio:
-            path = audioFilePath + self.audio!
+            path = getPath(.audio)!
             case .photo:
-               path = photoFilePath + self.photo!
+               path = getPath(.photo)!
         case .text:
             print("there is no file path for text - the text is just saved in a string")
             return false
-            default:
-            print("file wasn't located - something went wrong")
-            return false
         }
         return CoreDataManager.database.resourceExists(URLString: path)
-
-
     }
-    
-    
-    
+
     func getAudio() -> URL {
-        let URLString = audioFilePath + self.audio!
+        let URLString = getPath(.audio)!
         let url = URL(fileURLWithPath: URLString)
         return url
     }
     
     func getPhoto() -> UIImage {
-        let photo = UIImage.init(contentsOfFile: photoFilePath + self.photo!)
+        let URLString = getPath(.photo)!
+        let photo = UIImage.init(contentsOfFile: URLString)
         return photo!
     }
     
     func getText() -> String {
-        return self.text ?? "default"
+        return self.text!
     }
     
     func getVideo() -> AVPlayer {
-        let URLString = videoFilePath + self.video!
+        let URLString = getPath(.video)!
         print(URLString)
         let url = URL(fileURLWithPath: URLString)
         let playerItem = AVPlayerItem(url: url)
         let player = AVPlayer(playerItem: playerItem)
         player.isMuted = true
-        // let player = AVPlayer(url: url)
-        
-//        let url = URL.init(string: NSHomeDirectory() + "/Documents/Videos/" + self.video!)
-//        print(url!)
-//        let player = AVPlayer(url: url!)
         return player
     }
     
     
+    func getTitles() -> String {
+        return ""
+    }
     
-    func startAnalytics() {}
-    func saveAnalytics() {}
+    func getAnalytics() -> String {
+        var csvText: String = ""
+        csvText += getTitles()
+        
+        if let analytics = self.analytics {
+            csvText += analytics.getAnalytics()
+        }
+        
+        // for analytics in self.analytics {
+        //    csvText += analytics.getAnalytics()
+        // }
+    
+        return csvText        
+    }
+    
+    func startAnalytics() {
+        // var array: [Analytics] = []
+        //analytic = Analytics()
+        
+        //array.append(<#T##newElement: Analytics##Analytics#>)
+        //self.analytics.add
+    }
+    func saveAnalytics() {
+        
+       // CoreDataManager.database.saveAnalytics(task: self, date: Date().n, duration: <#T##TimeInterval#>)
+        
+    }
 }

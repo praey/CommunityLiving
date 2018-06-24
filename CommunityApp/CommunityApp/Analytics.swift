@@ -9,11 +9,27 @@
 import Foundation
 
 class Analytics: NSObject {
-    var date: Date
-    var duration: TimeInterval
+    var startTime: Date = Date()
+    //var finishTime: Date
+    var duration: TimeInterval = 0.0
     
-    public init(dat: Date, dur: TimeInterval) {
-        date = dat
-        duration = dur
+    public init(date: Date) {
+        startTime = date
     }
+    
+    func saveAnalytics(newDate: Date) {
+       // duration = self.date.timeIntervalSince(newDate)
+   }
+    
+    func getAnalytics() -> String {
+        var csvText: String = ""
+        csvText += startTime.description
+        csvText += ","
+        csvText += duration.description
+        
+        return csvText
+    }
+    
 }
+
+

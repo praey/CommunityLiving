@@ -47,10 +47,14 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         return job
     }
     
-    func createTask(job: Job, title: String) -> Task {
+    
+    
+    
+    
+    func createTask(job: Job) -> Task {
         let id = getTaskID(job: job)
         let task = Task(context: context)
-        task.title = title
+        task.title = ""
         task.id = id
         task.jobid = job.id
         task.photo = "\(task.jobid! + task.id!).jpg"
@@ -92,7 +96,7 @@ class CoreDataManager: NSObject, CoreDataProtocol {
       
         
         
-        let newTask = createTask(job: job, title: "test task 2")
+        let newTask = createTask(job: job)
         // var path = Bundle.main.path(forResource: "audio.mp3", ofType: nil)!
         
         // setTaskAudio(task: newTask, audioURLString: path)
@@ -104,7 +108,7 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         
         
         
-        let task = createTask(job: job, title: "test task 1")
+        let task = createTask(job: job)
         
          path = "/Users/newuser/Desktop/testVideo.mp4"
         // let url = URL.init(fileURLWithPath: path!)
@@ -282,7 +286,7 @@ class CoreDataManager: NSObject, CoreDataProtocol {
     }
     
     func saveAnalytics(task: Task, date: Date, duration: TimeInterval){
-        task.analytics = Analytics(dat: date, dur: duration)
+        //task.analytics = Analytics(dat: date, dur: duration)
         saveData()
         print("Task analytics were saved")
     }

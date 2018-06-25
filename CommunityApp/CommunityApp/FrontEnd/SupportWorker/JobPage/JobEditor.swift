@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 import UserNotifications
-
+import EventKitUI
 class JobEditor: UIViewController  {
     
-    
+     private var calendarEventController: EKEventEditViewController!
     
     var addTask: UIBarButtonItem!
 
@@ -46,7 +46,7 @@ class JobEditor: UIViewController  {
         
         
        
-        saveJob.addTarget(self, action: #selector(JobEditor.recordJob), for: .touchUpInside)
+       // saveJob.addTarget(self, action: #selector(JobEditor.recordJob), for: .touchUpInside)
         
         
         
@@ -112,6 +112,26 @@ extension JobEditor: UITableViewDelegate, UITableViewDataSource {
         return "This should be the title of the Job \(job.title!)"
     }
     
+}
+
+
+
+extension JobEditor: EKEventEditViewDelegate {
+    func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
+        calendarEventController.dismiss(animated: true, completion: nil)
+    }
+    
+   // func eventViewController(_ controller: EKEventViewController, didCompleteWith action: EKEventViewAction) {
+    //    calendarEventController.dismiss(animated: true, completion: nil)
+  //  }
+    
+    @IBAction func createEvent(_ sender: Any) {
+        calendarEventController = EKEventEditViewController()
+        calendarEventController.delegate = self as? UINavigationControllerDelegate
+      //  calendarEventController.allowsEditing = true
+       //calendarEventController. calendarEventController.allowsCalendarPreview = true
+        present(calendarEventController, animated: true, completion: nil)
+    }
 }
 
 

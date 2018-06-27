@@ -13,9 +13,9 @@ class SignIn: UIViewController {
     
     
     @IBOutlet weak var nameValue: UITextField!
-    
-    @IBOutlet weak var emailValue: UITextField!
-    
+  
+  
+    @IBOutlet weak var passwordValue: UITextField!
     @IBOutlet weak var signInButton: UIButton!
     
     
@@ -23,6 +23,11 @@ class SignIn: UIViewController {
         super.viewDidLoad()
         print("Entered Sign IN")
         signInButton.addTarget(self, action: #selector(SignIn.signIn), for: .touchUpInside)
+        nameValue.text = UserDefaults.standard.string(forKey: Config.keyValue.username)
+        passwordValue.text = UserDefaults.standard.string(forKey: Config.keyValue.password)
+        
+        
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -30,9 +35,10 @@ class SignIn: UIViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == Constant.segueID.JobManager {
-            // if nameValue.text == Person.name && emailValue.text == Person.eamil {}
-            print("equals job manager")
-            return true
+            // if Config.validateLogin(username: self.nameValue.text!, password: self.passwordValue.text!) {
+                return true
+            
+            print("not valid credentials")
         }
         print("not to jobManager")
         // Show text to the user about how they didn't enter in the right name and password

@@ -17,8 +17,8 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
     var ubiquityURL: URL?
     let filemanager = FileManager.default
     
-    let name = "" //UserDefaults
-    let email = ""
+    let name = UserDefaults.standard.string(forKey: Config.keyValue.username)
+    let email = UserDefaults.standard.string(forKey: Config.keyValue.email)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
         
         
         
-        ubiquityURL = ubiquityURL?.appendingPathComponent("Documents/+\(self.name).csv")
+        ubiquityURL = ubiquityURL!.appendingPathComponent("Documents/+\(self.name).csv")
         document = MyDocument(fileURL: ubiquityURL!)
     }
     
@@ -82,7 +82,7 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
             let emailController = MFMailComposeViewController()
             
             emailController.mailComposeDelegate = self
-            emailController.setToRecipients([self.email])
+            emailController.setToRecipients([self.email!])
             emailController.setSubject("Comunity Living")
             if let emailURL = emailURL {
                 emailController.setMessageBody("Link: " + (emailURL.absoluteString), isHTML: false)

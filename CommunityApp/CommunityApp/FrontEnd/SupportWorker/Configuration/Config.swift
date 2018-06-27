@@ -25,9 +25,29 @@ class Config: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        username.text = defaults.string(forKey: keyValue.username)
-        password.text = defaults.string(forKey: keyValue.password)
-        email.text = defaults.string(forKey: keyValue.email)
+        username.text = getName()
+        password.text = getPassword()
+        email.text = getEmail()
+    }
+    
+    func validateLogin(username: String, password: String) -> Bool {
+        if username == getName() && password == getPassword() {
+            return true
+        }
+        return false
+    }
+    
+    
+    func getPassword() -> String {
+        return defaults.string(forKey: keyValue.password) ?? "defaultPassword"
+    }
+    
+    func getName() -> String {
+        return defaults.string(forKey: keyValue.username) ?? "defaultUserName"
+    }
+    
+    func getEmail() -> String {
+        return defaults.string(forKey: keyValue.email) ?? "defaultEmail"
     }
     
     @IBAction func deleteAllJobs(_ sender: Any) {

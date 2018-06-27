@@ -12,21 +12,19 @@ import UserNotifications
 import EventKitUI
 class JobEditor: UIViewController  {
     
-     private var calendarEventController: EKEventEditViewController!
+     private var calendarEventController: EKEventEditViewController = EKEventEditViewController()
+    private var eventStore: EKEventStore = EKEventStore()
     
     var addTask: UIBarButtonItem!
 
     @IBOutlet weak var disableJob: UISwitch!
     var job: Job!
-    @IBOutlet weak var saveJob: UIButton!
 
-    
     let cellReuseIdentifier = Constant.cellReuseIdentifier
    
     
     @IBOutlet weak var taskTableView: UITableView!
-    
-    
+
     @IBOutlet weak var titleValue: UITextField!
 
     var tappedTableRow: Task!
@@ -39,11 +37,12 @@ class JobEditor: UIViewController  {
         addTask = UIBarButtonItem.init(title: "Add Task", style: .plain, target: self, action: #selector(JobEditor.createTask))
         self.navigationItem.rightBarButtonItem = addTask
         
+        calendarEventController.editViewDelegate = self
         taskTableView.delegate = self
         taskTableView.dataSource = self
        
         taskTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-        
+        calendarEventController.eventStore = self.eventStore
         
        
        // saveJob.addTarget(self, action: #selector(JobEditor.recordJob), for: .touchUpInside)
@@ -121,16 +120,34 @@ extension JobEditor: EKEventEditViewDelegate {
         calendarEventController.dismiss(animated: true, completion: nil)
     }
     
-   // func eventViewController(_ controller: EKEventViewController, didCompleteWith action: EKEventViewAction) {
-    //    calendarEventController.dismiss(animated: true, completion: nil)
-  //  }
-    
     @IBAction func createEvent(_ sender: Any) {
-        calendarEventController = EKEventEditViewController()
-        calendarEventController.delegate = self as? UINavigationControllerDelegate
-      //  calendarEventController.allowsEditing = true
-       //calendarEventController. calendarEventController.allowsCalendarPreview = true
-        present(calendarEventController, animated: true, completion: nil)
+
+            eventStore.requestAccess(to: EKEntityType.event, completion: {
+                (accessGranted: Bool, error: Error?) in
+                
+                if accessGranted == true {
+                    DispatchQueue.main.async(execute: {
+                    self.createCalendarEvent()
+                
+                    })
+                } else {
+                    DispatchQueue.main.async(execute: {
+                      print("user doesn't have access to Calendar")
+                    })
+                }
+            })
+
+    }
+    
+    
+    func editCalendarEvent(event: EKEvent) {
+        self.calendarEventController.event = event
+        self.present(self.calendarEventController, animated: true, completion: nil)
+     
+    }
+    
+    func createCalendarEvent() {
+        self.present(self.calendarEventController, animated: true, completion: nil)
     }
 }
 

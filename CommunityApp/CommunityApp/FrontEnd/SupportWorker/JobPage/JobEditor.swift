@@ -9,10 +9,11 @@
 import Foundation
 import UIKit
 import UserNotifications
-
+import EventKitUI
 class JobEditor: UIViewController  {
     
-    
+     private var calendarEventController: EKEventEditViewController = EKEventEditViewController()
+    private var eventStore: EKEventStore = EKEventStore()
     
     var addTask: UIBarButtonItem!
 
@@ -23,8 +24,7 @@ class JobEditor: UIViewController  {
    
     
     @IBOutlet weak var taskTableView: UITableView!
-    
-    
+
     @IBOutlet weak var titleValue: UITextField!
 
     var tappedTableRow: Task!
@@ -37,11 +37,12 @@ class JobEditor: UIViewController  {
         addTask = UIBarButtonItem.init(title: "Add Task", style: .plain, target: self, action: #selector(JobEditor.createTask))
         self.navigationItem.rightBarButtonItem = addTask
         
+        calendarEventController.editViewDelegate = self
         taskTableView.delegate = self
         taskTableView.dataSource = self
        
         taskTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-        
+        calendarEventController.eventStore = self.eventStore
         
        
   
@@ -108,6 +109,44 @@ extension JobEditor: UITableViewDelegate, UITableViewDataSource {
         return "This should be the title of the Job \(job.title!)"
     }
     
+}
+
+
+
+extension JobEditor: EKEventEditViewDelegate {
+    func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
+        calendarEventController.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func createEvent(_ sender: Any) {
+
+            eventStore.requestAccess(to: EKEntityType.event, completion: {
+                (accessGranted: Bool, error: Error?) in
+                
+                if accessGranted == true {
+                    DispatchQueue.main.async(execute: {
+                    self.createCalendarEvent()
+                
+                    })
+                } else {
+                    DispatchQueue.main.async(execute: {
+                      print("user doesn't have access to Calendar")
+                    })
+                }
+            })
+
+    }
+    
+    
+    func editCalendarEvent(event: EKEvent) {
+        self.calendarEventController.event = event
+        self.present(self.calendarEventController, animated: true, completion: nil)
+     
+    }
+    
+    func createCalendarEvent() {
+        self.present(self.calendarEventController, animated: true, completion: nil)
+    }
 }
 
 

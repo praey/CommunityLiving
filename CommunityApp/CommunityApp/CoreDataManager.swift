@@ -42,25 +42,21 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         let job = Job(context: context)
         job.id = id
         job.title = title
+        job.disabelJob = false
         saveData()
         print("Job is Saved!")
         return job
     }
-    
-    
-    
-    
     
     func createTask(job: Job) -> Task {
         let id = getTaskID(job: job)
         let task = Task(context: context)
         task.title = ""
         task.id = id
-        task.jobid = job.id
-        task.photo = "\(task.jobid! + task.id!).jpg"
-        task.video = "\(task.jobid! + task.id!).mp4"
-        task.audio = "\(task.jobid! + task.id!).aac"
-        task.disableTask = true
+        task.photo = "\(job.id! + task.id!).jpg"
+        task.video = "\(job.id! + task.id!).mp4"
+        task.audio = "\(job.id! + task.id!).aac"
+        task.disableTask = false
         task.disableText = true
         task.disableAudio = true
         task.disablePhoto = true
@@ -84,11 +80,6 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         context.delete(task)
         saveData()
     }
-    
-    func ifExists(filePath: String) -> Bool {
-        return true
-    }
-    
     
     func createTestData() -> [Job] {
         var jobs = [Job]()
@@ -208,11 +199,6 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         } else {
             return "1"
         }
-//        }
-//        let lastID = Int(jobs.last?.id) ?? 0
-//        // Int((jobs.last?.id)!)
-//        let id = (lastID + 1)
-//        return String(id)
     }
     
     func getTaskID(job: Job) -> String {
@@ -285,8 +271,19 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         print("Task audio was set")
     }
     
-    func saveAnalytics(task: Task, date: Date, duration: TimeInterval){
-        //task.analytics = Analytics(dat: date, dur: duration)
+    func startAnalytics(task: Task, description: String) {
+        let analytics = Analytics(context: context)
+        analytics.startAnalytics(date: Date())
+        task.addToHas(analytics)
+        saveData()
+        print("Analytics started...")
+    }
+    
+    func saveAnalytics(task: Task, taskDescription: String){
+        let analyticsArray = task.has?.array as! [Analytics]
+        if analyticsArray.last?.isStarted == true {
+            analyticsArray.last?.saveAnalytics(newDate: Date(), description: taskDescription)
+        }
         saveData()
         print("Task analytics were saved")
     }

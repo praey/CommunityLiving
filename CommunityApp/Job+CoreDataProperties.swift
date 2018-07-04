@@ -2,7 +2,7 @@
 //  Job+CoreDataProperties.swift
 //  CommunityApp
 //
-//  Created by Tianyuan Zhang on 2018/5/30.
+//  Created by Tianyuan Zhang on 2018/7/4.
 //  Copyright © 2018年 Javon Luke. All rights reserved.
 //
 //
@@ -18,10 +18,9 @@ extension Job {
     }
 
     @NSManaged public var date: String?
-    @NSManaged public var disabelJob: String?
+    @NSManaged public var disabelJob: Bool
     @NSManaged public var id: String?
     @NSManaged public var title: String?
-    @NSManaged public var taskIdCounter: Int32
     @NSManaged public var has: NSOrderedSet?
 
 }

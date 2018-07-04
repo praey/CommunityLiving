@@ -18,9 +18,7 @@ class JobEditor: UIViewController  {
 
     @IBOutlet weak var disableJob: UISwitch!
     var job: Job!
-    @IBOutlet weak var saveJob: UIButton!
 
-    
     let cellReuseIdentifier = Constant.cellReuseIdentifier
    
     
@@ -46,9 +44,7 @@ class JobEditor: UIViewController  {
         
         
        
-        saveJob.addTarget(self, action: #selector(JobEditor.recordJob), for: .touchUpInside)
-        
-        
+  
         
         if let title = job.title {
             titleValue.text = title

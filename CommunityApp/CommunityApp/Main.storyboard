@@ -48,13 +48,13 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FRONT PAGE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fI2-I4-1b1">
-                                    <rect key="frame" x="8" y="8" width="752" height="20.5"/>
+                                    <rect key="frame" x="8" y="8" width="584" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Mu-oH-C2x">
-                                    <rect key="frame" x="8" y="296" width="752" height="370"/>
+                                    <rect key="frame" x="8" y="296" width="584" height="13"/>
                                     <state key="normal" title="Client"/>
                                     <connections>
                                         <segue destination="eBY-CR-erI" kind="show" id="kza-93-sag"/>

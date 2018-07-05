@@ -144,28 +144,25 @@ public class Task: NSManagedObject {
         return ""
     }
     
-    func getAnalytics() -> String {
-        var csvText: String = ""
-        csvText += getTitles()
-        
-        if let analytics = self.analytics {
-            csvText += analytics.getAnalytics()
-        }
-        
-        // for analytics in self.analytics {
-        //    csvText += analytics.getAnalytics()
-        // }
+//    func getAnalytics() -> String {
+//        var csvText: String = ""
+//        csvText += getTitles()
+//        
+//        if let analytics = self.analytics {
+//            csvText += analytics.getAnalytics()
+//        }
+//        
+//        // for analytics in self.analytics {
+//        //    csvText += analytics.getAnalytics()
+//        // }
+//    
+//        return csvText        
+//    }
     
-        return csvText        
+    func startAnalytics(description: String) {
+//        let analytics = Analytics(context: <#T##NSManagedObjectContext#>)
     }
     
-    func startAnalytics() {
-        // var array: [Analytics] = []
-        //analytic = Analytics()
-        
-        //array.append(<#T##newElement: Analytics##Analytics#>)
-        //self.analytics.add
-    }
     func saveAnalytics() {
         
        // CoreDataManager.database.saveAnalytics(task: self, date: Date().n, duration: <#T##TimeInterval#>)

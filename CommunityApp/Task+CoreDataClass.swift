@@ -27,7 +27,9 @@ public class Task: NSManagedObject {
         get {
             if ifFileExists(filePath: .photo) {
                 return getPhoto()
-            } else if ifFileExists(filePath: .video) {
+           }
+            
+            /*else if ifFileExists(filePath: .video) {
                 do {
                     let url = URL(fileURLWithPath: getPath(.video)!)
                     let asset = AVAsset.init(url: url)
@@ -40,7 +42,7 @@ public class Task: NSManagedObject {
                     print("Error with imageGenerator for thumbanil")
                 }
                
-            }
+            }*/
             print("had to print a black page")
             return nil
         }

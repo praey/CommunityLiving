@@ -73,12 +73,31 @@ extension JobManager : UICollectionViewDelegate, UICollectionViewDataSource {
         
         let cell: UICollectionViewCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
         
+        
         // This is where the descripion of the UICollectionView
-        //cell.backgroundColor = UIColor.black
+        // Attempt to show a picture in the box
         let image: UIImage? = jobs[indexPath.row].thumbnail
-        let imageView = UIImageView.init(image: image)
-        cell.contentView.addSubview(imageView)
+        let title: String? = jobs[indexPath.row].title
+        if let image = image {
+            let imageView = UIImageView.init(image: image)
+            imageView.frame = cell.contentView.bounds
+            cell.contentView.addSubview(imageView)
 
+        } else if let title = title {
+            let textView = UITextView.init()
+            textView.text = title
+            textView.frame = cell.contentView.bounds
+            textView.isEditable = false
+            textView.isMultipleTouchEnabled = true
+            //textView.touc
+            //cell.contentView.addSubview(textView)
+        } else {
+            let textView = UITextView.init()
+            textView.text = "There is no title or picture"
+            textView.frame = cell.contentView.bounds
+            //cell.contentView.addSubview(textView)
+        }
+        cell.backgroundColor = UIColor.blue
         return cell
     }
     

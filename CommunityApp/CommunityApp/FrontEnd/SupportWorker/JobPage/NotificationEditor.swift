@@ -5,13 +5,13 @@
 //  Created by Javon Luke on 2018-06-23.
 //  Copyright © 2018 Javon Luke. All rights reserved.
 //
-/*
+
 import Foundation
 import UIKit
 import UserNotifications
 class NotificationEditor: UIViewController {
     
-    var jobID: String!
+    var job: Job!
     
     
     @IBOutlet weak var notificationTableView: UITableView!
@@ -32,9 +32,7 @@ class NotificationEditor: UIViewController {
         case everyWeekend
         // EveryDay, EveryWeek, Every 2 Weeks, EveryWeekday, EveryWeekend, Every Sunday, Every Monday, Every, Tuesday, Every Wednesday, Every Thursday, Every Friday, Every Saturday
     }
-    
- 
-    
+
     struct Notification {
         struct Action {
             static let dismiss = "dismiss"
@@ -54,24 +52,23 @@ class NotificationEditor: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addNotification.addTarget(self, action: #selector(NotificationEditor.saveNotification), for: .touchUpInside)
+        
+            // UNUserNotificationCenter.current().delegate = self
+        // UNUserNotification.curr = self
+        
        //  configueUserNotificationCenter()
     }
     
-    private func notificationCategory() -> String {
-        return jobID
-    }
-    
-  
-    
-
-    
-    
+   // private func notificationCategory() -> String {
+    //    return jobID
+   // }
     
     private func createNotificationRequest(notificationContent: UNMutableNotificationContent, date: DateComponents, repeats: Bool) -> UNNotificationRequest {
         
-        let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: repeats)
-        //UNTimeIntervalNotificationTrigger(timeInterval: 10.0 , repeats: false)
-        let notificationIdentifier = Notification.Category.job
+        // let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: repeats)
+        let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 10.0 , repeats: false)
+        let notificationIdentifier = "showJob"
         let request = UNNotificationRequest(identifier: notificationIdentifier, content: notificationContent, trigger: notificationTrigger)
         return request
     }
@@ -88,25 +85,40 @@ class NotificationEditor: UIViewController {
         let notificationContent = UNMutableNotificationContent()
         notificationContent.title = title
         notificationContent.body = body
+        notificationContent.userInfo = ["job" : self.job.id! ]
         return notificationContent
+    }
+    
+    func setJob(job: Job!) {
+        self.job = job
     }
     
     
     private func scheduleLocalNotification() {
-        /*  let notificationContent = createNotificationContent(title: notificationTitle.text, subTitle: notificationSubTitle.text, body: notificationBody.text)
-         let notificationRequest = createJobNotificationRequest(notificationContent: notificationContent, date: notificationDate, repeats: notificationDateRepeats)
+        let notificationContent = createNotificationContent(title: "test title", body: "test body")
+        let notificationRequest = createNotificationRequest(notificationContent: notificationContent, date: DateComponents(), repeats: false)
          UNUserNotificationCenter.current().add(notificationRequest) { (error) in
          if error != nil {
          print("Cannot add this request")
          }
          }
-         */
         
+        
+        
+       /*
+        let notificationContent = createNotificationContent(title: notificationTitle.text, subTitle: notificationSubTitle.text, body: notificationBody.text)
+        let notificationRequest = createJobNotificationRequest(notificationContent: notificationContent, date: notificationDate, repeats: notificationDateRepeats)
+        UNUserNotificationCenter.current().add(notificationRequest) { (error) in
+            if error != nil {
+                print("Cannot add this request")
+            }
+        }
+     */
     }
     
     
     
-    private func saveNotification() {
+    @objc private func saveNotification() {
         
         UNUserNotificationCenter.current().getNotificationSettings(completionHandler: {
             (notificationSettings) in
@@ -127,7 +139,8 @@ class NotificationEditor: UIViewController {
                     self.scheduleLocalNotification()
                 }
                 )
-                
+            default:
+                print("notification setting wasn't selected")
             }
         })}
     
@@ -145,35 +158,6 @@ class NotificationEditor: UIViewController {
 
 
 
-extension NotificationEditor: UNUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        
-        completionHandler([.alert])
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        switch response.actionIdentifier {
-        case Notification.Action.showJob:
-            let nav = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController
-            let mainViewController = nav?.topViewController as! FrontPage
-            
-            mainViewController.performSegue(withIdentifier: Constant.segueID.JobManager, sender: self)
-            print("set for job")
-        case Notification.Action.dismiss:
-            print("dismissed")
-        default:
-            print("default")
-            
-        }
-        completionHandler()
-        
-    }
-    
-    
-    
-}
-
 
 extension NotificationEditor {
     
@@ -181,7 +165,7 @@ extension NotificationEditor {
     
     
 }
- */
+ 
 
 
 

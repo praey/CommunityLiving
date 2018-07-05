@@ -16,6 +16,7 @@ class Constant {
     
     enum segueID {
         static let JobViewer: String = "toJobViewer"
+        static let JobSelector: String = "toJobSelector"
         static let TaskManager: String = "toTaskManager"
         static let JobEditor = "toJobEditor"
         static let JobManager = "toJobManager"
@@ -24,6 +25,7 @@ class Constant {
         static let SignIn = "toSignIn"
         static let AudioRecorder = "toAudioTaker"
         static let NotificationEditor = "toNotificationEditor"
+        static let NotificationController = "toNotificationController"
     }
     
     

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class FrontPage: UITableViewController {
+class FrontPage: UIViewController {
     
     
     @IBOutlet weak var supportWorker: UIButton!

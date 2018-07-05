@@ -8,15 +8,18 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    //var notificationCenterDelegate: UNUserNotificationCenterDelegate
+    // UNUserNotificationCenter.current().delegate = self
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UNUserNotificationCenter.current().delegate = self
         return true
     }
 
@@ -89,5 +92,80 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("Action Identifier: ")
+        print(response.notification.request.identifier)
+        switch response.notification.request.identifier {
+        case "showJob":
+            
+            
+            //Every viewcontroller needs to hbe instantiated by a storyboard
+            
+            let nav = self.window?.rootViewController as? UINavigationController
+            if let nav = nav {
+            nav.popToRootViewController(animated: true)
+            }
+            if ((nav?.topViewController as? FrontPage) != nil) {
+                
+                let jobSelector = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "JobSelector" ) as! JobSelector
+                
+                
+                nav?.pushViewController(jobSelector, animated: true)
+                
+                    //.topViewController?.performSegue(withIdentifier: Constant.segueID.JobSelector, sender: self)
+                
+                
+                let jobid = response.notification.request.content.userInfo["job"] as? String
+                let job = CoreDataManager.database.getJob(id: jobid!)!
+                
+                // let jobSelector = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "JobSelector" ) as? JobSelector
+                //jobSelector?.jobs
+                
+                
+           // nav?.pushViewController(jobSelector!, animated: true)
+                
+                var jobViewer = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "JobViewer" ) as! JobViewer
+                jobViewer.setJob(job: job)
+               nav?.pushViewController(jobViewer, animated: true)
+                
+                //.topViewController?.performSegue(withIdentifier: Constant.segueID.JobSelector, sender: self)
+                
+                if ((nav?.topViewController as? JobSelector) != nil) {
+                     nav?.topViewController?.performSegue(withIdentifier: Constant.segueID.JobViewer, sender: self)
+                }
+                
+                //let jobSelector = nav?.topViewController as? JobSelector
+               
+                
+                //jobSelector?.tappedTableRow = job
+                    
+               //     UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "JobViewer" )
+               
+               
+                //(nav?.topViewController as? JobViewer)?.setJob(job: job)
+                // I need to find out where I save the job ID
+            }
+            
+           // nav?.performSegue(withIdentifier: Constant.segueID.SignIn, sender: self)
+            print("set for job")
+        case "dismiss":
+            print("dismissed")
+        default:
+            print("default")
+            
+        }
+        completionHandler()
+        
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        
+        completionHandler([.alert])
+    }
+    
 }
 

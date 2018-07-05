@@ -12,11 +12,11 @@ import UserNotifications
 
 
 
-/*
+
 class NotificationController: UITableViewController {
    
     let cellReuseIdentifier = Constant.cellReuseIdentifier
-    let job: Job!
+    var job : Job!
     var addNotification: UIBarButtonItem!
     let notificationCenter = UNUserNotificationCenter.current()
     var notificationRequests: [UNNotificationRequest]!
@@ -29,26 +29,20 @@ class NotificationController: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
         addNotification = UIBarButtonItem(title: "Add Notification", style: .plain, target: self, action: #selector(NotificationController.createNotification))
-        
+         self.navigationItem.rightBarButtonItem = addNotification
         configueUserNotificationCenter()
     }
     
     @objc func createNotification() {
-        
         performSegue(withIdentifier: Constant.segueID.NotificationEditor, sender: self)
     }
     
+    func setJob(job: Job!) {
+        self.job = job
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
-        let group = DispatchGroup()
-        group.enter()
-        
-        notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
-            
-            DispatchQueue.global().async {
-                self.notificationRequests = requests
-                group.leave()
-            }})
-        group.wait()
+        self.notificationRequests = job.notificationRequests
         tableView.reloadData()
         
     }
@@ -56,19 +50,20 @@ class NotificationController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constant.segueID.NotificationEditor {
             let vc = segue.destination as! NotificationEditor
-            vc.jobID = self.job.id!
+            vc.setJob(job: self.job)
+            
         }
     }
     
     
     private func configueUserNotificationCenter() {
         
-        UNUserNotificationCenter.current().delegate = self
+       // UNUserNotificationCenter.current().delegate = self
         
-        let actionShowJob = UNNotificationAction(identifier: Notification.Action.showJob, title: "Show Job", options: [.foreground])
-        let actionDismiss = UNNotificationAction(identifier: Notification.Action.dismiss, title: "Dismiss", options: [.destructive])
+        let actionShowJob = UNNotificationAction(identifier: "showjob", title: "Show Job", options: [.foreground])
+        //let actionDismiss = UNNotificationAction(identifier: Notification.Action.dismiss, title: "Dismiss", options: [.destructive])
         
-        let category = UNNotificationCategory(identifier: Notification.Category.job, actions: [actionShowJob,actionDismiss], intentIdentifiers: [], options: [])
+        let category = UNNotificationCategory(identifier: "job", actions: [actionShowJob], intentIdentifiers: [], options: [])
         
         
         // Register category
@@ -82,9 +77,14 @@ class NotificationController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Notifications Pending: ")
-        // var pendingCount: Int
-        return notificationRequests.count
+        // // var pendingCount: Int
+        if let request = notificationRequests {
+            print("Notifications Pending: \(request.count)")
+            
+        
+            return request.count
+        }
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,7 +92,7 @@ class NotificationController: UITableViewController {
         let cell: UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
         
         let title = notificationRequests[indexPath.row].content.title
-        
+        print("Title for cell: \(title)")
         cell.textLabel?.text = title
   
         return cell
@@ -104,8 +104,10 @@ class NotificationController: UITableViewController {
         performSegue(withIdentifier: Constant.segueID.NotificationEditor, sender: self)
     }
 }
+
+
  
- */
+
     
     
     

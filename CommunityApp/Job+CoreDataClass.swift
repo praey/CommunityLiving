@@ -14,6 +14,8 @@ import UserNotifications
 
 
 public class Job: NSManagedObject {
+    
+    
     func getTask(row: Int) -> Task {
         let task = self.getTasks()[row]
         return task
@@ -36,6 +38,17 @@ public class Job: NSManagedObject {
         }
     }
     
-    var notificationRequests: [UNNotificationRequest]?
+    var notificationRequests: [UNNotificationRequest]? {
+        get {
+            var notificationRequest: [UNNotificationRequest]?
+            UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
+                notificationRequest = requests
+            })
+            if let requests = notificationRequest {
+                notificationRequest = requests.filter {$0.identifier == self.id!}
+            }
+            return notificationRequest
+        }
+    }
     
 }

@@ -32,7 +32,7 @@ class JobEditor: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Entered JobEditor")
-        // disableJob.isOn = job.disableJob
+        disableJob.isOn = false//job.disableJob
         
         addTask = UIBarButtonItem.init(title: "Add Task", style: .plain, target: self, action: #selector(JobEditor.createTask))
         self.navigationItem.rightBarButtonItem = addTask
@@ -79,6 +79,9 @@ class JobEditor: UIViewController  {
         if segue.identifier == Constant.segueID.TaskManager {
             let vc = segue.destination as! TaskManager
             vc.task = tappedTableRow
+        } else if segue.identifier == Constant.segueID.NotificationController {
+            let vc = segue.destination as! NotificationController
+            vc.setJob(job: self.job)
         }
     }
 }
@@ -94,7 +97,7 @@ extension JobEditor: UITableViewDelegate, UITableViewDataSource {
         let cell: UITableViewCell = self.taskTableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
         
         // This is where the descripion of the UItableView
-        // cell.backgroundColor = UIColor.black
+        cell.backgroundColor = UIColor.orange
         
         cell.detailTextLabel?.text = job.getTask(row: indexPath.row).title ?? "NO TITLE"
         

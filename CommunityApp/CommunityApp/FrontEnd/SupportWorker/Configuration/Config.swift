@@ -14,6 +14,7 @@ class Config: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var pageControllerSetting: UITextView!
     let defaults = UserDefaults.standard
     
     enum keyValue {

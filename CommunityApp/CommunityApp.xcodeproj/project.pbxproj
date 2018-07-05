@@ -45,7 +45,6 @@
 		4A5789FB20BF215F00677851 /* Page4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5789FA20BF215F00677851 /* Page4.swift */; };
 		4A60206D20D2B69500D6ABFC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A60206C20D2B69500D6ABFC /* AudioToolbox.framework */; };
 		4A60206F20D2CFAD00D6ABFC /* AudioRecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A60206E20D2CFAD00D6ABFC /* AudioRecorderManager.swift */; };
-		CD1904D220DC14C800D2C74A /* Tian.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1904D120DC14C800D2C74A /* Tian.swift */; };
 		CD1904D620DCB75000D2C74A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1904D520DCB75000D2C74A /* Constants.swift */; };
 		CD1904D920DCB7F500D2C74A /* JobSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1904D820DCB7F500D2C74A /* JobSelectorCell.swift */; };
 		CD88838C20DE7B7600E4AED3 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88838B20DE7B7600E4AED3 /* NotificationController.swift */; };
@@ -118,7 +117,6 @@
 		4A5789FA20BF215F00677851 /* Page4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page4.swift; sourceTree = "<group>"; };
 		4A60206C20D2B69500D6ABFC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4A60206E20D2CFAD00D6ABFC /* AudioRecorderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderManager.swift; sourceTree = "<group>"; };
-		CD1904D120DC14C800D2C74A /* Tian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tian.swift; sourceTree = "<group>"; };
 		CD1904D520DCB75000D2C74A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = SOURCE_ROOT; };
 		CD1904D820DCB7F500D2C74A /* JobSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSelectorCell.swift; sourceTree = "<group>"; };
 		CD88838B20DE7B7600E4AED3 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
@@ -356,7 +354,6 @@
 		CDFC1338209363C0004A997E = {
 			isa = PBXGroup;
 			children = (
-				CD1904D120DC14C800D2C74A /* Tian.swift */,
 				4A0552DE20BE7AED00193E5C /* Person+CoreDataClass.swift */,
 				4A0552DF20BE7AED00193E5C /* Person+CoreDataProperties.swift */,
 				4A0552E220BE94C400193E5C /* Job+CoreDataClass.swift */,
@@ -606,7 +603,6 @@
 				4A0552A820B5E75600193E5C /* CoreDataManager.swift in Sources */,
 				4A0552CE20B5EB7400193E5C /* Page2.swift in Sources */,
 				CD1904D920DCB7F500D2C74A /* JobSelectorCell.swift in Sources */,
-				CD1904D220DC14C800D2C74A /* Tian.swift in Sources */,
 				4A16056B20C1C5A5000BFC95 /* JobViewer.swift in Sources */,
 				4A16057120C1C5A5000BFC95 /* VideoAudioText.swift in Sources */,
 			);

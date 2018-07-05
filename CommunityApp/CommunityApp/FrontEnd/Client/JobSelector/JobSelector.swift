@@ -28,6 +28,7 @@ class JobSelector: UITableViewController {
             let vc = segue.destination as! JobViewer
             // If there is a default job to set then it will set it
             vc.setJob(job: tappedTableRow)
+           
         }
     }
     

@@ -88,7 +88,7 @@ class JobViewer: UIPageViewController
         super.viewDidLoad()
         self.dataSource = self
         self.delegate   = self
-        
+       
         if let firstVC = pages.first
         {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
@@ -99,6 +99,20 @@ class JobViewer: UIPageViewController
         print("JobViewer: Job was set")
         self.job = job
     }
+    
+    override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [String : Any]? = nil) {
+        let transitionStyle = UserDefaults.standard.object(forKey: "pageControllerTransition") as! UIPageViewController.TransitionStyle
+        super.init(transitionStyle: style, navigationOrientation: navigationOrientation, options: options)
+    }
+    //override init(transitionStyle style: UIPageViewControllerTransitionStyle, navigationOrientation: UIPageViewControllerNavigationOrientation, options: [NSObject : AnyObject]!) {
+     //   super.init(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: options as! [String : Any])
+    //}
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
 }
 
 extension JobViewer: UIPageViewControllerDataSource

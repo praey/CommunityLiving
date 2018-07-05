@@ -27,5 +27,49 @@ class Constant {
     }
     
     
+    enum keyValue {
+        static let username = "username"
+        static let password = "password"
+        static let email = "email"
+        
+    }
+    
+    static func getUsername() -> String {
+        return UserDefaults.standard.string(forKey: Constant.keyValue.username)!
+
+    }
+
+    static func validateLogin(username: String, password: String) -> Bool {
+        if username == Constant.getUsername() && password == Constant.getPassword() {
+            return true
+        }
+        return false
+    }
+    
+    static func getPassword() -> String {
+        return UserDefaults.standard.string(forKey: Constant.keyValue.password)!
+    }
+    
+  
+    
+    static func getEmail() -> String {
+        return UserDefaults.standard.string(forKey: Constant.keyValue.email)!
+    }
+    
+    static func setEmail(_ email: String) {
+        UserDefaults.standard.set(email, forKey: keyValue.email)
+    }
+    
+    
+    static func setUsername(_ username: String) {
+        UserDefaults.standard.set(username, forKey: keyValue.username)
+    }
+    
+    
+    static func setPassword(_ password: String) {
+        UserDefaults.standard.set(password, forKey: keyValue.password)
+    }
+    
+    
     
 }

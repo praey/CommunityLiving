@@ -49,6 +49,11 @@ class JobManager: UIViewController{
         }
     }
     
+    func editJob(job: Job) {
+         tappedCollectionCell = job
+        performSegue(withIdentifier: Constant.segueID.JobEditor, sender: self)
+    }
+    
     @objc func toConfigure(sender: UIBarButtonItem) {
         performSegue(withIdentifier: Constant.segueID.Configure, sender: self)
     }
@@ -76,7 +81,8 @@ extension JobManager : UICollectionViewDelegate, UICollectionViewDataSource {
         // This is where the descripion of the UICollectionView
         //cell.backgroundColor = UIColor.black
         let image: UIImage? = jobs[indexPath.row].thumbnail
-        let imageView = UIImageView.init(image: image)
+        var imageView = UIImageView.init(image: image)
+        imageView.frame = cell.contentView.bounds
         cell.contentView.addSubview(imageView)
 
         return cell
@@ -84,8 +90,8 @@ extension JobManager : UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("You selected \(indexPath.row)")
-        tappedCollectionCell = jobs[indexPath.row]
-        performSegue(withIdentifier: Constant.segueID.JobEditor, sender: self)
+       
+        editJob(job: jobs[indexPath.row])
     }
 }
 

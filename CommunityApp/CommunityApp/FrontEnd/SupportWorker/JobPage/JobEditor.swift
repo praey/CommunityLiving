@@ -43,11 +43,9 @@ class JobEditor: UIViewController  {
        
         taskTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         calendarEventController.eventStore = self.eventStore
+      
         
-       
-       // saveJob.addTarget(self, action: #selector(JobEditor.recordJob), for: .touchUpInside)
-        
-        
+        taskTableView.isEditing = true
         
         if let title = job.title {
             titleValue.text = title
@@ -60,11 +58,18 @@ class JobEditor: UIViewController  {
         taskTableView.reloadData()
         
     }
+    
+    
 
     @objc func createTask() {
        tappedTableRow = CoreDataManager.database.createTask(job: job)
         performSegue(withIdentifier: Constant.segueID.TaskManager, sender: self)
         
+    }
+    
+    func editTask(task: Task) {
+        tappedTableRow = task
+        performSegue(withIdentifier: Constant.segueID.TaskManager, sender: self)
     }
     
     @objc func recordJob() {
@@ -100,15 +105,36 @@ extension JobEditor: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
+ 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected \(indexPath.row)")
-        tappedTableRow =  job.getTask(row: indexPath.row)
-        performSegue(withIdentifier: Constant.segueID.TaskManager, sender: self)
+    
+            editTask(task: job.getTask(row: indexPath.row))
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "This should be the title of the Job \(job.title!)"
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedTask = self.job.getTask(row: sourceIndexPath.row)
+        // CoreDataManager.database.setTaskPosition(task: movedTask, oldPos: sourceIndexPath.row, newPos: destinationIndexPath.row)
+        
+        print(
+            "Moved \(sourceIndexPath.row) to \(destinationIndexPath.row)" + self.job.getTask(row: sourceIndexPath.row).title!)
+        // To check for correctness enable: self.tableView.reloadData()
     }
     
 }

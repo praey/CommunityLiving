@@ -17,8 +17,7 @@ class JobSelector: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-        jobs = CoreDataManager.database.getJobs() // CoreDataManager.database.createTestData()
-        // CoreDataManager.database.getJobs()
+        jobs = CoreDataManager.database.getJobs() 
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self

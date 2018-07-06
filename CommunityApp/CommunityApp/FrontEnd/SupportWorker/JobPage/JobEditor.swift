@@ -45,7 +45,7 @@ class JobEditor: UIViewController  {
         calendarEventController.eventStore = self.eventStore
       
         
-        taskTableView.isEditing = true
+       //  taskTableView.isEditing = true
         
         if let title = job.title {
             titleValue.text = title
@@ -74,7 +74,7 @@ class JobEditor: UIViewController  {
     
     @objc func recordJob() {
         
-       //  job.disableJob = disableJob.isOn
+       // job.disableJob = disableJob.isOn
         
         
         CoreDataManager.database.saveData()
@@ -104,8 +104,7 @@ extension JobEditor: UITableViewDelegate, UITableViewDataSource {
         // This is where the descripion of the UItableView
         cell.backgroundColor = UIColor.orange
         
-        cell.detailTextLabel?.text = job.getTask(row: indexPath.row).title ?? "NO TITLE"
-        
+        cell.textLabel?.text = job.getTask(row: indexPath.row).title ?? "NO TITLE"
         return cell
     }
  
@@ -121,15 +120,15 @@ extension JobEditor: UITableViewDelegate, UITableViewDataSource {
     
     
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        return .none
-    }
+   // func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+   //     return .none
+   // }
     
     
     
-    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
+  //  func tableView(_ tableView: UITableView, /shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+      //  return false
+   // }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let movedTask = self.job.getTask(row: sourceIndexPath.row)

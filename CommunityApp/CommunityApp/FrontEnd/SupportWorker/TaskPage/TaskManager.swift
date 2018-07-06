@@ -300,6 +300,7 @@ extension TaskManager: UITextFieldDelegate {
             if (textField.text?.isEmpty)! {
                validText.backgroundColor = UIColor.red
              } else {
+                task.text = textValue.text
                 disableText.isOn = false
             validText.backgroundColor = UIColor.green
             }

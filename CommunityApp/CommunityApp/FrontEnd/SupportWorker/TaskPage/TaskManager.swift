@@ -157,7 +157,6 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     @objc func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
         for item in mediaItemCollection.items{
             let mediaURL = item.assetURL!
-            print("\(mediaURL)")
             validAudio.backgroundColor = UIColor.green
             CoreDataManager.database.setTaskAudio(task: task, audioURLString: "\(mediaURL)")
         }
@@ -211,22 +210,42 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     func mediaPickerDidCancel(_ mediaPickerController: MPMediaPickerController) {
         mediaPickerController.dismiss(animated: true, completion: nil)
     }
-
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let mediaType = info[UIImagePickerControllerMediaType] as! String
         if mediaType == "public.image" {
-            validPhoto.backgroundColor = UIColor.green
-            CoreDataManager.database.setTaskPhoto(task: task, photo: info[UIImagePickerControllerOriginalImage] as! UIImage)
+            if task.ifFileExists(filePath: .photo) {
+                let alert = UIAlertController(title: "Warning!", message: "Are you sure to replace the exist image?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
+                    CoreDataManager.database.setTaskPhoto(task: self.task, photo: info[UIImagePickerControllerOriginalImage] as! UIImage)
+                }))
+                alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+                imagePickerController.dismiss(animated: true, completion: nil)
+                present(alert, animated: true, completion: nil)
+            }
+            else {
+                validPhoto.backgroundColor = UIColor.green
+                CoreDataManager.database.setTaskPhoto(task: task, photo: info[UIImagePickerControllerOriginalImage] as! UIImage)
+                imagePickerController.dismiss(animated: true, completion: nil)
+            }
         }
         if mediaType == "public.movie" {
-            validVideo.backgroundColor = UIColor.green
-            CoreDataManager.database.setTaskVideo(task: task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
+            if task.ifFileExists(filePath: .video) {
+                let alert = UIAlertController(title: "Warning!", message: "Are you sure to replace the exist video?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
+                    CoreDataManager.database.setTaskVideo(task: self.task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
+                }))
+                alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+                imagePickerController.dismiss(animated: true, completion: nil)
+                present(alert, animated: true, completion: nil)
+            }
+            else {
+                validVideo.backgroundColor = UIColor.green
+                CoreDataManager.database.setTaskVideo(task: task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
+                imagePickerController.dismiss(animated: true, completion: nil)
+            }
         }
-        imagePickerController.dismiss(animated: true, completion: nil)
     }
-    
-
     
     override func viewWillDisappear(_ animated: Bool) {
         

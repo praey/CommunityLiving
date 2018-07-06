@@ -48,13 +48,13 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FRONT PAGE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fI2-I4-1b1">
-                                    <rect key="frame" x="8" y="8" width="584" height="20.5"/>
+                                    <rect key="frame" x="8" y="8" width="752" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Mu-oH-C2x">
-                                    <rect key="frame" x="8" y="296" width="584" height="13"/>
+                                    <rect key="frame" x="8" y="296" width="752" height="225"/>
                                     <state key="normal" title="Client"/>
                                     <connections>
                                         <segue destination="eBY-CR-erI" kind="show" id="kza-93-sag"/>
@@ -1193,19 +1193,19 @@
                                 <rect key="frame" x="16" y="112" width="146" height="613"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="UserName:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5b-1D-fbe">
-                                        <rect key="frame" x="38" y="101" width="86" height="20.5"/>
+                                        <rect key="frame" x="37.666666666666657" y="101" width="86" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Password:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vZ-Do-Ikr">
-                                        <rect key="frame" x="38" y="315.5" width="78.5" height="20.5"/>
+                                        <rect key="frame" x="37.666666666666664" y="318" width="78.666666666666686" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Email:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7G-ot-9cn">
-                                        <rect key="frame" x="46" y="502" width="45.5" height="21"/>
+                                        <rect key="frame" x="45.666666666666671" y="504.33333333333337" width="45.666666666666671" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1344,6 +1344,7 @@
         <image name="start" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="4nA-lc-zTb"/>
         <segue reference="XB4-6s-V0m"/>
     </inferredMetricsTieBreakers>
 </document>

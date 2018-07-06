@@ -1,4 +1,9 @@
 //
+
+/*
+ *This class should be discarded!
+ */
+
 //  Analytics.swift
 //  CommunityApp
 //

@@ -74,47 +74,51 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         saveData()
     }
     
-    func deleteTask(jobID: String, taskID: String) {
-        let job = getJob(id: jobID)!
-        let task = getTask(job: job, id: taskID)!
+    func deleteTask(task: Task) {
+        let photoURLString = NSHomeDirectory() + "/Documents/Images/" + task.photo!
+        let videoURLString = NSHomeDirectory() + "/Documents/Videos/" + task.video!
+        let audioURLString = NSHomeDirectory() + "/Documents/Audios/" + task.audio!
         context.delete(task)
+        fileSystemManager.deletImage(URLString: photoURLString)
+        fileSystemManager.deletVideo(URLString: videoURLString)
+        fileSystemManager.deletAudio(URLString: audioURLString)
         saveData()
     }
     
-    func createTestData() -> [Job] {
-        var jobs = [Job]()
-        let job = createJob(title: "test job 1")
-      
-        
-        
-        let newTask = createTask(job: job)
-        // var path = Bundle.main.path(forResource: "audio.mp3", ofType: nil)!
-        
-        // setTaskAudio(task: newTask, audioURLString: path)
-        
-        
-        var path = "/Users/newuser/Desktop/audio.mp3"
-        setTaskAudio(task: newTask, audioURLString: path)
-        
-        
-        
-        
-        let task = createTask(job: job)
-        
-         path = "/Users/newuser/Desktop/testVideo.mp4"
-        // let url = URL.init(fileURLWithPath: path!)
-        setTaskVideo(task: task, videoURLString: path)
-        
-        
-        
-        
-        
-        // path = "/Users/newuser/Desktop/testPhoto.jpg"
-        // setTaskPhoto(task: task, photo: UIImage.init(named: "testPhoto")!)
-        jobs.append(job)
-        
-        return jobs
-    }
+//    func createTestData() -> [Job] {
+//        var jobs = [Job]()
+//        let job = createJob(title: "test job 1")
+//
+//
+//
+//        let newTask = createTask(job: job)
+//        // var path = Bundle.main.path(forResource: "audio.mp3", ofType: nil)!
+//
+//        // setTaskAudio(task: newTask, audioURLString: path)
+//
+//
+//        var path = "/Users/newuser/Desktop/audio.mp3"
+//        setTaskAudio(task: newTask, audioURLString: path)
+//
+//
+//
+//
+//        let task = createTask(job: job)
+//
+//         path = "/Users/newuser/Desktop/testVideo.mp4"
+//        // let url = URL.init(fileURLWithPath: path!)
+//        setTaskVideo(task: task, videoURLString: path)
+//
+//
+//
+//
+//
+//        // path = "/Users/newuser/Desktop/testPhoto.jpg"
+//        // setTaskPhoto(task: task, photo: UIImage.init(named: "testPhoto")!)
+//        jobs.append(job)
+//
+//        return jobs
+//    }
     
     
     

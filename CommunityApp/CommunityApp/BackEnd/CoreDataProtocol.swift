@@ -37,10 +37,10 @@ protocol CoreDataProtocol {
     
     // MARK: Delete function
     func deleteJob(jobID: String)
-    func deleteTask(jobID: String, taskID: String)
+    func deleteTask(task: Task)
  
-    // MARK: Testing function
-    func createTestData() -> [Job]
+//    // MARK: Testing function
+//    func createTestData() -> [Job]
     
     
     // MARK: Save function - These are the update functions

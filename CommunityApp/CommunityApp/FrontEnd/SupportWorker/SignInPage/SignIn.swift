@@ -23,9 +23,8 @@ class SignIn: UIViewController {
         super.viewDidLoad()
         print("Entered Sign IN")
         signInButton.addTarget(self, action: #selector(SignIn.signIn), for: .touchUpInside)
-        nameValue.text = UserDefaults.standard.string(forKey: Config.keyValue.username)
-        passwordValue.text = UserDefaults.standard.string(forKey: Config.keyValue.password)
-        
+        nameValue.text = Constant.getUsername()
+        passwordValue.text = Constant.getPassword()
         
         
     }

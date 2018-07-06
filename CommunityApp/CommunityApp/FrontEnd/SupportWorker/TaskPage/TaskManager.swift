@@ -75,6 +75,24 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         }
     }
     
+    // add one button that will display a test of what the task actuatlly is
+    
+    @IBAction func viewTaskTemplate() {
+        if let navigationController = self.navigationController, let taskTemplate = task.getTaskTemplate() {
+            print("pushed the new tasktemplate")
+            navigationController.pushViewController(taskTemplate, animated: true)
+        } else {
+            print("failed to push task tempalte")
+        }
+        
+        
+        
+        
+    }
+    
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constant.segueID.AudioRecorder {
             let vc = segue.destination as! AudioRecorderManager
@@ -120,6 +138,7 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     @IBAction func takePhoto(_ sender: Any) {
         imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
+        
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePickerController.sourceType = .camera
             present(imagePickerController, animated: true, completion: nil)
@@ -158,6 +177,7 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         for item in mediaItemCollection.items{
             let mediaURL = item.assetURL!
             validAudio.backgroundColor = UIColor.green
+            disableAudio.isOn = false
             CoreDataManager.database.setTaskAudio(task: task, audioURLString: "\(mediaURL)")
         }
     }
@@ -264,11 +284,15 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
 
 extension TaskManager: UITextFieldDelegate {
     
+    
+   
+    
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         if reason == .committed {
             if (textField.text?.isEmpty)! {
                validText.backgroundColor = UIColor.red
              } else {
+                diasableText.isOn = false
             validText.backgroundColor = UIColor.green
             }
             

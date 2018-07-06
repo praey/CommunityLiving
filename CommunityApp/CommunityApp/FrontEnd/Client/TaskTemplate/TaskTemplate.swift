@@ -16,7 +16,7 @@ class TaskTemplate: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // CoreDataManager.database.startAnalytics(task: task)
+        //CoreDataManager.database.startAnalytics(task: task)
 //        self.task.startAnalytics()
     }
     

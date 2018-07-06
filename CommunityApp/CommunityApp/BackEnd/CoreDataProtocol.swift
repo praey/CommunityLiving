@@ -37,6 +37,7 @@ protocol CoreDataProtocol {
     
     // MARK: Delete function
     func deleteJob(jobID: String)
+    func deleteJob(job: Job)
     func deleteTask(task: Task)
  
 //    // MARK: Testing function

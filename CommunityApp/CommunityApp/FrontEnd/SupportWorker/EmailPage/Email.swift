@@ -46,7 +46,7 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
         csvText += analyticTitles()
         for job in CoreDataManager.database.getJobs() {
             for task in job.getTasks() {
-                csvText += task.getAnalytics()
+                //csvText += task.getAnalytics()
             }
         }
         

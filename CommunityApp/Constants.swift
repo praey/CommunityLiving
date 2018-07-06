@@ -75,17 +75,17 @@ class Constant {
         UserDefaults.standard.set(password, forKey: Constant.keyValue.password)
     }
     
-    static func setPageStyle(_ transitionStyle: UIPageViewController.TransitionStyle){
-        UserDefaults.standard.set(transitionStyle, forKey: Constant.keyValue.pageStyle)
-    }
+//    static func setPageStyle(_ transitionStyle: UIPageViewController.TransitionStyle){
+//        UserDefaults.standard.set(transitionStyle, forKey: Constant.keyValue.pageStyle)
+//    }
     
-    static func getPageStyle() -> UIPageViewController.TransitionStyle {
-        if let pageStyle = UserDefaults.standard.object(forKey: Constant.keyValue.pageStyle) as? UIPageViewController.TransitionStyle {
-            return pageStyle
-        } else {
-            return UIPageViewController.TransitionStyle.scroll
-        }
-    }
+//    static func getPageStyle() -> UIPageViewController.TransitionStyle {
+//        if let pageStyle = UserDefaults.standard.object(forKey: Constant.keyValue.pageStyle) as? UIPageViewController.TransitionStyle {
+//            return pageStyle
+//        } else {
+//            return UIPageViewController.TransitionStyle.scroll
+//        }
+//    }
    
     
 }

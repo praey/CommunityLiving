@@ -139,9 +139,11 @@ class NotificationEditor: UIViewController {
                     self.scheduleLocalNotification()
                 }
                 )
-            case .provisional:
-                print("provisional status")
-                self.scheduleLocalNotification()
+           // case .provisional:
+             //   print("provisional status")
+               // self.scheduleLocalNotification()
+            default:
+                print("default")
             }
         })}
     

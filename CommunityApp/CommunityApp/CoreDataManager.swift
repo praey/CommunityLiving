@@ -74,6 +74,12 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         saveData()
     }
     
+    func deleteJob(job: Job) {
+        deleteAllTasks(job: job)
+        context.delete(job)
+        saveData()
+    }
+    
     func deleteTask(task: Task) {
         let photoURLString = NSHomeDirectory() + "/Documents/Images/" + task.photo!
         let videoURLString = NSHomeDirectory() + "/Documents/Videos/" + task.video!
@@ -276,7 +282,7 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         print("Task audio was set")
     }
     
-    func startAnalytics(task: Task, description: String) {
+    func startAnalytics(task: Task) {
         let analytics = Analytics(context: context)
         analytics.startAnalytics(date: Date())
         task.addToHas(analytics)
@@ -284,10 +290,12 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         print("Analytics started...")
     }
     
-    func saveAnalytics(task: Task, taskDescription: String){
+    func saveAnalytics(task: Task){
+        let desc = task.getTaskType().description // what was used
+//        let title = task.title!
         let analyticsArray = task.has?.array as! [Analytics]
         if analyticsArray.last?.isStarted == true {
-            analyticsArray.last?.saveAnalytics(newDate: Date(), description: taskDescription)
+            analyticsArray.last?.saveAnalytics(newDate: Date(), description: desc)
         }
         saveData()
         print("Task analytics were saved")

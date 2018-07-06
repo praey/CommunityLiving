@@ -58,13 +58,10 @@ class JobEditor: UIViewController  {
         taskTableView.reloadData()
         
     }
-    
-    
 
     @objc func createTask() {
        tappedTableRow = CoreDataManager.database.createTask(job: job)
         performSegue(withIdentifier: Constant.segueID.TaskManager, sender: self)
-        
     }
     
     func editTask(task: Task) {
@@ -177,6 +174,10 @@ extension JobEditor: EKEventEditViewDelegate {
     
     func createCalendarEvent() {
         self.present(self.calendarEventController, animated: true, completion: nil)
+    }
+    
+    @IBAction func deleteJob(_ sender: Any) {
+        CoreDataManager.database.deleteJob(job: job)
     }
 }
 

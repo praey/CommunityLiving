@@ -283,6 +283,9 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         CoreDataManager.database.saveData()
     }
     
+    @IBAction func deleteTask(_ sender: Any) {
+        CoreDataManager.database.deleteTask(task: task)
+    }
     
     
     

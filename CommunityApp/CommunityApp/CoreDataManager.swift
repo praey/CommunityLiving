@@ -74,6 +74,12 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         saveData()
     }
     
+    func deleteJob(job: Job) {
+        deleteAllTasks(job: job)
+        context.delete(job)
+        saveData()
+    }
+    
     func deleteTask(task: Task) {
         let photoURLString = NSHomeDirectory() + "/Documents/Images/" + task.photo!
         let videoURLString = NSHomeDirectory() + "/Documents/Videos/" + task.video!

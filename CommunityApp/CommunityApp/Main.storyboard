@@ -700,7 +700,11 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="81W-TG-9wU">
 <<<<<<< HEAD
+<<<<<<< HEAD
                                         <rect key="frame" x="671" y="-3" width="51" height="31"/>
+=======
+                                        <rect key="frame" x="671" y="0.0" width="51" height="31"/>
+>>>>>>> CoreDataBackend
 =======
                                         <rect key="frame" x="671" y="0.0" width="51" height="31"/>
 >>>>>>> CoreDataBackend
@@ -1484,8 +1488,11 @@
     </resources>
     <inferredMetricsTieBreakers>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <segue reference="gF5-p6-oLA"/>
 =======
+=======
+>>>>>>> CoreDataBackend
         <segue reference="4nA-lc-zTb"/>
         <segue reference="XB4-6s-V0m"/>
 >>>>>>> CoreDataBackend

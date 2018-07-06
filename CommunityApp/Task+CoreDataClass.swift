@@ -212,6 +212,9 @@ public class Task: NSManagedObject {
             //threes
         case [.photo,.audio,.video]:
             print("Selected photo audio video - not accessible")
+            viewController = self.getViewController(withIdentifier: "AudioPhoto") as! AudioPhoto
+            print("Selected photo text")
+            
         case [.photo,.text,.video]:
             print("Selecte photo text video - not accessible")
         case [.audio,.text,.photo]:

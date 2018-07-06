@@ -319,6 +319,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="olg-OA-aAt">
                                 <rect key="frame" x="347" y="943" width="74" height="30"/>
                                 <state key="normal" title="Delete Job"/>
+                                <connections>
+                                    <action selector="deleteJob:" destination="P7g-Q3-TGY" eventType="touchUpInside" id="FWQ-mJ-cR3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FgK-zJ-f9O">
                                 <rect key="frame" x="20" y="876" width="728" height="30"/>
@@ -1472,6 +1475,7 @@
         <image name="testPhoto" width="450" height="338"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="4nA-lc-zTb"/>
         <segue reference="XB4-6s-V0m"/>
     </inferredMetricsTieBreakers>
 </document>

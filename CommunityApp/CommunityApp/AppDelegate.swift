@@ -103,7 +103,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         case "showJob":
             
             let jobid = response.notification.request.content.userInfo["job"] as? String
-            //lazy var job = CoreDataManager.database.getJob(id: jobid!)!
+            let job = CoreDataManager.database.getJob(id: jobid!)!
             
             let nav = self.window?.rootViewController as! UINavigationController
             nav.popToRootViewController(animated: true)
@@ -112,8 +112,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             nav.pushViewController(jobSelector, animated: true)
             
             let jobViewer = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "JobViewer" ) as! JobViewer
-            // jobViewer.setJob(job: job)
-            // nav.pushViewController(jobViewer, animated: true)
+            jobViewer.setJob(job: job)
+            nav.pushViewController(jobViewer, animated: true)
             
             print("set for job")
         case "dismiss":

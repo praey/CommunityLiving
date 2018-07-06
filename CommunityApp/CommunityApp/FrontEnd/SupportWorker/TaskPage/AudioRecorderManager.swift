@@ -37,7 +37,11 @@ class AudioRecorderManager: UIViewController {
                 AVSampleRateKey : 44100.0
             ]
 
-        // Do any additional setup after loading the view.
+        if task.ifFileExists(filePath: .audio) {
+            let alert = UIAlertController(title: "", message: "If you record a new audio, the exist audio will be replaced!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {

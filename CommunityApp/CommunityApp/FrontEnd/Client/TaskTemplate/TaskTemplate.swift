@@ -16,7 +16,7 @@ class TaskTemplate: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.task.startAnalytics(description: "analytics")
+//        self.task.startAnalytics()
     }
     
     override func didReceiveMemoryWarning() {

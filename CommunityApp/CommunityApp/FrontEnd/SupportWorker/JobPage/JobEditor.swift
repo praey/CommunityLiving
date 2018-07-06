@@ -74,7 +74,7 @@ class JobEditor: UIViewController  {
     
     @objc func recordJob() {
         
-        // job.disableJob = disableJob.isOn
+       //  job.disableJob = disableJob.isOn
         
         
         CoreDataManager.database.saveData()

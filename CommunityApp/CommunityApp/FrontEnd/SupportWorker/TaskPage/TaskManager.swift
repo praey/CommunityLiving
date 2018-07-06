@@ -287,12 +287,7 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     
     
     
-    @IBAction func viewTask(_ sender: Any) {
-        
-       // present
-        
-        
-    }
+
 }
 
 extension TaskManager: UITextFieldDelegate {

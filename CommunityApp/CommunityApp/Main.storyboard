@@ -663,15 +663,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLS-Id-MgS">
-                                <rect key="frame" x="20" y="842" width="728" height="30"/>
+                                <rect key="frame" x="20" y="771" width="728" height="30"/>
                                 <state key="normal" title="View Task"/>
                                 <connections>
-                                    <action selector="viewTask:" destination="WOI-mu-egl" eventType="touchUpInside" id="g9m-7z-GlQ"/>
+                                    <action selector="viewTaskTemplate" destination="WOI-mu-egl" eventType="touchUpInside" id="iYa-iy-bgj"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXH-eE-Z4e">
-                                <rect key="frame" x="20" y="932" width="728" height="30"/>
-                                <state key="normal" title="Delete Task"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0q-yL-VjW">
                                 <rect key="frame" x="20" y="610" width="728" height="100"/>
@@ -737,6 +733,10 @@
                                     <constraint firstItem="1CY-bW-3Q0" firstAttribute="leading" secondItem="Sne-Ee-MEx" secondAttribute="leading" id="w4f-8D-RCG"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXH-eE-Z4e">
+                                <rect key="frame" x="20" y="850" width="728" height="30"/>
+                                <state key="normal" title="Delete Task"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -745,17 +745,17 @@
                             <constraint firstItem="FJX-Xc-szm" firstAttribute="leading" secondItem="OUF-gX-X5H" secondAttribute="trailing" constant="-748" id="6FH-8z-PFG"/>
                             <constraint firstItem="lEQ-fK-V8i" firstAttribute="top" secondItem="8Mc-I9-vuh" secondAttribute="bottom" constant="12" id="6Ub-2N-Uqj"/>
                             <constraint firstItem="OUF-gX-X5H" firstAttribute="trailing" secondItem="FJX-Xc-szm" secondAttribute="trailing" constant="20" id="95z-JV-aGe"/>
-                            <constraint firstItem="qXH-eE-Z4e" firstAttribute="top" secondItem="vLS-Id-MgS" secondAttribute="bottom" constant="60" id="BBr-Uy-Xco"/>
+                            <constraint firstItem="qXH-eE-Z4e" firstAttribute="top" secondItem="vLS-Id-MgS" secondAttribute="bottom" constant="49" id="BBr-Uy-Xco"/>
                             <constraint firstItem="qXH-eE-Z4e" firstAttribute="width" secondItem="vLS-Id-MgS" secondAttribute="width" id="CFa-YD-Tso"/>
                             <constraint firstItem="xxj-gs-94w" firstAttribute="top" secondItem="lEQ-fK-V8i" secondAttribute="bottom" constant="8" id="DlP-xc-AKc"/>
                             <constraint firstItem="FJX-Xc-szm" firstAttribute="centerX" secondItem="OUF-gX-X5H" secondAttribute="centerX" id="ExN-Zc-b6X"/>
-                            <constraint firstItem="vLS-Id-MgS" firstAttribute="top" secondItem="A0q-yL-VjW" secondAttribute="bottom" constant="132" id="FHZ-Wb-MK4"/>
+                            <constraint firstItem="vLS-Id-MgS" firstAttribute="top" secondItem="A0q-yL-VjW" secondAttribute="bottom" constant="61" id="FHZ-Wb-MK4"/>
                             <constraint firstItem="8Mc-I9-vuh" firstAttribute="top" secondItem="ENy-F3-ilN" secondAttribute="bottom" constant="8" id="Fob-FE-4WO"/>
                             <constraint firstItem="qXH-eE-Z4e" firstAttribute="leading" secondItem="OUF-gX-X5H" secondAttribute="leading" constant="20" id="Fow-7u-iBr"/>
                             <constraint firstItem="FJX-Xc-szm" firstAttribute="top" secondItem="OUF-gX-X5H" secondAttribute="top" id="Gc6-u3-IP6"/>
                             <constraint firstItem="OUF-gX-X5H" firstAttribute="trailing" secondItem="JLF-JO-ygB" secondAttribute="trailing" constant="20" id="Kj0-y6-KH3"/>
                             <constraint firstItem="A0q-yL-VjW" firstAttribute="top" secondItem="xxj-gs-94w" secondAttribute="bottom" constant="29" id="OPk-3z-ftr"/>
-                            <constraint firstItem="OUF-gX-X5H" firstAttribute="bottom" secondItem="qXH-eE-Z4e" secondAttribute="bottom" constant="62" id="Tvf-Am-3VT"/>
+                            <constraint firstItem="OUF-gX-X5H" firstAttribute="bottom" secondItem="qXH-eE-Z4e" secondAttribute="bottom" constant="144" id="Tvf-Am-3VT"/>
                             <constraint firstItem="FJX-Xc-szm" firstAttribute="leading" secondItem="OUF-gX-X5H" secondAttribute="leading" constant="20" id="VGc-Wo-MUI"/>
                             <constraint firstItem="OUF-gX-X5H" firstAttribute="trailing" secondItem="qXH-eE-Z4e" secondAttribute="trailing" constant="20" id="WaG-4J-arn"/>
                             <constraint firstItem="81W-TG-9wU" firstAttribute="top" secondItem="OUF-gX-X5H" secondAttribute="top" constant="590" id="Y1k-Z3-0g6"/>
@@ -962,18 +962,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EKA-Vy-1X4">
-                                <rect key="frame" x="16" y="44" width="343" height="347"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8fO-DX-NKO">
-                                <rect key="frame" x="16" y="388" width="343" height="390"/>
+                                <rect key="frame" x="20" y="503" width="728" height="501"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EKA-Vy-1X4">
+                                <rect key="frame" x="20" y="54" width="728" height="441"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="zJT-6s-m66"/>
@@ -985,7 +985,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jiv-Fh-itg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3908" y="2363.7931034482758"/>
+            <point key="canvasLocation" x="3907.8125" y="2363.671875"/>
         </scene>
         <!--Audio Photo-->
         <scene sceneID="vDH-As-kew">

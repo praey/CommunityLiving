@@ -11,6 +11,7 @@ import UIKit
 
 class SignIn: UIViewController {
     
+    var timer: Timer!
     
     @IBOutlet weak var nameValue: UITextField!
   
@@ -23,10 +24,10 @@ class SignIn: UIViewController {
         super.viewDidLoad()
         print("Entered Sign IN")
         signInButton.addTarget(self, action: #selector(SignIn.signIn), for: .touchUpInside)
-        nameValue.text = Constant.getUsername()
-        passwordValue.text = Constant.getPassword()
+//        nameValue.text = Constant.getUsername()
+//        passwordValue.text = Constant.getPassword()
         
-        
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(backToLastPage), userInfo: nil, repeats: false)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -49,6 +50,10 @@ class SignIn: UIViewController {
         performSegue(withIdentifier: Constant.segueID.JobManager, sender: self)
     }
     
-
+    @objc func backToLastPage() {
+        if nameValue.text! == "" && passwordValue.text! == "" {
+            navigationController?.popViewController(animated: true)
+        }
+    }
     
 }

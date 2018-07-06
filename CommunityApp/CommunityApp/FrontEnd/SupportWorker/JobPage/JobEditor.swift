@@ -177,6 +177,7 @@ extension JobEditor: EKEventEditViewDelegate {
     
     @IBAction func deleteJob(_ sender: Any) {
         CoreDataManager.database.deleteJob(job: job)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

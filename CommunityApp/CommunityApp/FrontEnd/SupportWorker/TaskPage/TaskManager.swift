@@ -285,6 +285,7 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     
     @IBAction func deleteTask(_ sender: Any) {
         CoreDataManager.database.deleteTask(task: task)
+        self.navigationController?.popViewController(animated: true)
     }
     
     

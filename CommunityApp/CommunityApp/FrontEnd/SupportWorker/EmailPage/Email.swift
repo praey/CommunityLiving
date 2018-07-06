@@ -17,8 +17,8 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
     var ubiquityURL: URL?
     let filemanager = FileManager.default
     
-    let name = UserDefaults.standard.string(forKey: Config.keyValue.username)
-    let email = UserDefaults.standard.string(forKey: Config.keyValue.email)
+    let name = Constant.getUsername()
+    let email = Constant.getEmail()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +46,7 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
         csvText += analyticTitles()
         for job in CoreDataManager.database.getJobs() {
             for task in job.getTasks() {
-                csvText += task.getAnalytics()
+//                csvText += task.getAnalytics()
             }
         }
         
@@ -70,7 +70,6 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
         
         var emailURL: URL? = nil
         do {
-            
             emailURL = try filemanager.url(forPublishingUbiquitousItemAt: ubiquityURL!, expiration: nil)
             print("opened email")
         } catch {
@@ -82,7 +81,7 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
             let emailController = MFMailComposeViewController()
             
             emailController.mailComposeDelegate = self
-            emailController.setToRecipients([self.email!])
+            emailController.setToRecipients([self.email])
             emailController.setSubject("Comunity Living")
             if let emailURL = emailURL {
                 emailController.setMessageBody("Link: " + (emailURL.absoluteString), isHTML: false)

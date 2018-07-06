@@ -18,6 +18,7 @@ class FrontPage: UIViewController {
         CoreDataManager.database.fileSystemManager.createImageFolder()
         CoreDataManager.database.fileSystemManager.createVideoFolder()
         CoreDataManager.database.fileSystemManager.createAudioFolder()
+        // CoreDataManager.database.deletAllJobs()
         
         supportWorker.addTarget(self, action: #selector(FrontPage.toSignIn(_:event:)), for: UIControlEvents.touchDownRepeat)
         

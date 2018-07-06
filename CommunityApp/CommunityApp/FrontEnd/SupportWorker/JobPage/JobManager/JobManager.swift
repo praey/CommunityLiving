@@ -49,6 +49,11 @@ class JobManager: UIViewController{
         }
     }
     
+    func editJob(job: Job) {
+         tappedCollectionCell = job
+        performSegue(withIdentifier: Constant.segueID.JobEditor, sender: self)
+    }
+    
     @objc func toConfigure(sender: UIBarButtonItem) {
         performSegue(withIdentifier: Constant.segueID.Configure, sender: self)
     }
@@ -103,8 +108,8 @@ extension JobManager : UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("You selected \(indexPath.row)")
-        tappedCollectionCell = jobs[indexPath.row]
-        performSegue(withIdentifier: Constant.segueID.JobEditor, sender: self)
+       
+        editJob(job: jobs[indexPath.row])
     }
 }
 

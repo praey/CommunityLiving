@@ -23,9 +23,8 @@ class SignIn: UIViewController {
         super.viewDidLoad()
         print("Entered Sign IN")
         signInButton.addTarget(self, action: #selector(SignIn.signIn), for: .touchUpInside)
-        nameValue.text = UserDefaults.standard.string(forKey: Config.keyValue.username)
-        passwordValue.text = UserDefaults.standard.string(forKey: Config.keyValue.password)
-        
+        nameValue.text = Constant.getUsername()
+        passwordValue.text = Constant.getPassword()
         
         
     }
@@ -38,7 +37,7 @@ class SignIn: UIViewController {
             // if Config.validateLogin(username: self.nameValue.text!, password: self.passwordValue.text!) {
                 return true
             
-            print("not valid credentials")
+           
         }
         print("not to jobManager")
         // Show text to the user about how they didn't enter in the right name and password

@@ -139,8 +139,9 @@ class NotificationEditor: UIViewController {
                     self.scheduleLocalNotification()
                 }
                 )
-            default:
-                print("notification setting wasn't selected")
+            case .provisional:
+                print("provisional status")
+                self.scheduleLocalNotification()
             }
         })}
     

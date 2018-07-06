@@ -99,63 +99,28 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         print("Action Identifier: ")
         print(response.notification.request.identifier)
         switch response.notification.request.identifier {
+        
         case "showJob":
             
+            let jobid = response.notification.request.content.userInfo["job"] as? String
+            //lazy var job = CoreDataManager.database.getJob(id: jobid!)!
             
-            //Every viewcontroller needs to hbe instantiated by a storyboard
-            
-            let nav = self.window?.rootViewController as? UINavigationController
-            if let nav = nav {
+            let nav = self.window?.rootViewController as! UINavigationController
             nav.popToRootViewController(animated: true)
-            }
-            if ((nav?.topViewController as? FrontPage) != nil) {
-                
-                let jobSelector = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "JobSelector" ) as! JobSelector
-                
-                
-                nav?.pushViewController(jobSelector, animated: true)
-                
-                    //.topViewController?.performSegue(withIdentifier: Constant.segueID.JobSelector, sender: self)
-                
-                
-                let jobid = response.notification.request.content.userInfo["job"] as? String
-                let job = CoreDataManager.database.getJob(id: jobid!)!
-                
-                // let jobSelector = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "JobSelector" ) as? JobSelector
-                //jobSelector?.jobs
-                
-                
-           // nav?.pushViewController(jobSelector!, animated: true)
-                
-                var jobViewer = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "JobViewer" ) as! JobViewer
-                jobViewer.setJob(job: job)
-               nav?.pushViewController(jobViewer, animated: true)
-                
-                //.topViewController?.performSegue(withIdentifier: Constant.segueID.JobSelector, sender: self)
-                
-                if ((nav?.topViewController as? JobSelector) != nil) {
-                     nav?.topViewController?.performSegue(withIdentifier: Constant.segueID.JobViewer, sender: self)
-                }
-                
-                //let jobSelector = nav?.topViewController as? JobSelector
-               
-                
-                //jobSelector?.tappedTableRow = job
-                    
-               //     UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "JobViewer" )
-               
-               
-                //(nav?.topViewController as? JobViewer)?.setJob(job: job)
-                // I need to find out where I save the job ID
-            }
             
-           // nav?.performSegue(withIdentifier: Constant.segueID.SignIn, sender: self)
+            let jobSelector = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "JobSelector" ) as! JobSelector
+            nav.pushViewController(jobSelector, animated: true)
+            
+            let jobViewer = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "JobViewer" ) as! JobViewer
+            // jobViewer.setJob(job: job)
+            // nav.pushViewController(jobViewer, animated: true)
+            
             print("set for job")
         case "dismiss":
             print("dismissed")
-        default:
-            print("default")
             
+        default:
+            print("no case was selected")
         }
         completionHandler()
         

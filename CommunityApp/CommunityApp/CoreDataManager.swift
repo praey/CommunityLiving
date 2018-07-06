@@ -42,7 +42,6 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         let job = Job(context: context)
         job.id = id
         job.title = title
-        job.disabelJob = false
         saveData()
         print("Job is Saved!")
         return job

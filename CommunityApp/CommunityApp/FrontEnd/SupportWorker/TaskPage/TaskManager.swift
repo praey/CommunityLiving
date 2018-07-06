@@ -170,7 +170,9 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         let mediaPickerController = MPMediaPickerController(mediaTypes: .any)
         mediaPickerController.delegate = self
         mediaPickerController.allowsPickingMultipleItems = false
+        validAudio.backgroundColor = UIColor.green
         present(mediaPickerController, animated: true, completion: nil)
+        
     }
     
     @objc func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {

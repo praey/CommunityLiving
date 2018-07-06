@@ -10,13 +10,11 @@
 		4A0552A820B5E75600193E5C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552A720B5E75500193E5C /* CoreDataManager.swift */; };
 		4A0552B220B5E80D00193E5C /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552B120B5E80D00193E5C /* FileSystemManager.swift */; };
 		4A0552C720B5EA1800193E5C /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552C320B5EA1800193E5C /* Task+CoreDataClass.swift */; };
-		4A0552C820B5EA1800193E5C /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552C420B5EA1800193E5C /* Task+CoreDataProperties.swift */; };
 		4A0552CE20B5EB7400193E5C /* Page2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552CD20B5EB7400193E5C /* Page2.swift */; };
 		4A0552DB20BE102A00193E5C /* Page3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552DA20BE102A00193E5C /* Page3.swift */; };
 		4A0552E020BE7AED00193E5C /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552DE20BE7AED00193E5C /* Person+CoreDataClass.swift */; };
 		4A0552E120BE7AED00193E5C /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552DF20BE7AED00193E5C /* Person+CoreDataProperties.swift */; };
 		4A0552E420BE94C400193E5C /* Job+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552E220BE94C400193E5C /* Job+CoreDataClass.swift */; };
-		4A0552E520BE94C400193E5C /* Job+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552E320BE94C400193E5C /* Job+CoreDataProperties.swift */; };
 		4A0552E720BE9FAD00193E5C /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0552E620BE9FAD00193E5C /* Analytics.swift */; };
 		4A16056320C1C5A5000BFC95 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16054420C1C5A5000BFC95 /* Config.swift */; };
 		4A16056420C1C5A5000BFC95 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A16054620C1C5A5000BFC95 /* TaskManager.swift */; };
@@ -45,6 +43,10 @@
 		4A5789FB20BF215F00677851 /* Page4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5789FA20BF215F00677851 /* Page4.swift */; };
 		4A60206D20D2B69500D6ABFC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A60206C20D2B69500D6ABFC /* AudioToolbox.framework */; };
 		4A60206F20D2CFAD00D6ABFC /* AudioRecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A60206E20D2CFAD00D6ABFC /* AudioRecorderManager.swift */; };
+		4A60207120E3D5EC00D6ABFC /* Job+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A60207020E3D5EC00D6ABFC /* Job+CoreDataProperties.swift */; };
+		4ABCEFCE20EAEA54000E8C2F /* Analytics+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABCEFCC20EAEA54000E8C2F /* Analytics+CoreDataClass.swift */; };
+		4ABCEFD220ECB8FA000E8C2F /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABCEFD020ECB8FA000E8C2F /* Task+CoreDataProperties.swift */; };
+		4ABCEFD320ECB8FA000E8C2F /* Analytics+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABCEFD120ECB8FA000E8C2F /* Analytics+CoreDataProperties.swift */; };
 		CD1904D620DCB75000D2C74A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1904D520DCB75000D2C74A /* Constants.swift */; };
 		CD1904D920DCB7F500D2C74A /* JobSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1904D820DCB7F500D2C74A /* JobSelectorCell.swift */; };
 		CD88838C20DE7B7600E4AED3 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88838B20DE7B7600E4AED3 /* NotificationController.swift */; };
@@ -81,13 +83,11 @@
 		4A0552A720B5E75500193E5C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		4A0552B120B5E80D00193E5C /* FileSystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
 		4A0552C320B5EA1800193E5C /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4A0552C420B5EA1800193E5C /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4A0552CD20B5EB7400193E5C /* Page2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page2.swift; sourceTree = "<group>"; };
 		4A0552DA20BE102A00193E5C /* Page3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page3.swift; sourceTree = "<group>"; };
 		4A0552DE20BE7AED00193E5C /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4A0552DF20BE7AED00193E5C /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4A0552E220BE94C400193E5C /* Job+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataClass.swift"; sourceTree = "<group>"; };
-		4A0552E320BE94C400193E5C /* Job+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4A0552E620BE9FAD00193E5C /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		4A16054420C1C5A5000BFC95 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		4A16054620C1C5A5000BFC95 /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
@@ -117,6 +117,10 @@
 		4A5789FA20BF215F00677851 /* Page4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page4.swift; sourceTree = "<group>"; };
 		4A60206C20D2B69500D6ABFC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		4A60206E20D2CFAD00D6ABFC /* AudioRecorderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderManager.swift; sourceTree = "<group>"; };
+		4A60207020E3D5EC00D6ABFC /* Job+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Job+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4ABCEFCC20EAEA54000E8C2F /* Analytics+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Analytics+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4ABCEFD020ECB8FA000E8C2F /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4ABCEFD120ECB8FA000E8C2F /* Analytics+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Analytics+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CD1904D520DCB75000D2C74A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = SOURCE_ROOT; };
 		CD1904D820DCB7F500D2C74A /* JobSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSelectorCell.swift; sourceTree = "<group>"; };
 		CD88838B20DE7B7600E4AED3 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
@@ -357,9 +361,11 @@
 				4A0552DE20BE7AED00193E5C /* Person+CoreDataClass.swift */,
 				4A0552DF20BE7AED00193E5C /* Person+CoreDataProperties.swift */,
 				4A0552E220BE94C400193E5C /* Job+CoreDataClass.swift */,
-				4A0552E320BE94C400193E5C /* Job+CoreDataProperties.swift */,
+				4A60207020E3D5EC00D6ABFC /* Job+CoreDataProperties.swift */,
 				4A0552C320B5EA1800193E5C /* Task+CoreDataClass.swift */,
-				4A0552C420B5EA1800193E5C /* Task+CoreDataProperties.swift */,
+				4ABCEFD020ECB8FA000E8C2F /* Task+CoreDataProperties.swift */,
+				4ABCEFCC20EAEA54000E8C2F /* Analytics+CoreDataClass.swift */,
+				4ABCEFD120ECB8FA000E8C2F /* Analytics+CoreDataProperties.swift */,
 				CDFC1343209363C1004A997E /* CommunityApp */,
 				CDFC135B209363C1004A997E /* CommunityAppTests */,
 				CDFC1366209363C1004A997E /* CommunityAppUITests */,
@@ -572,7 +578,6 @@
 				CDFC1345209363C1004A997E /* AppDelegate.swift in Sources */,
 				4A16056420C1C5A5000BFC95 /* TaskManager.swift in Sources */,
 				4A16057020C1C5A5000BFC95 /* VideoPlayer.swift in Sources */,
-				4A0552C820B5EA1800193E5C /* Task+CoreDataProperties.swift in Sources */,
 				4A0552E020BE7AED00193E5C /* Person+CoreDataClass.swift in Sources */,
 				4A0552C720B5EA1800193E5C /* Task+CoreDataClass.swift in Sources */,
 				CD88838C20DE7B7600E4AED3 /* NotificationController.swift in Sources */,
@@ -581,7 +586,6 @@
 				4A16056620C1C5A5000BFC95 /* SignIn.swift in Sources */,
 				4A0552E120BE7AED00193E5C /* Person+CoreDataProperties.swift in Sources */,
 				4A16056920C1C5A5000BFC95 /* JobEditor.swift in Sources */,
-				4A0552E520BE94C400193E5C /* Job+CoreDataProperties.swift in Sources */,
 				4A16057220C1C5A5000BFC95 /* Photo.swift in Sources */,
 				CD88838E20DEB08700E4AED3 /* NotificationEditor.swift in Sources */,
 				4A16057620C1C5A5000BFC95 /* Video.swift in Sources */,
@@ -602,8 +606,12 @@
 				4A16056C20C1C5A5000BFC95 /* JobSelector.swift in Sources */,
 				4A0552A820B5E75600193E5C /* CoreDataManager.swift in Sources */,
 				4A0552CE20B5EB7400193E5C /* Page2.swift in Sources */,
+				4A60207120E3D5EC00D6ABFC /* Job+CoreDataProperties.swift in Sources */,
+				4ABCEFCE20EAEA54000E8C2F /* Analytics+CoreDataClass.swift in Sources */,
 				CD1904D920DCB7F500D2C74A /* JobSelectorCell.swift in Sources */,
 				4A16056B20C1C5A5000BFC95 /* JobViewer.swift in Sources */,
+				4ABCEFD320ECB8FA000E8C2F /* Analytics+CoreDataProperties.swift in Sources */,
+				4ABCEFD220ECB8FA000E8C2F /* Task+CoreDataProperties.swift in Sources */,
 				4A16057120C1C5A5000BFC95 /* VideoAudioText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

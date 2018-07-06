@@ -70,7 +70,7 @@ public class Task: NSManagedObject {
         
         var taskType = Set<TaskType>()
         
-        guard self.disableTask == true else {
+        guard self.disableTask == false else {
             return taskType
         }
 

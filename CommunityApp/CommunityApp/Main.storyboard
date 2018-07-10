@@ -5,8 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -334,11 +333,11 @@
             <objects>
                 <viewController id="3CS-nM-Cb1" customClass="AudioRecorderManager" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vp9-V5-Gwu">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="top" restorationIdentifier="recordButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hv6-cv-Zp8">
-                                <rect key="frame" x="288" y="584" width="192" height="193"/>
+                                <rect key="frame" x="587" y="584" width="192" height="193"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="193" id="1Ya-Xt-Vad"/>
                                     <constraint firstAttribute="width" constant="192" id="RPw-Xu-AY8"/>
@@ -352,7 +351,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoK-aG-agr">
-                                <rect key="frame" x="335" y="821" width="99" height="93"/>
+                                <rect key="frame" x="633.5" y="821" width="99" height="93"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xoK-aG-agr" secondAttribute="height" multiplier="33:31" id="0mL-1J-qmi"/>
                                     <constraint firstAttribute="width" constant="99" id="3ik-83-Iyi"/>
@@ -413,7 +412,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fE-PU-9Jr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1775.78125" y="283.59375"/>
+            <point key="canvasLocation" x="1894" y="-471"/>
         </scene>
         <!--Task Manager-->
         <scene sceneID="EJM-HJ-WjQ">

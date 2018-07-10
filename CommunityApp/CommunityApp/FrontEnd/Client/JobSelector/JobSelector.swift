@@ -10,18 +10,23 @@ import Foundation
 import UIKit
 
 
-class JobSelector: UITableViewController {
+class JobSelector: UICollectionViewController {
     var jobs: [Job] = []
     let cellReuseIdentifier: String = Constant.cellReuseIdentifier
     var tappedTableRow: Job!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       
-        jobs = CoreDataManager.database.getJobs() 
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-        tableView.delegate = self
-        tableView.dataSource = self
+        jobs = CoreDataManager.database.getJobs()
+        self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
+        
+        collectionView!.delegate = self
+        collectionView!.dataSource = self
     }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constant.segueID.JobViewer {
             let vc = segue.destination as! JobViewer
@@ -30,29 +35,29 @@ class JobSelector: UITableViewController {
            
         }
     }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+ 
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print("Jobs Count: " + jobs.count.description)
         return jobs.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell: UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
         
-        cell.textLabel?.text = jobs[indexPath.row].title
+        let cell: UICollectionViewCell = self.collectionView!.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
         
+        // cell.textLabel?.text = jobs[indexPath.row].title
+        cell.backgroundColor = UIColor.blue
         // This is where the descripion of the UItableView
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("You selected \(indexPath.row)")
         tappedTableRow = jobs[indexPath.row]
         performSegue(withIdentifier: Constant.segueID.JobViewer, sender: self)
@@ -60,6 +65,22 @@ class JobSelector: UITableViewController {
     
     
     
+}
+
+class CollectionLayout: UICollectionViewLayout {
+    /*
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        super.layoutAttributesForElements(in: rect)
+    }
+    
+    override func prepare() {
+        super.prepare()
+    }
+    
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        super.layoutAttributesForItem(at: indexPath)
+    }
+     */
     
 }
 

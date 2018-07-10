@@ -148,7 +148,6 @@ public class Task: NSManagedObject {
    func getAnalytics() -> String {
         var csvText: String = ""
         csvText += getTitles()
-
     
         for analytics in self.has?.array as! [Analytics] {
             csvText += analytics.getAnalytics()
@@ -164,6 +163,8 @@ public class Task: NSManagedObject {
         switch taskType {
         case []:
             print("you have selected no task")
+            
+            
             // one
         case [.video]:
             viewController = self.getViewController(withIdentifier: "Video") as! Video
@@ -177,6 +178,8 @@ public class Task: NSManagedObject {
         case [.text]:
             viewController = self.getViewController(withIdentifier: "Text") as! Text
             print("selected Text")
+            
+            
             
             //twos
         case [.text,.audio]:
@@ -195,7 +198,10 @@ public class Task: NSManagedObject {
             viewController = self.getViewController(withIdentifier: "PhotoText") as! PhotoText
             print("Selected photo text")
         case[.photo,.video]:
+            viewController = self.getViewController(withIdentifier: "Video") as! Video
             print("Selected Photo and Video - not accessible")
+            
+            
  
             //threes
         case [.photo,.audio,.video]:
@@ -204,7 +210,10 @@ public class Task: NSManagedObject {
             print("Selected photo text")
             
         case [.photo,.text,.video]:
+            viewController = self.getViewController(withIdentifier: "VideoText") as! VideoText
             print("Selecte photo text video - not accessible")
+            
+            
         case [.audio,.text,.photo]:
             viewController = self.getViewController(withIdentifier: "AudioTextPhoto") as! AudioTextPhoto
             print("Selected Audio Text Photo")
@@ -213,9 +222,12 @@ public class Task: NSManagedObject {
         case [.video,.audio,.text]:
             viewController = self.getViewController(withIdentifier: "VideoAudioText") as! VideoAudioText
             print("Selected Audio Video Text")
+            
+          
       
             // four
         case [.audio,.text,.photo,.video]:
+            viewController = self.getViewController(withIdentifier: "VideoAudioText") as! VideoAudioText
             print("all 4")
             
         default:

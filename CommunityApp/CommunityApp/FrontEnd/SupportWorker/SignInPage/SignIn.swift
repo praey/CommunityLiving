@@ -34,6 +34,8 @@ class SignIn: UIViewController {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        
         if identifier == Constant.segueID.JobManager {
             // if Config.validateLogin(username: self.nameValue.text!, password: self.passwordValue.text!) {
                 return true

@@ -51,27 +51,33 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         
         if let text = task.text {
             textValue.text = text
-            validText.backgroundColor = UIColor.green
+            validText.image = #imageLiteral(resourceName: "no")
         } else {
-            validText.backgroundColor = UIColor.red
+            validText.image = #imageLiteral(resourceName: "yes")
         }
 
         if task.ifFileExists(filePath: .audio) {
             validAudio.backgroundColor = UIColor.green
+            disableAudio.isEnabled = true
         } else {
             validAudio.backgroundColor = UIColor.red
+            disableAudio.isEnabled = false
         }
         
         if task.ifFileExists(filePath: .photo) {
             validPhoto.backgroundColor = UIColor.green
+            disablePhoto.isEnabled = true
         } else {
             validPhoto.backgroundColor = UIColor.red
+            disablePhoto.isEnabled = false
         }
         
         if task.ifFileExists(filePath: .video) {
             validVideo.backgroundColor = UIColor.green
+            disableVideo.isEnabled = true
         } else {
             validVideo.backgroundColor = UIColor.red
+            disableVideo.isEnabled = false
         }
     }
     
@@ -179,9 +185,10 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         for item in mediaItemCollection.items{
             let mediaURL = item.assetURL!
             CoreDataManager.database.setTaskAudio(task: task, audioURLString: "\(mediaURL)")
-            validAudio.backgroundColor = UIColor.green
-            disableAudio.isOn = false
         }
+        validAudio.backgroundColor = UIColor.green
+        disableAudio.isEnabled = true
+        disableAudio.setOn(false, animated: true)
     }
     // MARK: Video functions
     
@@ -200,7 +207,7 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     }
     
 
-    @IBAction func takeVideo(_ sender: Any) {
+    @IBAction func takeVideo(_ sender: UIButton) {
         imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -217,7 +224,7 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         }
     }
     
-    @IBAction func galleryVideo(_ sender: Any) {
+    @IBAction func galleryVideo(_ sender: UIButton) {
         imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
@@ -237,7 +244,7 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         let mediaType = info[UIImagePickerControllerMediaType] as! String
         if mediaType == "public.image" {
             if task.ifFileExists(filePath: .photo) {
-                let alert = UIAlertController(title: "Warning!", message: "Are you sure to replace the exist image?", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Warning!", message: "Are you sure to replace the existing image?", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
                     CoreDataManager.database.setTaskPhoto(task: self.task, photo: info[UIImagePickerControllerOriginalImage] as! UIImage)
                 }))
@@ -249,22 +256,26 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
                 validPhoto.backgroundColor = UIColor.green
                 CoreDataManager.database.setTaskPhoto(task: task, photo: info[UIImagePickerControllerOriginalImage] as! UIImage)
                 imagePickerController.dismiss(animated: true, completion: nil)
+                disablePhoto.isEnabled = true
+                disableVideo.setOn(false, animated: true)
             }
         }
         if mediaType == "public.movie" {
             if task.ifFileExists(filePath: .video) {
-                let alert = UIAlertController(title: "Warning!", message: "Are you sure to replace the exist video?", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Warning!", message: "Are you sure to replace the existing video?", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
                     CoreDataManager.database.setTaskVideo(task: self.task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
                 }))
                 alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
                 imagePickerController.dismiss(animated: true, completion: nil)
-                present(alert, animated: true, completion: nil)
+                present(alert, animated: false, completion: nil)
             }
             else {
                 validVideo.backgroundColor = UIColor.green
                 CoreDataManager.database.setTaskVideo(task: task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
                 imagePickerController.dismiss(animated: true, completion: nil)
+                disableVideo.isEnabled = true
+                disableVideo.setOn(true, animated: true)
             }
         }
     }

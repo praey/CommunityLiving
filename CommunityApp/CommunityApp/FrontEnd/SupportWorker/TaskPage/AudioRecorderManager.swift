@@ -15,11 +15,15 @@ class AudioRecorderManager: UIViewController {
     var player: AVAudioPlayer?
     var recorderOptionsDic: [String : Any]?
     var volumeTimer: Timer!
+    var volumeComparator: Int!
     @IBOutlet weak var volume: UILabel!
+    @IBOutlet weak var volumeAnimation: UIImageView!
+    @IBOutlet weak var progress: UIProgressView!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        progress.transform = CGAffineTransform(scaleX: 1.0, y: 10.0)
+        self.view.sendSubview(toBack: progress)
         let session:AVAudioSession = AVAudioSession.sharedInstance()
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
         do {
@@ -38,10 +42,11 @@ class AudioRecorderManager: UIViewController {
             ]
 
         if task.ifFileExists(filePath: .audio) {
-            let alert = UIAlertController(title: "", message: "If you record a new audio, the exist audio will be replaced!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "", message: "If you record a new audio, the existing audio will be replaced!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
+        volumeComparator = 1000
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,7 +55,8 @@ class AudioRecorderManager: UIViewController {
     }
     
   
-    @IBAction func recordButtonTouchDown(_ sender: Any) {
+    @IBAction func recordButtonTouchDown(_ sender: UIButton) {
+        sender.setImage(#imageLiteral(resourceName: "record2Start2"), for: .normal)
         recorder = try! AVAudioRecorder(url: URL(string: task.getPath(.audio)!)!, settings: recorderOptionsDic!)
         if recorder != nil {
             recorder?.isMeteringEnabled = true
@@ -65,12 +71,28 @@ class AudioRecorderManager: UIViewController {
         }
     }
     
-    @IBAction func recordButtonTouchUp(_ sender: Any) {
+    @IBAction func recordButtonTouchUp(_ sender: UIButton) {
+        sender.setImage(#imageLiteral(resourceName: "record2"), for: .normal)
         recorder?.stop()
         recorder = nil
         volumeTimer.invalidate()
         volumeTimer = nil
         volume.text = "0"
+        volumeAnimation.image = #imageLiteral(resourceName: "volumeBar8")
+        volumeComparator = 1000
+        progress.setProgress(1.0, animated: false)
+    }
+    
+    @IBAction func recordButtonTouchUp2(_ sender: UIButton) {
+        sender.setImage(#imageLiteral(resourceName: "record2"), for: .normal)
+        recorder?.stop()
+        recorder = nil
+        volumeTimer.invalidate()
+        volumeTimer = nil;
+        volume.text = "0"
+        volumeAnimation.image = #imageLiteral(resourceName: "volumeBar8")
+        volumeComparator = 1000
+        progress.setProgress(1.0, animated: false)
     }
     
     @IBAction func playbutton(_ sender: Any) {
@@ -91,6 +113,30 @@ class AudioRecorderManager: UIViewController {
         let maxVolume:Float = recorder!.peakPower(forChannel: 0)
         let result = Int(100 * pow(Double(10), Double(0.05*maxVolume)))
         volume.text = "\(result)"
+        if result >= volumeComparator + 5 || result <= volumeComparator - 5 {
+            switch result {
+            case 0...7:
+                volumeAnimation.image = #imageLiteral(resourceName: "volumeBar1")
+            case 8...15:
+                volumeAnimation.image = #imageLiteral(resourceName: "volumeBar2")
+            case 16...23:
+                volumeAnimation.image = #imageLiteral(resourceName: "volumeBar3")
+            case 24...31:
+                volumeAnimation.image = #imageLiteral(resourceName: "volumeBar4")
+            case 32...39:
+                volumeAnimation.image = #imageLiteral(resourceName: "volumeBar5")
+            case 40...47:
+                volumeAnimation.image = #imageLiteral(resourceName: "volumeBar6")
+            case 48...55:
+                volumeAnimation.image = #imageLiteral(resourceName: "volumeBar7")
+            case 56...63:
+                volumeAnimation.image = #imageLiteral(resourceName: "volumeBar8")
+            default:
+                volumeAnimation.image = #imageLiteral(resourceName: "volumeBar8")
+            }
+            volumeComparator = result
+        }
+        progress.setProgress(progress.progress - 0.01, animated: true)
     }
     /*
     // MARK: - Navigation

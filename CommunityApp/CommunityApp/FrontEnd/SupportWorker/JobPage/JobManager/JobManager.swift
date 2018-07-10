@@ -40,6 +40,7 @@ class JobManager: UIViewController{
         jobs = CoreDataManager.database.getJobs()
         collectionView.reloadData()
     }
+
     
     @objc func createJob(sender: UIButton) {
         if (jobTitle.text?.isEmpty)! {

@@ -17,6 +17,9 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     private var imagePickerController: UIImagePickerController!
     private var mediaPickerController: MPMediaPickerController!
     var task: Task!
+    
+    let validInput: UIColor = UIColor.green
+    let invalidInput: UIColor = UIColor.red
 
 
     @IBOutlet weak var validVideo: UIImageView!
@@ -39,7 +42,10 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Entered TaskManager")
-
+        setUp()
+    }
+    
+    func setUp() {
         disableTask.isOn = task.disableTask
         disableText.isOn = task.disableText
         disableAudio.isOn = task.disableAudio
@@ -47,48 +53,20 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         disableVideo.isOn = task.disableVideo
         
         textValue.delegate = self
-        
-        
-        if let text = task.text {
-            textValue.text = text
-            validText.backgroundColor = UIColor.green
-        } else {
-            validText.backgroundColor = UIColor.red
-        }
 
-        if task.ifFileExists(filePath: .audio) {
-            validAudio.backgroundColor = UIColor.green
-        } else {
-            validAudio.backgroundColor = UIColor.red
-        }
+        textValue.text = task?.text ?? ""
+         validText.backgroundColor = task.text != nil ? validInput : invalidInput
         
-        if task.ifFileExists(filePath: .photo) {
-            validPhoto.backgroundColor = UIColor.green
-        } else {
-            validPhoto.backgroundColor = UIColor.red
-        }
+        validAudio.backgroundColor = task.ifFileExists(filePath: .audio) ? validInput: invalidInput
         
-        if task.ifFileExists(filePath: .video) {
-            validVideo.backgroundColor = UIColor.green
-        } else {
-            validVideo.backgroundColor = UIColor.red
-        }
-    }
-    
-    // add one button that will display a test of what the task actuatlly is
-    
-    @IBAction func viewTaskTemplate() {
-        if let navigationController = self.navigationController, let taskTemplate = task.getTaskTemplate() {
-            print("pushed the new tasktemplate")
-            navigationController.pushViewController(taskTemplate, animated: true)
-        } else {
-            print("failed to push task tempalte")
-        }
-        
-        
-        
+        validPhoto.backgroundColor = task.ifFileExists(filePath: .photo) ? validInput: invalidInput
+        validVideo.backgroundColor = task.ifFileExists(filePath: .video) ? validInput: invalidInput
+
         
     }
+    
+    
+ 
     
     
     
@@ -102,87 +80,105 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     }
 
     
-    // MARK: Text functions
-    @IBAction func textDisabled(_ sender: Any) {
-        if let sender = sender as? UISwitch {
-            if !sender.isOn {
-                // If there is valid text
-                if !(textValue.text?.isEmpty)! {
-                    validVideo.backgroundColor = UIColor.green
-                }
-            } else {
-                validVideo.backgroundColor = UIColor.red
-            }
-        }
-    }
-    // MARK: Photo functions
-    
-    @IBAction func photoDisabled(_ sender: Any) {
-        if let sender = sender as? UISwitch {
-            if !sender.isOn {
-                if task.ifFileExists(filePath: .photo) {
-                    validPhoto.backgroundColor = UIColor.green
-                }
-            } else {
-                validPhoto.backgroundColor = UIColor.red
-            }
-        }
-    }
-    @IBAction func galleryPhoto(_ sender: Any) {
-        imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.sourceType = .photoLibrary
-        present(imagePickerController, animated: true, completion: nil)
-    }
-    
-    @IBAction func takePhoto(_ sender: Any) {
-        imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePickerController.sourceType = .camera
-            present(imagePickerController, animated: true, completion: nil)
-        }
-        else {
-            let alert = UIAlertController(title: "Camera does not exist!", message: "Please check your camera.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    
-    // MARK: Audio functions
-    
-    @IBAction func audioDisabled(_ sender: Any) {
-        if let sender = sender as? UISwitch {
-            if sender.isOn {
-                validAudio.backgroundColor = UIColor.red
-            } else {
-                
-                if task.ifFileExists(filePath: .audio) {
-                    validAudio.backgroundColor = UIColor.green
-                }
-            }
-        }
-    }
-    
+
+
+
   
-    @IBAction func galleryAudio(_ sender: Any) {
-        let mediaPickerController = MPMediaPickerController(mediaTypes: .any)
-        mediaPickerController.delegate = self
-        mediaPickerController.allowsPickingMultipleItems = false
-        present(mediaPickerController, animated: true, completion: nil)
+    
+ 
+    
+   
+    
+    override func viewWillDisappear(_ animated: Bool) {
         
+        
+        task.disableTask = disableTask.isOn
+         task.disableText = disableText.isOn
+       task.disableAudio = disableAudio.isOn
+        task.disablePhoto = disablePhoto.isOn
+        task.disableVideo = disableVideo.isOn
+        
+        
+        
+        CoreDataManager.database.saveData()
     }
     
-    @objc func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
-        for item in mediaItemCollection.items{
-            let mediaURL = item.assetURL!
-            CoreDataManager.database.setTaskAudio(task: task, audioURLString: "\(mediaURL)")
-            validAudio.backgroundColor = UIColor.green
-            disableAudio.isOn = false
+    @IBAction func deleteTask(_ sender: Any) {
+        CoreDataManager.database.deleteTask(task: task)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    // add one button that will display a test of what the task actuatlly is
+    
+    @IBAction func viewTaskTemplate() {
+        if let navigationController = self.navigationController, let taskTemplate = task.getTaskTemplate() {
+            print("pushed the new tasktemplate")
+            navigationController.pushViewController(taskTemplate, animated: true)
+        } else {
+            print("failed to push task tempalte")
         }
     }
+
+}
+
+
+
+
+// Video
+extension TaskManager {
+    func mediaPickerDidCancel(_ mediaPickerController: MPMediaPickerController) {
+        mediaPickerController.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let mediaType = info[UIImagePickerControllerMediaType] as! String
+        if mediaType == "public.image" {
+            if task.ifFileExists(filePath: .photo) {
+                let alert = UIAlertController(title: "Warning!", message: "Are you sure to replace the exist image?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
+                    CoreDataManager.database.setTaskPhoto(task: self.task, photo: info[UIImagePickerControllerOriginalImage] as! UIImage)
+                    self.validPhoto.backgroundColor = self.validInput
+                    self.disablePhoto.isOn = false
+                }))
+                alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+                imagePickerController.dismiss(animated: true, completion: nil)
+                present(alert, animated: true, completion: nil)
+            }
+            else {
+                CoreDataManager.database.setTaskPhoto(task: task, photo: info[UIImagePickerControllerOriginalImage] as! UIImage)
+                validPhoto.backgroundColor = validInput
+                disablePhoto.isOn = false
+                imagePickerController.dismiss(animated: true, completion: nil)
+            }
+        }
+        if mediaType == "public.movie" {
+            if task.ifFileExists(filePath: .video) {
+                let alert = UIAlertController(title: "Warning!", message: "Are you sure to replace the exist video?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
+                    CoreDataManager.database.setTaskVideo(task: self.task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
+                    self.validVideo.backgroundColor = self.validInput
+                    self.disableVideo.isOn = false
+                }))
+                alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+                imagePickerController.dismiss(animated: true, completion: nil)
+                present(alert, animated: true, completion: nil)
+            }
+            else {
+                
+                CoreDataManager.database.setTaskVideo(task: task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
+                validVideo.backgroundColor = validInput
+                disableVideo.isOn = false
+                imagePickerController.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+}
+
+
+
+
+// Video
+extension TaskManager {
     // MARK: Video functions
     
     @IBAction func videoDisabled(_ sender: Any) {
@@ -191,15 +187,15 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
             
             if !sender.isOn {
                 if task.ifFileExists(filePath: .video) {
-                    validVideo.backgroundColor = UIColor.green
+                    validVideo.backgroundColor = validInput
                 }
             } else {
-                validVideo.backgroundColor = UIColor.red
+                validVideo.backgroundColor = invalidInput
             }
         }
     }
     
-
+    
     @IBAction func takeVideo(_ sender: Any) {
         imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -224,89 +220,136 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         imagePickerController.mediaTypes = [kUTTypeMovie as String]
         present(imagePickerController, animated: true, completion: nil)
     }
+}
+
+
+
+
+
+
+
+
+// Audio
+extension TaskManager {
     
+    @IBAction func audioDisabled(_ sender: Any) {
+        if let sender = sender as? UISwitch {
+            if !sender.isOn {
+                if task.ifFileExists(filePath: .audio) {
+                    validAudio.backgroundColor = validInput
+                }
+            } else {
+                validAudio.backgroundColor = invalidInput
+                
+            }
+        }
+    }
+    
+    
+    @IBAction func galleryAudio(_ sender: Any) {
+        let mediaPickerController = MPMediaPickerController(mediaTypes: .any)
+        mediaPickerController.delegate = self
+        mediaPickerController.allowsPickingMultipleItems = false
+        present(mediaPickerController, animated: true, completion: nil)
+        
+    }
+    
+    @objc func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
+        for item in mediaItemCollection.items{
+            let mediaURL = item.assetURL!
+            CoreDataManager.database.setTaskAudio(task: task, audioURLString: "\(mediaURL)")
+            validAudio.backgroundColor = validInput
+            disableAudio.isOn = false
+        }
+    }
+}
+
+
+
+
+
+
+// Photo
+extension TaskManager {
+    // MARK: Photo functions
+    
+    @IBAction func photoDisabled(_ sender: Any) {
+        if let sender = sender as? UISwitch {
+            if !sender.isOn {
+                if task.ifFileExists(filePath: .photo) {
+                    validPhoto.backgroundColor = validInput
+                }
+            } else {
+                validPhoto.backgroundColor = invalidInput
+            }
+        }
+        
+        
+        
+    }
+    @IBAction func galleryPhoto(_ sender: Any) {
+        imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    @IBAction func takePhoto(_ sender: Any) {
+        imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePickerController.sourceType = .camera
+            present(imagePickerController, animated: true, completion: nil)
+        }
+        else {
+            let alert = UIAlertController(title: "Camera does not exist!", message: "Please check your camera.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         imagePickerController.dismiss(animated: true, completion: nil)
     }
     
-    func mediaPickerDidCancel(_ mediaPickerController: MPMediaPickerController) {
-        mediaPickerController.dismiss(animated: true, completion: nil)
-    }
     
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let mediaType = info[UIImagePickerControllerMediaType] as! String
-        if mediaType == "public.image" {
-            if task.ifFileExists(filePath: .photo) {
-                let alert = UIAlertController(title: "Warning!", message: "Are you sure to replace the exist image?", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
-                    CoreDataManager.database.setTaskPhoto(task: self.task, photo: info[UIImagePickerControllerOriginalImage] as! UIImage)
-                }))
-                alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
-                imagePickerController.dismiss(animated: true, completion: nil)
-                present(alert, animated: true, completion: nil)
-            }
-            else {
-                validPhoto.backgroundColor = UIColor.green
-                CoreDataManager.database.setTaskPhoto(task: task, photo: info[UIImagePickerControllerOriginalImage] as! UIImage)
-                imagePickerController.dismiss(animated: true, completion: nil)
-            }
-        }
-        if mediaType == "public.movie" {
-            if task.ifFileExists(filePath: .video) {
-                let alert = UIAlertController(title: "Warning!", message: "Are you sure to replace the exist video?", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
-                    CoreDataManager.database.setTaskVideo(task: self.task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
-                }))
-                alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
-                imagePickerController.dismiss(animated: true, completion: nil)
-                present(alert, animated: true, completion: nil)
-            }
-            else {
-                validVideo.backgroundColor = UIColor.green
-                CoreDataManager.database.setTaskVideo(task: task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
-                imagePickerController.dismiss(animated: true, completion: nil)
-            }
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        
-        
-        task.disableTask = disableTask.isOn
-         task.disableText = disableText.isOn
-       task.disableAudio = disableAudio.isOn
-        task.disablePhoto = disablePhoto.isOn
-        task.disableVideo = disableVideo.isOn
-        
-        
-        
-        CoreDataManager.database.saveData()
-    }
-    
-    @IBAction func deleteTask(_ sender: Any) {
-        CoreDataManager.database.deleteTask(task: task)
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    
-    
-    
-
 }
 
+
+
+
+
+// Text
 extension TaskManager: UITextFieldDelegate {
     
+    // MARK: Text functions
+    @IBAction func textDisabled(_ sender: Any) {
+        if let sender = sender as? UISwitch {
+            if !sender.isOn {
+                // If there is valid text
+                if let text = textValue.text {
+                    if !text.isEmpty{
+                    validVideo.backgroundColor = validInput
+                    }
+                    
+                }
+            } else {
+                validVideo.backgroundColor = invalidInput
+            }
+        }
+    }
     
-   
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         if reason == .committed {
-            if (textField.text?.isEmpty)! {
-               validText.backgroundColor = UIColor.red
-             } else {
-                task.text = textValue.text
-                disableText.isOn = false
-            validText.backgroundColor = UIColor.green
+            if let text = textField.text {
+                if !text.isEmpty {
+                    CoreDataManager.database.setTaskText(task: task, text: text)
+                    disableText.isOn = false
+                    validText.backgroundColor = validInput
+                } else {
+                    validText.backgroundColor = invalidInput
+                }
             }
             
         }

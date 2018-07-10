@@ -69,11 +69,11 @@ class JobEditor: UIViewController  {
         performSegue(withIdentifier: Constant.segueID.TaskManager, sender: self)
     }
     
+  
+    
     @objc func recordJob() {
         
-       // job.disableJob = disableJob.isOn
-        
-        
+       job.disabelJob = disableJob.isOn
         CoreDataManager.database.saveData()
     }
     

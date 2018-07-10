@@ -23,6 +23,8 @@ public class Task: NSManagedObject {
         case photo
     }
     
+    
+    
     var thumbnail: UIImage? {
         get {
             if ifFileExists(filePath: .photo) {
@@ -159,6 +161,8 @@ public class Task: NSManagedObject {
     
     func getTaskTemplate() -> TaskTemplate? {
         var viewController: TaskTemplate?
+        print("Task Description")
+        print(self.getTaskType().description)
         let taskType = self.getTaskType()
         switch taskType {
         case []:

@@ -12,7 +12,22 @@ import UIKit
 class Constant {
     
     static let cellReuseIdentifier = "cellReuseIdentifier"
-    
+    static let collectionViewLayout: UICollectionViewFlowLayout = {
+            let viewLayout = UICollectionViewFlowLayout()
+        viewLayout.minimumLineSpacing = 8
+        viewLayout.minimumInteritemSpacing = 8
+        viewLayout.itemSize = CGSize.init(width: 100, height: 100)
+        viewLayout.estimatedItemSize = CGSize.init(width: 100, height: 100)
+        viewLayout.sectionInset = UIEdgeInsets.init(top: -1, left: -1, bottom: -1, right: -1)
+        return viewLayout
+        
+        
+        //viewLayout.sectionInsetReference = UICollectionViewFlowLayout.SectionInsetReference.
+        //2
+        //let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        //let availableWidth = view.frame.width - paddingSpace
+        //let widthPerItem = availableWidth / itemsPerRow
+    }()
     
     
     enum segueID {

@@ -33,23 +33,31 @@ class SignIn: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        
-        
-        if identifier == Constant.segueID.JobManager {
-            // if Config.validateLogin(username: self.nameValue.text!, password: self.passwordValue.text!) {
-                return true
-            
-           
-        }
-        print("not to jobManager")
-        // Show text to the user about how they didn't enter in the right name and password
-        return false
-    }
+//    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+//        if identifier == Constant.segueID.JobManager {
+//            // if Config.validateLogin(username: self.nameValue.text!, password: self.passwordValue.text!) {
+//            print("timer turned off")
+//            timer.invalidate()
+//            timer = nil
+//                return true
+//
+//
+//        }
+//        print("not to jobManager")
+//        // Show text to the user about how they didn't enter in the right name and password
+//        return false
+//    }
     
     
     @objc func signIn() {
         performSegue(withIdentifier: Constant.segueID.JobManager, sender: self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if timer != nil {
+            timer.invalidate()
+            timer = nil
+        }
     }
     
     @objc func backToLastPage() {

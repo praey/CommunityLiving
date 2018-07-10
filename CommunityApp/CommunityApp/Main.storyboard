@@ -328,82 +328,6 @@
             </objects>
             <point key="canvasLocation" x="-204.6875" y="283.59375"/>
         </scene>
-        <!--Audio Recorder Manager-->
-        <scene sceneID="Y5B-g9-jeF">
-            <objects>
-                <viewController id="3CS-nM-Cb1" customClass="AudioRecorderManager" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Vp9-V5-Gwu">
-                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="l64-ba-h3R">
-                                <rect key="frame" x="20" y="40" width="1326" height="964"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="5pc-9p-2pl">
-                                        <rect key="frame" x="0.0" y="0.0" width="1326" height="478"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="volume: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6Y-bd-S4M">
-                                                <rect key="frame" x="0.0" y="0.0" width="1129" height="478"/>
-                                                <viewLayoutGuide key="safeArea" id="KXz-ni-K0x"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gv1-eQ-Wgu">
-                                                <rect key="frame" x="1129" y="0.0" width="197" height="478"/>
-                                                <viewLayoutGuide key="safeArea" id="pa4-JP-lBz"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Rr7-2c-Tha">
-                                        <rect key="frame" x="0.0" y="486" width="1326" height="478"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoK-aG-agr">
-                                                <rect key="frame" x="0.0" y="0.0" width="648" height="478"/>
-                                                <viewLayoutGuide key="safeArea" id="U2o-9O-ukb"/>
-                                                <state key="normal" title="Button" image="start"/>
-                                                <connections>
-                                                    <action selector="playbutton:" destination="3CS-nM-Cb1" eventType="touchUpInside" id="cQ7-up-3N1"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hv6-cv-Zp8">
-                                                <rect key="frame" x="678" y="0.0" width="648" height="478"/>
-                                                <viewLayoutGuide key="safeArea" id="SGy-aq-aW1"/>
-                                                <state key="normal" title="Button" image="record"/>
-                                                <connections>
-                                                    <action selector="recordButtonTouchDown:" destination="3CS-nM-Cb1" eventType="touchDown" id="hwO-UO-W31"/>
-                                                    <action selector="recordButtonTouchUp:" destination="3CS-nM-Cb1" eventType="touchUpInside" id="lLN-wM-hJA"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="xoK-aG-agr" firstAttribute="width" secondItem="Hv6-cv-Zp8" secondAttribute="width" id="fJc-r2-M1o"/>
-                                            <constraint firstItem="xoK-aG-agr" firstAttribute="height" secondItem="Hv6-cv-Zp8" secondAttribute="height" id="oxj-hY-gE4"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="l64-ba-h3R" firstAttribute="top" secondItem="kYm-Xb-sod" secondAttribute="top" constant="20" id="AYC-bV-GJW"/>
-                            <constraint firstItem="kYm-Xb-sod" firstAttribute="trailing" secondItem="l64-ba-h3R" secondAttribute="trailing" constant="20" id="XWD-TR-rdN"/>
-                            <constraint firstItem="kYm-Xb-sod" firstAttribute="bottom" secondItem="l64-ba-h3R" secondAttribute="bottom" constant="20" id="au1-1H-GRE"/>
-                            <constraint firstItem="l64-ba-h3R" firstAttribute="leading" secondItem="kYm-Xb-sod" secondAttribute="leading" constant="20" id="hNc-GF-AQl"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="kYm-Xb-sod"/>
-                    </view>
-                    <connections>
-                        <outlet property="volume" destination="Gv1-eQ-Wgu" id="wYC-zu-03A"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5fE-PU-9Jr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2353" y="280"/>
-        </scene>
         <!--Task Manager-->
         <scene sceneID="EJM-HJ-WjQ">
             <objects>
@@ -490,9 +414,6 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0oG-aX-uKv" userLabel="Take Audio">
                                                         <rect key="frame" x="329.5" y="0.0" width="329.5" height="31"/>
                                                         <state key="normal" title="TakeAudio"/>
-                                                        <connections>
-                                                            <segue destination="3CS-nM-Cb1" kind="show" identifier="toAudioTaker" id="5qg-eK-rWl"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -1384,8 +1305,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="record" width="512" height="512"/>
-        <image name="start" width="512" height="512"/>
         <image name="testPhoto" width="450" height="338"/>
     </resources>
     <inferredMetricsTieBreakers>

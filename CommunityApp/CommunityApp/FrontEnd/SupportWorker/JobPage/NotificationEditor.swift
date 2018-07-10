@@ -54,6 +54,8 @@ class NotificationEditor: UIViewController {
         super.viewDidLoad()
         addNotification.addTarget(self, action: #selector(NotificationEditor.saveNotification), for: .touchUpInside)
         
+        
+        
             // UNUserNotificationCenter.current().delegate = self
         // UNUserNotification.curr = self
         
@@ -96,7 +98,7 @@ class NotificationEditor: UIViewController {
     
     private func scheduleLocalNotification() {
         let notificationContent = createNotificationContent(title: "test title", body: "test body")
-        let notificationRequest = createNotificationRequest(notificationContent: notificationContent, date: DateComponents(), repeats: false)
+        let notificationRequest = createNotificationRequest(notificationContent: notificationContent, date: DateComponents(), repeats: true)
          UNUserNotificationCenter.current().add(notificationRequest) { (error) in
          if error != nil {
          print("Cannot add this request")
@@ -126,6 +128,7 @@ class NotificationEditor: UIViewController {
             case .authorized:
                 print("user notification accepted")
                 self.scheduleLocalNotification()
+
             case .notDetermined:
                 print("usernotifcation not determined")
                 

@@ -19,7 +19,11 @@ class NotificationController: UITableViewController {
     var job : Job!
     var addNotification: UIBarButtonItem!
     let notificationCenter = UNUserNotificationCenter.current()
-    var notificationRequests: [UNNotificationRequest]!
+    var notificationRequests: [UNNotificationRequest]? {
+        didSet {
+            //self.tableView.reloadData()
+        }
+    }
     var tappedTableRow: UNNotificationRequest!
     
     
@@ -42,8 +46,23 @@ class NotificationController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.notificationRequests = job.notificationRequests
-        tableView.reloadData()
+        
+        
+        UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: {requests in
+             // Correct
+                print("request")
+                print(requests.description)
+            
+                self.notificationRequests = requests//.filter {$0.identifier == self.job.id!}
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+        })
+      
+        
+       
+        print("yes")
         
     }
     
@@ -78,11 +97,9 @@ class NotificationController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // // var pendingCount: Int
-        if let request = notificationRequests {
-            print("Notifications Pending: \(request.count)")
-            
-        
-            return request.count
+        if let requests = notificationRequests {
+            print("Notifications Pending: \(requests.count)")
+            return requests.count
         }
         return 0
     }
@@ -90,18 +107,24 @@ class NotificationController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
-        
-        let title = notificationRequests[indexPath.row].content.title
-        print("Title for cell: \(title)")
-        cell.textLabel?.text = title
-  
+        if let requests = notificationRequests {
+            let title = requests[indexPath.row].content.title
+            print("Title for cell: \(title)")
+            cell.textLabel?.text = title
+        }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected \(indexPath.row)")
-        tappedTableRow = notificationRequests[indexPath.row]
-        performSegue(withIdentifier: Constant.segueID.NotificationEditor, sender: self)
+        if let requests = notificationRequests {
+            guard requests.count > indexPath.row else {
+               return
+            }
+            tappedTableRow = requests[indexPath.row]
+            performSegue(withIdentifier: Constant.segueID.NotificationEditor, sender: self)
+        }
+        
     }
 }
 

@@ -38,17 +38,8 @@ public class Job: NSManagedObject {
         }
     }
     
-    var notificationRequests: [UNNotificationRequest]? {
-        get {
-            var notificationRequest: [UNNotificationRequest]?
-            UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { requests in
-                notificationRequest = requests
-            })
-            if let requests = notificationRequest {
-                notificationRequest = requests.filter {$0.identifier == self.id!}
-            }
-            return notificationRequest
-        }
-    }
+   
+    
+   
     
 }

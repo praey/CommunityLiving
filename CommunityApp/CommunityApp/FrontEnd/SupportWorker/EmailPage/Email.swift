@@ -28,9 +28,6 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
             print("unable to access icloud account")
             return
         }
-        
-        
-        
         ubiquityURL = ubiquityURL!.appendingPathComponent("Documents/+\(self.name).csv")
         document = MyDocument(fileURL: ubiquityURL!)
     }
@@ -46,7 +43,7 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
         csvText += analyticTitles()
         for job in CoreDataManager.database.getJobs() {
             for task in job.getTasks() {
-                //csvText += task.getAnalytics()
+                csvText += task.getAnalytics()
             }
         }
         

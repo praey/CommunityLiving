@@ -47,6 +47,7 @@
 		4ABCEFCE20EAEA54000E8C2F /* Analytics+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABCEFCC20EAEA54000E8C2F /* Analytics+CoreDataClass.swift */; };
 		4ABCEFD220ECB8FA000E8C2F /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABCEFD020ECB8FA000E8C2F /* Task+CoreDataProperties.swift */; };
 		4ABCEFD320ECB8FA000E8C2F /* Analytics+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABCEFD120ECB8FA000E8C2F /* Analytics+CoreDataProperties.swift */; };
+		840EE53820F3108700C51DE3 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840EE53720F3108700C51DE3 /* StackView.swift */; };
 		CD1904D620DCB75000D2C74A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1904D520DCB75000D2C74A /* Constants.swift */; };
 		CD1904D920DCB7F500D2C74A /* JobSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1904D820DCB7F500D2C74A /* JobSelectorCell.swift */; };
 		CD88838C20DE7B7600E4AED3 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88838B20DE7B7600E4AED3 /* NotificationController.swift */; };
@@ -121,6 +122,7 @@
 		4ABCEFCC20EAEA54000E8C2F /* Analytics+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Analytics+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4ABCEFD020ECB8FA000E8C2F /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4ABCEFD120ECB8FA000E8C2F /* Analytics+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Analytics+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		840EE53720F3108700C51DE3 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StackView.swift; path = CommunityApp/Model/StackView.swift; sourceTree = SOURCE_ROOT; };
 		CD1904D520DCB75000D2C74A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = SOURCE_ROOT; };
 		CD1904D820DCB7F500D2C74A /* JobSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSelectorCell.swift; sourceTree = "<group>"; };
 		CD88838B20DE7B7600E4AED3 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				CD1904D520DCB75000D2C74A /* Constants.swift */,
+				840EE53720F3108700C51DE3 /* StackView.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				CDFC134D209363C1004A997E /* CommunityApp.xcdatamodeld in Sources */,
 				CDFC1345209363C1004A997E /* AppDelegate.swift in Sources */,
 				4A16056420C1C5A5000BFC95 /* TaskManager.swift in Sources */,
+				840EE53820F3108700C51DE3 /* StackView.swift in Sources */,
 				4A16057020C1C5A5000BFC95 /* VideoPlayer.swift in Sources */,
 				4A0552E020BE7AED00193E5C /* Person+CoreDataClass.swift in Sources */,
 				4A0552C720B5EA1800193E5C /* Task+CoreDataClass.swift in Sources */,
@@ -775,13 +779,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P6Y6Y74NWR;
 				INFOPLIST_FILE = CommunityApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = comm.try;
+				PRODUCT_BUNDLE_IDENTIFIER = comm.new;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -793,13 +799,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P6Y6Y74NWR;
 				INFOPLIST_FILE = CommunityApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = comm.try;
+				PRODUCT_BUNDLE_IDENTIFIER = comm.new;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

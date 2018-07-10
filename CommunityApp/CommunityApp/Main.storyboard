@@ -500,6 +500,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0oG-aX-uKv" userLabel="Take Audio">
                                                         <rect key="frame" x="329.5" y="0.0" width="329.5" height="31"/>
                                                         <state key="normal" title="TakeAudio"/>
+                                                        <connections>
+                                                            <segue destination="3CS-nM-Cb1" kind="show" identifier="toAudioManager" id="0ba-qi-0P8"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>

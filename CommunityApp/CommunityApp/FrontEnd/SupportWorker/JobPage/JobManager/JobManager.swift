@@ -27,6 +27,8 @@ class JobManager: UIViewController{
         self.navigationItem.rightBarButtonItem = configure
         addJob.addTarget(self, action: #selector(JobManager.createJob), for: .touchUpInside)
         
+        
+        collectionView.setCollectionViewLayout(Constant.collectionViewLayout, animated: true)
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
         
         collectionView.delegate = self

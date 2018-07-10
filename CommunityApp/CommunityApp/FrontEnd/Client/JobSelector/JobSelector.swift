@@ -14,14 +14,18 @@ class JobSelector: UICollectionViewController {
     var jobs: [Job] = []
     let cellReuseIdentifier: String = Constant.cellReuseIdentifier
     var tappedTableRow: Job!
-    
+    let itemsPerRow = 5
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
+ 
+        
         jobs = CoreDataManager.database.getJobs()
         self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
         
+        collectionView!.setCollectionViewLayout(Constant.collectionViewLayout, animated: true)
         collectionView!.delegate = self
         collectionView!.dataSource = self
     }
@@ -66,8 +70,10 @@ class JobSelector: UICollectionViewController {
     
     
 }
-
-class CollectionLayout: UICollectionViewLayout {
+class CollectionLayout: UICollectionViewFlowLayout {
+    
+    
+   
     /*
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         super.layoutAttributesForElements(in: rect)
@@ -82,6 +88,12 @@ class CollectionLayout: UICollectionViewLayout {
     }
      */
     
+    //collectionViewContentSize
+    //layoutAttributesForElements(in:)
+    //layoutAttributesForItem(at:)
+    //layoutAttributesForSupplementaryView(ofKind:at:) (if your layout supports supplementary views)
+    //layoutAttributesForDecorationView(ofKind:at:) (if your layout supports decoration views)
+    //shouldInvalidateLayout(forBoundsChange:)
 }
 
 

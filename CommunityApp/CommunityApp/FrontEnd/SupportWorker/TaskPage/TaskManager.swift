@@ -261,6 +261,9 @@ extension TaskManager {
             validAudio.backgroundColor = validInput
             disableAudio.isOn = false
         }
+        validAudio.backgroundColor = UIColor.green
+        disableAudio.isEnabled = true
+        disableAudio.setOn(false, animated: true)
     }
 }
 

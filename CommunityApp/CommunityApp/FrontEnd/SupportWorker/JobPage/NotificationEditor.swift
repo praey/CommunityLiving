@@ -52,6 +52,7 @@ class NotificationEditor: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         addNotification.addTarget(self, action: #selector(NotificationEditor.saveNotification), for: .touchUpInside)
         
         

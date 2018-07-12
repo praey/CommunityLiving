@@ -12,7 +12,7 @@ import AVFoundation
 
 class VideoAudioText: TaskTemplate {
     
-    @IBOutlet weak var text: UITextView!
+    @IBOutlet weak var text: UILabel!
       var audioPlayer: AVAudioPlayer?
      @IBOutlet weak var playerView: PlayerView!
     

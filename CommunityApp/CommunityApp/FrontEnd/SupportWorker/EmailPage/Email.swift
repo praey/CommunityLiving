@@ -22,27 +22,36 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        ubiquityURL = filemanager.url(forUbiquityContainerIdentifier: nil)
-        guard ubiquityURL != nil else {
-            print("unable to access icloud account")
-            return
+        if let _ = filemanager.ubiquityIdentityToken {
+            requestICloudAccess()
         }
-        ubiquityURL = ubiquityURL!.appendingPathComponent("Documents/+\(self.name).csv")
-        document = MyDocument(fileURL: ubiquityURL!)
+       
     }
     
     func analyticTitles() -> String {
         return ""
     }
     
-    
+    func requestICloudAccess() {
+        
+    }
     
     @IBAction func createCSV() {
+        guard filemanager.ubiquityIdentityToken != nil else {
+            print("User doesn't have access to icloud")
+            requestICloudAccess()
+            return
+            
+        }
+        ubiquityURL = filemanager.url(forUbiquityContainerIdentifier: nil)
+        ubiquityURL = ubiquityURL!.appendingPathComponent("Documents/+\(self.name).csv")
+        document = MyDocument(fileURL: ubiquityURL!)
+        
+    
         var csvText: String = ""
         csvText += analyticTitles()
-        for job in CoreDataManager.database.getJobs() {
-            for task in job.getTasks() {
+        for job in CoreDataManager.database.getJobs(include: true) {
+            for task in job.getTasks(include: true) {
                 csvText += task.getAnalytics()
             }
         }

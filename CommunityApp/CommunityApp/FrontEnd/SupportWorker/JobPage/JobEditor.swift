@@ -12,9 +12,6 @@ import UserNotifications
 import EventKitUI
 class JobEditor: UIViewController  {
     
-     private var calendarEventController: EKEventEditViewController = EKEventEditViewController()
-    private var eventStore: EKEventStore = EKEventStore()
-    
     var addTask: UIBarButtonItem!
 
     @IBOutlet weak var disableJob: UISwitch!
@@ -32,18 +29,17 @@ class JobEditor: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Entered JobEditor")
+        self.hideKeyboardWhenTappedAround()
         disableJob.isOn = false//job.disableJob
         
         addTask = UIBarButtonItem.init(title: "Add Task", style: .plain, target: self, action: #selector(JobEditor.createTask))
         self.navigationItem.rightBarButtonItem = addTask
         
-        calendarEventController.editViewDelegate = self
+        
         taskTableView.delegate = self
         taskTableView.dataSource = self
        
         taskTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-        calendarEventController.eventStore = self.eventStore
-      
         
        //  taskTableView.isEditing = true
         
@@ -101,14 +97,14 @@ extension JobEditor: UITableViewDelegate, UITableViewDataSource {
         // This is where the descripion of the UItableView
         cell.backgroundColor = UIColor.orange
         
-        cell.textLabel?.text = job.getTask(row: indexPath.row).title ?? "NO TITLE"
+        cell.textLabel?.text = job.getTask(row: indexPath.row, include: true).title ?? "NO TITLE"
         return cell
     }
  
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected \(indexPath.row)")
     
-            editTask(task: job.getTask(row: indexPath.row))
+        editTask(task: job.getTask(row: indexPath.row, include: true))
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -128,58 +124,17 @@ extension JobEditor: UITableViewDelegate, UITableViewDataSource {
    // }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedTask = self.job.getTask(row: sourceIndexPath.row)
+       // let movedTask = self.job.getTask(row: sourceIndexPath.row, include: true)
         // CoreDataManager.database.setTaskPosition(task: movedTask, oldPos: sourceIndexPath.row, newPos: destinationIndexPath.row)
         
         print(
-            "Moved \(sourceIndexPath.row) to \(destinationIndexPath.row)" + self.job.getTask(row: sourceIndexPath.row).title!)
+            "Moved \(sourceIndexPath.row) to \(destinationIndexPath.row)" + self.job.getTask(row: sourceIndexPath.row, include: true).title!)
         // To check for correctness enable: self.tableView.reloadData()
     }
     
 }
 
 
-
-extension JobEditor: EKEventEditViewDelegate {
-    func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
-        calendarEventController.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func createEvent(_ sender: Any) {
-
-            eventStore.requestAccess(to: EKEntityType.event, completion: {
-                (accessGranted: Bool, error: Error?) in
-                
-                if accessGranted == true {
-                    DispatchQueue.main.async(execute: {
-                    self.createCalendarEvent()
-                
-                    })
-                } else {
-                    DispatchQueue.main.async(execute: {
-                      print("user doesn't have access to Calendar")
-                    })
-                }
-            })
-
-    }
-    
-    
-    func editCalendarEvent(event: EKEvent) {
-        self.calendarEventController.event = event
-        self.present(self.calendarEventController, animated: true, completion: nil)
-     
-    }
-    
-    func createCalendarEvent() {
-        self.present(self.calendarEventController, animated: true, completion: nil)
-    }
-    
-    @IBAction func deleteJob(_ sender: Any) {
-        CoreDataManager.database.deleteJob(job: job)
-        self.navigationController?.popViewController(animated: true)
-    }
-}
 
 
 

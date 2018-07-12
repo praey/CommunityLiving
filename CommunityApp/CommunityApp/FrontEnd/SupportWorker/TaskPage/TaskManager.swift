@@ -18,8 +18,8 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     private var mediaPickerController: MPMediaPickerController!
     var task: Task!
     
-    let validInput: UIColor = UIColor.green
-    let invalidInput: UIColor = UIColor.red
+    let validInput: UIImage = UIImage.init(named: "yes")!// UIColor.green
+    let invalidInput: UIImage = UIImage.init(named: "no")!// UIColor.red
 
 
     @IBOutlet weak var validVideo: UIImageView!
@@ -43,7 +43,16 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         super.viewDidLoad()
         print("Entered TaskManager")
         setUp()
+        self.hideKeyboardWhenTappedAround()
     }
+    
+    override var shouldAutorotate: Bool {
+        return true
+    }
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    
     
     func setUp() {
         disableTask.isOn = task.disableTask
@@ -55,12 +64,12 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         textValue.delegate = self
 
         textValue.text = task?.text ?? ""
-         validText.backgroundColor = task.text != nil ? validInput : invalidInput
+         validText.image = task.text != nil ? validInput : invalidInput
         
-        validAudio.backgroundColor = task.ifFileExists(filePath: .audio) ? validInput: invalidInput
+        validAudio.image = task.ifFileExists(filePath: .audio) ? validInput: invalidInput
         
-        validPhoto.backgroundColor = task.ifFileExists(filePath: .photo) ? validInput: invalidInput
-        validVideo.backgroundColor = task.ifFileExists(filePath: .video) ? validInput: invalidInput
+        validPhoto.image = task.ifFileExists(filePath: .photo) ? validInput: invalidInput
+        validVideo.image = task.ifFileExists(filePath: .video) ? validInput: invalidInput
 
         
     }
@@ -137,7 +146,7 @@ extension TaskManager {
                 let alert = UIAlertController(title: "Warning!", message: "Are you sure to replace the exist image?", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
                     CoreDataManager.database.setTaskPhoto(task: self.task, photo: info[UIImagePickerControllerOriginalImage] as! UIImage)
-                    self.validPhoto.backgroundColor = self.validInput
+                    self.validPhoto.image = self.validInput
                     self.disablePhoto.isOn = false
                 }))
                 alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
@@ -146,7 +155,7 @@ extension TaskManager {
             }
             else {
                 CoreDataManager.database.setTaskPhoto(task: task, photo: info[UIImagePickerControllerOriginalImage] as! UIImage)
-                validPhoto.backgroundColor = validInput
+                validPhoto.image = validInput
                 disablePhoto.isOn = false
                 imagePickerController.dismiss(animated: true, completion: nil)
             }
@@ -156,7 +165,7 @@ extension TaskManager {
                 let alert = UIAlertController(title: "Warning!", message: "Are you sure to replace the exist video?", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
                     CoreDataManager.database.setTaskVideo(task: self.task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
-                    self.validVideo.backgroundColor = self.validInput
+                    self.validVideo.image = self.validInput
                     self.disableVideo.isOn = false
                 }))
                 alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
@@ -166,7 +175,7 @@ extension TaskManager {
             else {
                 
                 CoreDataManager.database.setTaskVideo(task: task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
-                validVideo.backgroundColor = validInput
+                validVideo.image = validInput
                 disableVideo.isOn = false
                 imagePickerController.dismiss(animated: true, completion: nil)
             }
@@ -187,10 +196,10 @@ extension TaskManager {
             
             if !sender.isOn {
                 if task.ifFileExists(filePath: .video) {
-                    validVideo.backgroundColor = validInput
+                    validVideo.image = validInput
                 }
             } else {
-                validVideo.backgroundColor = invalidInput
+                validVideo.image = invalidInput
             }
         }
     }
@@ -236,10 +245,10 @@ extension TaskManager {
         if let sender = sender as? UISwitch {
             if !sender.isOn {
                 if task.ifFileExists(filePath: .audio) {
-                    validAudio.backgroundColor = validInput
+                    validAudio.image = validInput
                 }
             } else {
-                validAudio.backgroundColor = invalidInput
+                validAudio.image = invalidInput
                 
             }
         }
@@ -258,7 +267,7 @@ extension TaskManager {
         for item in mediaItemCollection.items{
             let mediaURL = item.assetURL!
             CoreDataManager.database.setTaskAudio(task: task, audioURLString: "\(mediaURL)")
-            validAudio.backgroundColor = validInput
+            validAudio.image = validInput
             disableAudio.isOn = false
         }
         validAudio.backgroundColor = UIColor.green
@@ -280,10 +289,10 @@ extension TaskManager {
         if let sender = sender as? UISwitch {
             if !sender.isOn {
                 if task.ifFileExists(filePath: .photo) {
-                    validPhoto.backgroundColor = validInput
+                    validPhoto.image = validInput
                 }
             } else {
-                validPhoto.backgroundColor = invalidInput
+                validPhoto.image = invalidInput
             }
         }
         
@@ -332,12 +341,12 @@ extension TaskManager: UITextFieldDelegate {
                 // If there is valid text
                 if let text = textValue.text {
                     if !text.isEmpty{
-                    validVideo.backgroundColor = validInput
+                    validVideo.image = validInput
                     }
                     
                 }
             } else {
-                validVideo.backgroundColor = invalidInput
+                validVideo.image = invalidInput
             }
         }
     }
@@ -349,9 +358,9 @@ extension TaskManager: UITextFieldDelegate {
                 if !text.isEmpty {
                     CoreDataManager.database.setTaskText(task: task, text: text)
                     disableText.isOn = false
-                    validText.backgroundColor = validInput
+                    validText.image = validInput
                 } else {
-                    validText.backgroundColor = invalidInput
+                    validText.image = invalidInput
                 }
             }
             

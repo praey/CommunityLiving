@@ -150,9 +150,9 @@ public class Task: NSManagedObject {
    func getAnalytics() -> String {
         var csvText: String = ""
         csvText += getTitles()
-    
         for analytics in self.has?.array as! [Analytics] {
             csvText += analytics.getAnalytics()
+            csvText += "\n"
          }
         return csvText
     }
@@ -165,9 +165,7 @@ public class Task: NSManagedObject {
         print(self.getTaskType().description)
         let taskType = self.getTaskType()
         switch taskType {
-        case []:
-            print("you have selected no task")
-            
+       // There is no switch statement for nothing as it should envoke the default implementation
             
             // one
         case [.video]:
@@ -237,6 +235,7 @@ public class Task: NSManagedObject {
         default:
             print("nothing was selected")
             print(taskType.description)
+            return nil
       
         }
         

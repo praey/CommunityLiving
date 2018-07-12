@@ -42,6 +42,7 @@ class Constant {
         static let AudioRecorder = "toAudioTaker"
         static let NotificationEditor = "toNotificationEditor"
         static let NotificationController = "toNotificationController"
+        static let EmailPage = "toEmailPage"
     }
     
     enum keyValue {

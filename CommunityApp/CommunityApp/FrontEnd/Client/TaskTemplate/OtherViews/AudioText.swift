@@ -11,7 +11,7 @@ import UIKit
 import AVFoundation
 class AudioText: TaskTemplate {
     
-    @IBOutlet weak var text: UITextView!
+    @IBOutlet weak var text: UILabel!
     var audioPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {

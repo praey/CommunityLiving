@@ -20,9 +20,8 @@ class JobSelector: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
- 
-        
-        jobs = CoreDataManager.database.getJobs()
+
+        jobs = CoreDataManager.database.getJobs(include: false)
         self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
         
         collectionView!.setCollectionViewLayout(Constant.collectionViewLayout, animated: true)

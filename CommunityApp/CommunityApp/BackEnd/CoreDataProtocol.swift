@@ -12,9 +12,9 @@ import UIKit
 protocol CoreDataProtocol {
     // MARK: Get function
     func getTask(jobID: String, taskID: String) -> Task
-    func getTasks(jobID: String) -> [Task]
+    func getTasks(jobID: String, include disabled: Bool) -> [Task]
     func getJob(jobID: String) -> Job
-    func getJobs() -> [Job]
+    func getJobs(include disabled: Bool) -> [Job]
    
     // MARK: Set function
     func setTaskText(jobID: String, taskID: String, text: String)

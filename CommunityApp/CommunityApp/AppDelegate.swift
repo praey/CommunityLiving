@@ -107,13 +107,17 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             let nav = self.window?.rootViewController as! UINavigationController
             nav.popToRootViewController(animated: true)
             
-            let jobSelector = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "JobSelector" ) as! JobSelector
+            let jobSelector = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constant.segueID.JobSelector ) as! JobSelector
+           
+            
             nav.pushViewController(jobSelector, animated: true)
             
-            let jobViewer = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "JobViewer" ) as! JobViewer
+            if job.isValid() {
+            
+            let jobViewer = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constant.segueID.JobViewer ) as! JobViewer
             jobViewer.setJob(job: job)
             nav.pushViewController(jobViewer, animated: true)
-            
+            }
             print("set for job")
         case "dismiss":
             print("dismissed")

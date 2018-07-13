@@ -80,7 +80,6 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         disableAudio.isEnabled = task.ifFileExists(filePath: .audio)
         disableVideo.isEnabled = task.ifFileExists(filePath: .video)
         disablePhoto.isEnabled = task.ifFileExists(filePath: .photo)
-        
     }
     
     
@@ -287,12 +286,12 @@ extension TaskManager {
         for item in mediaItemCollection.items{
             let mediaURL = item.assetURL!
             CoreDataManager.database.setTaskAudio(task: task, audioURLString: "\(mediaURL)")
-            validAudio.image = validInput
+            
             disableAudio.isEnabled = true
             disableAudio.isOn = false
+            validAudio.image = validInput
         }
-        //disableAudio.isEnabled = true
-        //disableAudio.setOn(false, animated: true)
+
     }
 }
 

@@ -53,10 +53,25 @@ class JobSelector: UICollectionViewController {
         
         let cell: UICollectionViewCell = self.collectionView!.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
         
-        // cell.textLabel?.text = jobs[indexPath.row].title
-        cell.backgroundColor = UIColor.blue
-        // This is where the descripion of the UItableView
-        
+        let image: UIImage? = jobs[indexPath.row].thumbnail
+        let title: String? = jobs[indexPath.row].title
+        if let image = image {
+            let imageView = UIImageView.init(image: image)
+            imageView.frame = cell.contentView.bounds
+            cell.contentView.addSubview(imageView)
+            
+        } else if let title = title {
+            let textView = UILabel()
+            textView.text = title
+            textView.frame = cell.contentView.bounds
+            cell.contentView.addSubview(textView)
+        } else {
+            let textView = UILabel()
+            textView.text = "There is no title or picture"
+            textView.backgroundColor = UIColor.gray
+            textView.frame = cell.contentView.bounds
+            cell.contentView.addSubview(textView)
+        }
         return cell
     }
     

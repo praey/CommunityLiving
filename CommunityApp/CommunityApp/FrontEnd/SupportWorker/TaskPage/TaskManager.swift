@@ -53,10 +53,15 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         return UIInterfaceOrientationMask.portrait
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if task.ifFileExists(filePath: .audio) {
+            disableAudio.isEnabled = true
+            disableAudio.isOn = false
+            validAudio.image = validInput
+        }
+    }
     
     func setUp() {
-        
-        
         
         disableTask.isOn = task.disableTask
         disableText.isOn = task.disableText
@@ -288,11 +293,9 @@ extension TaskManager {
             let mediaURL = item.assetURL!
             CoreDataManager.database.setTaskAudio(task: task, audioURLString: "\(mediaURL)")
             validAudio.image = validInput
-            disableAudio.isEnabled = true
-            disableAudio.isOn = false
         }
-        //disableAudio.isEnabled = true
-        //disableAudio.setOn(false, animated: true)
+        disableAudio.isEnabled = true
+        disableAudio.isOn = false
     }
 }
 

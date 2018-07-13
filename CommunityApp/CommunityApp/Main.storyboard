@@ -377,136 +377,77 @@
             <objects>
                 <viewController id="3CS-nM-Cb1" customClass="AudioRecorderManager" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vp9-V5-Gwu">
-                        <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="X0c-kD-RcT">
-                                <rect key="frame" x="20" y="40" width="1072" height="774"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pg6-Rc-fLM">
-                                        <rect key="frame" x="0.0" y="0.0" width="1072" height="13.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="volume: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6Y-bd-S4M">
-                                                <rect key="frame" x="0.0" y="0.0" width="804" height="13.5"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gv1-eQ-Wgu">
-                                                <rect key="frame" x="804" y="0.0" width="268" height="13.5"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="M6Y-bd-S4M" firstAttribute="width" secondItem="pg6-Rc-fLM" secondAttribute="width" multiplier="0.75" id="B7b-WH-faB"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="B7b-WH-faB"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular">
-                                            <mask key="constraints">
-                                                <include reference="B7b-WH-faB"/>
-                                            </mask>
-                                        </variation>
-                                    </stackView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="volumeBar8" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CP7-Aa-Oho">
-                                        <rect key="frame" x="0.0" y="13.5" width="1072" height="387"/>
-                                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="l9T-j8-oPh">
-                                        <rect key="frame" x="0.0" y="400.5" width="1072" height="373.5"/>
-                                        <subviews>
-                                            <progressView opaque="NO" tag="1" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="1" progressImage="progressBar" translatesAutoresizingMaskIntoConstraints="NO" id="54Q-Mi-nV4">
-                                                <rect key="frame" x="0.0" y="0.0" width="1072" height="1"/>
-                                                <rect key="contentStretch" x="0.0" y="0.14999999999999999" width="1" height="1"/>
-                                                <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </progressView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="3So-Ig-44j">
-                                                <rect key="frame" x="0.0" y="1" width="1072" height="372.5"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoK-aG-agr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="1072" height="201.5"/>
-                                                        <state key="normal" title="Button" image="start"/>
-                                                        <connections>
-                                                            <action selector="playbutton:" destination="3CS-nM-Cb1" eventType="touchUpInside" id="cQ7-up-3N1"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="top" restorationIdentifier="recordButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hv6-cv-Zp8">
-                                                        <rect key="frame" x="0.0" y="201.5" width="1072" height="171"/>
-                                                        <state key="normal" title="Button" image="record2"/>
-                                                        <connections>
-                                                            <action selector="recordButtonTouchDown:" destination="3CS-nM-Cb1" eventType="touchDown" id="hwO-UO-W31"/>
-                                                            <action selector="recordButtonTouchUp2:" destination="3CS-nM-Cb1" eventType="touchUpOutside" id="WtU-8M-KJ5"/>
-                                                            <action selector="recordButtonTouchUp:" destination="3CS-nM-Cb1" eventType="touchUpInside" id="lLN-wM-hJA"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <variation key="default">
-                                                    <mask key="subviews">
-                                                        <exclude reference="xoK-aG-agr"/>
-                                                        <exclude reference="Hv6-cv-Zp8"/>
-                                                    </mask>
-                                                </variation>
-                                                <variation key="heightClass=regular">
-                                                    <mask key="subviews">
-                                                        <include reference="xoK-aG-agr"/>
-                                                        <include reference="Hv6-cv-Zp8"/>
-                                                    </mask>
-                                                </variation>
-                                            </stackView>
-                                        </subviews>
-                                        <variation key="default">
-                                            <mask key="subviews">
-                                                <exclude reference="54Q-Mi-nV4"/>
-                                                <exclude reference="3So-Ig-44j"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="heightClass=regular">
-                                            <mask key="subviews">
-                                                <include reference="54Q-Mi-nV4"/>
-                                                <include reference="3So-Ig-44j"/>
-                                            </mask>
-                                        </variation>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="CP7-Aa-Oho" firstAttribute="height" secondItem="X0c-kD-RcT" secondAttribute="height" multiplier="0.5" id="QTT-X1-GUq"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="subviews">
-                                        <exclude reference="CP7-Aa-Oho"/>
-                                    </mask>
-                                    <mask key="constraints">
-                                        <exclude reference="QTT-X1-GUq"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="subviews">
-                                        <include reference="CP7-Aa-Oho"/>
-                                    </mask>
-                                    <mask key="constraints">
-                                        <include reference="QTT-X1-GUq"/>
-                                    </mask>
-                                </variation>
-                            </stackView>
+                            <button opaque="NO" contentMode="top" fixedFrame="YES" restorationIdentifier="recordButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hv6-cv-Zp8">
+                                <rect key="frame" x="284" y="541" width="192" height="193.00000000000011"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="record2"/>
+                                <connections>
+                                    <action selector="recordButtonTouchDown:" destination="3CS-nM-Cb1" eventType="touchDown" id="hwO-UO-W31"/>
+                                    <action selector="recordButtonTouchUp2:" destination="3CS-nM-Cb1" eventType="touchUpOutside" id="WtU-8M-KJ5"/>
+                                    <action selector="recordButtonTouchUp:" destination="3CS-nM-Cb1" eventType="touchUpInside" id="lLN-wM-hJA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoK-aG-agr">
+                                <rect key="frame" x="332.01378178949381" y="821" width="99.000000000000455" height="92.999999999999886"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="start"/>
+                                <connections>
+                                    <action selector="playbutton:" destination="3CS-nM-Cb1" eventType="touchUpInside" id="cQ7-up-3N1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="volume: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6Y-bd-S4M">
+                                <rect key="frame" x="239.43874326902369" y="110" width="82.999999999999545" height="26"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPr-uy-i7o">
+                                <rect key="frame" x="261.87230069569705" y="333" width="0.0" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="volumeBar8" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CP7-Aa-Oho">
+                                <rect key="frame" x="220.16641834275288" y="144.00000000000091" width="323" height="252.99999999999955"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gv1-eQ-Wgu">
+                                <rect key="frame" x="502.43874326902369" y="110" width="114.99999999999909" height="26"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fik-jQ-xod">
+                                <rect key="frame" x="349" y="473" width="66" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="X0c-kD-RcT" secondAttribute="bottom" constant="20" id="9zu-mh-EQp"/>
-                            <constraint firstItem="X0c-kD-RcT" firstAttribute="leading" secondItem="kYm-Xb-sod" secondAttribute="leading" constant="20" id="PPa-qw-MPX"/>
-                            <constraint firstItem="X0c-kD-RcT" firstAttribute="top" secondItem="kYm-Xb-sod" secondAttribute="top" constant="20" id="ZLo-QC-9bU"/>
-                            <constraint firstItem="kYm-Xb-sod" firstAttribute="trailing" secondItem="X0c-kD-RcT" secondAttribute="trailing" constant="20" id="cu2-ZR-Wvh"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="kYm-Xb-sod"/>
                     </view>
                     <connections>
-                        <outlet property="progress" destination="54Q-Mi-nV4" id="eHn-fl-KtF"/>
+                        <outlet property="play" destination="xoK-aG-agr" id="lbk-3I-pZQ"/>
+                        <outlet property="progressTimer" destination="Fik-jQ-xod" id="gSc-PC-1wz"/>
+                        <outlet property="recorderStart" destination="Hv6-cv-Zp8" id="mdM-PL-s1m"/>
+                        <outlet property="recorderView" destination="Vp9-V5-Gwu" id="qPb-F0-8vl"/>
+                        <outlet property="view" destination="Vp9-V5-Gwu" id="HiY-a4-pL4"/>
                         <outlet property="volume" destination="Gv1-eQ-Wgu" id="wYC-zu-03A"/>
                         <outlet property="volumeAnimation" destination="CP7-Aa-Oho" id="qru-IA-W1e"/>
+                        <outlet property="volumeName" destination="M6Y-bd-S4M" id="fR6-J2-LiQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fE-PU-9Jr" userLabel="First Responder" sceneMemberID="firstResponder"/>

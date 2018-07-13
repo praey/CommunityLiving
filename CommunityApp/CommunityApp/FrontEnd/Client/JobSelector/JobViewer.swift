@@ -17,7 +17,7 @@ class JobViewer: UIPageViewController
     fileprivate lazy var pages: [UIViewController] = {
         var controllers: [UIViewController] = []
         
-        for task in job.getTasks()
+        for task in job.getTasks(include: false)
         {
            
             var viewController: TaskTemplate? = task.getTaskTemplate()

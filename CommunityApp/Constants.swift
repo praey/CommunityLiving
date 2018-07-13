@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 class Constant {
+    static var personName = "Client"
+    
+    static let comma = ","
+    static let enter = "\n"
     
     static let cellReuseIdentifier = "cellReuseIdentifier"
     static let collectionViewLayout: UICollectionViewFlowLayout = {
@@ -42,6 +46,7 @@ class Constant {
         static let AudioRecorder = "toAudioTaker"
         static let NotificationEditor = "toNotificationEditor"
         static let NotificationController = "toNotificationController"
+        static let EmailPage = "toEmailPage"
     }
     
     enum keyValue {

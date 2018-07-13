@@ -13,7 +13,7 @@ import UIKit
 class PhotoText: TaskTemplate {
     @IBOutlet weak var image: UIImageView!
     
-    @IBOutlet weak var text: UITextView!
+    @IBOutlet weak var text: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -11,7 +11,7 @@ import UIKit
 
 class Text: TaskTemplate {
     
-    @IBOutlet weak var text: UITextView!
+    @IBOutlet weak var text: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

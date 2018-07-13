@@ -11,8 +11,8 @@ import AVFoundation
 import UIKit
 class AudioTextPhoto: TaskTemplate {
     
-    @IBOutlet weak var text: UITextView!
-     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var text: UILabel!
+    @IBOutlet weak var image: UIImageView!
      var audioPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {

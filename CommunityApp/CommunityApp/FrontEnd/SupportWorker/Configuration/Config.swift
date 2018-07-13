@@ -18,6 +18,7 @@ class Config: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         username.text = Constant.getUsername()
         password.text = Constant.getPassword()
         email.text = Constant.getEmail()

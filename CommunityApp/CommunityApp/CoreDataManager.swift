@@ -24,17 +24,29 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         return getTask(job: job, id: taskID)!
     }
     
-    func getTasks(jobID: String) -> [Task] {
+    func getTasks(jobID: String, include disabled: Bool) -> [Task] {
         let job = getJob(id: jobID)!
-        return getAllTask(job: job)
+        if disabled {
+            return getAllTask(job: job)
+        } else {
+           return getAllTask(job: job).filter {$0.disableTask == false}
+            
+        }
     }
     
     func getJob(jobID: String) -> Job {
         return getJob(id: jobID)!
     }
     
-    func getJobs() -> [Job] {
-        return getAllJobs()
+    func getJobs(include disabled: Bool) -> [Job] {
+        let jobs = getAllJobs()
+        if disabled {
+            return jobs
+        } else {
+            let nonDisableJobs = jobs.filter {$0.disabelJob == false}
+            let validJobs = nonDisableJobs.filter{$0.isValid()}
+            return validJobs
+        }
     }
     
     func createJob(title: String) -> Job {
@@ -149,12 +161,15 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         let fetchRequest: NSFetchRequest = Job.fetchRequest()
         do {
             let result = try context.fetch(fetchRequest)
-            return result            }
+            return result
+            
+        }
         catch {
             
             fatalError()
         }
     }
+    
     
     func deletAllJobs(){
         for job in getAllJobs() {
@@ -290,8 +305,8 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         print("Analytics started...")
     }
     
-    func saveAnalytics(task: Task){
-        let desc = task.getTaskType().description // what was used
+    func saveAnalytics(task: Task, desc: String){
+         // what was used
 //        let title = task.title!
         let analyticsArray = task.has?.array as! [Analytics]
         if analyticsArray.last?.isStarted == true {

@@ -11,9 +11,10 @@ import UIKit
 
 class JobManager: UIViewController{
     
-    var configure: UIBarButtonItem!
+    @IBOutlet weak var emailPage: UIButton!
+    var addJob: UIBarButtonItem!
     @IBOutlet weak var jobTitle: UITextField!
-    @IBOutlet weak var addJob: UIButton!
+    @IBOutlet weak var configure: UIButton!
     var jobs: [Job]!
     var tappedCollectionCell: Job?
 
@@ -23,10 +24,12 @@ class JobManager: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Entered JobManager")
-        configure = UIBarButtonItem.init(title: "Configure", style: .plain, target: self, action: #selector(JobManager.toConfigure))
-        self.navigationItem.rightBarButtonItem = configure
-        addJob.addTarget(self, action: #selector(JobManager.createJob), for: .touchUpInside)
+        self.hideKeyboardWhenTappedAround()
         
+        addJob = UIBarButtonItem.init(title: "Add Job", style: .plain, target: self, action: #selector(JobManager.createJob))
+        self.navigationItem.rightBarButtonItem = addJob
+        configure.addTarget(self, action: #selector(JobManager.toConfigure), for: .touchUpInside)
+        emailPage.addTarget(self, action: #selector(JobManager.toEmail), for: .touchUpInside)
         
         collectionView.setCollectionViewLayout(Constant.collectionViewLayout, animated: true)
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
@@ -37,14 +40,21 @@ class JobManager: UIViewController{
     
 
     override func viewWillAppear(_ animated: Bool) {
-        jobs = CoreDataManager.database.getJobs()
+        jobs = CoreDataManager.database.getJobs(include: true)
         collectionView.reloadData()
     }
 
-    
+    @objc func toEmail() {
+         performSegue(withIdentifier: Constant.segueID.EmailPage, sender: self)
+    }
     @objc func createJob(sender: UIButton) {
         if (jobTitle.text?.isEmpty)! {
             print("Job title is empty!")
+            // Create action
+            let alert = UIAlertController(title: "Warning!", message: "You must add a title to the Job that you are attempting to add.", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
         }
         else {
             tappedCollectionCell = CoreDataManager.database.createJob(title: jobTitle.text!)

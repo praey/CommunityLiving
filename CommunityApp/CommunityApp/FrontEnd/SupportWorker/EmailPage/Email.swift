@@ -22,36 +22,70 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        ubiquityURL = filemanager.url(forUbiquityContainerIdentifier: nil)
-        guard ubiquityURL != nil else {
-            print("unable to access icloud account")
-            return
+        if let _ = filemanager.ubiquityIdentityToken {
+            requestICloudAccess()
         }
-        ubiquityURL = ubiquityURL!.appendingPathComponent("Documents/+\(self.name).csv")
-        document = MyDocument(fileURL: ubiquityURL!)
+       
     }
     
     func analyticTitles() -> String {
         return ""
     }
     
-    
+    func requestICloudAccess() {
+        
+    }
     
     @IBAction func createCSV() {
+        guard filemanager.ubiquityIdentityToken != nil else {
+            print("User doesn't have access to icloud")
+            requestICloudAccess()
+            return
+            
+        }
+        ubiquityURL = filemanager.url(forUbiquityContainerIdentifier: nil)
+        if let ubiquity = ubiquityURL {
+            ubiquityURL = ubiquity.appendingPathComponent("Documents/+\(Constant.personName).csv")
+              document = MyDocument(fileURL: ubiquityURL!)
+        }
+        
+        
+      
+        
+    
         var csvText: String = ""
-        csvText += analyticTitles()
-        for job in CoreDataManager.database.getJobs() {
-            for task in job.getTasks() {
-                csvText += task.getAnalytics()
+        csvText += Constant.personName + Constant.enter
+        
+        for job in CoreDataManager.database.getJobs(include: true) {
+            csvText += Constant.comma + job.title! + Constant.enter
+            for task in job.getTasks(include: true) {
+                let title = task.title ?? "Default Title"
+                
+                let taskType = csvFormat(strings: task.csvTaskType())
+                
+                
+                
+                
+                csvText += Constant.comma + Constant.comma + title + Constant.comma + taskType + Constant.enter
+                for analytics in task.getAnalytics() {
+                    let startTime = analytics.startTime!.description
+                    let duration = analytics.duration!.description
+                    let beginning = Constant.comma + Constant.comma + Constant.comma
+                    let middle = startTime + Constant.comma + duration
+                    let end = Constant.enter
+                    csvText += beginning + middle + end
+                }
             }
         }
         
         document!.csvText = csvText
-        document?.save(to: ubiquityURL!, for: .forCreating, completionHandler: {[weak self](success: Bool) -> Void in
+        document?.save(to: ubiquityURL!, for: .forCreating, completionHandler: {(success: Bool) -> Void in
             if success {
                 print("success")
-                self?.writeEmail()
+                DispatchQueue.main.async {
+                    self.writeEmail()
+                }
+                
             } else {
                 print("failure")
             }
@@ -60,6 +94,23 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
 
+    
+    func csvFormat(strings: [String], middle: Bool = false) -> String {
+        var content: String = String.init()
+        for word in strings {
+            content.append(word)
+            if word == strings.last! {
+                if !middle {
+                    content.append(Constant.enter)
+                } else {
+                    content.append(Constant.comma)
+                }
+            } else {
+                content.append(Constant.comma)
+            }
+        }
+        return content
+    }
     
     
     

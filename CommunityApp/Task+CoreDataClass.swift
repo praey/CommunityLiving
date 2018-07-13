@@ -68,6 +68,11 @@ public class Task: NSManagedObject {
         
     }
     
+    
+    func isValid() -> Bool {
+        return getTaskType().count > 0
+    }
+    
     func getTaskType() -> Set<TaskType> {
         
         var taskType = Set<TaskType>()
@@ -94,6 +99,24 @@ public class Task: NSManagedObject {
         return taskType
     }
     
+    
+    func csvTaskType () -> [String] {
+        var csvText: [String] = []
+            let taskType = getTaskType()
+        if taskType.contains(.audio) {
+            csvText.append("audio")
+        }
+        if taskType.contains(.video) {
+            csvText.append("video")
+        }
+        if taskType.contains(.text) {
+            csvText.append("text")
+        }
+        if taskType.contains(.photo) {
+            csvText.append("photo")
+        }
+        return csvText
+    }
  
     
     func ifFileExists(filePath: TaskType) -> Bool {
@@ -143,18 +166,10 @@ public class Task: NSManagedObject {
     }
     
     
-    func getTitles() -> String {
-        return ""
-    }
+  
     
-   func getAnalytics() -> String {
-        var csvText: String = ""
-        csvText += getTitles()
-        for analytics in self.has?.array as! [Analytics] {
-            csvText += analytics.getAnalytics()
-            csvText += "\n"
-         }
-        return csvText
+   func getAnalytics() -> [Analytics] {
+    return self.has?.array as! [Analytics]
     }
     
 

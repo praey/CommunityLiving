@@ -13,6 +13,7 @@ class TaskTemplate: UIViewController {
    
     var task: Task!
     var taskDescription: String!
+    var isTest: Bool = false
     
     
     override func viewDidLoad() {
@@ -22,7 +23,13 @@ class TaskTemplate: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         taskDescription = getDescription()
+        if !isTest {
         CoreDataManager.database.startAnalytics(task: task)
+        }
+    }
+    
+    func isTest(_ testing: Bool) {
+        isTest = testing
     }
     
     override func didReceiveMemoryWarning() {
@@ -89,9 +96,9 @@ class TaskTemplate: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-       
-        CoreDataManager.database.saveAnalytics(task: task, desc: taskDescription )
-        
+        if !isTest {
+            CoreDataManager.database.saveAnalytics(task: task, desc: taskDescription )
+        }
     }
     
     func setTask(task: Task) {

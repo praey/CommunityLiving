@@ -55,6 +55,9 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     
     
     func setUp() {
+        
+        
+        
         disableTask.isOn = task.disableTask
         disableText.isOn = task.disableText
         disableAudio.isOn = task.disableAudio
@@ -64,13 +67,19 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         textValue.delegate = self
 
         textValue.text = task?.text ?? ""
-         validText.image = task.text != nil ? validInput : invalidInput
         
+        
+        
+        validText.image = task.text != nil ? validInput : invalidInput
         validAudio.image = task.ifFileExists(filePath: .audio) ? validInput: invalidInput
-        
         validPhoto.image = task.ifFileExists(filePath: .photo) ? validInput: invalidInput
         validVideo.image = task.ifFileExists(filePath: .video) ? validInput: invalidInput
+        
 
+        disableText.isEnabled = task.text != nil
+        disableAudio.isEnabled = task.ifFileExists(filePath: .audio)
+        disableVideo.isEnabled = task.ifFileExists(filePath: .video)
+        disablePhoto.isEnabled = task.ifFileExists(filePath: .photo)
         
     }
     
@@ -92,7 +101,13 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
 
 
 
-  
+    func setDown() {
+        task.disableTask = disableTask.isOn
+        task.disableText = disableText.isOn
+        task.disableAudio = disableAudio.isOn
+        task.disablePhoto = disablePhoto.isOn
+        task.disableVideo = disableVideo.isOn
+    }
     
  
     
@@ -101,11 +116,7 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     override func viewWillDisappear(_ animated: Bool) {
         
         
-        task.disableTask = disableTask.isOn
-         task.disableText = disableText.isOn
-       task.disableAudio = disableAudio.isOn
-        task.disablePhoto = disablePhoto.isOn
-        task.disableVideo = disableVideo.isOn
+     setDown()
         
         
         
@@ -120,7 +131,10 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     // add one button that will display a test of what the task actuatlly is
     
     @IBAction func viewTaskTemplate() {
+        // double checks that all the data is saved
+        setDown()
         if let navigationController = self.navigationController, let taskTemplate = task.getTaskTemplate() {
+            taskTemplate.isTest(true)
             print("pushed the new tasktemplate")
             navigationController.pushViewController(taskTemplate, animated: true)
         } else {
@@ -133,7 +147,7 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
 
 
 
-// Video
+// Video and photo
 extension TaskManager {
     func mediaPickerDidCancel(_ mediaPickerController: MPMediaPickerController) {
         mediaPickerController.dismiss(animated: true, completion: nil)
@@ -146,8 +160,11 @@ extension TaskManager {
                 let alert = UIAlertController(title: "Warning!", message: "Are you sure to replace the exist image?", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
                     CoreDataManager.database.setTaskPhoto(task: self.task, photo: info[UIImagePickerControllerOriginalImage] as! UIImage)
+                    
                     self.validPhoto.image = self.validInput
+                    self.disablePhoto.isEnabled = true
                     self.disablePhoto.isOn = false
+                    
                 }))
                 alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
                 imagePickerController.dismiss(animated: true, completion: nil)
@@ -156,6 +173,7 @@ extension TaskManager {
             else {
                 CoreDataManager.database.setTaskPhoto(task: task, photo: info[UIImagePickerControllerOriginalImage] as! UIImage)
                 validPhoto.image = validInput
+                disablePhoto.isEnabled = true
                 disablePhoto.isOn = false
                 imagePickerController.dismiss(animated: true, completion: nil)
             }
@@ -166,6 +184,7 @@ extension TaskManager {
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
                     CoreDataManager.database.setTaskVideo(task: self.task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
                     self.validVideo.image = self.validInput
+                    self.disableVideo.isEnabled = true
                     self.disableVideo.isOn = false
                 }))
                 alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
@@ -176,6 +195,7 @@ extension TaskManager {
                 
                 CoreDataManager.database.setTaskVideo(task: task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
                 validVideo.image = validInput
+                disableVideo.isEnabled = true
                 disableVideo.isOn = false
                 imagePickerController.dismiss(animated: true, completion: nil)
             }
@@ -268,11 +288,11 @@ extension TaskManager {
             let mediaURL = item.assetURL!
             CoreDataManager.database.setTaskAudio(task: task, audioURLString: "\(mediaURL)")
             validAudio.image = validInput
+            disableAudio.isEnabled = true
             disableAudio.isOn = false
         }
-        validAudio.backgroundColor = UIColor.green
-        disableAudio.isEnabled = true
-        disableAudio.setOn(false, animated: true)
+        //disableAudio.isEnabled = true
+        //disableAudio.setOn(false, animated: true)
     }
 }
 
@@ -341,12 +361,12 @@ extension TaskManager: UITextFieldDelegate {
                 // If there is valid text
                 if let text = textValue.text {
                     if !text.isEmpty{
-                    validVideo.image = validInput
+                    validText.image = validInput
                     }
                     
                 }
             } else {
-                validVideo.image = invalidInput
+                validText.image = invalidInput
             }
         }
     }
@@ -357,6 +377,7 @@ extension TaskManager: UITextFieldDelegate {
             if let text = textField.text {
                 if !text.isEmpty {
                     CoreDataManager.database.setTaskText(task: task, text: text)
+                    disableText.isEnabled = true
                     disableText.isOn = false
                     validText.image = validInput
                 } else {

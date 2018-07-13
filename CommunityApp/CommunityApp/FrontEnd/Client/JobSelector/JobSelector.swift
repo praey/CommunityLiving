@@ -63,7 +63,19 @@ class JobSelector: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("You selected \(indexPath.row)")
         tappedTableRow = jobs[indexPath.row]
-        performSegue(withIdentifier: Constant.segueID.JobViewer, sender: self)
+        if shouldSegue(tappedTableRow) {
+         
+            performSegue(withIdentifier: Constant.segueID.JobViewer, sender: self)
+            
+        }
+        
+    }
+    
+    func shouldSegue(_ job: Job) -> Bool {
+        // get's all valid tasks
+        let tasks = job.getTasks(include: false).filter {$0.getTaskType().count > 0}
+        return tasks.count > 0
+        
     }
     
     

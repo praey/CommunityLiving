@@ -29,7 +29,8 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         if disabled {
             return getAllTask(job: job)
         } else {
-            return getAllTask(job: job).filter {$0.disableTask == false}
+           return getAllTask(job: job).filter {$0.disableTask == false}
+            
         }
     }
     
@@ -42,7 +43,9 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         if disabled {
             return jobs
         } else {
-            return jobs.filter {$0.disabelJob == false}
+            let nonDisableJobs = jobs.filter {$0.disabelJob == false}
+            let validJobs = nonDisableJobs.filter{$0.isValid()}
+            return validJobs
         }
     }
     

@@ -27,6 +27,12 @@ public class Job: NSManagedObject {
         return tasks
     }
     
+    func isValid() -> Bool {
+        let tasks = getTasks(include: false)
+        let validTasks = tasks.filter{$0.isValid()}
+        return validTasks.count > 0
+    }
+    
     var thumbnail: UIImage? {
         get {
             for task in getTasks(include: true) {

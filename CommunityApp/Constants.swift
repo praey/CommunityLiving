@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 class Constant {
+    static var personName = "Client"
+    
+    static let comma = ","
+    static let enter = "\n"
     
     static let cellReuseIdentifier = "cellReuseIdentifier"
     static let collectionViewLayout: UICollectionViewFlowLayout = {

@@ -12,9 +12,9 @@ import UserNotifications
 class NotificationEditor: UIViewController {
     
     var job: Job!
+    var pickerData: [String]!
+    var pickerSelection: String!
     
-    
-    @IBOutlet weak var notificationTableView: UITableView!
     @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBOutlet weak var repeatPicker: UIPickerView!
@@ -24,12 +24,12 @@ class NotificationEditor: UIViewController {
 
     
     
-    enum NotificationRepeat {
-        case everyDay
-        case everyWeek
-        case every2Weeks
-        case everyWeekday
-        case everyWeekend
+    struct NotificationRepeat {
+        static let never = "never"
+        static let daily = "daily"
+        static let weekly = "weekly"
+        static let monthly = "monthly"
+        static let yearly = "yearly"
         // EveryDay, EveryWeek, Every 2 Weeks, EveryWeekday, EveryWeekend, Every Sunday, Every Monday, Every, Tuesday, Every Wednesday, Every Thursday, Every Friday, Every Saturday
     }
 
@@ -54,8 +54,10 @@ class NotificationEditor: UIViewController {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         addNotification.addTarget(self, action: #selector(NotificationEditor.saveNotification), for: .touchUpInside)
-        
-        
+        pickerData = [NotificationRepeat.never,NotificationRepeat.daily,NotificationRepeat.weekly,NotificationRepeat.monthly,NotificationRepeat.yearly]
+        repeatPicker.delegate = self
+        repeatPicker.dataSource = self
+        datePicker.setDate(Date(), animated: true)
         
             // UNUserNotificationCenter.current().delegate = self
         // UNUserNotification.curr = self
@@ -69,18 +71,14 @@ class NotificationEditor: UIViewController {
     
     private func createNotificationRequest(notificationContent: UNMutableNotificationContent, date: DateComponents, repeats: Bool) -> UNNotificationRequest {
         
-        // let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: repeats)
-        let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 10.0 , repeats: false)
+        let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: repeats)
+        //let notificationTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 10.0 , repeats: false)
         let notificationIdentifier = "showJob"
         let request = UNNotificationRequest(identifier: notificationIdentifier, content: notificationContent, trigger: notificationTrigger)
         return request
     }
     
-    private func scheduleTaskNotification() {
-        
-        
-    }
-    
+   
     
     
     private func createNotificationContent(title: String, body: String) -> UNMutableNotificationContent{
@@ -99,7 +97,15 @@ class NotificationEditor: UIViewController {
     
     private func scheduleLocalNotification() {
         let notificationContent = createNotificationContent(title: "test title", body: "test body")
-        let notificationRequest = createNotificationRequest(notificationContent: notificationContent, date: DateComponents(), repeats: true)
+        
+        
+        let notificationDate = getDateComponents() ?? DateComponents()
+        
+      
+        let repeats: Bool = !(pickerSelection == NotificationRepeat.never)
+        
+        
+        let notificationRequest = createNotificationRequest(notificationContent: notificationContent, date: notificationDate, repeats: repeats)
          UNUserNotificationCenter.current().add(notificationRequest) { (error) in
          if error != nil {
          print("Cannot add this request")
@@ -119,6 +125,38 @@ class NotificationEditor: UIViewController {
      */
     }
     
+    
+    func getDateComponents() -> DateComponents? {
+        
+        //Calendar.Component.
+        
+        var notificationDate: DateComponents?
+        
+        if pickerSelection == NotificationRepeat.never {
+            return nil
+        } else
+        if pickerSelection == NotificationRepeat.daily {
+            notificationDate = datePicker.calendar.dateComponents(([.hour, .minute, .second]), from: datePicker.date)
+        } else
+        if pickerSelection == NotificationRepeat.weekly {
+            notificationDate = datePicker.calendar.dateComponents(([.hour, .minute, .second,.weekday]), from: datePicker.date)
+        } else
+        
+        if pickerSelection == NotificationRepeat.monthly {
+            notificationDate = datePicker.calendar.dateComponents(([.hour, .minute, .second,.day]), from: datePicker.date)
+        } else
+        
+        if pickerSelection == NotificationRepeat.yearly {
+            notificationDate = datePicker.calendar.dateComponents(([.hour, .minute, .second,.day,.month]), from: datePicker.date)
+            
+        } else {
+            fatalError()
+        }
+        
+        return notificationDate
+        
+        
+    }
     
     
     @objc private func saveNotification() {
@@ -166,12 +204,24 @@ class NotificationEditor: UIViewController {
 
 
 
-extension NotificationEditor {
+extension NotificationEditor: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
-  
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
     
-    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerSelection = pickerData[row]
+    }
 }
+
+
  
 
 

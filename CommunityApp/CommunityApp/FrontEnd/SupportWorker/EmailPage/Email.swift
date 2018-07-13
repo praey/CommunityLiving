@@ -44,23 +44,48 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
             
         }
         ubiquityURL = filemanager.url(forUbiquityContainerIdentifier: nil)
-        ubiquityURL = ubiquityURL!.appendingPathComponent("Documents/+\(self.name).csv")
-        document = MyDocument(fileURL: ubiquityURL!)
+        if let ubiquity = ubiquityURL {
+            ubiquityURL = ubiquity.appendingPathComponent("Documents/+\(Constant.personName).csv")
+              document = MyDocument(fileURL: ubiquityURL!)
+        }
+        
+        
+      
         
     
         var csvText: String = ""
-        csvText += analyticTitles()
+        csvText += Constant.personName + Constant.enter
+        
         for job in CoreDataManager.database.getJobs(include: true) {
+            csvText += Constant.comma + job.title! + Constant.enter
             for task in job.getTasks(include: true) {
-                csvText += task.getAnalytics()
+                let title = task.title ?? "Default Title"
+                
+                let taskType = csvFormat(strings: task.csvTaskType())
+                
+                
+                
+                
+                csvText += Constant.comma + Constant.comma + title + Constant.comma + taskType + Constant.enter
+                for analytics in task.getAnalytics() {
+                    let startTime = analytics.startTime!.description
+                    let duration = analytics.duration!.description
+                    let beginning = Constant.comma + Constant.comma + Constant.comma
+                    let middle = startTime + Constant.comma + duration
+                    let end = Constant.enter
+                    csvText += beginning + middle + end
+                }
             }
         }
         
         document!.csvText = csvText
-        document?.save(to: ubiquityURL!, for: .forCreating, completionHandler: {[weak self](success: Bool) -> Void in
+        document?.save(to: ubiquityURL!, for: .forCreating, completionHandler: {(success: Bool) -> Void in
             if success {
                 print("success")
-                self?.writeEmail()
+                DispatchQueue.main.async {
+                    self.writeEmail()
+                }
+                
             } else {
                 print("failure")
             }
@@ -69,6 +94,23 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
 
+    
+    func csvFormat(strings: [String], middle: Bool = false) -> String {
+        var content: String = String.init()
+        for word in strings {
+            content.append(word)
+            if word == strings.last! {
+                if !middle {
+                    content.append(Constant.enter)
+                } else {
+                    content.append(Constant.comma)
+                }
+            } else {
+                content.append(Constant.comma)
+            }
+        }
+        return content
+    }
     
     
     

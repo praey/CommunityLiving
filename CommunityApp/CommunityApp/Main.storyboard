@@ -484,17 +484,17 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="TBP-Pq-seo">
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TBP-Pq-seo">
                                                 <rect key="frame" x="804.5" y="0.0" width="267.5" height="64.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disable Audio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qeu-8j-qJN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="218.5" height="64.5"/>
+                                                        <rect key="frame" x="0.0" y="22" width="218.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="reP-da-CjM">
-                                                        <rect key="frame" x="218.5" y="0.0" width="51" height="64.5"/>
+                                                        <rect key="frame" x="218.5" y="17" width="51" height="31"/>
                                                         <connections>
                                                             <action selector="audioDisabled:" destination="WOI-mu-egl" eventType="valueChanged" id="XYM-ri-36K"/>
                                                         </connections>
@@ -560,17 +560,17 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVl-Nc-Ve8">
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fVl-Nc-Ve8">
                                                 <rect key="frame" x="804" y="0.0" width="268" height="64.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disable Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMM-RK-JKq">
-                                                        <rect key="frame" x="0.0" y="0.0" width="219" height="64.5"/>
+                                                        <rect key="frame" x="0.0" y="22" width="219" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="je3-Yk-a7b">
-                                                        <rect key="frame" x="219" y="0.0" width="51" height="64.5"/>
+                                                        <rect key="frame" x="219" y="17" width="51" height="31"/>
                                                         <connections>
                                                             <action selector="photoDisabled:" destination="WOI-mu-egl" eventType="valueChanged" id="UW1-nZ-DmN"/>
                                                         </connections>
@@ -646,17 +646,17 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ft-yJ-Lph">
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7Ft-yJ-Lph">
                                                 <rect key="frame" x="804" y="0.0" width="268" height="64.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disable Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixJ-4f-3Ct">
-                                                        <rect key="frame" x="0.0" y="0.0" width="219" height="64.5"/>
+                                                        <rect key="frame" x="0.0" y="22" width="219" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="trL-0J-p37">
-                                                        <rect key="frame" x="219" y="0.0" width="51" height="64.5"/>
+                                                        <rect key="frame" x="219" y="17" width="51" height="31"/>
                                                         <connections>
                                                             <action selector="textDisabled:" destination="WOI-mu-egl" eventType="valueChanged" id="Kis-lf-RFm"/>
                                                         </connections>
@@ -719,17 +719,17 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyX-e8-Oo1">
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kyX-e8-Oo1">
                                                 <rect key="frame" x="804" y="0.0" width="268" height="64.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disable Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1CY-bW-3Q0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="219" height="64.5"/>
+                                                        <rect key="frame" x="0.0" y="22" width="219" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="81W-TG-9wU">
-                                                        <rect key="frame" x="219" y="0.0" width="51" height="64.5"/>
+                                                        <rect key="frame" x="219" y="17" width="51" height="31"/>
                                                         <connections>
                                                             <action selector="videoDisabled:" destination="WOI-mu-egl" eventType="valueChanged" id="826-aj-5Mw"/>
                                                         </connections>
@@ -1665,7 +1665,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="WWo-rh-0xJ"/>
+                        <viewLayoutGuide key="safeArea" id="qZJ-C5-TOz"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Pc-gw-aym" userLabel="First Responder" sceneMemberID="firstResponder"/>

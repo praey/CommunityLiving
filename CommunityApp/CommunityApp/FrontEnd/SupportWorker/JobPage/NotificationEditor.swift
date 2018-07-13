@@ -232,12 +232,6 @@ class NotificationEditor: UIViewController {
 
 
 
-
-
-
-
-
-
 extension NotificationEditor: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

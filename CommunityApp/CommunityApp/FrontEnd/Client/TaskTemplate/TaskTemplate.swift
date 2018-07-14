@@ -14,6 +14,7 @@ class TaskTemplate: UIViewController {
     var task: Task!
     var taskDescription: String!
     var isTest: Bool = false
+    var timer: Timer!
     
     
     override func viewDidLoad() {
@@ -26,6 +27,12 @@ class TaskTemplate: UIViewController {
         if !isTest {
         CoreDataManager.database.startAnalytics(task: task)
         }
+        timer = Timer.scheduledTimer(timeInterval: 1200, target: self, selector: #selector(timerSelector), userInfo: nil, repeats: false)
+    }
+    
+    @objc func timerSelector() {
+        CoreDataManager.database.deleteUnfinishedAnalytics(task: task)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func isTest(_ testing: Bool) {
@@ -99,6 +106,8 @@ class TaskTemplate: UIViewController {
         if !isTest {
             CoreDataManager.database.saveAnalytics(task: task, desc: taskDescription )
         }
+        timer.invalidate()
+        timer = nil
     }
     
     func setTask(task: Task) {

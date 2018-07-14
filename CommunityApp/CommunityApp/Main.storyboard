@@ -337,7 +337,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="1072" height="481"/>
                                                 <state key="normal" title="Delete Job"/>
                                                 <connections>
-                                                    <action selector="deleteJob:" destination="P7g-Q3-TGY" eventType="touchUpInside" id="m9g-iq-NwC"/>
+                                                    <action selector="deleteJob" destination="P7g-Q3-TGY" eventType="touchUpInside" id="lA1-mK-9xZ"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FgK-zJ-f9O">
@@ -1721,6 +1721,7 @@
         <image name="volumeBar8" width="640" height="480"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="4nA-lc-zTb"/>
         <segue reference="XB4-6s-V0m"/>
     </inferredMetricsTieBreakers>
 </document>

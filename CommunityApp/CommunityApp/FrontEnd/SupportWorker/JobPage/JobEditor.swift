@@ -65,6 +65,15 @@ class JobEditor: UIViewController  {
         performSegue(withIdentifier: Constant.segueID.TaskManager, sender: self)
     }
     
+    @IBAction func deleteJob() {
+        let alert = UIAlertController(title: "Warning!", message: "Are you sure to delete this job?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
+            CoreDataManager.database.deleteJob(job: self.job)
+            self.navigationController?.popViewController(animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
   
     
     @objc func recordJob() {

@@ -96,11 +96,26 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         let photoURLString = NSHomeDirectory() + "/Documents/Images/" + task.photo!
         let videoURLString = NSHomeDirectory() + "/Documents/Videos/" + task.video!
         let audioURLString = NSHomeDirectory() + "/Documents/Audios/" + task.audio!
+        deleteAnalytics(task: task)
         context.delete(task)
         fileSystemManager.deletImage(URLString: photoURLString)
         fileSystemManager.deletVideo(URLString: videoURLString)
         fileSystemManager.deletAudio(URLString: audioURLString)
         saveData()
+    }
+    
+    func deleteAnalytics(task: Task) {
+        for analytics in (task.has?.array)! {
+            context.delete(analytics as! Analytics)
+        }
+    }
+    
+    func deleteUnfinishedAnalytics(task: Task) {
+        for analytics in (task.has?.array)! {
+            if (analytics as! Analytics).taskDescription == "" {
+                context.delete(analytics as! Analytics)
+            }
+        }
     }
     
 //    func createTestData() -> [Job] {
@@ -199,6 +214,7 @@ class CoreDataManager: NSObject, CoreDataProtocol {
             let photoURLString = NSHomeDirectory() + "/Documents/Images/" + task.photo!
             let videoURLString = NSHomeDirectory() + "/Documents/Videos/" + task.video!
             let audioURLString = NSHomeDirectory() + "/Documents/Audios/" + task.audio!
+            deleteAnalytics(task: task)
             context.delete(task)
             fileSystemManager.deletImage(URLString: photoURLString)
             fileSystemManager.deletVideo(URLString: videoURLString)

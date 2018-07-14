@@ -85,7 +85,6 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         disableAudio.isEnabled = task.ifFileExists(filePath: .audio)
         disableVideo.isEnabled = task.ifFileExists(filePath: .video)
         disablePhoto.isEnabled = task.ifFileExists(filePath: .photo)
-        
     }
     
     

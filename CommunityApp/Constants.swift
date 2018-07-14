@@ -12,6 +12,9 @@ import UIKit
 class Constant {
     static var personName = "Client"
     
+    static let ubiquityURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)
+    
+    
     static let comma = ","
     static let enter = "\n"
     

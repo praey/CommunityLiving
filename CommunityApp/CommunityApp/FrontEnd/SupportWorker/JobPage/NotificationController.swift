@@ -45,6 +45,9 @@ class NotificationController: UITableViewController {
         self.job = job
     }
     
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         
         
@@ -70,6 +73,10 @@ class NotificationController: UITableViewController {
         if segue.identifier == Constant.segueID.NotificationEditor {
             let vc = segue.destination as! NotificationEditor
             vc.setJob(job: self.job)
+            if let notification = tappedTableRow {
+            vc.titleNotification = notification.content.title
+            vc.body = notification.content.body
+            }
             
         }
     }
@@ -122,6 +129,7 @@ class NotificationController: UITableViewController {
                return
             }
             tappedTableRow = requests[indexPath.row]
+            
             performSegue(withIdentifier: Constant.segueID.NotificationEditor, sender: self)
         }
         

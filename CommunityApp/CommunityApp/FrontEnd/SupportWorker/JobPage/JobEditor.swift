@@ -30,7 +30,7 @@ class JobEditor: UIViewController  {
         super.viewDidLoad()
         print("Entered JobEditor")
         self.hideKeyboardWhenTappedAround()
-        disableJob.isOn = false//job.disableJob
+        disableJob.isOn = job.disabelJob
         
         addTask = UIBarButtonItem.init(title: "Add Task", style: .plain, target: self, action: #selector(JobEditor.createTask))
         self.navigationItem.rightBarButtonItem = addTask
@@ -75,9 +75,12 @@ class JobEditor: UIViewController  {
         present(alert, animated: true, completion: nil)
     }
   
+    override func viewWillDisappear(_ animated: Bool) {
+            recordJob()
+    }
     
-    @objc func recordJob() {
-        
+    func recordJob() {
+        job.title = titleValue.text
        job.disabelJob = disableJob.isOn
         CoreDataManager.database.saveData()
     }

@@ -13,16 +13,19 @@ class NotificationEditor: UIViewController {
     
     var job: Job!
     var pickerData: [String]!
-    var pickerSelection: String!
+    var pickerSelection: String?
     
+    @IBOutlet weak var titleValue: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     
+    @IBOutlet weak var bodyValue: UITextField!
     @IBOutlet weak var repeatPicker: UIPickerView!
     
     
     @IBOutlet weak var addNotification: UIButton!
 
-    
+    var titleNotification: String!
+    var body: String!
     
     struct NotificationRepeat {
         static let never = "never"
@@ -55,9 +58,13 @@ class NotificationEditor: UIViewController {
         self.hideKeyboardWhenTappedAround()
         addNotification.addTarget(self, action: #selector(NotificationEditor.saveNotification), for: .touchUpInside)
         pickerData = [NotificationRepeat.never,NotificationRepeat.daily,NotificationRepeat.weekly,NotificationRepeat.monthly,NotificationRepeat.yearly]
+        
         repeatPicker.delegate = self
         repeatPicker.dataSource = self
         datePicker.setDate(Date(), animated: true)
+        
+        titleValue.text = title
+            bodyValue.text = body
         
             // UNUserNotificationCenter.current().delegate = self
         // UNUserNotification.curr = self
@@ -96,7 +103,9 @@ class NotificationEditor: UIViewController {
     
     
     private func scheduleLocalNotification() {
-        let notificationContent = createNotificationContent(title: "test title", body: "test body")
+        
+        
+        let notificationContent = createNotificationContent(title: titleValue.text ?? "", body: bodyValue.text ?? "")
         
         
         let notificationDate = getDateComponents() ?? DateComponents()
@@ -128,34 +137,40 @@ class NotificationEditor: UIViewController {
     
     func getDateComponents() -> DateComponents? {
         
-        //Calendar.Component.
-        
         var notificationDate: DateComponents?
         
-        if pickerSelection == NotificationRepeat.never {
-            return nil
+        guard let selection = pickerSelection else { return nil }
+        
+        if selection == NotificationRepeat.never {
+            notificationDate = datePicker.calendar.dateComponents(([.day,.hour, .minute, .second]), from: datePicker.date)
         } else
-        if pickerSelection == NotificationRepeat.daily {
+        if selection == NotificationRepeat.daily {
             notificationDate = datePicker.calendar.dateComponents(([.hour, .minute, .second]), from: datePicker.date)
         } else
-        if pickerSelection == NotificationRepeat.weekly {
+        if selection == NotificationRepeat.weekly {
             notificationDate = datePicker.calendar.dateComponents(([.hour, .minute, .second,.weekday]), from: datePicker.date)
         } else
         
-        if pickerSelection == NotificationRepeat.monthly {
+        if selection == NotificationRepeat.monthly {
             notificationDate = datePicker.calendar.dateComponents(([.hour, .minute, .second,.day]), from: datePicker.date)
         } else
         
-        if pickerSelection == NotificationRepeat.yearly {
+        if selection == NotificationRepeat.yearly {
             notificationDate = datePicker.calendar.dateComponents(([.hour, .minute, .second,.day,.month]), from: datePicker.date)
             
-        } else {
-            fatalError()
         }
+        
+        
         
         return notificationDate
         
         
+    }
+    
+    func presentAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     
@@ -166,25 +181,44 @@ class NotificationEditor: UIViewController {
             switch notificationSettings.authorizationStatus {
             case .authorized:
                 print("user notification accepted")
-                self.scheduleLocalNotification()
-
+                DispatchQueue.main.async {
+                    self.presentAlert(title: "Notification", message: "Accpted")
+                    self.scheduleLocalNotification()
+                }
             case .notDetermined:
                 print("usernotifcation not determined")
+                DispatchQueue.main.async {
+                    
                 
+                self.presentAlert(title: "Notification", message: "Could not be determined")
                 UNUserNotificationCenter.current().requestAuthorization(options: [.sound,.badge,.alert], completionHandler: {(sucess, error) in guard sucess else {return}
-                    self.scheduleLocalNotification()
+                    
                 }
                 )
+                }
             case .denied:
                 print("User notification denied")
+                DispatchQueue.main.async {
+                    
+                
+                self.presentAlert(title: "Denied", message: "Notifications was denied")
                 UNUserNotificationCenter.current().requestAuthorization(options: [.sound,.badge,.alert], completionHandler: {(sucess, error) in guard sucess else {return}
-                    self.scheduleLocalNotification()
+                    
                 }
                 )
+                }
            // case .provisional:
              //   print("provisional status")
                // self.scheduleLocalNotification()
             default:
+                DispatchQueue.main.async {
+                    self.presentAlert(title: "Alert couldn't be determined", message: "Notification are undetermined")
+                
+                UNUserNotificationCenter.current().requestAuthorization(options: [.sound,.badge,.alert], completionHandler: {(sucess, error) in guard sucess else {return}
+                    
+                }
+                )
+                }
                 print("default")
             }
         })}

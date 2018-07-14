@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MessageUI
+import CloudKit
 
 
 class Email: UIViewController, MFMailComposeViewControllerDelegate {
@@ -22,9 +23,23 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if FileManager.default.url(forUbiquityContainerIdentifier: nil) != nil {
+            print("logged into icloud")
+        } else {
+            print("no account to log into")
+        }
         if let _ = filemanager.ubiquityIdentityToken {
             requestICloudAccess()
         }
+        
+        ubiquityURL = filemanager.url(forUbiquityContainerIdentifier: nil)
+        guard ubiquityURL != nil else {
+            print("unable to access icloud account")
+            return
+        }
+        
+        ubiquityURL = ubiquityURL?.appendingPathComponent("Documents/+\(Constant.personName).csv")
+        document = MyDocument(fileURL: ubiquityURL!)
        
     }
     
@@ -37,46 +52,44 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     @IBAction func createCSV() {
-        guard filemanager.ubiquityIdentityToken != nil else {
-            print("User doesn't have access to icloud")
-            requestICloudAccess()
-            return
-            
+  
+        
+        var csvText: String = ""
+        csvText += Constant.personName + Constant.enter
+        
+        for job in CoreDataManager.database.getJobs(include: true) {
+            //Constant.comma
+            csvText += "JobTitle," + job.title! + Constant.enter
+            for task in job.getTasks(include: true) {
+                let title = task.title ?? "Default Title"
+                
+                let taskType = csvFormat(strings: task.csvTaskType())
+                //Constant.comma + Constant.comma +
+                csvText += "TaskTitle:," + title + Constant.comma + taskType
+                for analytics in task.getAnalytics() {
+                    
+                    let startTime = analytics.getStarttime()
+                    let duration = analytics.getDuration()
+                    // let beginning = Constant.comma + Constant.comma + Constant.comma
+                    let middle = startTime + Constant.comma + duration
+                    let end = Constant.enter
+                    csvText += middle + end
+                }
+            }
         }
-        ubiquityURL = filemanager.url(forUbiquityContainerIdentifier: nil)
-        if let ubiquity = ubiquityURL {
-            ubiquityURL = ubiquity.appendingPathComponent("Documents/+\(Constant.personName).csv")
-              document = MyDocument(fileURL: ubiquityURL!)
-        }
+        
+        
+        
+        
+        
+        
+        
         
         
       
         
     
-        var csvText: String = ""
-        csvText += Constant.personName + Constant.enter
-        
-        for job in CoreDataManager.database.getJobs(include: true) {
-            csvText += Constant.comma + job.title! + Constant.enter
-            for task in job.getTasks(include: true) {
-                let title = task.title ?? "Default Title"
-                
-                let taskType = csvFormat(strings: task.csvTaskType())
-                
-                
-                
-                
-                csvText += Constant.comma + Constant.comma + title + Constant.comma + taskType + Constant.enter
-                for analytics in task.getAnalytics() {
-                    let startTime = analytics.startTime!.description
-                    let duration = analytics.duration!.description
-                    let beginning = Constant.comma + Constant.comma + Constant.comma
-                    let middle = startTime + Constant.comma + duration
-                    let end = Constant.enter
-                    csvText += beginning + middle + end
-                }
-            }
-        }
+       
         
         document!.csvText = csvText
         document?.save(to: ubiquityURL!, for: .forCreating, completionHandler: {(success: Bool) -> Void in
@@ -160,7 +173,7 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
         
         controller.dismiss(animated: true) {
             if needToSegue {
-                self.performSegue(withIdentifier: "toFinishPage", sender: self)
+                //self.performSegue(withIdentifier: Constant., sender: self)
             }
         }
     }

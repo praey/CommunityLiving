@@ -128,8 +128,13 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     }
     
     @IBAction func deleteTask(_ sender: Any) {
-        CoreDataManager.database.deleteTask(task: task)
-        self.navigationController?.popViewController(animated: true)
+        let alert = UIAlertController(title: "Warning!", message: "Are you sure to delete this task?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
+            CoreDataManager.database.deleteTask(task: self.task)
+            self.navigationController?.popViewController(animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     // add one button that will display a test of what the task actuatlly is
@@ -184,7 +189,7 @@ extension TaskManager {
         }
         if mediaType == "public.movie" {
             if task.ifFileExists(filePath: .video) {
-                let alert = UIAlertController(title: "Warning!", message: "Are you sure to replace the exist video?", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Warning!", message: "Are you sure to replace the existing video?", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
                     CoreDataManager.database.setTaskVideo(task: self.task, videoURLString: (info[UIImagePickerControllerMediaURL] as! NSURL).path!)
                     self.validVideo.image = self.validInput

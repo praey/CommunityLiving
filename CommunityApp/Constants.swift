@@ -61,7 +61,7 @@ class Constant {
     
     static private let defaultUsername = "CommunityLiving"
     static private let defaultPassword = "12345678"
-    static private let defaultEmail = "javonluke@live.com"
+    static private let defaultEmail = ["javonluke@live.com","zhatiayua59@gmail.com"]
     
     static func getUsername() -> String {
         return UserDefaults.standard.string(forKey: Constant.keyValue.username) ?? self.defaultUsername
@@ -80,8 +80,9 @@ class Constant {
     
     
     
-    static func getEmail() -> String? {
-        return UserDefaults.standard.string(forKey: Constant.keyValue.email) ?? self.defaultEmail
+    static func getEmail() -> [String]? {
+        return self.defaultEmail
+        //UserDefaults.standard.string(forKey: Constant.keyValue.email) ?? self.defaultEmail
     }
     
     static func setEmail(_ email: String) {

@@ -85,8 +85,6 @@ class TaskTemplate: UIViewController {
             }
             description += "\n"
         }
-        
-        
         return description
         
         
@@ -94,10 +92,10 @@ class TaskTemplate: UIViewController {
     }
     
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         if !isTest {
-            CoreDataManager.database.saveAnalytics(task: task, desc: taskDescription )
+            CoreDataManager.database.saveAnalytics(task: task, desc: "" )
         }
     }
     

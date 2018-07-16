@@ -187,7 +187,7 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
             let emailController = MFMailComposeViewController()
             
             emailController.mailComposeDelegate = self
-            emailController.setToRecipients([self.email!])
+            emailController.setToRecipients(self.email!)
             emailController.setSubject("Comunity Living")
             if let emailURL = emailURL {
                 emailController.setMessageBody("Link: " + (emailURL.absoluteString), isHTML: false)

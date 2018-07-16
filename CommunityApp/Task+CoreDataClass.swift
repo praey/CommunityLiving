@@ -262,7 +262,7 @@ public class Task: NSManagedObject {
         
     }
     
-    fileprivate func getViewController(withIdentifier identifier: String) -> UIViewController
+    func getViewController(withIdentifier identifier: String) -> UIViewController
     {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
     }

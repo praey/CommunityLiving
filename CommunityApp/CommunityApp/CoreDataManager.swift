@@ -108,14 +108,16 @@ class CoreDataManager: NSObject, CoreDataProtocol {
         for analytics in (task.has?.array)! {
             context.delete(analytics as! Analytics)
         }
+        saveData()
     }
     
     func deleteUnfinishedAnalytics(task: Task) {
         for analytics in (task.has?.array)! {
-            if (analytics as! Analytics).taskDescription == "" {
+            if (analytics as! Analytics).duration == nil {
                 context.delete(analytics as! Analytics)
             }
         }
+        saveData()
     }
     
 //    func createTestData() -> [Job] {

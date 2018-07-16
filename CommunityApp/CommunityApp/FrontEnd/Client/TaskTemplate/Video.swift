@@ -13,7 +13,6 @@ class Video: TaskTemplate {
     @IBOutlet weak var playerView: PlayerView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         playerView.player = super.task.getVideo()
         playerView.player?.play()
     }

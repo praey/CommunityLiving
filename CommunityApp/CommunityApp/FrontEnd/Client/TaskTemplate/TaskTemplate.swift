@@ -27,12 +27,14 @@ class TaskTemplate: UIViewController {
         if !isTest {
         CoreDataManager.database.startAnalytics(task: task)
         }
-        timer = Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(timerSelector), userInfo: nil, repeats: false)
+        if !isTest {
+        timer = Timer.scheduledTimer(timeInterval: 1200, target: self, selector: #selector(timerSelector), userInfo: nil, repeats: false)
+        }
     }
     
     @objc func timerSelector() {
         CoreDataManager.database.deleteUnfinishedAnalytics(task: task)
-        self.navigationController?.popToViewController(task.getViewController(withIdentifier: Constant.segueID.JobSelector), animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     func isTest(_ testing: Bool) {

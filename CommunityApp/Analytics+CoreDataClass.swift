@@ -38,11 +38,13 @@ public class Analytics: NSManagedObject {
         var csvText: String = ""
         csvText += (startTime?.description)!
         csvText += ","
-            csvText += duration!.description
+        csvText += duration!.description
         csvText += ","
         csvText += self.taskDescription!.description
         return csvText
     }
+    
+    
     
     func getStarttime() -> String {
         return self.startTime?.description ?? ""

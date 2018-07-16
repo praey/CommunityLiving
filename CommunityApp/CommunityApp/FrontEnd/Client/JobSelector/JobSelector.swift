@@ -64,6 +64,7 @@ class JobSelector: UICollectionViewController {
             let textView = UILabel()
             textView.text = title
             textView.frame = cell.contentView.bounds
+            textView.backgroundColor = UIColor.gray
             cell.contentView.addSubview(textView)
         } else {
             let textView = UILabel()
@@ -121,6 +122,8 @@ class CollectionLayout: UICollectionViewFlowLayout {
     //layoutAttributesForDecorationView(ofKind:at:) (if your layout supports decoration views)
     //shouldInvalidateLayout(forBoundsChange:)
 }
+
+
 
 
 

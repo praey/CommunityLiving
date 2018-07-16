@@ -500,11 +500,6 @@
                                                         </connections>
                                                     </switch>
                                                 </subviews>
-                                                <variation key="heightClass=regular-widthClass=compact">
-                                                    <mask key="subviews">
-                                                        <exclude reference="Qeu-8j-qJN"/>
-                                                    </mask>
-                                                </variation>
                                             </stackView>
                                         </subviews>
                                         <constraints>
@@ -576,11 +571,6 @@
                                                         </connections>
                                                     </switch>
                                                 </subviews>
-                                                <variation key="heightClass=regular-widthClass=compact">
-                                                    <mask key="subviews">
-                                                        <exclude reference="RMM-RK-JKq"/>
-                                                    </mask>
-                                                </variation>
                                             </stackView>
                                         </subviews>
                                         <constraints>
@@ -662,11 +652,6 @@
                                                         </connections>
                                                     </switch>
                                                 </subviews>
-                                                <variation key="heightClass=regular-widthClass=compact">
-                                                    <mask key="subviews">
-                                                        <exclude reference="ixJ-4f-3Ct"/>
-                                                    </mask>
-                                                </variation>
                                             </stackView>
                                         </subviews>
                                         <constraints>
@@ -735,11 +720,6 @@
                                                         </connections>
                                                     </switch>
                                                 </subviews>
-                                                <variation key="heightClass=regular-widthClass=compact">
-                                                    <mask key="subviews">
-                                                        <exclude reference="1CY-bW-3Q0"/>
-                                                    </mask>
-                                                </variation>
                                             </stackView>
                                         </subviews>
                                         <constraints>
@@ -1391,8 +1371,13 @@
         <!--Job Viewer-->
         <scene sceneID="gzf-ww-gtd">
             <objects>
-                <pageViewController storyboardIdentifier="toJobViewer" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="Emj-yO-EHU" customClass="JobViewer" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="toJobViewer" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="none" id="Emj-yO-EHU" customClass="JobViewer" customModule="CommunityApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="LLd-yh-tkO" kind="unwind" unwindAction="unwindToJobSelectorWithSegue:" id="Tbw-0K-8BD"/>
+                    </connections>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="brk-ag-Vpm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="LLd-yh-tkO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-2925" y="2239"/>
         </scene>

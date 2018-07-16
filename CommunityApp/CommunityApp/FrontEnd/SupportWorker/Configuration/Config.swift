@@ -21,7 +21,11 @@ class Config: UIViewController {
         self.hideKeyboardWhenTappedAround()
         username.text = Constant.getUsername()
         password.text = Constant.getPassword()
-        email.text = Constant.getEmail()
+        var text = ""
+        for email in Constant.getEmail()! {
+            text += email + " "
+        }
+        email.text = text
     }
     
     

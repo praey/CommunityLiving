@@ -57,31 +57,17 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
         var csvText: String = ""
         csvText += Constant.personName + Constant.enter
         
-        for job in CoreDataManager.database.getJobs(include: true) {
-            //Constant.comma
-            csvText += "JobTitle," + job.title! + Constant.enter
-            for task in job.getTasks(include: true) {
-                let title = task.title ?? "Default Title"
-                
-                let taskType = csvFormat(strings: task.csvTaskType())
-                //Constant.comma + Constant.comma +
-                csvText += "TaskTitle:," + title + Constant.comma + taskType
-                for analytics in task.getAnalytics() {
-                    
-                    let startTime = analytics.getStarttime()
-                    let duration = analytics.getDuration()
-                    // let beginning = Constant.comma + Constant.comma + Constant.comma
-                    let middle = startTime + Constant.comma + duration
-                    let end = Constant.enter
-                    csvText += middle + end
-                }
-            }
-        }
+        
+        // getJobs
+        //get Tasks // get analytics // organize analytics from task print out analytics.belongs to 
+        
+        
+ 
+       // csvText += getCSVText()
         
         
         
-        
-        
+        csvText += getCSVAnalytics()
         
         
         
@@ -106,17 +92,76 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
         
     }
     
+    
+    func getCSVAnalytics() -> String {
+        var csvText = ""
+        for job in CoreDataManager.database.getJobs(include: true) {
+            //Constant.comma
+            csvText += "JobTitle," + job.title! + Constant.enter
+            // all Analytics
+            var analytics: [Analytics] = []
+            for task in job.getTasks(include: true) {
+                for analytic in task.getAnalytics() {
+                    analytics.append(analytic)
+                }
+            }
+            // sort analytics
+            analytics.sort(by: {($0.startTime! as Date) < ($1.startTime! as Date)})
+            
+            for analytic in analytics {
+                
+                guard let task = analytic.belongs else {continue}
+                
+                let taskTitle = task.title ?? "Default Title"
+                let taskType = csvFormat(strings: task.csvTaskType())
+                
+                let startTime = analytic.getStarttime()
+                let duration = analytic.getDuration()
+                
+                
+                csvText += taskTitle + Constant.comma + taskType + Constant.comma + startTime + Constant.comma + duration + Constant.enter
+            }
+        }
+        return csvText
+    }
+    
+    
+    
+    func getCSVText() -> String {
+        var csvText = ""
+        for job in CoreDataManager.database.getJobs(include: true) {
+            //Constant.comma
+            
+            csvText += "JobTitle," + job.title! + Constant.enter
+            for task in job.getTasks(include: true) {
+                let title = task.title ?? "Default Title"
+                
+                let taskType = csvFormat(strings: task.csvTaskType(), end: true)
+                //Constant.comma + Constant.comma +
+                csvText += "TaskTitle:," + title + Constant.comma + taskType
+                for analytics in task.getAnalytics() {
+                    
+                    let startTime = analytics.getStarttime()
+                    let duration = analytics.getDuration()
+                    // let beginning = Constant.comma + Constant.comma + Constant.comma
+                    let middle = startTime + Constant.comma + duration
+                    let end = Constant.enter
+                    csvText += middle + end
+                }
+            }
+        }
+        return csvText
+    }
+    
 
     
-    func csvFormat(strings: [String], middle: Bool = false) -> String {
+    func csvFormat(strings: [String], end: Bool = false) -> String {
         var content: String = String.init()
         for word in strings {
             content.append(word)
             if word == strings.last! {
-                if !middle {
+                if end {
                     content.append(Constant.enter)
-                } else {
-                    content.append(Constant.comma)
                 }
             } else {
                 content.append(Constant.comma)
@@ -142,7 +187,7 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
             let emailController = MFMailComposeViewController()
             
             emailController.mailComposeDelegate = self
-            emailController.setToRecipients([self.email!])
+            emailController.setToRecipients(self.email!)
             emailController.setSubject("Comunity Living")
             if let emailURL = emailURL {
                 emailController.setMessageBody("Link: " + (emailURL.absoluteString), isHTML: false)

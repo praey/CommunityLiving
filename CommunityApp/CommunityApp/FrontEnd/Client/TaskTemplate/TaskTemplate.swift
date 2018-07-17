@@ -32,7 +32,7 @@ class TaskTemplate: UIViewController {
     
     @objc func timerSelector() {
         CoreDataManager.database.deleteUnfinishedAnalytics(task: task)
-        self.navigationController?.popToViewController(task.getViewController(withIdentifier: Constant.segueID.JobSelector), animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     func isTest(_ testing: Bool) {

@@ -53,7 +53,7 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         return UIInterfaceOrientationMask.portrait
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    func checkAudio() {
         if task.ifFileExists(filePath: .audio) {
             disableAudio.isEnabled = true
             disableAudio.isOn = false

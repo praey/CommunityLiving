@@ -34,15 +34,15 @@ public class Analytics: NSManagedObject {
         isStarted = false
     }
     
-    func getAnalytics() -> String {
-        var csvText: String = ""
-        csvText += (startTime?.description)!
-        csvText += ","
-        csvText += duration!.description
-        csvText += ","
-        csvText += self.taskDescription!.description
-        return csvText
-    }
+//    func getAnalytics() -> String {
+//        var csvText: String = ""
+//        csvText += (startTime?.description)!
+//        csvText += ","
+//        csvText += duration!.description
+//        csvText += ","
+//        csvText += self.taskDescription!.description
+//        return csvText
+//    }
     
     
     

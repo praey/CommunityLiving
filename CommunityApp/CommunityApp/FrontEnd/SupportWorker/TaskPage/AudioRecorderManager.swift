@@ -12,6 +12,7 @@ import AVFoundation
 class AudioRecorderManager: UIViewController {
     var task: Task!
     var recorder: AVAudioRecorder?
+    var takeANewAudio: Bool = false
     var player: AVAudioPlayer?
     var recorderOptionsDic: [String : Any]?
     var volumeTimer: Timer!
@@ -84,8 +85,6 @@ class AudioRecorderManager: UIViewController {
         volume.frame = CGRect(x: deviceWidth / 2 + 0.081 * deviceHeight, y: 0.107 * deviceHeight, width: 0.081 * deviceHeight, height: 0.025 * deviceHeight)
         volume.font = UIFont.boldSystemFont(ofSize: 0.021 * deviceHeight)
         volumeAnimation.frame = CGRect(x: (deviceWidth - 0.315 * deviceHeight) / 2, y: 0.141 * deviceHeight, width: 0.315 * deviceHeight, height: 0.247 * deviceHeight)
-//        progress.frame.origin = CGPoint(x: (deviceWidth - progress.frame.size.width * 0.001 * deviceHeight) / 2, y: 0.441 * deviceHeight)
-//        progress.frame = CGRect(x: (deviceWidth - progress.frame.size.width * 0.001 * deviceHeight) / 2, y: 0.441 * deviceHeight, width: 0.146 * deviceHeight, height: 0.003 * deviceHeight)
         progressTimer.frame = CGRect(x: (deviceWidth - 0.0645 * deviceHeight) / 2, y: 0.462 * deviceHeight, width: 0.0645 * deviceHeight, height: 0.029 * deviceHeight)
         progressTimer.font = UIFont.boldSystemFont(ofSize: 0.025 * deviceHeight)
         recorderStart.frame = CGRect(x: (deviceWidth - 0.188 * deviceHeight) / 2, y: 0.528 * deviceHeight, width: 0.188 * deviceHeight, height: 0.188 * deviceHeight)
@@ -112,6 +111,7 @@ class AudioRecorderManager: UIViewController {
     }
   
     @IBAction func recordButtonTouchDown(_ sender: UIButton) {
+        takeANewAudio = true
         secCount = 0
         clock = 15
         sender.setImage(#imageLiteral(resourceName: "record2Start2"), for: .normal)
@@ -155,7 +155,6 @@ class AudioRecorderManager: UIViewController {
     
     @IBAction func playbutton(_ sender: Any) {
         let pathString: String = task.getPath(.audio)!
-        print(pathString)
         if CoreDataManager.database.resourceExists(URLString: pathString) {
             player = try! AVAudioPlayer(contentsOf: URL(string: pathString)!)
             if player == nil {
@@ -203,6 +202,22 @@ class AudioRecorderManager: UIViewController {
         }
         progressTimer.text = "\(clock!)"
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if isMovingFromParentViewController {
+            if let viewControllers = self.navigationController?.viewControllers {
+                if (viewControllers.count >= 1) {
+                    let previousViewController = viewControllers[viewControllers.count-1] as! TaskManager
+                    if takeANewAudio == true {
+                        previousViewController.checkAudio()
+                        takeANewAudio = false
+                    }
+                }
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

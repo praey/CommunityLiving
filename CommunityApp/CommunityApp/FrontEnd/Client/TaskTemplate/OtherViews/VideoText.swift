@@ -18,9 +18,17 @@ class VideoText: TaskTemplate {
     override func viewDidLoad() {
         super.viewDidLoad()
         text.text = super.task.getText()
+        //playerView.playerLayer.videoGravity = .resizeAspect
+        //playerView.playerLayer.needsDisplayOnBoundsChange = true
+       // text.adjustsFontSizeToFitWidth = true
         
         playerView.player = super.task.getVideo()
         playerView.player?.play()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        //self.playerView.playerLayer.frame = self.playerView.bounds
     }
     
     override func viewDidAppear(_ animated: Bool) {

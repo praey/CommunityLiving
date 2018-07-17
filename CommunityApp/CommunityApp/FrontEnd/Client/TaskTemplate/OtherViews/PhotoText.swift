@@ -17,8 +17,10 @@ class PhotoText: TaskTemplate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         image.image = super.task.getPhoto()
          text.text = super.task.getText()
+     //   text.adjustsFontSizeToFitWidth = true
     }
 
 }

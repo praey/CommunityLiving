@@ -15,6 +15,7 @@ class Text: TaskTemplate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        text.adjustsFontSizeToFitWidth = true
         text.text = super.task.getText()
     }
 }

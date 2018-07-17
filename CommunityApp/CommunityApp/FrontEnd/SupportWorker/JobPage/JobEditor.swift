@@ -106,10 +106,33 @@ extension JobEditor: UITableViewDelegate, UITableViewDataSource {
         
         let cell: UITableViewCell = self.taskTableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
         
-        // This is where the descripion of the UItableView
-        cell.backgroundColor = UIColor.orange
         
-        cell.textLabel?.text = job.getTask(row: indexPath.row, include: true).title ?? "NO TITLE"
+          let textView = UILabel()
+        textView.frame = cell.contentView.bounds
+        // textView.isEditable = false
+        textView.layer.borderColor = UIColor.black.cgColor
+        textView.layer.borderWidth = 2
+        
+        
+        if let title = job.getTask(row: indexPath.item, include: true).title {
+            if title != "" {
+              cell.textLabel?.text = String.init(describing: title)
+            } else {
+                 cell.textLabel?.text = "no title".description
+            }
+          // cell.contentView.addSubview(textView)
+    
+        } else {
+                 textView.text = "no title"
+     cell.textLabel?.text = "no title".description
+      //      cell.contentView.addSubview(textView)
+            
+    
+        }
+    
+        
+        
+        // cell.textLabel?.text = job.getTask(row: indexPath.row, include: true).title ?? "NO TITLE"
         return cell
     }
  
@@ -119,10 +142,7 @@ extension JobEditor: UITableViewDelegate, UITableViewDataSource {
         editTask(task: job.getTask(row: indexPath.row, include: true))
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "This should be the title of the Job \(job.title!)"
-    }
-    
+
     
     
    // func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {

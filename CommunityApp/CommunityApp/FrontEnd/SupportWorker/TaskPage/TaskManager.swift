@@ -37,6 +37,7 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     @IBOutlet weak var disableVideo: UISwitch!
     @IBOutlet weak var disableAudio: UISwitch!
     
+    @IBOutlet weak var taskTitle: UITextField!
     
    
     override func viewDidLoad() {
@@ -62,6 +63,8 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     }
     
     func setUp() {
+        
+        taskTitle.text = task.title ?? ""
         
         disableTask.isOn = task.disableTask
         disableText.isOn = task.disableText
@@ -106,6 +109,7 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
 
 
     func setDown() {
+        task.title = taskTitle.text!
         task.disableTask = disableTask.isOn
         task.disableText = disableText.isOn
         task.disableAudio = disableAudio.isOn

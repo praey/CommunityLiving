@@ -261,7 +261,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1112" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Eam-ZM-dSy">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Eam-ZM-dSy">
                                 <rect key="frame" x="20" y="40" width="1072" height="774"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Zi-5e-cDI">
@@ -279,7 +279,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8re-zP-0TF">
-                                        <rect key="frame" x="0.0" y="63" width="1072" height="30"/>
+                                        <rect key="frame" x="0.0" y="31" width="1072" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZp-gW-Pip">
                                                 <rect key="frame" x="0.0" y="0.0" width="536" height="30"/>
@@ -296,7 +296,7 @@
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f29-dx-b0K">
-                                        <rect key="frame" x="0.0" y="125" width="1072" height="106"/>
+                                        <rect key="frame" x="0.0" y="61" width="1072" height="653"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellReuseIdentifier" rowHeight="11" id="5Ge-hH-glr">
@@ -309,18 +309,18 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AE4-qK-L8U">
-                                        <rect key="frame" x="0.0" y="263" width="1072" height="511"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="AE4-qK-L8U">
+                                        <rect key="frame" x="0.0" y="714" width="1072" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="olg-OA-aAt">
-                                                <rect key="frame" x="0.0" y="0.0" width="1072" height="481"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="1072" height="30"/>
                                                 <state key="normal" title="Delete Job"/>
                                                 <connections>
                                                     <action selector="deleteJob" destination="P7g-Q3-TGY" eventType="touchUpInside" id="lA1-mK-9xZ"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FgK-zJ-f9O">
-                                                <rect key="frame" x="0.0" y="481" width="1072" height="30"/>
+                                                <rect key="frame" x="0.0" y="30" width="1072" height="30"/>
                                                 <state key="normal" title="Add Event"/>
                                                 <connections>
                                                     <segue destination="zqQ-W3-Cw1" kind="show" identifier="toNotificationController" id="q96-g1-BSK"/>
@@ -808,6 +808,7 @@
                         <outlet property="disableTask" destination="Pod-8O-9Y2" id="KdY-ft-iuL"/>
                         <outlet property="disableText" destination="trL-0J-p37" id="Od0-gj-UBf"/>
                         <outlet property="disableVideo" destination="81W-TG-9wU" id="JNj-0A-uXx"/>
+                        <outlet property="taskTitle" destination="uN1-dj-Ieg" id="xi5-cQ-YKv"/>
                         <outlet property="textValue" destination="vUu-SS-Z8w" id="Cb9-jH-SXV"/>
                         <outlet property="validAudio" destination="SxJ-g7-Y0D" id="cxJ-kY-UAs"/>
                         <outlet property="validPhoto" destination="JLF-JO-ygB" id="Vvv-dX-4AH"/>

@@ -106,12 +106,16 @@ extension JobManager : UICollectionViewDelegate, UICollectionViewDataSource {
             textView.text = title
             textView.frame = cell.contentView.bounds
            // textView.isEditable = false
+            textView.layer.borderColor = UIColor.black.cgColor
+            textView.layer.borderWidth = 2
             cell.contentView.addSubview(textView)
         } else {
             let textView = UILabel()
             textView.text = "There is no title or picture"
             textView.backgroundColor = UIColor.gray
             textView.frame = cell.contentView.bounds
+            textView.layer.borderColor = UIColor.black.cgColor
+            textView.layer.borderWidth = 2
             cell.contentView.addSubview(textView)
         }
         // cell.backgroundColor = UIColor.blue

@@ -118,7 +118,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CommunityApp/FrontEnd/Client/JobSelector/JobViewer.swift"
@@ -131,34 +131,34 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "CommunityApp.JobViewer.pageViewController(__ObjC.UIPageViewController, viewControllerAfter: __ObjC.UIViewController) -&gt; Swift.Optional&lt;__ObjC.UIViewController&gt;"
                   moduleName = "CommunityApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Desktop/Projects/CommunityLiving/CommunityApp/CommunityApp/FrontEnd/Client/JobSelector/JobViewer.swift"
-                  timestampString = "553461292.1366971"
+                  timestampString = "553561804.6757179"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "110"
                   endingLineNumber = "110"
-                  offsetFromSymbolStart = "818">
+                  offsetFromSymbolStart = "584">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "CommunityApp.JobViewer.pageViewController(__ObjC.UIPageViewController, viewControllerAfter: __ObjC.UIViewController) -&gt; Swift.Optional&lt;__ObjC.UIViewController&gt;"
                   moduleName = "CommunityApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/admin/Desktop/Projects/CommunityLiving/CommunityApp/CommunityApp/FrontEnd/Client/JobSelector/JobViewer.swift"
-                  timestampString = "553461292.140594"
+                  timestampString = "553561804.679487"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "110"
                   endingLineNumber = "110"
-                  offsetFromSymbolStart = "1936">
+                  offsetFromSymbolStart = "1420">
                </Location>
             </Locations>
          </BreakpointContent>

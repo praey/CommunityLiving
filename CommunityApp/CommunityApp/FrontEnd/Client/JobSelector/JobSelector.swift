@@ -65,11 +65,15 @@ class JobSelector: UICollectionViewController {
             textView.text = title
             textView.frame = cell.contentView.bounds
             textView.backgroundColor = UIColor.gray
+            textView.layer.borderColor = UIColor.black.cgColor
+            textView.layer.borderWidth = 2
             cell.contentView.addSubview(textView)
         } else {
             let textView = UILabel()
             textView.text = "There is no title or picture"
             textView.backgroundColor = UIColor.gray
+            textView.layer.borderColor = UIColor.black.cgColor
+            textView.layer.borderWidth = 2
             textView.frame = cell.contentView.bounds
             cell.contentView.addSubview(textView)
         }

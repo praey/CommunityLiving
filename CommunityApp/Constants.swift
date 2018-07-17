@@ -81,11 +81,10 @@ class Constant {
     
     
     static func getEmail() -> [String]? {
-        return self.defaultEmail
-        //UserDefaults.standard.string(forKey: Constant.keyValue.email) ?? self.defaultEmail
+        return (UserDefaults.standard.array(forKey: Constant.keyValue.email) as? [String]) ?? self.defaultEmail
     }
     
-    static func setEmail(_ email: String) {
+    static func setEmail(_ email: [String]) {
         UserDefaults.standard.set(email, forKey: Constant.keyValue.email)
     }
     

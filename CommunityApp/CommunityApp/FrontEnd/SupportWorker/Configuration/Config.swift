@@ -14,7 +14,6 @@ class Config: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var pageControllerSetting: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +22,7 @@ class Config: UIViewController {
         password.text = Constant.getPassword()
         var text = ""
         for email in Constant.getEmail()! {
-            text += email + " "
+            text += email + ","
         }
         email.text = text
     }
@@ -33,10 +32,13 @@ class Config: UIViewController {
     @IBAction func deleteAllJobs(_ sender: Any) {
           CoreDataManager.database.deletAllJobs()
     }
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         Constant.setUsername(username.text!)
         Constant.setPassword(password.text!)
-        Constant.setEmail(email.text!)
-        
+       // email.text?.components(separatedBy: ",")
+        if let emails = email.text?.components(separatedBy: ",") {
+            Constant.setEmail(emails)
+            print(emails.description)
+        }
     }
 }

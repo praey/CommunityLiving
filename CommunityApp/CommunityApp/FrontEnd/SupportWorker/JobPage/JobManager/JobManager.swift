@@ -57,18 +57,40 @@ class JobManager: UIViewController{
          performSegue(withIdentifier: Constant.segueID.EmailPage, sender: self)
     }
     @objc func createJob(sender: UIButton) {
-        if (jobTitle.text?.isEmpty)! {
-            print("Job title is empty!")
-            // Create action
-            let alert = UIAlertController(title: "Warning!", message: "You must add a title to the Job that you are attempting to add.", preferredStyle: .alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
+        var inputText:UITextField = UITextField();
+        let alert = UIAlertController.init(title: "New Job", message: "Input the job name", preferredStyle: .alert)
+        let ok = UIAlertAction.init(title: "OK", style:.default) { (action:UIAlertAction) ->() in
+            if ((inputText.text) == ""){
+                let warningAlert = UIAlertController(title: "Warning!", message: "You must add a title to the Job that you are attempting to add.", preferredStyle: .alert)
+                warningAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(warningAlert, animated: true, completion: nil)
+            }
+            else {
+                self.tappedCollectionCell = CoreDataManager.database.createJob(title: inputText.text!)
+                self.performSegue(withIdentifier: Constant.segueID.JobEditor, sender: self)
+            }
         }
-        else {
-            tappedCollectionCell = CoreDataManager.database.createJob(title: jobTitle.text!)
-            performSegue(withIdentifier: Constant.segueID.JobEditor, sender: self)
+        alert.addAction(ok)
+        alert.addAction(UIAlertAction.init(title: "Cancel", style:.cancel))
+        alert.addTextField { (textField) in
+            inputText = textField
+            inputText.placeholder = "Input job name"
         }
+        present(alert, animated: true, completion: nil)
+        
+        
+        //        if (jobTitle.text?.isEmpty)! {
+        //            print("Job title is empty!")
+        //            // Create action
+        //            let alert = UIAlertController(title: "Warning!", message: "You must add a title to the Job that you are attempting to add.", preferredStyle: .alert)
+        //
+        //            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        //            present(alert, animated: true, completion: nil)
+        //        }
+        //        else {
+        //            tappedCollectionCell = CoreDataManager.database.createJob(title: jobTitle.text!)
+        //            performSegue(withIdentifier: Constant.segueID.JobEditor, sender: self)
+        //        }
     }
     
     func editJob(job: Job) {

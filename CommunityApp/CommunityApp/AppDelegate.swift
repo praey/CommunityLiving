@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UNUserNotificationCenter.current().delegate = self
         return true
     }
 
@@ -89,5 +91,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("Action Identifier: ")
+        print(response.notification.request.identifier)
+        switch response.notification.request.identifier {
+        
+        case "showJob":
+            
+            let jobid = response.notification.request.content.userInfo["job"] as? String
+            let job = CoreDataManager.database.getJob(id: jobid!)!
+            
+            let nav = self.window?.rootViewController as! UINavigationController
+            nav.popToRootViewController(animated: true)
+            
+            let jobSelector = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constant.segueID.JobSelector ) as! JobSelector
+           
+            
+            nav.pushViewController(jobSelector, animated: true)
+            
+            if job.isValid() {
+            
+            let jobViewer = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: Constant.segueID.JobViewer ) as! JobViewer
+            jobViewer.setJob(job: job)
+            nav.pushViewController(jobViewer, animated: true)
+            }
+            print("set for job")
+        case "dismiss":
+            print("dismissed")
+            
+        default:
+            print("no case was selected")
+        }
+        completionHandler()
+        
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        
+        completionHandler([.alert])
+    }
+    
 }
 

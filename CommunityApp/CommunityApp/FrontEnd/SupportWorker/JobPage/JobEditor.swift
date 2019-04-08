@@ -108,6 +108,12 @@ extension JobEditor: UITableViewDelegate, UITableViewDataSource {
         let cell: UITableViewCell = self.taskTableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
         
         
+        let prevView =  cell.contentView.subviews
+        for view in prevView {
+            view.removeFromSuperview()
+        }
+        
+        
           let textView = UILabel()
         textView.frame = cell.contentView.bounds
         // textView.isEditable = false

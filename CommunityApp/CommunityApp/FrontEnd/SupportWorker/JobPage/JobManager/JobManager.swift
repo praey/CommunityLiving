@@ -41,8 +41,16 @@ class JobManager: UIViewController{
     
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+      //  collectionView.reloadData()
         jobs = CoreDataManager.database.getJobs(include: true)
+        
         collectionView.reloadData()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        //collectionView.reloadData()
+        //collection
     }
 
     @objc func toEmail() {
@@ -90,8 +98,13 @@ extension JobManager : UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        
         let cell: UICollectionViewCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
         
+        let prevView =  cell.contentView.subviews
+        for view in prevView {
+            view.removeFromSuperview()
+        }
         
         // This is where the descripion of the UICollectionView
         // Attempt to show a picture in the box

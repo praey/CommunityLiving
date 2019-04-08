@@ -31,7 +31,19 @@ class Config: UIViewController {
     
     
     @IBAction func deleteAllJobs(_ sender: Any) {
-          CoreDataManager.database.deletAllJobs()
+        
+        let alert = UIAlertController(title: "WARNING!", message: "THIS ACTION WILL DELETE ALL JOBS", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: deleteJobs))
+        alert.addAction(UIAlertAction(title: "CANCEL", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+        
+        
+        
+    }
+    
+    func deleteJobs(alert: UIAlertAction) {
+        CoreDataManager.database.deletAllJobs()
     }
     override func viewDidDisappear(_ animated: Bool) {
         Constant.setUsername(username.text!)

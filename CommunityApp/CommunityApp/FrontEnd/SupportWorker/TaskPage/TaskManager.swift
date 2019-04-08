@@ -124,12 +124,17 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     
     override func viewWillDisappear(_ animated: Bool) {
         
-        
+       checkText()
      setDown()
         
         
         
         CoreDataManager.database.saveData()
+    }
+    
+    
+    func checkText() {
+        
     }
     
     @IBAction func deleteTask(_ sender: Any) {
@@ -385,7 +390,8 @@ extension TaskManager: UITextFieldDelegate {
     
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-        if reason == .committed {
+        
+       
             if let text = textField.text {
                 if !text.isEmpty {
                     CoreDataManager.database.setTaskText(task: task, text: text)
@@ -397,7 +403,7 @@ extension TaskManager: UITextFieldDelegate {
                 }
             }
             
-        }
+        
         
     }
 

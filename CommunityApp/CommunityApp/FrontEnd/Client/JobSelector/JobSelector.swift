@@ -75,30 +75,9 @@ class JobSelector: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
-        let cell: UICollectionViewCell = self.collectionView!.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
+        let cell: UICollectionViewCell = self.collectionView!.getCell(cellReuseIdentifier, indexPath: indexPath, job: jobs[indexPath.row])
+            
         
-        let image: UIImage? = jobs[indexPath.row].thumbnail
-        let title: String? = jobs[indexPath.row].title
-        if let image = image {
-            let imageView = UIImageView.init(image: image)
-            imageView.frame = cell.contentView.bounds
-            cell.contentView.addSubview(imageView)
-            
-        } else if let title = title {
-            let textView = UILabel()
-            textView.text = title
-            textView.frame = cell.contentView.bounds
-            textView.backgroundColor = UIColor.cyan
-            textView.layer.borderColor = UIColor.black.cgColor
-            textView.layer.borderWidth = 2
-            cell.contentView.addSubview(textView)
-        } else {
-            
-            let imageView = UIImageView.init(image: UIImage.init(named: "Icon"))
-            imageView.frame = cell.contentView.bounds
-            cell.contentView.addSubview(imageView)
-
-        }
         return cell
     }
     
@@ -141,11 +120,58 @@ extension UICollectionView {
     func restore() {
         self.backgroundView = nil
     }
+    func getCell(_ cellReuseIdentifier: String, indexPath: IndexPath, job: Job) -> UICollectionViewCell {
+        
+        let cell: UICollectionViewCell = self.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
+        
+        //removes content within cell
+        for view in cell.contentView.subviews {
+            view.removeFromSuperview()
+        }
+        // This is where the descripion of the UICollectionView
+        // Attempt to show a picture in the box
+        let image: UIImage? = job.thumbnail
+        let title: String? = job.title
+        if let image = image {
+            let imageView = UIImageView.init(image: image)
+            imageView.frame = cell.contentView.bounds
+            cell.contentView.addSubview(imageView)
+            
+        } else if let title = title {
+            let textView = UILabel()
+            textView.text = title
+            textView.textAlignment = .center
+            textView.frame = cell.contentView.bounds
+            
+            textView.backgroundColor = UIColor.cyan
+            textView.layer.borderColor = UIColor.black.cgColor
+            textView.layer.borderWidth = 2
+            cell.contentView.addSubview(textView)
+        } else {
+            
+            let imageView = UIImageView.init(image: UIImage.init(named: "Icon"))
+            imageView.frame = cell.contentView.bounds
+            cell.contentView.addSubview(imageView)
+            
+        }
+        
+        return cell
+        
+    }
+    
+    
+    
 }
-class CollectionLayout: UICollectionViewFlowLayout {
-    
-    
+extension UICollectionView {
+
    
+   
+    
+    
+    
+    
+
+    
     /*
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         super.layoutAttributesForElements(in: rect)

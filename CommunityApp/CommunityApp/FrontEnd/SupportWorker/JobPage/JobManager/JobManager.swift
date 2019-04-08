@@ -121,40 +121,8 @@ extension JobManager : UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
-        let cell: UICollectionViewCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
+        let cell: UICollectionViewCell = self.collectionView.getCell(cellReuseIdentifier, indexPath: indexPath, job: jobs[indexPath.row])
         
-        let prevView =  cell.contentView.subviews
-        for view in prevView {
-            view.removeFromSuperview()
-        }
-        
-        // This is where the descripion of the UICollectionView
-        // Attempt to show a picture in the box
-        let image: UIImage? = jobs[indexPath.row].thumbnail
-        let title: String? = jobs[indexPath.row].title
-        if let image = image {
-            let imageView = UIImageView.init(image: image)
-            imageView.frame = cell.contentView.bounds
-            cell.contentView.addSubview(imageView)
-
-        } else if let title = title {
-            let textView = UILabel()
-            textView.text = title
-            textView.frame = cell.contentView.bounds
-           // textView.isEditable = false
-            textView.layer.borderColor = UIColor.black.cgColor
-            textView.layer.borderWidth = 2
-            cell.contentView.addSubview(textView)
-        } else {
-            let textView = UILabel()
-            textView.text = "There is no title or picture"
-            textView.backgroundColor = UIColor.gray
-            textView.frame = cell.contentView.bounds
-            textView.layer.borderColor = UIColor.black.cgColor
-            textView.layer.borderWidth = 2
-            cell.contentView.addSubview(textView)
-        }
-        // cell.backgroundColor = UIColor.blue
         return cell
     }
     

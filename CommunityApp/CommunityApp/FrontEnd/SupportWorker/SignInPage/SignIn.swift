@@ -18,7 +18,7 @@ class SignIn: UIViewController {
   
     @IBOutlet weak var passwordValue: UITextField!
     @IBOutlet weak var signInButton: UIButton!
-    
+    @IBOutlet weak var boxView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,17 @@ class SignIn: UIViewController {
         signInButton.addTarget(self, action: #selector(SignIn.signIn), for: .touchUpInside)
 
         self.navigationItem.title = "Sign In"
+        
+        self.view.layer.contents = UIImage(named:"background")?.cgImage
+        
+        boxView.layer.cornerRadius = 9
+        boxView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        boxView.layer.shadowOpacity = 0.7
+        boxView.layer.shadowRadius = 5
+        boxView.layer.shadowColor = UIColor(red: 44.0/255.0, green: 62.0/255.0, blue: 80.0/255.0, alpha: 1.0).cgColor
+        
+        signInButton.layer.cornerRadius = 16
+        
         timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(backToLastPage), userInfo: nil, repeats: false)
     }
     override func viewWillAppear(_ animated: Bool) {

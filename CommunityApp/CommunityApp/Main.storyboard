@@ -8,6 +8,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -103,51 +104,98 @@
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Dbc-Ih-lLU">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Dbc-Ih-lLU">
                                 <rect key="frame" x="20" y="84" width="794" height="1008"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="byK-Hz-nh1">
-                                        <rect key="frame" x="0.0" y="0.0" width="794" height="330.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oak-em-k9P">
-                                                <rect key="frame" x="0.0" y="155" width="393" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter User name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ftc-L3-KaM">
-                                                <rect key="frame" x="401" y="150.5" width="393" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IpQ-0e-9Hk">
+                                        <rect key="frame" x="26" y="0.0" width="742" height="330.5"/>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="O4X-Ga-773">
-                                        <rect key="frame" x="0.0" y="338.5" width="794" height="331"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vA9-UN-IUc">
+                                        <rect key="frame" x="228" y="338.5" width="338" height="331"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPx-SW-eHT">
-                                                <rect key="frame" x="0.0" y="155.5" width="393" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6pk-3L-4Z6">
-                                                <rect key="frame" x="401" y="150.5" width="393" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <stackView opaque="NO" tag="4" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ogi-zD-J45">
+                                                <rect key="frame" x="17" y="0.0" width="304" height="330.5"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="byK-Hz-nh1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="304" height="115.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oak-em-k9P">
+                                                                <rect key="frame" x="0.0" y="47.5" width="152" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter User name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ftc-L3-KaM">
+                                                                <rect key="frame" x="152" y="43" width="152" height="30"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="O4X-Ga-773">
+                                                        <rect key="frame" x="0.0" y="123.5" width="304" height="66"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zPx-SW-eHT">
+                                                                <rect key="frame" x="0.0" y="23" width="148" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6pk-3L-4Z6">
+                                                                <rect key="frame" x="156" y="18" width="148" height="30"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4U7-cq-AjY">
+                                                        <rect key="frame" x="0.0" y="197.5" width="304" height="26.5"/>
+                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seE-tu-2Cf">
+                                                        <rect key="frame" x="0.0" y="232" width="304" height="57.5"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <size key="titleShadowOffset" width="5" height="3"/>
+                                                        <state key="normal" title="SignIn">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="titleShadowColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                        </state>
+                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9Op-m0-2cK">
+                                                        <rect key="frame" x="0.0" y="297.5" width="304" height="33"/>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="O4X-Ga-773" firstAttribute="height" secondItem="ogi-zD-J45" secondAttribute="height" multiplier="0.2" id="6Nk-bt-ZNp"/>
+                                                    <constraint firstItem="4U7-cq-AjY" firstAttribute="height" secondItem="ogi-zD-J45" secondAttribute="height" multiplier="0.08" id="SQo-Gl-Igr"/>
+                                                    <constraint firstItem="byK-Hz-nh1" firstAttribute="height" secondItem="ogi-zD-J45" secondAttribute="height" multiplier="0.35" id="bvd-UV-dyJ"/>
+                                                    <constraint firstItem="9Op-m0-2cK" firstAttribute="height" secondItem="ogi-zD-J45" secondAttribute="height" multiplier="0.1" id="dzX-W0-ygZ"/>
+                                                </constraints>
+                                            </stackView>
                                         </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="ogi-zD-J45" firstAttribute="height" secondItem="vA9-UN-IUc" secondAttribute="height" id="2uE-SE-57B"/>
+                                            <constraint firstItem="ogi-zD-J45" firstAttribute="centerX" secondItem="vA9-UN-IUc" secondAttribute="centerX" id="3xu-8V-M1X"/>
+                                            <constraint firstItem="ogi-zD-J45" firstAttribute="centerY" secondItem="vA9-UN-IUc" secondAttribute="centerY" id="jtW-qI-45c"/>
+                                            <constraint firstItem="ogi-zD-J45" firstAttribute="width" secondItem="vA9-UN-IUc" secondAttribute="width" multiplier="0.9" id="lcA-rG-X3k"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zgq-2Y-EKY">
+                                        <rect key="frame" x="342" y="677.5" width="110" height="330.5"/>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seE-tu-2Cf">
-                                        <rect key="frame" x="0.0" y="677.5" width="794" height="330.5"/>
-                                        <state key="normal" title="SignIn"/>
-                                    </button>
                                 </subviews>
+                                <color key="backgroundColor" red="0.52549019607843139" green="0.77647058823529413" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="vA9-UN-IUc" firstAttribute="centerX" secondItem="Dbc-Ih-lLU" secondAttribute="centerX" id="V0u-s7-Vqd"/>
+                                    <constraint firstItem="vA9-UN-IUc" firstAttribute="width" secondItem="Dbc-Ih-lLU" secondAttribute="width" multiplier="0.4" constant="20" id="kc8-u5-MVf"/>
+                                </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.52549019607843139" green="0.77647058823529413" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="5cP-nj-BFR" firstAttribute="trailing" secondItem="Dbc-Ih-lLU" secondAttribute="trailing" constant="20" id="IIA-wV-nQu"/>
                             <constraint firstItem="Dbc-Ih-lLU" firstAttribute="leading" secondItem="5cP-nj-BFR" secondAttribute="leading" constant="20" id="YE7-Xp-u0s"/>
@@ -158,6 +206,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="SignIn" id="UnC-Km-Byd"/>
                     <connections>
+                        <outlet property="boxView" destination="vA9-UN-IUc" id="PVa-LL-Zlc"/>
                         <outlet property="nameValue" destination="Ftc-L3-KaM" id="cdr-B0-xvm"/>
                         <outlet property="passwordValue" destination="6pk-3L-4Z6" id="INu-Ws-XtL"/>
                         <outlet property="signInButton" destination="seE-tu-2Cf" id="iBk-kT-okF"/>
@@ -166,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llR-VO-blg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1987.1156661786235" y="280.6640625"/>
+            <point key="canvasLocation" x="-1987.769784172662" y="280.57553956834533"/>
         </scene>
         <!--JobManager-->
         <scene sceneID="Ba4-P4-2fl">
@@ -181,7 +230,7 @@
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="da8-zo-17p">
                                         <rect key="frame" x="0.0" y="0.0" width="794" height="978"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AHe-Hr-8fI">
                                             <size key="itemSize" width="66" height="62"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -216,7 +265,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.52549019607843139" green="0.77647058823529413" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="dmG-o4-q2q" firstAttribute="trailing" secondItem="j9X-fS-7NL" secondAttribute="trailing" constant="20" id="IiT-ut-YQV"/>
                             <constraint firstItem="j9X-fS-7NL" firstAttribute="leading" secondItem="dmG-o4-q2q" secondAttribute="leading" constant="20" id="Jgc-PZ-tcO"/>

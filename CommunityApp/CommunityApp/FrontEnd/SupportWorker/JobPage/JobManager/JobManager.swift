@@ -32,6 +32,15 @@ class JobManager: UIViewController{
         configure.addTarget(self, action: #selector(JobManager.toConfigure), for: .touchUpInside)
         emailPage.addTarget(self, action: #selector(JobManager.toEmail), for: .touchUpInside)
         
+        collectionView.layer.cornerRadius = 9
+        collectionView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        collectionView.layer.shadowOpacity = 0.7
+        collectionView.layer.shadowRadius = 5
+        collectionView.layer.shadowColor = UIColor(red: 44.0/255.0, green: 62.0/255.0, blue: 80.0/255.0, alpha: 1.0).cgColor
+        
+        emailPage.layer.cornerRadius = 9
+        configure.layer.cornerRadius = 9
+        
         collectionView.setCollectionViewLayout(Constant.collectionViewLayout, animated: true)
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
         

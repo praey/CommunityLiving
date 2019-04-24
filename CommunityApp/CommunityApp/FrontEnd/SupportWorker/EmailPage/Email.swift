@@ -10,89 +10,47 @@ import Foundation
 import UIKit
 import MessageUI
 import CloudKit
+import CoreData
+
+
 
 
 class Email: UIViewController, MFMailComposeViewControllerDelegate {
-    var document: MyDocument?
-    var documentURL: URL?
-    var ubiquityURL: URL?
-    let filemanager = FileManager.default
     
-    let name = Constant.getUsername()
-    let email = Constant.getEmail()
+    
+    //let name = Constant.getUsername()
+    var icloud: ICloudAPI?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if FileManager.default.url(forUbiquityContainerIdentifier: nil) != nil {
-            print("logged into icloud")
-        } else {
-            print("no account to log into")
-        }
-        if let _ = filemanager.ubiquityIdentityToken {
-            requestICloudAccess()
-        }
-        
-        ubiquityURL = filemanager.url(forUbiquityContainerIdentifier: nil)
-        guard ubiquityURL != nil else {
-            print("unable to access icloud account")
-            return
-        }
-        
-        ubiquityURL = ubiquityURL?.appendingPathComponent("Documents/+\(Constant.personName).csv")
-        document = MyDocument(fileURL: ubiquityURL!)
-       self.navigationItem.title = "Email"
-    }
-    
-    func analyticTitles() -> String {
-        return ""
-    }
-    
-    func requestICloudAccess() {
-        
-    }
-    
-    @IBAction func createCSV() {
-  
-        
-        var csvText: String = ""
-        csvText += Constant.personName + Constant.enter
-        
-        
-        // getJobs
-        //get Tasks // get analytics // organize analytics from task print out analytics.belongs to 
-        
-        
- 
-       // csvText += getCSVText()
-        
-        
-        
-        csvText += getCSVAnalytics()
-        
-        
-        
-        
-      
-        
-    
+        self.navigationItem.title = "Email"
        
-        
-        document!.csvText = csvText
-        document?.save(to: ubiquityURL!, for: .forCreating, completionHandler: {(success: Bool) -> Void in
-            if success {
-                print("success")
-                DispatchQueue.main.async {
-                    self.writeEmail()
-                }
-                
-            } else {
-                print("failure")
-            }
-        })
-        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        icloud = ICloudAPI()
+    }
+ 
     
+    func csvFormat(strings: [String], end: Bool = false) -> String {
+        var content: String = String.init()
+        for word in strings {
+            content.append(word)
+            if word == strings.last! {
+                if end {
+                    content.append(Constant.enter)
+                }
+            } else {
+                content.append(Constant.comma)
+            }
+        }
+        return content
+    }
+    
+
     func getCSVAnalytics() -> String {
         var csvText = ""
         for job in CoreDataManager.database.getJobs(include: true) {
@@ -126,8 +84,68 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     
+    func getFileName()->String {
+        var num = 0
+        var file: String = ""
+        let personName = Constant.getPersonName()!
+        if let icloud = icloud {
+        while true {
+            file = "\(personName)\(num).csv"
+            
+            if !(icloud.fileExists(path: file)) {
+                break
+            }
+            
+            
+            num += 1
+        }
+        }
+        
+        return file
+    }
     
-    func getCSVText() -> String {
+    @IBAction func removeCSV(_ sender: Any) {
+        let warningAlert = UIAlertController(title: "Warning!", message: "Are you sure that you want to remove all the CSV's?", preferredStyle: .alert)
+        warningAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: removeAllCSV))
+        warningAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        self.present(warningAlert, animated: true, completion: nil)
+
+    }
+    
+    
+    func removeAllCSV(alert: UIAlertAction) {
+        if let icloud = icloud {
+            icloud.removeFiles()
+        } else {
+            print("ICloud doens't work")
+        }
+    }
+    
+     @IBAction func createCSV() {
+        if let icloud = icloud {
+        let fileName = getFileName()
+        print(fileName)
+        let url = icloud.createURL(fileName)
+        let text = getCSVAnalytics()
+        print("Text: \(text)")
+        
+        icloud.writeFile(urlLocation: url, text: text)
+        }
+        else {
+            print("ICloud doesn't work")
+        }
+    }
+    
+    func analyticTitles() -> String {
+        return ""
+    }
+    
+    func requestICloudAccess() {
+        
+    }
+    
+ 
+   /* func getCSVText() -> String {
         var csvText = ""
         for job in CoreDataManager.database.getJobs(include: true) {
             //Constant.comma
@@ -151,78 +169,14 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
             }
         }
         return csvText
-    }
+    }*/
     
 
     
-    func csvFormat(strings: [String], end: Bool = false) -> String {
-        var content: String = String.init()
-        for word in strings {
-            content.append(word)
-            if word == strings.last! {
-                if end {
-                    content.append(Constant.enter)
-                }
-            } else {
-                content.append(Constant.comma)
-            }
-        }
-        return content
-    }
+ 
     
-    
-    
-    func writeEmail() {
-        
-        var emailURL: URL? = nil
-        do {
-            emailURL = try filemanager.url(forPublishingUbiquitousItemAt: ubiquityURL!, expiration: nil)
-            print("opened email")
-        } catch {
-            print("Cannot open email")
-        }
-        // let fileName = "CommunityLiving.csv"
-        
-        if MFMailComposeViewController.canSendMail() {
-            let emailController = MFMailComposeViewController()
-            
-            emailController.mailComposeDelegate = self
-            emailController.setToRecipients(self.email!)
-            emailController.setSubject("Comunity Living")
-            if let emailURL = emailURL {
-                emailController.setMessageBody("Link: " + (emailURL.absoluteString), isHTML: false)
-            }
-            
-            present(emailController, animated: true, completion: nil)
-        } else {
-            print("cant send mail")
-        }
-        
-}
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        var needToSegue = false
-        switch result {
-        case .sent:
-            print("Mail sent")
-            needToSegue = true
-            
-        case .cancelled:
-            print("Mail Cancelled")
-            
-        case .failed:
-            print("Mail failed: \(error?.localizedDescription ?? "nil")")
-            
-        case .saved:
-            print("Mail saved")
-        }
-        
-        controller.dismiss(animated: true) {
-            if needToSegue {
-                //self.performSegue(withIdentifier: Constant., sender: self)
-            }
-        }
-    }
-
+ 
+ 
 
 
 
@@ -233,25 +187,8 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
 }
 
 
-class MyDocument: UIDocument {
-    var csvText: String? = "defualt text"
-    
-    override func contents(forType typeName: String) throws -> Any {
-        if let content = csvText {
-            let length = content.lengthOfBytes(using: .utf8)
-            return NSData.init(bytes: content, length: length)
-        } else {
-            return Data()
-        }
-    }
-    
-    override func load(fromContents contents: Any, ofType typeName: String?) throws {
-        if let userContent = contents as? Data {
-            csvText = NSString(bytes: (contents as AnyObject).bytes, length: userContent.count, encoding: String.Encoding.utf8.rawValue) as String?
-        }
-    }
-    
-}
+
+
 
 
 

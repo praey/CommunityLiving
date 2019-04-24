@@ -48,6 +48,7 @@
 		4ABCEFD220ECB8FA000E8C2F /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABCEFD020ECB8FA000E8C2F /* Task+CoreDataProperties.swift */; };
 		4ABCEFD320ECB8FA000E8C2F /* Analytics+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABCEFD120ECB8FA000E8C2F /* Analytics+CoreDataProperties.swift */; };
 		840EE53820F3108700C51DE3 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840EE53720F3108700C51DE3 /* StackView.swift */; };
+		84F559FF226FDB0D00C36AC0 /* ICloudAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F559FE226FDB0D00C36AC0 /* ICloudAPI.swift */; };
 		CD1904D620DCB75000D2C74A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1904D520DCB75000D2C74A /* Constants.swift */; };
 		CD1904D920DCB7F500D2C74A /* JobSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1904D820DCB7F500D2C74A /* JobSelectorCell.swift */; };
 		CD88838C20DE7B7600E4AED3 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD88838B20DE7B7600E4AED3 /* NotificationController.swift */; };
@@ -123,6 +124,7 @@
 		4ABCEFD020ECB8FA000E8C2F /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4ABCEFD120ECB8FA000E8C2F /* Analytics+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Analytics+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		840EE53720F3108700C51DE3 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StackView.swift; path = CommunityApp/Model/StackView.swift; sourceTree = SOURCE_ROOT; };
+		84F559FE226FDB0D00C36AC0 /* ICloudAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICloudAPI.swift; sourceTree = "<group>"; };
 		CD1904D520DCB75000D2C74A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = SOURCE_ROOT; };
 		CD1904D820DCB7F500D2C74A /* JobSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSelectorCell.swift; sourceTree = "<group>"; };
 		CD88838B20DE7B7600E4AED3 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				4A16054820C1C5A5000BFC95 /* Email.swift */,
+				84F559FE226FDB0D00C36AC0 /* ICloudAPI.swift */,
 			);
 			path = EmailPage;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				4A16056520C1C5A5000BFC95 /* Email.swift in Sources */,
 				4A16056D20C1C5A5000BFC95 /* AudioText.swift in Sources */,
 				4A16056320C1C5A5000BFC95 /* Config.swift in Sources */,
+				84F559FF226FDB0D00C36AC0 /* ICloudAPI.swift in Sources */,
 				4A16057520C1C5A5000BFC95 /* Audio.swift in Sources */,
 				4A60206F20D2CFAD00D6ABFC /* AudioRecorderManager.swift in Sources */,
 				4A16056E20C1C5A5000BFC95 /* AudioTextPhoto.swift in Sources */,

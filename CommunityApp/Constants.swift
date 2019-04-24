@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class Constant {
-    static var personName = "Client"
+
     
     static let ubiquityURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)
     
@@ -55,13 +55,14 @@ class Constant {
     enum keyValue {
         static let username = "username"
         static let password = "password"
-        static let email = "email"
+        static let personName = "personName"
         static let pageStyle = "pageStyle"
     }
     
     static private let defaultUsername = "CommunityLiving"
     static private let defaultPassword = "12345678"
-    static private let defaultEmail = ["javonluke@live.com","zhatiayua59@gmail.com"]
+    static private let defaultPersonName = "Client"
+    
     
     static func getUsername() -> String {
         return UserDefaults.standard.string(forKey: Constant.keyValue.username) ?? self.defaultUsername
@@ -80,17 +81,19 @@ class Constant {
     
     
     
-    static func getEmail() -> [String]? {
-        return (UserDefaults.standard.array(forKey: Constant.keyValue.email) as? [String]) ?? self.defaultEmail
+    static func getPersonName() -> String? {
+        return UserDefaults.standard.string(forKey: Constant.keyValue.personName) ?? self.defaultPersonName
     }
     
-    static func setEmail(_ email: [String]) {
-        UserDefaults.standard.set(email, forKey: Constant.keyValue.email)
-    }
+ 
     
     
     static func setUsername(_ username: String) {
         UserDefaults.standard.set(username, forKey: Constant.keyValue.username)
+    }
+    
+    static func setPersonName(_ personName: String) {
+         UserDefaults.standard.set(personName, forKey: Constant.keyValue.personName)
     }
     
     

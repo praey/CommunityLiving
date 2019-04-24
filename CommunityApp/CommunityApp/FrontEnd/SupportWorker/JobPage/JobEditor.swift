@@ -16,9 +16,13 @@ class JobEditor: UIViewController  {
 
     @IBOutlet weak var disableJob: UISwitch!
     var job: Job!
-
+    @IBOutlet weak var innerView: UIView!
+    
     let cellReuseIdentifier = Constant.cellReuseIdentifier
    
+    
+    @IBOutlet weak var addEvent: UIButton!
+    @IBOutlet weak var delete: UIButton!
     
     @IBOutlet weak var taskTableView: UITableView!
 
@@ -36,6 +40,9 @@ class JobEditor: UIViewController  {
         addTask = UIBarButtonItem.init(title: "Add Task", style: .plain, target: self, action: #selector(JobEditor.createTask))
         self.navigationItem.rightBarButtonItem = addTask
         
+        innerView.layer.cornerRadius = 9
+        delete.layer.cornerRadius = 9
+        addEvent.layer.cornerRadius = 9
         
         taskTableView.delegate = self
         taskTableView.dataSource = self

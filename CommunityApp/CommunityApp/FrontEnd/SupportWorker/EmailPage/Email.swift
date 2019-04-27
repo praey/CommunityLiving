@@ -123,15 +123,27 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
     
      @IBAction func createCSV() {
         if let icloud = icloud {
+        icloud.createDirectory()
         let fileName = getFileName()
         print(fileName)
         let url = icloud.createURL(fileName)
+            print(url)
         let text = getCSVAnalytics()
         print("Text: \(text)")
         
         icloud.writeFile(urlLocation: url, text: text)
+            
+            let successAlert = UIAlertController(title: "Success!", message: "You have successfully sent the csv to the users ICloud account. Log into www.icloud.com - with their credentials and you will see it in their IDrive.", preferredStyle: .alert)
+            successAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(successAlert, animated: true, completion: nil)
+
+            
         }
         else {
+            let failureAlert = UIAlertController(title: "Failure!", message: "The csv has not been sent to icloud. Retry. Make sure that you are logged into ICloud on the device.", preferredStyle: .alert)
+            failureAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(failureAlert, animated: true, completion: nil)
+
             print("ICloud doesn't work")
         }
     }

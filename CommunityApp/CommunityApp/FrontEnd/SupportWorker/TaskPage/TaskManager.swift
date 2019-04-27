@@ -395,7 +395,7 @@ extension TaskManager: UITextFieldDelegate {
             if let text = textField.text {
                 if !text.isEmpty {
                     CoreDataManager.database.setTaskText(task: task, text: text)
-                    disableText.isEnabled = true
+                    disableText.isEnabled = false
                     disableText.isOn = false
                     validText.image = validInput
                 } else {

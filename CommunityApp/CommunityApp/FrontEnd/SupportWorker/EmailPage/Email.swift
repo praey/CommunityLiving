@@ -18,7 +18,6 @@ import CoreData
 class Email: UIViewController, MFMailComposeViewControllerDelegate {
     
     
-    //let name = Constant.getUsername()
     var icloud: ICloudAPI?
     
     
@@ -36,48 +35,69 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
  
     
     func csvFormat(strings: [String], end: Bool = false) -> String {
+
         var content: String = String.init()
-        for word in strings {
-            content.append(word)
-            if word == strings.last! {
+        
+        for (index, _) in strings.enumerated() {
+            content.append(strings[index])
+            if index == (strings.count - 1) {
+                
                 if end {
                     content.append(Constant.enter)
                 }
+                break
             } else {
                 content.append(Constant.comma)
             }
         }
+        
+    
+        
+        
         return content
     }
     
 
     func getCSVAnalytics() -> String {
         var csvText = ""
+        csvText += Constant.getPersonName()! + Constant.enter
+        //all jobs
         for job in CoreDataManager.database.getJobs(include: true) {
-            //Constant.comma
+           
             csvText += "JobTitle," + job.title! + Constant.enter
             // all Analytics
             var analytics: [Analytics] = []
+            
             for task in job.getTasks(include: true) {
                 for analytic in task.getAnalytics() {
                     analytics.append(analytic)
                 }
             }
-            // sort analytics
+            
+            // sort analytics in ascending order
             analytics.sort(by: {($0.startTime! as Date) < ($1.startTime! as Date)})
             
             for analytic in analytics {
                 
+                // verifies that the analytic belongs to a task
                 guard let task = analytic.belongs else {continue}
                 
-                let taskTitle = task.title ?? "Default Title"
-                let taskType = csvFormat(strings: task.csvTaskType())
+                var taskTitle: String!
+                if let title = task.title, !title.isEmpty {
+                   taskTitle = title
+                } else {
+                    taskTitle = "Default Title"
+                }
+                taskTitle += Constant.comma
+             
+                let taskType = csvFormat(strings: task.csvTaskType()) + Constant.comma
                 
-                let startTime = analytic.getStarttime()
+                let startTime = analytic.getStarttime() + Constant.comma
                 let duration = analytic.getDuration()
                 
                 
-                csvText += taskTitle + Constant.comma + taskType + Constant.comma + startTime + Constant.comma + duration + Constant.enter
+                
+                csvText += taskTitle + taskType + startTime + duration + Constant.enter
             }
         }
         return csvText

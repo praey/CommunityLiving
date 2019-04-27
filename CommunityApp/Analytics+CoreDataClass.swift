@@ -29,7 +29,10 @@ public class Analytics: NSManagedObject {
     func saveAnalytics(newDate: Date, description: String) {
         let calendar = NSCalendar.current
         let unitsNeeded: Set = Set<Calendar.Component>([.hour, .minute, .second])
+        
         duration = calendar.dateComponents(unitsNeeded, from: startTime! as Date, to: newDate)
+        
+        
         taskDescription = description
         isStarted = false
     }

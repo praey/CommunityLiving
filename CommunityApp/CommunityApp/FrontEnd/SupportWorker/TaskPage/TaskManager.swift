@@ -132,10 +132,10 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
         CoreDataManager.database.saveData()
     }
     
+  
     
-    func checkText() {
-        
-    }
+    
+  
     
     @IBAction func deleteTask(_ sender: Any) {
         let alert = UIAlertController(title: "Warning!", message: "Are you sure to delete this task?", preferredStyle: .alert)
@@ -389,23 +389,23 @@ extension TaskManager: UITextFieldDelegate {
     }
     
     
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+    
+    func checkText() {
         
-       
-            if let text = textField.text {
-                if !text.isEmpty {
-                    CoreDataManager.database.setTaskText(task: task, text: text)
-                    disableText.isEnabled = false
-                    disableText.isOn = false
-                    validText.image = validInput
-                } else {
-                    validText.image = invalidInput
-                }
+        
+        if let text = textValue.text {
+            if !text.isEmpty {
+                CoreDataManager.database.setTaskText(task: task, text: text)
+                self.disableText.isOn = false
+                validText.image = validInput
+            } else {
+                validText.image = invalidInput
             }
-            
-        
+        }
         
     }
+    
+
 
 }
 

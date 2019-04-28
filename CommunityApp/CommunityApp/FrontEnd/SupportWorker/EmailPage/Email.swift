@@ -88,7 +88,7 @@ class Email: UIViewController, MFMailComposeViewControllerDelegate {
                 } else {
                     taskTitle = "Default Title"
                 }
-                taskTitle += Constant.comma
+                taskTitle! += Constant.comma
              
                 let taskType = csvFormat(strings: task.csvTaskType()) + Constant.comma
                 

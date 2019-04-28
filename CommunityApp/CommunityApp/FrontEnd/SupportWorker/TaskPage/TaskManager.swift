@@ -39,10 +39,16 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     
     @IBOutlet weak var taskTitle: UITextField!
     
-   
+    @IBOutlet weak var boxView: UIView!
+    @IBOutlet weak var viewTemplate: UIButton!
+    @IBOutlet weak var deleteTask: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Entered TaskManager")
+        boxView.layer.cornerRadius = 9
+        viewTemplate.layer.cornerRadius = 9
+        deleteTask.layer.cornerRadius = 9
         setUp()
         self.hideKeyboardWhenTappedAround()
         self.navigationItem.title = "Task Manager"

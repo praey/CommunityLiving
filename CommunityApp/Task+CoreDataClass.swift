@@ -103,6 +103,8 @@ public class Task: NSManagedObject {
     func csvTaskType () -> [String] {
         var csvText: [String] = []
             let taskType = getTaskType()
+        
+        
         if taskType.contains(.audio) {
             csvText.append("audio")
         }

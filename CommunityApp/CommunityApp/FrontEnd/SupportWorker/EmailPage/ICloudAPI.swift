@@ -14,7 +14,11 @@ import Foundation
 
 class ICloudAPI {
     
+    
+    
     let dirName = "Documents"
+     // I had to add a new icloud entitlement, because I named the bundle identefier incorrectly.
+    let bundleId = "iCloud.com.StepByStep5.try"
     private var ICloudURL: URL!
     init?() {
         if !isICloudContainerAvailable() {
@@ -26,11 +30,15 @@ class ICloudAPI {
     
     
     //Create iCloud Drive directory
+    // I had to add a new icloud entitlement, because I named the bundle identefier incorrectly.
     func createDirectory(){
-        
+
+        guard let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: bundleId)?.appendingPathComponent(dirName) else {
+            print("CreateDirectory: no directory")
+            return
+        }
       
-            if let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent(dirName) {
-                 ICloudURL = iCloudDocumentsURL
+        ICloudURL = iCloudDocumentsURL
                 if (!FileManager.default.fileExists(atPath: iCloudDocumentsURL.path, isDirectory: nil)) {
                     do {
                         try FileManager.default.createDirectory(at: iCloudDocumentsURL, withIntermediateDirectories: true, attributes: nil)
@@ -40,7 +48,9 @@ class ICloudAPI {
                         //Error handling
                         print("Error in creating doc")
                     }
-                }
+                } else {
+                    print("Directory already created")
+                    
             }
 
     }

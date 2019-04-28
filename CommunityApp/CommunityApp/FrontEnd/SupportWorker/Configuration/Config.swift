@@ -14,9 +14,22 @@ class Config: UIViewController {
    // @IBOutlet weak var username: UITextField!
     @IBOutlet weak var personName: UITextField!
     @IBOutlet weak var password: UITextField!
-
+    @IBOutlet weak var boxView: UIView!
+    @IBOutlet weak var deleteButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.layer.contents = UIImage(named:"background")?.cgImage
+        
+        boxView.layer.cornerRadius = 9
+        boxView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        boxView.layer.shadowOpacity = 0.7
+        boxView.layer.shadowRadius = 5
+        boxView.layer.shadowColor = UIColor(red: 44.0/255.0, green: 62.0/255.0, blue: 80.0/255.0, alpha: 1.0).cgColor
+        
+        deleteButton.layer.cornerRadius = 16
+        
         self.hideKeyboardWhenTappedAround()
         //username.text = Constant.getUsername()
         password.text = Constant.getPassword()

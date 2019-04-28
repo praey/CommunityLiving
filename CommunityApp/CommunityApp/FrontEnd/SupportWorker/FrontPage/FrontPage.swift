@@ -11,6 +11,8 @@ import UIKit
 
 class FrontPage: UIViewController {
     
+    @IBOutlet weak var launchButton: UIButton!
+    @IBOutlet weak var supportButton: UIButton!
     
     @IBOutlet weak var supportWorker: UIButton!
     
@@ -18,9 +20,14 @@ class FrontPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        launchButton.layer.cornerRadius = 9
+        supportButton.layer.cornerRadius = 10
+        
         CoreDataManager.database.fileSystemManager.createImageFolder()
         CoreDataManager.database.fileSystemManager.createVideoFolder()
         CoreDataManager.database.fileSystemManager.createAudioFolder()
+        
         for job in CoreDataManager.database.getAllJobs() {
             for task in CoreDataManager.database.getAllTask(job: job) {
                 CoreDataManager.database.deleteUnfinishedAnalytics(task: task)

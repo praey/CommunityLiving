@@ -93,7 +93,7 @@ public class Task: NSManagedObject {
             taskType.insert(.audio)
         }
         
-        if !self.disableText && self.text != nil {
+        if !self.disableText && self.text != nil && self.text != "" {
            taskType.insert(.text)
         }
         return taskType

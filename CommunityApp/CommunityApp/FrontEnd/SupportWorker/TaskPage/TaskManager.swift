@@ -110,6 +110,10 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
 
 
     func setDown() {
+        
+        //Double check the text
+         checkText()
+        
         task.title = taskTitle.text!
         task.disableTask = disableTask.isOn
         task.disableText = disableText.isOn
@@ -124,8 +128,7 @@ class TaskManager: UIViewController, UIImagePickerControllerDelegate, MPMediaPic
     
     override func viewWillDisappear(_ animated: Bool) {
         
-       checkText()
-     setDown()
+      setDown()
         
         
         
@@ -383,6 +386,8 @@ extension TaskManager: UITextFieldDelegate {
                     
                 }
             } else {
+                textValue.text = ""
+                CoreDataManager.database.setTaskText(task: task, text: textValue.text!)
                 validText.image = invalidInput
             }
         }
